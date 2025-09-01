@@ -33,6 +33,7 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo_v2.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -405,7 +406,7 @@
         <h2 class="title is-3">Experiment</h2>
 
         <!-- 并排两图：每张图的宽/高可自行修改 -->
-        <div class="columns is-centered" style="gap: 16px;">
+        <div class="columns is-centered" style="gap:2px;">
           <div class="column is-narrow">
             <figure class="image" style="margin-bottom:16px;">
               <img src="./static/images/performance.png" alt="experiment-1"
@@ -435,80 +436,76 @@
   </div>
 </section>
 
+
+<style>
+  .scene-frame {
+    --w: 960px; --h: 480px;       /* 容器大小 */
+    width: var(--w);
+    height: var(--h);
+    margin: 0 auto 16px;
+    border: 1.5px solid #bbb;
+    border-radius: 10px;
+    background: #f8f8fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .scene-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;          /* 保持比例显示完整图片，想铺满裁切可改 cover */
+  }
+  .scene-switcher .button.is-active {
+    background: #363636;
+    color: #fff;
+  }
+</style>
+
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Scenes Data Preview</h2>
 
-        <style>
-          .img-row {
-            display: flex;
-            justify-content: center;   /* 整体居中 */
-            gap: 16px;                 /* 图片之间的间距 */
-            margin-bottom: 20px;       /* 每行之间的间距 */
-          }
-          .img-block {
-            text-align: center;        /* 文字居中 */
-          }
-          .img-block p {
-            font-weight: bold;         /* 加粗标题 */
-            margin-bottom: 4px;        /* 标题与图片之间的距离 */
-            font-size: 24px;           /* 标题大小，可调整 */
-          }
-          .img-block img {
-            display: block;
-            object-fit: contain;
-          }
-        </style>
-        
-        <!-- 第一行 -->
-        <div class="img-row">
-          <div class="img-block">
-            <p>Indoor Data</p>
-            <img src="./static/images/D1_vsi_data.jpg" alt="pre1" style="width:500px; height:500px;">
-          </div>
-          <div class="img-block">
-            <p>Wild Indoor Data</p>
-            <img src="./static/images/D2_DL3DV_indoor_data.jpg" alt="pre2" style="width:500px; height:400px;">
-          </div>
-        </div>
-        
-        <!-- 第二行 -->
-        <div class="img-row">
-          <div class="img-block">
-            <p>Outdoor Data</p>
-            <img src="./static/images/D3_DL3DV_outdoor_data.jpg" alt="pre3" style="width:500px; height:400px;">
-          </div>
-          <div class="img-block">
-            <p>Drone Data</p>
-            <img src="./static/images/D4_DL3DV_drone_data.jpg" alt="pre4" style="width:500px; height:400px;">
-          </div>
-        </div>
-        
-        <!-- 第三行 -->
-        <div class="img-row">
-          <div class="img-block">
-            <p>Tabletop Data</p>
-            <img src="./static/images/D5_wildrgbd_data.jpg" alt="pre5" style="width:500px; height:400px;">
-          </div>
-          <div class="img-block">
-            <p>Tiny Tabletop Data</p>
-            <img src="./static/images/D6_uco_3d_data.jpg" alt="pre6" style="width:500px; height:400px;">
-          </div>
-          <div class="img-block">
-            <p>Our Collected Data</p>
-            <img src="./static/images/D7_our_collected.jpg" alt="pre7" style="width:500px; height:400px;">
-          </div>
-        </div>
-
-      </div>
+    <!-- 按钮区 -->
+    <div class="scene-switcher buttons is-centered">
+      <button class="button is-small is-active"
+              data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
+      <button class="button is-small"
+              data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
+      <button class="button is-small"
+              data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
+      <button class="button is-small"
+              data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+      <button class="button is-small"
+              data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+      <button class="button is-small"
+              data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+      <button class="button is-small"
+              data-src="./static/images/D7_our_collected.jpg">Our Collected</button>
     </div>
+
+    <!-- 场景展示区 -->
+    <div class="scene-frame">
+      <img id="sceneImg" src="./static/images/D1_vsi_data.jpg" alt="Scene">
+    </div>
+
   </div>
 </section>
 
+<script>
+  const img = document.getElementById('sceneImg');
+  const btns = document.querySelectorAll('.scene-switcher [data-src]');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      img.src = btn.dataset.src;
+      img.alt = btn.textContent.trim();
+    });
+  });
+</script>
 
 
+  
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
