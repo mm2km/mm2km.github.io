@@ -313,14 +313,14 @@
           cross-scale supervision with fine-grained modeling. In this paper, we introduce a
           unified system that integrates the structured spatial reasoning knowledge system,
           scale-aware multi-expert modeling, and a progressive training paradigm, as the
-          first attempt to broaden the spatial perception capabilities of MLLMs to the best
+          <strong>first attempt</strong>strong> to broaden the spatial perception capabilities of MLLMs to the best
           of our knowledge. Using task-specific, expert-driven automated annotation, we
-          curated over 40K scenes across five spatial scales, comprising SpaceVista-1.5M,
+          curated over 40K scenes across five spatial scales, comprising <strong>SpaceVista-1.5M</strong>,
           a dataset of approximately 1.5M spatial QA pairs spanning 19 distinct task types.
           While using experts as support can inject valuable domain knowledge, it cannot
           serve as a reliable evaluation. To address this, we manually recorded, retrieved, and
           constructed a small, precise, benchmark from mm to km for evaluation. Building on
-          this, we propose SpaceVista, a model that incorporates multimodal inputs beyond video 
+          this, we propose <strong>SpaceVista</strong>, a model that incorporates multimodal inputs beyond video 
           and employs scale as an anchor for process reward, forming a tailored training
           strategy for spatial reasoning. Finally, Extensive evaluations across 8 datasets,
           including the SpaceVista Evaluation Set, demonstrate competitive performance,
@@ -352,10 +352,10 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">From mm To km Dataset: SpaceVista-1.5M</h2>
         <div class="content has-text-justified">
-          We introduce SpaceVista, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
-          which are typically constrained by high annotation and scanning costs. Building on over 40K curated scenes across five spatial scales, 
-          we construct SpaceVista-1.5M, comprising approximately 1.5M spatial QA pairs spanning 19 task types. </p>
-          To further enrich spatial diversity, SpaceVista encompasses 15 tasks across 5 scene categories and more than 25 subscene types, 
+          We introduce <strong>SpaceVista</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
+          which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
+          we construct <strong>SpaceVista-1.5M</strong>, comprising approximately <strong>1.5M spatial QA pairs</strong> spanning <strong>19 task types</strong>. </p>
+          To further enrich spatial diversity, SpaceVista encompasses <strong>15 tasks</strong> across <strong>5 scene categories</strong> and more than <strong>25 subscene types</strong>, 
           supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
         <figure class="image">
@@ -366,6 +366,47 @@
   </div>
 </section>  
 
+  
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+
+      <!-- 第一个 Section -->
+      <div class="column has-text-centered">
+        <figure class="image">
+          <img src="./static/images/pipeline.png" alt="pipeline" style="max-width:100%; height:auto;">
+        </figure>
+        <h2 class="title is-4">SpaceVista Model</h2>
+        <div class="content has-text-justified">
+          <p>
+            We curated <strong>40K scenes</strong> across <strong>five spatial scales</strong>, 
+            constructing <strong>SpaceVista-1.5M</strong> with <strong>1.5M QA pairs</strong> 
+            spanning <strong>19 task types</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- 第二个 Section -->
+      <div class="column has-text-centered">
+        <figure class="image">
+          <img src="./static/images/pipeline.png" alt="expriment" style="max-width:100%; height:auto;">
+        </figure>
+        <h2 class="title is-4">Expriment</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>SpaceVista</strong> encompasses <strong>15 tasks</strong> across 
+            <strong>5 scene categories</strong> and over <strong>25 subscene types</strong>, 
+            ensuring balanced coverage via expert-driven annotation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
