@@ -438,48 +438,82 @@
 
 
 <style>
+  .scene-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .scene-switcher {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    border-bottom: 2px solid #ccc;
+  }
+
+  .scene-switcher .button {
+    border-radius: 0;
+    font-weight: bold;
+    background: #e0e0e0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 8px 18px;
+    color: #333;
+  }
+
+  .scene-switcher .button:hover {
+    background: #d5d5d5;
+  }
+
+  .scene-switcher .button.is-active {
+    background: #363636;
+    color: #fff;
+  }
+
   .scene-frame {
-    --w: 960px; --h: 480px;       /* 容器大小 */
+    --w: 960px; --h: 480px;
     width: var(--w);
     height: var(--h);
-    margin: 0 auto 16px;
+    margin: 0 auto;
     border: 1.5px solid #bbb;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px; /* 上方和按钮连成整体 */
     background: #f8f8fa;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
+
   .scene-frame img {
     width: 100%;
     height: 100%;
-    object-fit: contain;          /* 保持比例显示完整图片，想铺满裁切可改 cover */
-  }
-  .scene-switcher .button.is-active {
-    background: #363636;
-    color: #fff;
+    object-fit: contain;
   }
 </style>
 
 <section class="section">
   <div class="container is-max-desktop">
 
+    <!-- 大标题 -->
+    <div class="scene-title">Experiment Scenes</div>
+
     <!-- 按钮区 -->
-    <div class="scene-switcher buttons is-centered">
-      <button class="button is-small is-active"
+    <div class="scene-switcher">
+      <button class="button is-active"
               data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-      <button class="button is-small"
+      <button class="button"
               data-src="./static/images/D7_our_collected.jpg">Our Collected</button>
     </div>
 
@@ -503,6 +537,7 @@
     });
   });
 </script>
+
 
 
   
