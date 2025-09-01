@@ -365,58 +365,48 @@
 </section>  
 
   
-
 <section class="section">
-  <style>
-    /* 解除框架里可能的 max-width 限制 */
-    .img-free img{
-      width: 1200px;           /* ← 自己指定 */
-      height: 800px;           /* ← 自己指定 */
-      max-width: none !important;
-      max-height: none !important;
-      display: block;
-      margin: 0 auto;          /* 居中显示 */
-      object-fit: contain;     /* 保持完整显示；若想铺满用 cover */
-    }
-    .img-free{ overflow: visible; } /* 允许溢出父容器可见 */
-  </style>
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <!-- 第一个 Section -->
-      <div class="column has-text-centered">
-        <h2 class="title is-4">SpaceVista Model</h2>
-        <figure class="image img-free" style="margin-bottom:24px;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">SpaceVista Model</h2>
+        <figure class="image" style="margin-bottom:24px;">
           <img src="./static/images/pipeline.png" alt="pipeline">
         </figure>
         <div class="content has-text-justified">
-          <p>
-            We curated <strong>40K scenes</strong> across <strong>five spatial scales</strong>, 
-            constructing <strong>SpaceVista-1.5M</strong> with <strong>1.5M QA pairs</strong> 
-            spanning <strong>19 task types</strong>.
-          </p>
+          We introduce <strong>SpaceVista</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
+          which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
+          we construct <strong>SpaceVista-1.5M</strong>, comprising approximately <strong>1.5M spatial QA pairs</strong> spanning <strong>19 task types</strong>. </p>
+          To further enrich spatial diversity, SpaceVista encompasses <strong>15 tasks</strong> across <strong>5 scene categories</strong> and more than <strong>25 subscene types</strong>, 
+          supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
       </div>
+    </div>
+  </div>
+</section> 
 
-      <!-- 第二个 Section -->
-      <div class="column has-text-centered">
-        <h2 class="title is-4">Expriment</h2>
-        <figure class="image img-free" style="margin-bottom:24px;">
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Expriment</h2>
+        <figure class="image" style="margin-bottom:24px;">
           <img src="./static/images/performance.png" alt="experiment">
         </figure>
         <div class="content has-text-justified">
-          <p>
-            <strong>SpaceVista</strong> encompasses <strong>15 tasks</strong> across 
-            <strong>5 scene categories</strong> and over <strong>25 subscene types</strong>, 
-            ensuring balanced coverage via expert-driven annotation.
-          </p>
+          We introduce <strong>SpaceVista</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
+          which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
+          we construct <strong>SpaceVista-1.5M</strong>, comprising approximately <strong>1.5M spatial QA pairs</strong> spanning <strong>19 task types</strong>. </p>
+          To further enrich spatial diversity, SpaceVista encompasses <strong>15 tasks</strong> across <strong>5 scene categories</strong> and more than <strong>25 subscene types</strong>, 
+          supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
       </div>
-
     </div>
   </div>
-</section>
+</section> 
 
-  
+
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
