@@ -438,16 +438,10 @@
 
 
 <style>
-  .scene-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
 
-  /* 外层容器 */
+  /* 容器宽度拉满 */
   .scene-container {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
     font-family: "Segoe UI", Roboto, sans-serif;
   }
@@ -455,14 +449,14 @@
   /* 按钮区 */
   .scene-switcher {
     display: flex;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
+    width: 100%;             /* 占满整个页面宽度 */
+    border-radius: 0;
     overflow: hidden;
-    background: #f0f0f0; /* 背景统一淡灰 */
+    background: #f0f0f0;
   }
 
   .scene-switcher .button {
-    flex: 1;
+    flex: 1;                 /* 等分每个按钮宽度 */
     font-weight: 600;
     border-radius: 0;
     border: none;
@@ -476,13 +470,11 @@
     cursor: pointer;
   }
 
-  /* hover 效果 */
   .scene-switcher .button:hover {
     background: #e0e0e0;
     color: #000;
   }
 
-  /* 选中状态 */
   .scene-switcher .button.is-active {
     background: #363636;
     color: #fff;
@@ -491,11 +483,11 @@
 
   /* 展示区 */
   .scene-frame {
-    width: 100%;
-    height: 480px;
+    width: 100%;             /* 拉满页面宽度 */
+    height: 600px;           /* 高度可调 */
     border: 1.5px solid #bbb;
-    border-top: none; /* 和按钮区相连 */
-    border-radius: 0 0 10px 10px;
+    border-top: none;
+    border-radius: 0;
     background: #fafafa;
     display: flex;
     align-items: center;
@@ -504,17 +496,17 @@
   }
 
   .scene-frame img {
-    width: 100%;
+    width: 100%;             /* 拉伸到容器宽度 */
     height: 100%;
-    object-fit: contain;
+    object-fit: contain;     /* 保持比例显示完整 */
   }
 </style>
 
 <section class="section">
-  <div class="container scene-container">
+  <div class="scene-container">
 
     <!-- 大标题 -->
-    <div class="scene-title">Experiment Scenes</div>
+    <div class="scene-title">Scenes Data Preview</div>
 
     <!-- 按钮区 -->
     <div class="scene-switcher">
@@ -554,6 +546,7 @@
     });
   });
 </script>
+
 
 
 
