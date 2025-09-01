@@ -398,7 +398,33 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Experiment</h2>
         
-        <div class="columns is-centered is-gapless">
+        <style>
+          /* 自定义两图容器 */
+          .pair {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0; /* 改成 0 完全贴紧；改成 -10px 可以重叠 10px */
+          }
+        
+          /* 去掉 Bulma column 的左右 padding */
+          .pair .column {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin: 0 !important;
+          }
+        
+          .pair img {
+            display: block;   /* 去掉行内缝隙 */
+            width: 680px;
+            height: 460px;
+            object-fit: contain;
+          }
+        </style>
+        
+        <h2 class="title is-3">Experiment</h2>
+        
+        <div class="columns is-centered pair">
           <div class="column is-narrow">
             <figure class="image" style="margin-bottom:0;">
               <img src="./static/images/performance.png" alt="experiment-1">
@@ -410,6 +436,7 @@
             </figure>
           </div>
         </div>
+
 
         <div class="content has-text-justified">
           <p>
