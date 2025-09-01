@@ -275,7 +275,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <figure class="image is-128x128" style="margin: 0 auto 20px;">
+        <figure class="image is-128x128" style="max-width:1200px; max-height:400px; margin-bottom:20px;">
           <img src="./static/images/teaser_v2.jpg" alt="teaser">
         </figure>
         <h2 class="title is-3">Abstract</h2>
@@ -320,6 +320,45 @@
     <!--/ Paper video. -->
   </div>
 </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <figure class="image is-128x128" style="max-width:200px; margin-bottom:20px;">
+          <img src="./static/images/teaser_v2.jpg" alt="teaser">
+        </figure>
+        <h2 class="title is-3">A Visual Spatial Reasoning Dataset: SpaceVista-1.5M</h2>
+        <div class="content has-text-justified">
+          With the current surge in spatial reasoning research, researchers has made significant
+          progress in understanding indoor scenes, but still struggle with holistic scenes
+          like robotics and autonomous driving. This paper focuses on developing multiscale
+          spatial reasoning across diverse scenarios, addressing two key challenges: a)
+          limitation of data relying on indoor 3D scans and manual annotations. b) lack of
+          cross-scale supervision with fine-grained modeling. In this paper, we introduce a
+          unified system that integrates the structured spatial reasoning knowledge system,
+          scale-aware multi-expert modeling, and a progressive training paradigm, as the
+          first attempt to broaden the spatial perception capabilities of MLLMs to the best
+          of our knowledge. Using task-specific, expert-driven automated annotation, we
+          curated over 40K scenes across five spatial scales, comprising SpaceVista-1.5M,
+          a dataset of approximately 1.5M spatial QA pairs spanning 19 distinct task types.
+          While using experts as support can inject valuable domain knowledge, it cannot
+          serve as a reliable evaluation. To address this, we manually recorded, retrieved, and
+          constructed a small, precise, benchmark from mm to km for evaluation. Building on
+          this, we propose SpaceVista, a model that incorporates multimodal inputs beyond video 
+          and employs scale as an anchor for process reward, forming a tailored training
+          strategy for spatial reasoning. Finally, Extensive evaluations across 8 datasets,
+          including the SpaceVista Evaluation Set, demonstrate competitive performance,
+          showcasing our model’s strong generalization across multiple scales and scenarios.
+          All datasets, models, and evaluation tools will be released.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>  
 
 
 <section class="section">
