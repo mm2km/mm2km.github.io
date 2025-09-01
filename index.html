@@ -436,27 +436,25 @@
   </div>
 </section>
 
-
 <style>
-
-  /* 容器宽度拉满 */
-  .scene-container {
-    width: 100%;
-    margin: 0 auto;
-    font-family: "Segoe UI", Roboto, sans-serif;
+  .scene-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
   }
 
-  /* 按钮区 */
+  /* 按钮区：和母容器等宽 */
   .scene-switcher {
     display: flex;
-    width: 100%;             /* 占满整个页面宽度 */
-    border-radius: 0;
+    width: 100%;             /* 占满母容器宽度 */
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
     background: #f0f0f0;
   }
 
   .scene-switcher .button {
-    flex: 1;                 /* 等分每个按钮宽度 */
+    flex: 1;                 /* 按钮等分母容器宽度 */
     font-weight: 600;
     border-radius: 0;
     border: none;
@@ -481,13 +479,13 @@
     font-weight: 700;
   }
 
-  /* 展示区 */
+  /* 展示区：和母容器等宽 */
   .scene-frame {
-    width: 100%;             /* 拉满页面宽度 */
-    height: 600px;           /* 高度可调 */
+    width: 100%;             /* 占满母容器宽度 */
+    height: 480px;           /* 高度可调 */
     border: 1.5px solid #bbb;
     border-top: none;
-    border-radius: 0;
+    border-radius: 0 0 10px 10px;
     background: #fafafa;
     display: flex;
     align-items: center;
@@ -496,17 +494,17 @@
   }
 
   .scene-frame img {
-    width: 100%;             /* 拉伸到容器宽度 */
+    width: 100%;             /* 图片随母容器宽度缩放 */
     height: 100%;
-    object-fit: contain;     /* 保持比例显示完整 */
+    object-fit: contain;     /* 保持比例完整显示 */
   }
 </style>
 
 <section class="section">
-  <div class="scene-container">
+  <div class="container is-max-desktop"> <!-- 母容器 -->
 
     <!-- 大标题 -->
-    <div class="scene-title">Scenes Data Preview</div>
+    <div class="scene-title">Experiment Scenes</div>
 
     <!-- 按钮区 -->
     <div class="scene-switcher">
@@ -546,8 +544,6 @@
     });
   });
 </script>
-
-
 
 
 
