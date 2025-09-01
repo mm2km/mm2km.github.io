@@ -89,7 +89,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SpaceVista: Expanding Visual Spatial Reasoning from mm to km</h1>
+          <h1 class="title is-1 publication-title">SpaceVista: Expanding Visual Spatial Reasoning <br>from mm to km</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a>Peiwen Sun</a>
@@ -286,7 +286,7 @@
               height: auto;         /* 保持比例 */
             }
           </style>
-          <canvas id="the-canvas" style="display:block; margin:0 auto;"></canvas>
+          <canvas id="the-canvas" style="display:block; margin-bottom:24px;"></canvas>
           <script>
             const url = './static/images/teaser_v2.pdf';
             pdfjsLib.getDocument(url).promise.then(function(pdf) {
@@ -357,7 +357,8 @@
           supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
         <figure class="image">
-          <img src="./static/images/data_graph.jpg" alt="data_graph">
+          <img src="./static/images/data_graph.jpg" alt="data_graph"
+               style="width:500px; height:500px; object-fit:contain; display:block; margin:0 auto;">
         </figure>
       </div>
     </div>
@@ -414,13 +415,11 @@
 
         <div class="content has-text-justified">
           <p>
-            We introduce <strong>SpaceVista</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets,
-            which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales,
-            we construct <strong>SpaceVista-1.5M</strong>, comprising approximately <strong>1.5M spatial QA pairs</strong> spanning <strong>19 task types</strong>.
+            <strong>Results overview.</strong> The left figure summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor, showing consistent gains across scales and settings.
           </p>
           <p>
-            To further enrich spatial diversity, SpaceVista encompasses <strong>15 tasks</strong> across <strong>5 scene categories</strong> and more than <strong>25 subscene types</strong>,
-            supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
+            <strong>Evaluation suite.</strong> We assess the model on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets. 
+            The first three and our sets are based on video, whereas MMSI Bench and SPAR Bench use multiple images; together they probe complementary aspects of spatial understanding.
           </p>
         </div>
 
