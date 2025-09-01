@@ -399,60 +399,41 @@
         <h2 class="title is-3">Experiment</h2>
         
         <style>
-          /* 自定义两图容器 */
-          .pair {
+          .img-pair {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0; /* 改成 0 完全贴紧；改成 -10px 可以重叠 10px */
+            justify-content: center;     /* 整体居中；想靠左可改为 flex-start */
+            align-items: flex-start;
+            gap: 0;                      /* 间距为 0，完全贴紧；想留 4px 就写 gap:4px; */
           }
-        
-          /* 去掉 Bulma column 的左右 padding */
-          .pair .column {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            margin: 0 !important;
-          }
-        
-          .pair img {
-            display: block;   /* 去掉行内缝隙 */
-            width: 680px;
-            height: 460px;
-            object-fit: contain;
+          .img-pair img {
+            display: block;              /* 去掉行内缝隙 */
           }
         </style>
+
         
-        <h2 class="title is-3">Experiment</h2>
-        
-        <div class="columns is-centered pair">
-          <div class="column is-narrow">
-            <figure class="image" style="margin-bottom:0;">
-              <img src="./static/images/performance.png" alt="experiment-1">
-            </figure>
-          </div>
-          <div class="column is-narrow">
-            <figure class="image" style="margin-bottom:0;">
-              <img src="./static/images/ridar_temp.jpg" alt="experiment-2">
-            </figure>
+        <div class="img-pair">
+          <img src="./static/images/performance.png" alt="experiment-1"
+               style="width:680px; height:460px; object-fit:contain;">
+          <img src="./static/images/ridar_temp.jpg" alt="experiment-2"
+               style="width:460px; height:460px; object-fit:contain;">
+        </div>
+      
+      
+              <div class="content has-text-justified">
+                <p>
+                  <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
+                  We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
+                </p>
+                <p>
+                  <strong>Evaluation suite.</strong> The right figure presents evaluation results of Qwen2.5-VL-7B, SpatialR, SpatialMLLM, VILASR, and our SpaceVista 
+                  on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets, highlighting the robustness and competitiveness of our model.
+                </p>
+              </div>
+      
+            </div>
           </div>
         </div>
-
-
-        <div class="content has-text-justified">
-          <p>
-            <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
-            We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
-          </p>
-          <p>
-            <strong>Evaluation suite.</strong> The right figure presents evaluation results of Qwen2.5-VL-7B, SpatialR, SpatialMLLM, VILASR, and our SpaceVista 
-            on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets, highlighting the robustness and competitiveness of our model.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
 <style>
   /* 统一宽度容器 */
@@ -518,6 +499,7 @@
 </style>
 
 <section class="section">
+  <div class="columns is-centered has-text-centered">
   <div class="scene-container">
 
     <!-- 大标题 -->
@@ -546,6 +528,7 @@
       <img id="sceneImg" src="./static/images/D1_vsi_data.jpg" alt="Scene">
     </div>
 
+  </div>
   </div>
 </section>
 
