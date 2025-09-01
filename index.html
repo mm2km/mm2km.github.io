@@ -396,32 +396,16 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-      <style>
-          /* 固定目标尺寸（每张 680×460），并排间距 2px */
-          .pair { gap: 2px; }
-          .pair .image,
-          .pair .right-box { width: 680px; }
-          .pair .image img,
-          .pair .right-box img { width: 100%; height: auto; object-fit: contain; aspect-ratio: 680 / 460; }
-        
-          /* 当母容器可用宽度 < 1362px(=680+680+2) 时，两图按 50% 等分缩放，永不超宽 */
-          @media (max-width: 1362px) {
-            .pair .image,
-            .pair .right-box { width: calc((100% - 2px) / 2); }  /* 两图各占一半减去间距 */
-          }
-        </style>
-        
         <h2 class="title is-3">Experiment</h2>
         
-        <!-- 并排两图：添加 pair 类 -->
-        <div class="columns is-centered pair">
+        <div class="columns is-centered is-gapless">
           <div class="column is-narrow">
-            <figure class="image" style="margin-bottom:16px;">
+            <figure class="image" style="margin-bottom:0;">
               <img src="./static/images/performance.png" alt="experiment-1">
             </figure>
           </div>
           <div class="column is-narrow">
-            <figure class="image right-box" style="margin-bottom:16px;">
+            <figure class="image" style="margin-bottom:0;">
               <img src="./static/images/ridar_temp.jpg" alt="experiment-2">
             </figure>
           </div>
