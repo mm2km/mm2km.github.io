@@ -397,20 +397,27 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
       <style>
-        /* 右图的外框：你可以随时改宽高 */
-        .right-box { width: 680px; height: 460px; }     /* 调整这两个数即可 */
-        .right-box img { width:100%; height:100%; object-fit: contain; } /* 不裁切，等比缩放 */
-        /* 若想铺满并允许裁切：把 contain 改成 cover，再用 object-position 定位可视区域 */
-        /* .right-box img { object-fit: cover; object-position: 50% 40%; } */
-      </style>
+          /* 固定目标尺寸（每张 680×460），并排间距 2px */
+          .pair { gap: 2px; }
+          .pair .image,
+          .pair .right-box { width: 680px; }
+          .pair .image img,
+          .pair .right-box img { width: 100%; height: auto; object-fit: contain; aspect-ratio: 680 / 460; }
+        
+          /* 当母容器可用宽度 < 1362px(=680+680+2) 时，两图按 50% 等分缩放，永不超宽 */
+          @media (max-width: 1362px) {
+            .pair .image,
+            .pair .right-box { width: calc((100% - 2px) / 2); }  /* 两图各占一半减去间距 */
+          }
+        </style>
+        
         <h2 class="title is-3">Experiment</h2>
-
-        <!-- 并排两图：每张图的宽/高可自行修改 -->
-        <div class="columns is-centered" style="gap:2px;">
+        
+        <!-- 并排两图：添加 pair 类 -->
+        <div class="columns is-centered pair">
           <div class="column is-narrow">
             <figure class="image" style="margin-bottom:16px;">
-              <img src="./static/images/performance.png" alt="experiment-1"
-                   style="width:680px; height:460px; object-fit:contain;">
+              <img src="./static/images/performance.png" alt="experiment-1">
             </figure>
           </div>
           <div class="column is-narrow">
@@ -487,8 +494,8 @@
 
   /* 展示区 */
   .scene-frame {
-    width: 100%;
-    height: 480px; /* 你可以改高度，比如 600px */
+    width: 1240px;
+    height: 680px; /* 你可以改高度，比如 600px */
     border: 1.5px solid #bbb;
     border-top: none;
     border-radius: 0 0 10px 10px;
