@@ -280,8 +280,9 @@
         <style>
             #the-canvas {
               display: block;
-              margin: 0 auto;       /* 居中 */
-              max-width: 100%;      /* 不超过父容器 */
+              margin: 0 auto 24px;   /* 居中 */
+              max-width: none;      /* 可以超过父容器 */
+              width: 120%           /* 超过父容器20% */
               height: auto;         /* 保持比例 */
             }
           </style>
@@ -310,7 +311,7 @@
           cross-scale supervision with fine-grained modeling. In this paper, we introduce a
           unified system that integrates the structured spatial reasoning knowledge system,
           scale-aware multi-expert modeling, and a progressive training paradigm, as the
-          <strong>first attempt</strong>strong> to broaden the spatial perception capabilities of MLLMs to the best
+          <strong>first attempt</strong> to broaden the spatial perception capabilities of MLLMs to the best
           of our knowledge. Using task-specific, expert-driven automated annotation, we
           curated over 40K scenes across five spatial scales, comprising <strong>SpaceVista-1.5M</strong>,
           a dataset of approximately 1.5M spatial QA pairs spanning 19 distinct task types.
@@ -366,12 +367,25 @@
   
 
 <section class="section">
+  <style>
+    /* 解除框架里可能的 max-width 限制 */
+    .img-free img{
+      width: 1200px;           /* ← 自己指定 */
+      height: 800px;           /* ← 自己指定 */
+      max-width: none !important;
+      max-height: none !important;
+      display: block;
+      margin: 0 auto;          /* 居中显示 */
+      object-fit: contain;     /* 保持完整显示；若想铺满用 cover */
+    }
+    .img-free{ overflow: visible; } /* 允许溢出父容器可见 */
+  </style>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <!-- 第一个 Section -->
       <div class="column has-text-centered">
         <h2 class="title is-4">SpaceVista Model</h2>
-        <figure class="image">
+        <figure class="image img-free" style="margin-bottom:24px;">
           <img src="./static/images/pipeline.png" alt="pipeline" style="width:600px; height:400px; object-fit:cover;">
         </figure>
         <div class="content has-text-justified">
@@ -386,8 +400,8 @@
       <!-- 第二个 Section -->
       <div class="column has-text-centered">
         <h2 class="title is-4">Expriment</h2>
-        <figure class="image">
-          <img src="./static/images/performance.png" alt="expriment" style="width:600px; height:400px; object-fit:cover;">
+        <figure class="image img-free" style="margin-bottom:24px;">
+          <img src="./static/images/performance.png" alt="experiment">
         </figure>
         <div class="content has-text-justified">
           <p>
