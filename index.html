@@ -439,205 +439,80 @@
 
 <section class="section">
   <div class="columns is-centered has-text-centered">
-  <div class="scene-container">
 
-    <!-- 大标题 -->
-    <div class="title is-3">Scenes Data Preview</div>
+    <!-- ===== 组件实例 A ===== -->
+    <div class="scene-container scene-gallery">
+      <div class="title is-3">Scenes Data Preview</div>
 
-    <!-- 按钮区 -->
-    <div class="scene-switcher">
-      <button type="button" class="button"
-              data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-      <button type="button" class="button"
-              data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-      <button type="button" class="button"
-              data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-      <button type="button" class="button is-active"
-              data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-      <button type="button" class="button"
-              data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-      <button type="button" class="button"
-              data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-      <button type="button" class="button"
-              data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+      <div class="scene-switcher">
+        <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+        <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+        <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
+        <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
+        <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
+        <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
+        <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+      </div>
+
+      <div class="scene-frame">
+        <img data-role="scene" src="" alt="Scene A">
+      </div>
     </div>
 
-    <!-- 场景展示区 -->
-    <div class="scene-frame">
-      <img id="sceneImg" src="./static/images/D6_uco_3d_data.jpg" alt="Scene">
+    <!-- 间距（可选） -->
+    <div style="height:24px;"></div>
+
+    <!-- ===== 组件实例 ===== -->
+    <div class="scene-container scene-gallery">
+      <div class="title is-3">Word Cloud</div>
+
+      <div class="scene-switcher">
+        <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
+        <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
+        <button type="button" class="button" data-src="./static/images/ourcollected.jpg">Self-Collected</button>
+        <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
+        <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
+        <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
+      </div>
+
+      <div class="scene-frame">
+        <img data-role="scene" src="" alt="Scene B">
+      </div>
     </div>
 
-  </div>
   </div>
 </section>
 
 <script>
-  const img = document.getElementById('sceneImg');
-  const btns = document.querySelectorAll('.scene-switcher .button');
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('is-active'));
+document.addEventListener('DOMContentLoaded', () => {
+  // 针对页面上所有 .scene-gallery 实例分别初始化
+  document.querySelectorAll('.scene-gallery').forEach(gallery => {
+    const switcher = gallery.querySelector('.scene-switcher');
+    const img = gallery.querySelector('.scene-frame img[data-role="scene"]');
+    if (!switcher || !img) return;
+
+    // 首次根据 .is-active 同步默认图片
+    const active = switcher.querySelector('.button.is-active') || switcher.querySelector('.button');
+    if (active && active.dataset.src) {
+      img.src = active.dataset.src;
+      img.alt = active.textContent.trim();
+    }
+
+    // 事件委托：只影响当前 gallery
+    switcher.addEventListener('click', (e) => {
+      const btn = e.target.closest('.button');
+      if (!btn || !switcher.contains(btn)) return;
+
+      switcher.querySelectorAll('.button.is-active').forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-      img.src = btn.dataset.src;
-      img.alt = btn.textContent.trim();
+
+      if (btn.dataset.src) {
+        img.src = btn.dataset.src;
+        img.alt = btn.textContent.trim();
+      }
     });
   });
-</script>
-
-<style>
-  /* 统一宽度容器 */
-  .scene-container {
-    width: 960px;   /* 这里自己定义，比如 960px、1200px */
-    margin: 0 auto;
-  }
-
-  /* 按钮区 */
-  .scene-switcher {
-    display: flex;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    overflow: visible;              
-    background: #f0f0f0;
-  }
-
-  .scene-switcher .button {
-    position: relative;            
-    flex: 1;
-    font-weight: 600;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    margin: 0;
-    padding: 12px 0;
-    font-size: 15px;
-    color: #555;
-    background: #f0f0f0;
-    transition: all 0.25s ease;
-    cursor: pointer;
-  }
-
-  .scene-switcher .button:hover {
-    background: #e0e0e0;
-    color: #000;
-  }
-
-  .scene-switcher .button.is-active {
-    background: #363636;
-    color: #fff;
-    font-weight: 700;
-  }
-
-  /* 展示区 */
-  .scene-frame {
-    width: 960px;
-    height: 680px; /* 你可以改高度，比如 600px */
-    border: 1.5px solid #bbb;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    background: #fafafa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .scene-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .scene-switcher .button:not(.is-active)::after {
-    content: "Click to switch scenes";   /* 提示文案 */
-    position: absolute;
-    left: 50%;
-    top: calc(100% + 10px);              /* 出现在按钮下方 */
-    transform: translateX(-50%) translateY(4px);
-    background: #363636;
-    color: #fff;
-    font-size: 12px;
-    line-height: 1;
-    padding: 6px 8px;
-    border-radius: 6px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .18s ease, transform .18s ease;
-    z-index: 2;
-  }
-  .scene-switcher .button:not(.is-active)::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #363636;           /* 朝上的小三角 */
-    opacity: 0;
-    transition: opacity .18s ease;
-    z-index: 2;
-  }
-
-  .scene-switcher .button:not(.is-active):hover::after,
-  .scene-switcher .button:not(.is-active):hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  
-  /* 你已有的悬停/激活样式保留即可 */
-  .scene-switcher .button:hover {
-    background: #e0e0e0;
-    color: #000;
-  }
-  .scene-switcher .button.is-active {
-    background: #363636;
-    color: #fff;
-    font-weight: 700;
-  }
-</style>
-
-<section class="section">
-  <div class="columns is-centered has-text-centered">
-  <div class="scene-container">
-
-    <!-- 大标题 -->
-    <div class="title is-3">Word Cloud</div>
-
-    <!-- 按钮区 -->
-    <div class="scene-switcher">
-      <button type="button" class="button"
-              data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
-      <button type="button" class="button"
-              data-src="./static/images/tabletop_data.jpg">Tabletop</button>
-      <button type="button" class="button"
-              data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
-      <button type="button" class="button is-active"
-              data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
-      <button type="button" class="button"
-              data-src="./static/images/indoor_data.jpg">Indoor</button>
-      <button type="button" class="button"
-              data-src="./static/images/outdoor_data.jpg">Outdoor</button>
-    </div>
-
-    <!-- 场景展示区 -->
-    <div class="scene-frame">
-      <img id="sceneImg" src="./static/images/tinytabletop_data.jpg" alt="Scene">
-    </div>
-
-  </div>
-  </div>
-</section>
-
-<script>
-  const img = document.getElementById('sceneImg');
-  const btns = document.querySelectorAll('.scene-switcher .button');
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-      img.src = btn.dataset.src;
-      img.alt = btn.textContent.trim();
-    });
-  });
+});
 </script>
 
   
