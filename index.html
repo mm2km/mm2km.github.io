@@ -507,6 +507,12 @@
 
     <!-- 按钮区 -->
     <div class="scene-switcher">
+      <button class="button"
+              data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+      <button class="button"
+              data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+      <button class="button"
+              data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
       <button class="button is-active"
               data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
       <button class="button"
@@ -515,17 +521,11 @@
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
       <button class="button"
               data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
-      <button class="button"
-              data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-      <button class="button"
-              data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-      <button class="button"
-              data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
     </div>
 
     <!-- 场景展示区 -->
     <div class="scene-frame">
-      <img id="sceneImg" src="./static/images/D1_vsi_data.jpg" alt="Scene">
+      <img id="sceneImg" src="./static/images/D6_uco_3d_data.jpg" alt="Scene">
     </div>
 
   </div>
@@ -545,6 +545,51 @@
   });
 </script>
 
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+  <div class="scene-container">
+
+    <!-- 大标题 -->
+    <div class="title is-3">Word Cloud Graph</div>
+
+    <!-- 按钮区 -->
+    <div class="scene-switcher">
+      <button class="button"
+              data-src="./static/images/word_cloud/tinytabletop_data.jpg">Tiny Tabletop</button>
+      <button class="button"
+              data-src="./static/images/tabletop_data.jpg">Tabletop</button>
+      <button class="button"
+              data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
+      <button class="button is-active"
+              data-src="./static/images/word_cloud/previous_indoor_data.jpg">Previous Indoor</button>
+      <button class="button"
+              data-src="./static/images/word_cloud/indoor_data.jpg">Indoor</button>
+      <button class="button"
+              data-src="./static/images/word_cloud/outdoor_data.jpg">Outdoor</button>
+    </div>
+
+    <!-- 场景展示区 -->
+    <div class="scene-frame">
+      <img id="sceneImg" src="./static/images/word_cloud/tinytabletop_data.jpg" alt="Scene">
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<script>
+  const img = document.getElementById('sceneImg');
+  const btns = document.querySelectorAll('.scene-switcher .button');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      img.src = btn.dataset.src;
+      img.alt = btn.textContent.trim();
+    });
+  });
+</script>
   
 
 <section class="section" id="BibTeX">
