@@ -278,30 +278,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-        <style>
-            #the-canvas {
-              display: block;
-              margin: 0 auto 24px;   /* 居中 */
-              max-width: 150%;      /* 可以超过父容器 */
-              height: auto;         /* 保持比例 */
-            }
-          </style>
-          <canvas id="the-canvas" style="display:block; margin-bottom:24px;"></canvas>
-          <script>
-            const url = './static/images/teaser.jpg';
-            pdfjsLib.getDocument(url).promise.then(function(pdf) {
-              pdf.getPage(1).then(function(page) {
-                const scale = 1.0;
-                const viewport = page.getViewport({scale: scale});
-                const canvas = document.getElementById('the-canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-          
-                page.render({canvasContext: context, viewport: viewport});
-              });
-            });
-          </script>
+        <img src="./static/images/teaser.jpg" alt="" style="display:block;width:100%;height:auto;" />
         <div class="content has-text-justified">
           With the current surge in spatial reasoning research, researchers has made significant
           progress in understanding indoor scenes, but still struggle with holistic scenes
@@ -555,19 +532,19 @@
 
     <!-- 按钮区 -->
     <div class="scene-switcher">
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-      <button class="button is-active"
+      <button type="button" class="button is-active"
               data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-      <button class="button"
+      <button type="button" class="button"
               data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
     </div>
 
