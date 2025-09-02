@@ -282,13 +282,13 @@
             #the-canvas {
               display: block;
               margin: 0 auto 24px;   /* 居中 */
-              max-width: 100%;      /* 可以超过父容器 */
+              max-width: 150%;      /* 可以超过父容器 */
               height: auto;         /* 保持比例 */
             }
           </style>
           <canvas id="the-canvas" style="display:block; margin-bottom:24px;"></canvas>
           <script>
-            const url = './static/images/teaser_v2.pdf';
+            const url = './static/images/teaser.jpg';
             pdfjsLib.getDocument(url).promise.then(function(pdf) {
               pdf.getPage(1).then(function(page) {
                 const scale = 1.0;
