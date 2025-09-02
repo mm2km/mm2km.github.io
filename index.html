@@ -484,6 +484,116 @@
   });
 </script>
 
+<style>
+  /* 统一宽度容器 */
+  .scene-container {
+    width: 960px;   /* 这里自己定义，比如 960px、1200px */
+    margin: 0 auto;
+  }
+
+  /* 按钮区 */
+  .scene-switcher {
+    display: flex;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    overflow: visible;              
+    background: #f0f0f0;
+  }
+
+  .scene-switcher .button {
+    position: relative;            
+    flex: 1;
+    font-weight: 600;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 12px 0;
+    font-size: 15px;
+    color: #555;
+    background: #f0f0f0;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .scene-switcher .button:hover {
+    background: #e0e0e0;
+    color: #000;
+  }
+
+  .scene-switcher .button.is-active {
+    background: #363636;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* 展示区 */
+  .scene-frame {
+    width: 960px;
+    height: 680px; /* 你可以改高度，比如 600px */
+    border: 1.5px solid #bbb;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .scene-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .scene-switcher .button:not(.is-active)::after {
+    content: "Click to switch scenes";   /* 提示文案 */
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);              /* 出现在按钮下方 */
+    transform: translateX(-50%) translateY(4px);
+    background: #363636;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .18s ease, transform .18s ease;
+    z-index: 2;
+  }
+  .scene-switcher .button:not(.is-active)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #363636;           /* 朝上的小三角 */
+    opacity: 0;
+    transition: opacity .18s ease;
+    z-index: 2;
+  }
+
+  .scene-switcher .button:not(.is-active):hover::after,
+  .scene-switcher .button:not(.is-active):hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* 你已有的悬停/激活样式保留即可 */
+  .scene-switcher .button:hover {
+    background: #e0e0e0;
+    color: #000;
+  }
+  .scene-switcher .button.is-active {
+    background: #363636;
+    color: #fff;
+    font-weight: 700;
+  }
+</style>
 
 <section class="section">
   <div class="columns is-centered has-text-centered">
