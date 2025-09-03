@@ -1,89 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="description" content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpaceVista</title>
+
+  <!-- Performance: preconnect to critical origins -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+
+  <!-- Preload above-the-fold images -->
+  <link rel="preload" as="image" href="./static/images/teaser.jpg" fetchpriority="high">
+  <!-- First active images shown by the scene switchers -->
+  <link rel="preload" as="image" href="./static/images/D1_vsi_data.jpg">
+  <link rel="preload" as="image" href="./static/images/tinytabletop_data.jpg">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <!-- Fonts (with swap to avoid FOIT) -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <!-- Core CSS (keep minimal, remove duplicates) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/logo_v2.svg">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <!-- JS (deferred to avoid render blocking) -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
 </head>
 <body>
 
 <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  ...
 </nav> -->
-
 
 <section class="hero">
   <div class="hero-body">
@@ -141,52 +105,30 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
+                <a href="https://arxiv.org/pdf/2011.12948" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
+                <a href="https://arxiv.org/abs/2011.12948" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
-<!--               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
+                <a href="https://github.com/google/nerfies" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
-                  </a>
+                </a>
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
+                <a href="https://github.com/google/nerfies/releases/tag/0.1" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-images"></i></span>
                   <span>Data</span>
-                  </a>
+                </a>
             </div>
 
           </div>
@@ -202,8 +144,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-        <img src="./static/images/teaser.jpg" alt="" style="display:block;width:100%;height:auto;margin-bottom:24px;" />
+        <img src="./static/images/teaser.jpg" alt="" style="display:block;width:100%;height:auto;margin-bottom:24px;" loading="eager" fetchpriority="high" decoding="async" />
         <div class="content has-text-justified">
           With the current surge in spatial reasoning research, researchers has made significant
           progress in understanding indoor scenes, but still struggle with holistic scenes
@@ -226,18 +167,13 @@
           including the SpaceVista Evaluation Set, demonstrate competitive performance,
           showcasing our model’s strong generalization across multiple scales and scenarios.
           All datasets, models, and evaluation tools will be released.
-          </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
-
   </div>
 </section>
 
-
-
-  
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -251,17 +187,13 @@
           supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
         <figure class="image">
-          <img src="./static/images/data_graph.jpg" alt="data_graph"
-               style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;">
+          <img src="./static/images/data_graph.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
   </div>
 </section>  
 
-  
-
-  
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -269,7 +201,7 @@
         <h2 class="title is-3">SpaceVista Model</h2>
         <div class="content has-text-justified">
           <figure class="image" style="margin-bottom:24px;">
-            <img src="./static/images/pipeline.png" alt="pipeline">
+            <img src="./static/images/pipeline.png" alt="pipeline" loading="lazy" decoding="async">
           </figure>
           SpaceVista ingests a question with images and videos and 3D geometry, encodes them, projects features to a shared space, and fuses them in an 
           LLM through learnable interaction. A LoRA style scale expert with a scale aware router adapts the model to different spatial scales. 
@@ -281,55 +213,47 @@
   </div>
 </section> 
 
-
-  
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Experiment</h2>
-        
         <style>
           .img-pair {
             display: flex;
-            justify-content: center;     /* 整体居中；想靠左可改为 flex-start */
+            justify-content: center;
             align-items: flex-start;
-            gap: 0;                      /* 间距为 0，完全贴紧；想留 4px 就写 gap:4px; */
+            gap: 0;
           }
-          .img-pair img {
-            display: block;              /* 去掉行内缝隙 */
-          }
+          .img-pair img { display: block; }
         </style>
 
-        
         <div class="img-pair">
           <img src="./static/images/performance.png" alt="experiment-1"
-               style="width:680px; height:460px; object-fit:contain;margin-bottom:24px;">
+               style="width:680px; height:460px; object-fit:contain;margin-bottom:24px;" loading="lazy" decoding="async">
           <img src="./static/images/ridar_temp.jpg" alt="experiment-2"
-               style="width:460px; height:460px; object-fit:contain;margin-bottom:24px;">
+               style="width:460px; height:460px; object-fit:contain;margin-bottom:24px;" loading="lazy" decoding="async">
         </div>
       
-      
-              <div class="content has-text-justified">
-                <p>
-                  <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
-                  We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
-                </p>
-                <p>
-                  <strong>Evaluation suite.</strong> The right figure presents evaluation results of Qwen2.5-VL-7B, SpatialR, SpatialMLLM, VILASR, and our SpaceVista 
-                  on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets, highlighting the robustness and competitiveness of our model.
-                </p>
-              </div>
-      
-            </div>
-          </div>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
+            We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
+          </p>
+          <p>
+            <strong>Evaluation suite.</strong> The right figure presents evaluation results of Qwen2.5-VL-7B, SpatialR, SpatialMLLM, VILASR, and our SpaceVista 
+            on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets, highlighting the robustness and competitiveness of our model.
+          </p>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
   /* 统一宽度容器 */
   .scene-container {
-    width: 960px;   /* 这里自己定义，比如 960px、1200px */
+    width: 960px;
     margin: 0 auto;
   }
 
@@ -338,12 +262,12 @@
     display: flex;
     width: 100%;
     border-radius: 10px 10px 0 0;
-    overflow: visible;              
+    overflow: visible;
     background: #f0f0f0;
   }
 
   .scene-switcher .button {
-    position: relative;            
+    position: relative;
     flex: 1;
     font-weight: 600;
     border-radius: 0;
@@ -358,21 +282,13 @@
     cursor: pointer;
   }
 
-  .scene-switcher .button:hover {
-    background: #e0e0e0;
-    color: #000;
-  }
-
-  .scene-switcher .button.is-active {
-    background: #363636;
-    color: #fff;
-    font-weight: 700;
-  }
+  .scene-switcher .button:hover { background: #e0e0e0; color: #000; }
+  .scene-switcher .button.is-active { background: #363636; color: #fff; font-weight: 700; }
 
   /* 展示区 */
   .scene-frame {
     width: 960px;
-    height: 680px; /* 你可以改高度，比如 600px */
+    height: 680px;
     border: 1.5px solid #bbb;
     border-top: none;
     border-radius: 0 0 10px 10px;
@@ -382,17 +298,17 @@
     justify-content: center;
     overflow: hidden;
   }
-
   .scene-frame img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
+
   .scene-switcher .button:not(.is-active)::after {
-    content: "Click to switch scenes";   /* 提示文案 */
+    content: "Click to switch scenes";
     position: absolute;
     left: 50%;
-    top: calc(100% + 10px);              /* 出现在按钮下方 */
+    top: calc(100% + 10px);
     transform: translateX(-50%) translateY(4px);
     background: #363636;
     color: #fff;
@@ -413,27 +329,15 @@
     top: 100%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: #363636;           /* 朝上的小三角 */
+    border-top-color: #363636;
     opacity: 0;
     transition: opacity .18s ease;
     z-index: 2;
   }
-
   .scene-switcher .button:not(.is-active):hover::after,
   .scene-switcher .button:not(.is-active):hover::before {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
-  }
-  
-  /* 你已有的悬停/激活样式保留即可 */
-  .scene-switcher .button:hover {
-    background: #e0e0e0;
-    color: #000;
-  }
-  .scene-switcher .button.is-active {
-    background: #363636;
-    color: #fff;
-    font-weight: 700;
   }
 </style>
 
@@ -455,7 +359,7 @@
       </div>
 
       <div class="scene-frame">
-        <img data-role="scene" src="" alt="Scene A">
+        <img data-role="scene" src="" alt="Scene A" loading="eager" fetchpriority="high" decoding="async">
       </div>
     </div>
 
@@ -476,7 +380,7 @@
       </div>
 
       <div class="scene-frame">
-        <img data-role="scene" src="" alt="Scene B">
+        <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
       </div>
     </div>
 
@@ -515,8 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-  
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -529,12 +431,10 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+      <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
@@ -549,10 +449,9 @@ document.addEventListener('DOMContentLoaded', () => {
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-          This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> 
-          of <a href="https://nerfies.github.io/">Nerfies website</a>, 
-          we just ask that you link back to Nerfies page in the footer.
-            
+            This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> 
+            of <a href="https://nerfies.github.io/">Nerfies website</a>, 
+            we just ask that you link back to Nerfies page in the footer.
           </p>
         </div>
       </div>
