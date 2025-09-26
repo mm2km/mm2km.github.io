@@ -7,64 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpaceVista</title>
 
-  <!-- Performance: preconnect to critical origins -->
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-
-  <!-- Preload above-the-fold images -->
-  <link rel="preload" as="image" href="./static/images/teaser.jpg" fetchpriority="high">
-  <!-- First active images shown by the scene switchers -->
-  <link rel="preload" as="image" href="./static/images/D1_vsi_data.jpg">
-  <link rel="preload" as="image" href="./static/images/tinytabletop_data.jpg">
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
   <!-- Fonts (with swap to avoid FOIT) -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+  
   <!-- Core CSS (keep minimal, remove duplicates) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="icon" href="./static/images/logo_v2.svg">
 
-  <!-- JS (deferred to avoid render blocking) -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/index.js"></script>
+  <!-- Additional CSS for custom styling -->
   <style>
+    /* SpaceVista font styling */
+    .spacevista-title {
+      font-family: 'Roboto Slab', serif;  /* A custom font for SpaceVista */
+      font-weight: 700;  /* Bold */
+      font-size: 4em;    /* Larger font size for SpaceVista */
+    }
+
+    /* Rest of the title font styling (normal weight, smaller size) */
+    .normal-title {
+      font-size: 1.2em;  /* Smaller size */
+    }
+
     /* Style for units like mm and km */
     .unit-mmkm {
       font-weight: bold;
-      font-family: 'Courier New', monospace; /* Optional: You can choose any font */
-      font-size: 1.2em;  /* Optional: Make the units slightly larger */
+      font-family: 'Courier New', monospace; 
     }
   </style>
 </head>
 <body>
-
-<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  ...
-</nav> -->
 
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><strong>SpaceVista</strong>strong><br>All-Scale Visual Spatial Reasoning 
-            from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span></h1>
+          <h1 class="title is-1 publication-title">
+            <span class="spacevista-title">SpaceVista</span><br>
+            <span class="normal-title">All-Scale Visual Spatial Reasoning 
+            from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span></span>
+          </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a>Peiwen Sun</a>
