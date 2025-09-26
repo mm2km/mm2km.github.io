@@ -17,23 +17,30 @@
   
   <!-- Additional CSS for custom styling -->
   <style>
-    /* SpaceVista font styling */
     .spacevista-title {
       font-family: 'Roboto Slab', serif;  /* A custom font for SpaceVista */
-      font-weight: 500;  /* Bold */
-      font-size: 1.2em;    /* Larger font size for SpaceVista */
+      font-weight: 700;  /* Bold */
+      font-size: 4em;    /* Larger font size for SpaceVista */
+      display: inline-block; /* Ensure the title is on the same line */
+      margin-left: 10px; /* Adjust distance from logo */
     }
+
+    /* Styling for SVG logo */
+    .logo-svg {
+      height: 60px;  /* Set SVG height (you can adjust this value) */
+      width: auto;   /* Maintain aspect ratio */
+      vertical-align: middle;  /* Align the image vertically with text */
 
     /* Rest of the title font styling (normal weight, smaller size) */
     .normal-title {
-      font-size: 0.5em;  /* Smaller size */
+      font-size: 1em;  /* Smaller size */
     }
 
     /* Style for units like mm and km */
     .unit-mmkm {
       font-weight: normal; 
       font-family: 'Arial', sans-serif; 
-      font-size: 0.5em; 
+      font-size: 1em; 
     }
   </style>
 </head>
@@ -45,6 +52,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">
+            <img src="./static/images/logo_v2.svg" alt="Logo" class="logo-svg"> <!-- Replace 'logo.svg' with your local SVG file path -->
             <span class="spacevista-title">SpaceVista</span><br>
             <span class="normal-title">All-Scale Visual Spatial Reasoning from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span></span>
           </h1>
