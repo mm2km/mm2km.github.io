@@ -367,7 +367,13 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-
+  .scene-row .scene-gallery .scene-switcher .button {
+    font-size: 13px;   /* 改成你需要的值，如 12/14/16px */
+    line-height: 1.2;  /* 可选：让文字更紧凑 */
+    /* 可选：调节内边距，避免按钮变得过高或过矮 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
   /* === 新增：左右并排布局（不改变其它样式的行为） === */
   .scene-row {
     width: 1200px;              /* 如需全宽可改为 100% */
@@ -395,7 +401,7 @@
     .scene-row .scene-frame { height: 480px; }
   }
   .scene-row .scene-gallery .title.is-3{
-      font-size: 16px;  
+      font-size: 24px;  
       line-height: 1.25;
   }
   
