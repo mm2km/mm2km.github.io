@@ -367,50 +367,80 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+
+  /* === 新增：左右并排布局（不改变其它样式的行为） === */
+  .scene-row {
+    width: 1200px;              /* 如需全宽可改为 100% */
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;                  /* 两个容器之间的间距 */
+    align-items: flex-start;
+    justify-content: center;
+  }
+  /* 仅当作为 .scene-row 子元素时覆盖固定宽度与外边距 */
+  .scene-row .scene-container {
+    margin: 0;                  /* 覆盖原本的居中外边距 */
+    flex: 1 1 0;                /* 等分宽度 */
+    width: auto;                /* 覆盖原来的 width:960px */
+  }
+  .scene-row .scene-switcher { width: 100%; }
+  .scene-row .scene-frame {
+    width: 100%;                /* 覆盖原来的 width:960px */
+    height: 420px;              /* 调整为更适合并排显示的高度 */
+  }
+
+  /* 可选：窄屏时自动改为上下堆叠 */
+  @media (max-width: 1100px) {
+    .scene-row { flex-direction: column; }
+    .scene-row .scene-frame { height: 480px; }
+  }
 </style>
 
 <section class="section">
   <div class="is-centered has-text-centered">
 
-    <!-- ===== 组件实例 A ===== -->
-    <div class="scene-container scene-gallery">
-      <div class="title is-3">Scenes Data Preview</div>
+    <!-- 一行容器，左右并排放置两个组件 -->
+    <div class="scene-row">
 
-      <div class="scene-switcher">
-        <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-        <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-        <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-        <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-        <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-        <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-        <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+      <!-- ===== 组件实例 A ===== -->
+      <div class="scene-container scene-gallery">
+        <div class="title is-3">Scenes Data Preview</div>
+
+        <div class="scene-switcher">
+          <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
+          <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
+          <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
+          <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
+          <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+        </div>
+
+        <div class="scene-frame">
+          <img data-role="scene" src="" alt="Scene A" loading="eager" fetchpriority="high" decoding="async">
+        </div>
       </div>
 
-      <div class="scene-frame">
-        <img data-role="scene" src="" alt="Scene A" loading="eager" fetchpriority="high" decoding="async">
-      </div>
-    </div>
+      <!-- ===== 组件实例 B ===== -->
+      <div class="scene-container scene-gallery">
+        <div class="title is-3">Word Cloud</div>
 
-    <!-- 间距（可选） -->
-    <div style="height:50px;"></div>
+        <div class="scene-switcher">
+          <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
+          <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
+          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
+          <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
+        </div>
 
-    <!-- ===== 组件实例 ===== -->
-    <div class="scene-container scene-gallery">
-      <div class="title is-3">Word Cloud</div>
-
-      <div class="scene-switcher">
-        <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
-        <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
-        <button type="button" class="button" data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
-        <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
-        <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
-        <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
+        <div class="scene-frame">
+          <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
+        </div>
       </div>
 
-      <div class="scene-frame">
-        <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
-      </div>
-    </div>
+    </div><!-- /scene-row -->
 
   </div>
 </section>
@@ -446,6 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
