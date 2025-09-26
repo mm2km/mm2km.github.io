@@ -20,14 +20,22 @@
   
   <!-- Additional CSS for custom styling -->
   <style>
+    @font-face {
+      font-family: 'Bacchus SemiBold';
+      src: url('path/to/bacchus-semi-bold.woff2') format('woff2'),
+           url('path/to/bacchus-semi-bold.woff') format('woff');
+      font-weight: 600;  /* 适配 SemiBold 字重 */
+      font-style: normal;
+    }
+    
     .spacevista-title {
-        font-family: 'Times New Roman', serif;  
-        font-weight: 700;
-        font-size: 1.2em;
-        display: inline-flex; 
-        align-items: center;
-        margin-left: 1px;
-      }
+      font-family: 'Bacchus SemiBold', 'Times New Roman', serif;
+      font-weight: 600;  /* 对应 SemiBold 的字重 */
+      font-size: 1.2em;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 1px;
+    }
       
     .logo-svg {
         height: 75px;  
