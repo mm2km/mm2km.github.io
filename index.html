@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="description" content="Expanding Visual Spatial Reasoning from mm to km.">
+  <meta name="keywords" content="SpaceVista">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpaceVista</title>
 
@@ -43,6 +43,14 @@
   <!-- JS (deferred to avoid render blocking) -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/index.js"></script>
+  <style>
+    /* Style for units like mm and km */
+    .unit-mmkm {
+      font-weight: bold;
+      font-family: 'Courier New', monospace; /* Optional: You can choose any font */
+      font-size: 1.2em;  /* Optional: Make the units slightly larger */
+    }
+  </style>
 </head>
 <body>
 
@@ -55,7 +63,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SpaceVista: Expanding Visual Spatial Reasoning <br>from mm to km</h1>
+          <h1 class="title is-1 publication-title"><strong>SpaceVista</strong>strong><br>All-Scale Visual Spatial Reasoning 
+            from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span></h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a>Peiwen Sun</a>
@@ -91,7 +100,7 @@
             </span><br>
             <span class="author-block">
               <a>Yun-Hui Liu</a>
-              <sup>2</sup>,
+              <sup>1</sup>,
             </span>
             <span class="author-block">
               <a>Jianan Wang</a>
@@ -100,6 +109,7 @@
             <span class="author-block">
               <a>Xiangyu Yue</a>
               <sup>1</sup>
+              <span class="email-symbol">@</span>
             </span>
           </div>
 
@@ -192,7 +202,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">From mm To km Dataset: SpaceVista-1M</h2>
+        <h2 class="title is-3">From <span class="unit-mmkm">mm</span> To <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
         <div class="content has-text-justified">
           We introduce <strong>SpaceVista-Benchmark</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
           which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
