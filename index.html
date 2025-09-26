@@ -21,82 +21,64 @@
   <!-- Additional CSS for custom styling -->
   <style>
     sup {
-      color: #000; /* 默认颜色 */
+      color: #000;  /* 默认颜色 */
     }
     
-    /* 给1、2、3、4加上不同的颜色 */
+    /* 给 1、2、3、4 加上不同的颜色 */
+    .author-block sup:nth-of-type(1),
     sup:nth-of-type(1) {
       color: #FF5733;  /* 红色 */
     }
     
+    .author-block sup:nth-of-type(2),
     sup:nth-of-type(2) {
       color: #33FF57;  /* 绿色 */
     }
     
+    .author-block sup:nth-of-type(3),
     sup:nth-of-type(3) {
       color: #3357FF;  /* 蓝色 */
     }
     
+    .author-block sup:nth-of-type(4),
     sup:nth-of-type(4) {
       color: #FF33A6;  /* 粉色 */
     }
     
     .author-block a {
-      color: inherit; 
+      color: inherit;  
+      font-weight: bold;  
     }
     
-    .author-block sup:nth-of-type(1) {
-      color: #FF5733; 
-    }
-    
-    .author-block sup:nth-of-type(2) {
-      color: #33FF57;
-    }
-    
-    .author-block sup:nth-of-type(3) {
-      color: #3357FF;
-    }
-    
-    .author-block sup:nth-of-type(4) {
-      color: #FF33A6;
-    }
-    
-    .author-block a {
+    .author-block sup {
       font-weight: bold;
     }
-
-    .spacevista-title {
-        font-family: 'Montserrat', sans-serif;  
-        font-weight: 700; 
-        font-size: 1.2em;   
-        display: inline-block; 
-        margin-left: 2px; 
-      }
-
-    /* Styling for SVG logo */
-    .logo-svg {
-      height: 70px;  /* Set SVG height (you can adjust this value) */
-      width: auto;   /* Maintain aspect ratio */
-      vertical-align: middle;  /* Align the image vertically with text */
-
-    .normal-title {
-      font-size: 1.5em; 
-      white-space: nowrap;  
+    
+     .spacevista-title {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-weight: 700;
+      font-size: 1.2em;
+      display: inline-block;
+      margin-left: 2px;
     }
     
-    /* Style for units like mm and km */
-    .unit-mmkm {
-      font-weight: bold; 
-      font-family: 'Courier New', monospace; 
-      font-size: 0.8em;  
+    .normal-title {
+      font-size: 1.5em !important;
+      white-space: nowrap;
     }
-      
+    
+    .unit-mmkm {
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8em !important;
+    }
+    
     .email-symbol {
       position: absolute;
       top: -5px;
-      right: -10px; /* Adjust these values as needed */
-      font-size: 14px; /* Adjust the size of the icon */
-    } 
+      right: -10px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
