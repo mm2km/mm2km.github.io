@@ -389,12 +389,16 @@
     width: 100%;                /* 覆盖原来的 width:960px */
     height: 420px;              /* 调整为更适合并排显示的高度 */
   }
-
-  /* 可选：窄屏时自动改为上下堆叠 */
+  
   @media (max-width: 1100px) {
     .scene-row { flex-direction: column; }
     .scene-row .scene-frame { height: 480px; }
   }
+  .scene-row .scene-gallery .title.is-3{
+      font-size: 16px;  
+      line-height: 1.25;
+  }
+  
 </style>
 
 <section class="section">
