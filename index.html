@@ -79,16 +79,16 @@
       width: auto;   /* Maintain aspect ratio */
       vertical-align: middle;  /* Align the image vertically with text */
 
-    /* Rest of the title font styling (normal weight, smaller size) */
     .normal-title {
-      font-size: 0.8em;  /* Normal text size */
+      font-size: 1.5em; 
+      white-space: nowrap;  
     }
     
     /* Style for units like mm and km */
     .unit-mmkm {
-      font-weight: bold; /* Equivalent to \mathbf in LaTeX, making the units bold */
-      font-family: 'Courier New', monospace; /* Use a monospace or math-like font for the units */
-      font-size: 0.7em; /* Slightly smaller size for the units */
+      font-weight: bold; 
+      font-family: 'Courier New', monospace; 
+      font-size: 0.8em;  
     }
       
     .email-symbol {
@@ -109,10 +109,7 @@
           <h1 class="title is-1 publication-title">
             <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
             <span class="spacevista-title">SpaceVista</span><br>
-            <span class="normal-title">
-              All-Scale Visual Spatial Reasoning from 
-              <span class="unit-mmkm">mm</span> to 
-              <span class="unit-mmkm">km</span>
+            <span class="normal-title">All-Scale Visual Spatial Reasoning from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span>
             </span>
           </h1>
           <div class="is-size-5 publication-authors">
