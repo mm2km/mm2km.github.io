@@ -20,6 +20,51 @@
   
   <!-- Additional CSS for custom styling -->
   <style>
+    sup {
+      color: #000; /* 默认颜色 */
+    }
+    
+    /* 给1、2、3、4加上不同的颜色 */
+    sup:nth-of-type(1) {
+      color: #FF5733;  /* 红色 */
+    }
+    
+    sup:nth-of-type(2) {
+      color: #33FF57;  /* 绿色 */
+    }
+    
+    sup:nth-of-type(3) {
+      color: #3357FF;  /* 蓝色 */
+    }
+    
+    sup:nth-of-type(4) {
+      color: #FF33A6;  /* 粉色 */
+    }
+    
+    .author-block a {
+      color: inherit; 
+    }
+    
+    .author-block sup:nth-of-type(1) {
+      color: #FF5733; 
+    }
+    
+    .author-block sup:nth-of-type(2) {
+      color: #33FF57;
+    }
+    
+    .author-block sup:nth-of-type(3) {
+      color: #3357FF;
+    }
+    
+    .author-block sup:nth-of-type(4) {
+      color: #FF33A6;
+    }
+    
+    .author-block a {
+      font-weight: bold;
+    }
+
     .spacevista-title {
         font-family: 'Montserrat', sans-serif;  
         font-weight: 700; 
@@ -117,7 +162,7 @@
               <i class="fas fa-envelope email-symbol" style="position: relative; top: -8px; right: -12px;"></i> <!-- 内联样式调整 -->
             </span>
           </div>
-
+          
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Multimedia Lab, Chinese University of Hong Kong,</span>
             <span class="author-block"><sup>2</sup>Astribot,</span><br>
