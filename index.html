@@ -209,6 +209,9 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">What is SpaceVista?</h2>
         <div class="content has-text-justified">
+          <figure class="image">
+          <img src="./static/images/intro_teaser_v3.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
+          </figure>
           Spatial reasoning, the ability to sense, interpret, and interact with environments across scales from tiny objects understanding to remote drone sensing, 
           is crucial for next-generation intelligent systems. <strong>All-scale reasoning</strong> capability supports diverse applications: $mm$ for advanced manufacturing~\citep{robospatial}, $cm$ and $m$ for embodied 
           intelligence~\citep{pan2025omnimanip}, $10m$ for autonomous driving~\citep{autodrive}, and $100m$ for drone-based sensing~\citep{uavsurvey}.
@@ -243,7 +246,7 @@
           subscene types</strong>, supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
         </div>
         <figure class="image">
-          <img src="./static/images/data_graph.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
+          <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
@@ -258,7 +261,7 @@
         <h2 class="title is-3">Model: SpaceVista-7B</h2>
         <div class="content has-text-justified">
           <figure class="image" style="margin-bottom:24px;">
-            <img src="./static/images/pipeline.png" alt="pipeline" loading="lazy" decoding="async">
+            <img src="./static/images/pipeline_v4.png" alt="pipeline" loading="lazy" decoding="async">
           </figure>
           SpaceVista-7B ingests a question with images and videos and 3D geometry, encodes them, projects features to a shared space, and fuses them in an 
           LLM through learnable interaction. A LoRA style scale expert with a scale aware router adapts the model to different spatial scales. 
@@ -291,7 +294,7 @@
         <div class="img-pair">
           <img src="./static/images/performance.png" alt="experiment-1"
                style="width:680px; height:460px; object-fit:contain;margin-bottom:24px;" loading="lazy" decoding="async">
-          <img src="./static/images/ridar_temp.jpg" alt="experiment-2"
+          <img src="./static/images/radar.jpg" alt="experiment-2"
                style="width:460px; height:460px; object-fit:contain;margin-bottom:24px;" loading="lazy" decoding="async">
         </div>
       
