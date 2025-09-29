@@ -3,7 +3,7 @@ body {
 }
 
 .container.is-max-desktop { 
-  max-width: 1280px; 
+  max-width: 1800px; 
 }   /* 自定上限 */
 
 .footer .icon-link {
