@@ -223,25 +223,13 @@
           <!-- 右侧：文字 -->
           <div class="spacevista-card__content content">
             <p>
-              Spatial reasoning, the ability to sense, interpret, and interact with environments across scales from tiny objects understanding to remote drone sensing,
-              is crucial for next-generation intelligent systems. <strong>All-scale reasoning</strong> capability supports diverse applications:
-              <span class="math">$mm$</span> for advanced manufacturing~\citep{robospatial}, <span class="math">$cm$</span> and <span class="math">$m$</span> for embodied
-              intelligence~\citep{pan2025omnimanip}, <span class="math">$10m$</span> for autonomous driving~\citep{autodrive}, and <span class="math">$100m$</span> for drone-based sensing~\citep{uavsurvey}.
-            </p>
-
-            <p>
-              From the data perspective, pioneer works SpaceR, Spar-7M, InternSpatial utilize more scanning-based data, or image-based data employing fully automated pipelines to acquire additional information for SFT and RL.
-              Concurrently, a series of outstanding works (e.g., SpaceR, Spar-7M) have improved the performance of existing models by refining training and thinking approaches.
-            </p>
-
-            <p>
-              Despite prior works' advancements, their spatial perception capabilities are primarily limited to indoor settings, specific objects, and constrained scales.
-              Moreover, current methodologies lack dedicated training frameworks for holistic all-scale scene understanding. To bridge this gap, we introduce the
-              <strong>first comprehensive solution</strong> to address data, model, and evaluation dimensions for all-scale scenarios.
-            </p>
-
-            <p>
-              Previous datasets <span class="cite">~\citep{yang2025thinking,mmsibench,spacer,spar12m}</span> for spatial reasoning have primarily been constructed based on indoor scanning video data.
+              Spatial reasoning is the ability to perceive, interpret, and act across spatial scales, from millimeter-sized components to distant aerial scenes. 
+              All-scale spatial reasoning is fundamental to next-generation intelligent systems and supports diverse applications: <span class="unit-mmkm">mm</span> sensing for advanced manufacturing,
+              <span class="unit-mmkm">cm</span>, <span class="unit-mmkm">m</span> perception for embodied agents, <span class="unit-mmkm">10m</span> operation for autonomous driving, 
+              and <span class="unit-mmkm">100m</span> for drone based sensing.<br>
+              Despite progress, existing work shows clear limitations in both model design and dataset coverage. Current scene perception research mostly targets indoor scenes, 
+              narrow object classes, and limited spatial ranges, and lacks training paradigms engineered for end to end, cross scale reasoning. SpaceVista addresses this gap by presenting 
+              the first systematic optimization across both data and model dimensions to enable robust, full scene spatial reasoning.
             </p>
           </div>
         </div>
@@ -256,35 +244,37 @@
 /* 卡片整体 */
 .spacevista-card {
   display: flex;
-  gap: 24px;
+  gap: 28px;              /* 间距稍大一点 */
   align-items: flex-start;
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
-  padding: 20px;
+  padding: 28px;          /* 内边距增大 */
   background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-  /* 控制最大宽度以适配 container */
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
   width: 100%;
+  max-width: 1100px;      /* 整体卡片最大宽度加大 */
+  margin: 0 auto;         /* 居中 */
   box-sizing: border-box;
 }
 
-/* 左侧图片区域：固定比例或最大宽度 */
+/* 左侧图片区域：更宽一些 */
 .spacevista-card__media {
-  flex: 0 0 40%; /* 桌面：40% 宽度 */
-  max-width: 320px;
+  flex: 0 0 50%;          /* 图片占 48% */
+  max-width: 420px;       /* 最大宽度调大 */
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .spacevista-image {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1; /* 保持方形展示，如果需要更改可去掉 */
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
   display: block;
-  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  box-shadow: 0 6px 20px rgba(15,23,42,0.08);
 }
+
 
 /* 右侧文字 */
 .spacevista-card__content {
