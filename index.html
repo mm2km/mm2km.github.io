@@ -439,7 +439,12 @@
 
 <style>
   /* ===== 仅作用于 #mv-lb 作用域，避免影响页面其它部分 ===== */
-  #mv-lb { max-width: 1100px; margin: 0 auto; }
+  #mv-lb {
+    --mv-max: 1200px;        
+    max-width: var(--mv-max);
+    width: 100%;
+    margin: 0 auto;
+  }
   #mv-lb{--mv-text:#333;--mv-muted:#666;--mv-head-bg:#e9ecef;--mv-border:#d9d9d9;--mv-row-alt:#fafafa;--mv-accent:#c70000;}
   #mv-lb .mv-head{ text-align:center; margin:0 0 12px; }
   #mv-lb .mv-head h2{ margin:10px 0 6px; font-size:32px; color:var(--mv-text); font-weight:700; }
