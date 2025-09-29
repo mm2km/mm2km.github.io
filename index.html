@@ -347,58 +347,86 @@
         <figure class="image">
           <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
         </figure>
-        <div class="spacevista-three-columns" style="display:flex; gap:40px; margin-top:40px;">
-          <div style="flex:1; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-family:Arial, sans-serif; line-height:1.5;">
-            <h3 style="font-size:1.2em; margin-bottom:10px;">Basic informations</h3>
+        <style>
+          .three-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 40px;
+            font-family: Arial, sans-serif;
+            color: #4a5568; /* 灰色文字 */
+          }
+          .three-columns .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+          .three-columns h3 {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a202c; /* 标题深色 */
+            margin-bottom: 10px;
+          }
+          .three-columns p {
+            line-height: 1.5;
+          }
+          .middle-column ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            counter-reset: item;
+          }
+          .middle-column li {
+            counter-increment: item;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+          }
+          .middle-column li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: center;
+            line-height: 22px;
+          }
+        </style>
+        
+        <div class="three-columns">
+          <div class="column">
+            <h3>Basic informations</h3>
             <p>We choose to manually collect amounts of musical performance videos from YouTube. Specifically, 22 kinds of instruments, such as guitar, cello, and xylophone, are selected and 9 audio-visual question types are accordingly designed, which cover three different scenarios, i.e., audio, visual and audio-visual. Annotations are collected using a novel by our GSAI-Labeled system.</p>
           </div>
         
-          <div style="flex:1; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-family:Arial, sans-serif; line-height:1.5;">
-            <h3 style="font-size:1.2em; margin-bottom:10px;">Characteristics</h3>
-            <ul style="list-style:none; padding-left:0; counter-reset:item;">
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">1</span>
-                3 typical multimodal scene
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">2</span>
-                22 kinds of instruments
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">3</span>
-                4 categories: String, Wind, Percussion and Keyboard
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">4</span>
-                9,290 videos for over 150 hours
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">5</span>
-                7,423 real videos
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">6</span>
-                1,867 synthetic videos
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">7</span>
-                9 audio-visual question types
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">8</span>
-                45,867 question-answer pairs
-              </li>
-              <li style="counter-increment:item; margin-bottom:10px; position:relative; padding-left:25px;">
-                <span style="position:absolute; left:0; top:0; width:20px; height:20px; border-radius:50%; background-color:#4CAF50; color:white; text-align:center; line-height:20px; font-size:0.9em; font-weight:bold;">9</span>
-                Diversity, complexity and dynamic
-              </li>
+          <div class="column middle-column">
+            <h3>Characteristics</h3>
+            <ul>
+              <li>3 typical multimodal scene</li>
+              <li>22 kinds of instruments</li>
+              <li>4 categories: String, Wind, Percussion and Keyboard</li>
+              <li>9,290 videos for over 150 hours</li>
+              <li>7,423 real videos</li>
+              <li>1,867 synthetic videos</li>
+              <li>9 audio-visual question types</li>
+              <li>45,867 question-answer pairs</li>
+              <li>Diversity, complexity and dynamic</li>
             </ul>
           </div>
         
-          <div style="flex:1; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-family:Arial, sans-serif; line-height:1.5;">
-            <h3 style="font-size:1.2em; margin-bottom:10px;">Personal data/Human subjects</h3>
+          <div class="column">
+            <h3>Personal data/Human subjects</h3>
             <p>Videos in MUSIC-AVQA are public on YouTube, and annotated via crowdsourcing. We have explained how the data would be used to crowdworkers. Our dataset does not contain personally identifiable information or offensive content.</p>
           </div>
+        </div>
+
         </div>
       </div>
     </div>
