@@ -275,12 +275,11 @@
   box-sizing: border-box;
 }
 
-/* 左侧图片 */
 .spacevista-image {
-  flex: 0 0 50%;                 /* 左侧占 50% */
+  flex: 0 0 50%;        /* 左边占一半 */
   width: 100%;
-  height: auto;                  /* 保持比例 */
-  object-fit: cover;             /* 铺满等高 */
+  height: 100%;         /* 高度跟父容器一致 */
+  object-fit: cover;    /* 填充并裁切，保证等高 */
   border-radius: 14px;
   display: block;
   box-shadow: 0 6px 20px rgba(15,23,42,0.08);
