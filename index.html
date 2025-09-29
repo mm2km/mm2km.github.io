@@ -294,7 +294,7 @@
 
         <div class="img-pair">
           <img src="./static/images/radar.png" alt="experiment-2"
-               style="width:700px; height:700px; object-fit:contain;margin-bottom:24px;" loading="lazy" decoding="async">
+               style="width:700px; height:700px; object-fit:contain;margin-bottom:4px;" loading="lazy" decoding="async">
         </div>
       
         <div class="content has-text-justified">
@@ -493,7 +493,70 @@
   </div>
 </section>
 
+<script>
+(function(){
+  function setupGallery(root){
+    const img = root.querySelector('img[data-role="scene"]');
+    const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+    if (!img || btns.length === 0) return;
 
+    function setActive(btn, opts={}) {
+      const src = btn.dataset.src;
+      if (!src) return;
+
+      // 按钮态
+      btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+      // 预载并切换（带淡入）
+      if (img.getAttribute('src') !== src) {
+        img.style.opacity = 0;
+        const pre = new Image();
+        pre.onload = () => {
+          img.src = src;
+          img.alt = btn.textContent.trim() || img.alt;
+          (img.decode ? img.decode() : Promise.resolve()).catch(()=>{}).finally(()=>{
+            img.style.transition = 'opacity .2s ease';
+            img.style.opacity = 1;
+          });
+        };
+        pre.src = src;
+      } else {
+        // 初始时只同步 alt
+        img.alt = btn.textContent.trim() || img.alt;
+      }
+
+      // 首次可提高优先级，其余为 auto
+      img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
+    }
+
+    // 事件绑定
+    btns.forEach((b, idx) => {
+      b.addEventListener('click', () => setActive(b));
+      b.addEventListener('mouseenter', () => { // 悬停预加载
+        const s = b.dataset.src; if (s) { const i = new Image(); i.src = s; }
+      });
+      b.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(b); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = e.key === 'ArrowLeft' ? (idx - 1 + btns.length) % btns.length
+                                             : (idx + 1) % btns.length;
+          btns[next].focus();
+        }
+      });
+    });
+
+    // 初始化：优先使用已有 .is-active，其次第一项
+    const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
+    if (initBtn) setActive(initBtn, { initial: true });
+  }
+
+  document.querySelectorAll('.scene-gallery').forEach(setupGallery);
+})();
+</script>
+
+
+  
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
