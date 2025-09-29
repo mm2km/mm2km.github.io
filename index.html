@@ -312,177 +312,150 @@
   </div>
 </section>
 
-
-
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Leaderboard on MathVista (test) — 可点击排序表格</title>
+<!-- 放到你的页面任意位置开始 -->
 <style>
-  :root { --bg:#0b0c0f; --fg:#e8e8ea; --muted:#a9acb2; --grid:#24262b; --accent:#6ea8fe;}
-  body{margin:0; font:14px/1.6 ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-       background:var(--bg); color:var(--fg);}
-  .wrap{max-width:1200px; margin:40px auto; padding:0 16px;}
-  h1{font-size:28px; margin:0 0 18px;}
-  .sub{color:var(--muted); margin:0 0 16px;}
-  table{width:100%; border-collapse:separate; border-spacing:0; background:#121317;
-        border:1px solid var(--grid); border-radius:12px; overflow:hidden;}
-  thead th{
-    position:sticky; top:0; background:#161821; color:#cfd2d8; text-align:left; font-weight:600;
-    padding:10px 12px; border-bottom:1px solid var(--grid); user-select:none; cursor:pointer;
-  }
-  thead th:hover{background:#1a1d28;}
-  thead th:focus{outline:2px solid var(--accent); outline-offset:-2px;}
-  tbody td{padding:10px 12px; border-bottom:1px solid var(--grid); vertical-align:middle;}
-  tbody tr:nth-child(even){background:#14161c;}
-  tbody tr:last-child td{border-bottom:0;}
-  a{color:#9dd1ff; text-decoration:none;}
-  a:hover{text-decoration:underline;}
-  .num{text-align:right; font-variant-numeric:tabular-nums;}
-  .center{text-align:center;}
-  .w-idx{width:36px;}
-  .w-model{min-width:220px;}
-  .th-inner{display:inline-flex; align-items:center; gap:6px;}
-  .indicator{color:var(--muted); font-size:12px; opacity:.9;}
-  /* 可点击区域更大一些 */
-  thead th .hit{position:absolute; inset:0;}
-  /* 排序中的列高亮 */
-  th[aria-sort="descending"], th[aria-sort="ascending"]{color:#fff;}
+  /* 仅作用于此表，避免污染全局样式 */
+  #mathvista .num{ text-align:right; font-variant-numeric:tabular-nums; }
+  #mathvista .center{ text-align:center; }
+  #mathvista .w-idx{ width:36px; }
+  #mathvista .w-model{ min-width:220px; }
+  #mathvista thead th{ cursor:pointer; user-select:none; }
+  #mathvista thead th .indicator{ margin-left:6px; font-size:12px; opacity:.75; }
 </style>
-</head>
 
-  <div class="wrap">
-    <h1>Leaderboard on SpaceVista</h1>
-    <p class="sub">Accuracy scores on the <strong>test</strong> subset (5,141 examples with private ground truth).</p>
-
-    <table id="mathvista" aria-label="Leaderboard on MathVista (test)">
-      <thead>
-        <tr>
-          <th class="w-idx center" data-type="number" aria-sort="none"><span class="th-inner"># <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="w-model" data-type="string" aria-sort="none"><span class="th-inner">Model <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th data-type="string" aria-sort="none"><span class="th-inner">Method <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th data-type="string" aria-sort="none"><span class="th-inner">Source <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th data-type="date" aria-sort="none"><span class="th-inner">Date <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">ALL <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">FQA <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">GPS <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">MWP <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">TQA <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">VQA <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">ALG <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">ARI <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">GEO <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">LOG <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">NUM <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">SCI <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-          <th class="num" data-type="number" aria-sort="none"><span class="th-inner">STA <span class="indicator"></span></span><span class="hit" aria-hidden="true"></span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="center">1</td>
-          <td>InternVL2-Pro</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-09-04</td>
-          <td class="num">65.84</td><td class="num">65.0</td><td class="num">64.0</td><td class="num">75.4</td><td class="num">72.4</td><td class="num">52.3</td><td class="num">67.4</td><td class="num">63.1</td><td class="num">65.0</td><td class="num">30.4</td><td class="num">44.5</td><td class="num">67.0</td><td class="num">72.5</td>
-        </tr>
-        <tr>
-          <td class="center">2</td>
-          <td>InternVL2-8B-MPO</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-11-14</td>
-          <td class="num">65.65</td><td class="num">67.4</td><td class="num">68.0</td><td class="num">73.0</td><td class="num">65.3</td><td class="num">51.5</td><td class="num">66.7</td><td class="num">60.6</td><td class="num">68.5</td><td class="num">19.1</td><td class="num">43.1</td><td class="num">64.9</td><td class="num">77.1</td>
-        </tr>
-        <tr>
-          <td class="center">3</td>
-          <td>InternVL-Chat-V1.2-Plus</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-02-22</td>
-          <td class="num">60.18</td><td class="num">52.2</td><td class="num">56.2</td><td class="num">78.3</td><td class="num">61.6</td><td class="num">55.5</td><td class="num">56.0</td><td class="num">64.4</td><td class="num">57.6</td><td class="num">21.6</td><td class="num">46.1</td><td class="num">60.0</td><td class="num">60.1</td>
-        </tr>
-        <tr>
-          <td class="center">4</td>
-          <td>InternLM-XComposer2-VL-7B</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-01-22</td>
-          <td class="num">57.93</td><td class="num">53.9</td><td class="num">56.4</td><td class="num">77.1</td><td class="num">58.4</td><td class="num">43.2</td><td class="num">54.8</td><td class="num">57.6</td><td class="num">58.0</td><td class="num">16.5</td><td class="num">47.6</td><td class="num">59.1</td><td class="num">62.5</td>
-        </tr>
-        <tr>
-          <td class="center">5</td>
-          <td>Qwen-VL-Plus</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2023-12-26</td>
-          <td class="num">44.33</td><td class="num">55.9</td><td class="num">34.7</td><td class="num">29.7</td><td class="num">58.8</td><td class="num">42.4</td><td class="num">40.7</td><td class="num">35.4</td><td class="num">36.6</td><td class="num">21.6</td><td class="num">30.4</td><td class="num">55.9</td><td class="num">56.3</td>
-        </tr>
-        <tr>
-          <td class="center">6</td>
-          <td>SPHINX-MoE</td>
-          <td>MoE</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-01-13</td>
-          <td class="num">42.68</td><td class="num">50.3</td><td class="num">29.7</td><td class="num">40.9</td><td class="num">49.9</td><td class="num">43.3</td><td class="num">33.9</td><td class="num">43.0</td><td class="num">29.1</td><td class="num">14.4</td><td class="num">26.3</td><td class="num">46.9</td><td class="num">51.2</td>
-        </tr>
-        <tr>
-          <td class="center">7</td>
-          <td>MiniCPM-V-2 (2.8B)</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2024-04-14</td>
-          <td class="num">39.89</td><td class="num">51.7</td><td class="num">27.4</td><td class="num">39.8</td><td class="num">42.5</td><td class="num">34.7</td><td class="num">31.3</td><td class="num">34.4</td><td class="num">30.7</td><td class="num">13.4</td><td class="num">33.5</td><td class="num">38.5</td><td class="num">50.0</td>
-        </tr>
-        <tr>
-          <td class="center">8</td>
-          <td>PoT GPT-4 (Caption+OCR)</td>
-          <td>Tool</td>
-          <td><a href="#">Link</a></td>
-          <td>2023-10-03</td>
-          <td class="num">31.74</td><td class="num">27.6</td><td class="num">37.4</td><td class="num">23.9</td><td class="num">43.0</td><td class="num">30.3</td><td class="num">37.1</td><td class="num">27.9</td><td class="num">37.5</td><td class="num">22.7</td><td class="num">15.8</td><td class="num">44.5</td><td class="num">31.9</td>
-        </tr>
-        <tr>
-          <td class="center">9</td>
-          <td>CoT GPT4 (Caption+OCR)</td>
-          <td>Tool</td>
-          <td><a href="#">Link</a></td>
-          <td>2023-10-03</td>
-          <td class="num">30.50</td><td class="num">27.2</td><td class="num">35.9</td><td class="num">21.3</td><td class="num">43.1</td><td class="num">28.2</td><td class="num">35.7</td><td class="num">25.2</td><td class="num">35.8</td><td class="num">24.7</td><td class="num">15.4</td><td class="num">47.3</td><td class="num">31.3</td>
-        </tr>
-        <tr>
-          <td class="center">10</td>
-          <td>LLaVA (LLaMA-2-13B)</td>
-          <td>LMM</td>
-          <td><a href="#">Link</a></td>
-          <td>2023-10-03</td>
-          <td class="num">25.40</td><td class="num">22.9</td><td class="num">24.6</td><td class="num">18.1</td><td class="num">35.8</td><td class="num">29.7</td><td class="num">26.9</td><td class="num">22.5</td><td class="num">24.4</td><td class="num">19.1</td><td class="num">19.1</td><td class="num">34.7</td><td class="num">21.6</td>
-        </tr>
-        <tr>
-          <td class="center">*</td>
-          <td>Random Chance</td>
-          <td>–</td>
-          <td><a href="#">Link</a></td>
-          <td>2023-10-03</td>
-          <td class="num">17.86</td><td class="num">15.5</td><td class="num">24.1</td><td class="num">4.5</td><td class="num">23.4</td><td class="num">24.3</td><td class="num">25.8</td><td class="num">13.8</td><td class="num">22.7</td><td class="num">13.4</td><td class="num">8.8</td><td class="num">15.8</td><td class="num">14.3</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<table id="mathvista" aria-label="Leaderboard on MathVista (test)">
+  <thead>
+    <tr>
+      <th class="w-idx center" data-type="number" aria-sort="none"><span># <span class="indicator"></span></span></th>
+      <th class="w-model" data-type="string" aria-sort="none"><span>Model <span class="indicator"></span></span></th>
+      <th data-type="string" aria-sort="none"><span>Method <span class="indicator"></span></span></th>
+      <th data-type="string" aria-sort="none"><span>Source <span class="indicator"></span></span></th>
+      <th data-type="date" aria-sort="none"><span>Date <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>ALL <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>FQA <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>GPS <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>MWP <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>TQA <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>VQA <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>ALG <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>ARI <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>GEO <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>LOG <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>NUM <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>SCI <span class="indicator"></span></span></th>
+      <th class="num" data-type="number" aria-sort="none"><span>STA <span class="indicator"></span></span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="center">1</td>
+      <td>InternVL2-Pro</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-09-04</td>
+      <td class="num">65.84</td><td class="num">65.0</td><td class="num">64.0</td><td class="num">75.4</td><td class="num">72.4</td><td class="num">52.3</td><td class="num">67.4</td><td class="num">63.1</td><td class="num">65.0</td><td class="num">30.4</td><td class="num">44.5</td><td class="num">67.0</td><td class="num">72.5</td>
+    </tr>
+    <tr>
+      <td class="center">2</td>
+      <td>InternVL2-8B-MPO</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-11-14</td>
+      <td class="num">65.65</td><td class="num">67.4</td><td class="num">68.0</td><td class="num">73.0</td><td class="num">65.3</td><td class="num">51.5</td><td class="num">66.7</td><td class="num">60.6</td><td class="num">68.5</td><td class="num">19.1</td><td class="num">43.1</td><td class="num">64.9</td><td class="num">77.1</td>
+    </tr>
+    <tr>
+      <td class="center">3</td>
+      <td>InternVL-Chat-V1.2-Plus</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-02-22</td>
+      <td class="num">60.18</td><td class="num">52.2</td><td class="num">56.2</td><td class="num">78.3</td><td class="num">61.6</td><td class="num">55.5</td><td class="num">56.0</td><td class="num">64.4</td><td class="num">57.6</td><td class="num">21.6</td><td class="num">46.1</td><td class="num">60.0</td><td class="num">60.1</td>
+    </tr>
+    <tr>
+      <td class="center">4</td>
+      <td>InternLM-XComposer2-VL-7B</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-01-22</td>
+      <td class="num">57.93</td><td class="num">53.9</td><td class="num">56.4</td><td class="num">77.1</td><td class="num">58.4</td><td class="num">43.2</td><td class="num">54.8</td><td class="num">57.6</td><td class="num">58.0</td><td class="num">16.5</td><td class="num">47.6</td><td class="num">59.1</td><td class="num">62.5</td>
+    </tr>
+    <tr>
+      <td class="center">5</td>
+      <td>Qwen-VL-Plus</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2023-12-26</td>
+      <td class="num">44.33</td><td class="num">55.9</td><td class="num">34.7</td><td class="num">29.7</td><td class="num">58.8</td><td class="num">42.4</td><td class="num">40.7</td><td class="num">35.4</td><td class="num">36.6</td><td class="num">21.6</td><td class="num">30.4</td><td class="num">55.9</td><td class="num">56.3</td>
+    </tr>
+    <tr>
+      <td class="center">6</td>
+      <td>SPHINX-MoE</td>
+      <td>MoE</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-01-13</td>
+      <td class="num">42.68</td><td class="num">50.3</td><td class="num">29.7</td><td class="num">40.9</td><td class="num">49.9</td><td class="num">43.3</td><td class="num">33.9</td><td class="num">43.0</td><td class="num">29.1</td><td class="num">14.4</td><td class="num">26.3</td><td class="num">46.9</td><td class="num">51.2</td>
+    </tr>
+    <tr>
+      <td class="center">7</td>
+      <td>MiniCPM-V-2 (2.8B)</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2024-04-14</td>
+      <td class="num">39.89</td><td class="num">51.7</td><td class="num">27.4</td><td class="num">39.8</td><td class="num">42.5</td><td class="num">34.7</td><td class="num">31.3</td><td class="num">34.4</td><td class="num">30.7</td><td class="num">13.4</td><td class="num">33.5</td><td class="num">38.5</td><td class="num">50.0</td>
+    </tr>
+    <tr>
+      <td class="center">8</td>
+      <td>PoT GPT-4 (Caption+OCR)</td>
+      <td>Tool</td>
+      <td><a href="#">Link</a></td>
+      <td>2023-10-03</td>
+      <td class="num">31.74</td><td class="num">27.6</td><td class="num">37.4</td><td class="num">23.9</td><td class="num">43.0</td><td class="num">30.3</td><td class="num">37.1</td><td class="num">27.9</td><td class="num">37.5</td><td class="num">22.7</td><td class="num">15.8</td><td class="num">44.5</td><td class="num">31.9</td>
+    </tr>
+    <tr>
+      <td class="center">9</td>
+      <td>CoT GPT4 (Caption+OCR)</td>
+      <td>Tool</td>
+      <td><a href="#">Link</a></td>
+      <td>2023-10-03</td>
+      <td class="num">30.50</td><td class="num">27.2</td><td class="num">35.9</td><td class="num">21.3</td><td class="num">43.1</td><td class="num">28.2</td><td class="num">35.7</td><td class="num">25.2</td><td class="num">35.8</td><td class="num">24.7</td><td class="num">15.4</td><td class="num">47.3</td><td class="num">31.3</td>
+    </tr>
+    <tr>
+      <td class="center">10</td>
+      <td>LLaVA (LLaMA-2-13B)</td>
+      <td>LMM</td>
+      <td><a href="#">Link</a></td>
+      <td>2023-10-03</td>
+      <td class="num">25.40</td><td class="num">22.9</td><td class="num">24.6</td><td class="num">18.1</td><td class="num">35.8</td><td class="num">29.7</td><td class="num">26.9</td><td class="num">22.5</td><td class="num">24.4</td><td class="num">19.1</td><td class="num">19.1</td><td class="num">34.7</td><td class="num">21.6</td>
+    </tr>
+    <tr>
+      <td class="center">*</td>
+      <td>Random Chance</td>
+      <td>–</td>
+      <td><a href="#">Link</a></td>
+      <td>2023-10-03</td>
+      <td class="num">17.86</td><td class="num">15.5</td><td class="num">24.1</td><td class="num">4.5</td><td class="num">23.4</td><td class="num">24.3</td><td class="num">25.8</td><td class="num">13.8</td><td class="num">22.7</td><td class="num">13.4</td><td class="num">8.8</td><td class="num">15.8</td><td class="num">14.3</td>
+    </tr>
+  </tbody>
+</table>
 
 <script>
 (function(){
   const table = document.getElementById('mathvista');
+  if(!table) return;
   const tbody = table.tBodies[0];
   const headers = table.tHead.rows[0].cells;
 
-  // 绑定事件（点击/键盘）
+  // 事件：点击 / 按回车或空格
   [...headers].forEach((th, colIndex) => {
-    th.tabIndex = 0; // 可聚焦
-    const handle = (ev) => { if (ev.type==='click' || ev.key==='Enter' || ev.key===' ') { ev.preventDefault?.(); sortBy(colIndex, th); } };
-    th.addEventListener('click', handle);
-    th.addEventListener('keydown', handle);
+    th.tabIndex = 0;
+    const handler = (ev) => {
+      if (ev.type === 'click' || ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault?.();
+        sortBy(colIndex, th);
+      }
+    };
+    th.addEventListener('click', handler);
+    th.addEventListener('keydown', handler);
   });
 
   function parseCell(td, type){
@@ -492,14 +465,13 @@
       return Number.isNaN(n) ? -Infinity : n;
     }
     if(type === 'date'){
-      const t = Date.parse(txt); // 期望 YYYY-MM-DD
+      const t = Date.parse(txt); // 期待 YYYY-MM-DD
       return Number.isNaN(t) ? -Infinity : t;
     }
-    // string
     return txt.toLowerCase();
   }
 
-  function clearIndicators(except){
+  function resetIndicators(except){
     [...headers].forEach(h=>{
       if(h!==except){
         h.dataset.direction = '';
@@ -512,35 +484,34 @@
 
   function sortBy(colIndex, th){
     const type = th.dataset.type || 'string';
-    // 默认先降序
-    const nextDir = (th.dataset.direction === 'desc') ? 'asc' : 'desc';
+    const nextDir = (th.dataset.direction === 'desc') ? 'asc' : 'desc'; // 先降序
     th.dataset.direction = nextDir;
     th.setAttribute('aria-sort', nextDir === 'desc' ? 'descending' : 'ascending');
 
-    clearIndicators(th);
+    resetIndicators(th);
     const indicator = th.querySelector('.indicator');
     if(indicator) indicator.textContent = nextDir === 'desc' ? '▼' : '▲';
 
     const rows = Array.from(tbody.rows).map((row, i) => ({
       row,
       key: parseCell(row.cells[colIndex], type),
-      idx: i // 稳定排序
+      idx: i
     }));
 
     const mul = nextDir === 'desc' ? -1 : 1;
     rows.sort((a, b) => {
       if (a.key < b.key) return -1 * mul;
       if (a.key > b.key) return  1 * mul;
-      return a.idx - b.idx; // 稳定性
+      return a.idx - b.idx;
     });
 
-    // 重排
     const frag = document.createDocumentFragment();
     rows.forEach(x => frag.appendChild(x.row));
     tbody.appendChild(frag);
   }
 })();
 </script>
+<!-- 放到你的页面任意位置结束 -->
 
 
   
