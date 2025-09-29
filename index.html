@@ -253,8 +253,8 @@
               <span class="unit-mmkm">cm</span> and <span class="unit-mmkm">m</span> perception for embodied agents, <span class="unit-mmkm">10m</span> operation for autonomous driving, 
               and <span class="unit-mmkm">100m</span> for drone based sensing.<br>
               Despite progress, existing work shows clear limitations in both model design and dataset coverage. Current scene perception research mostly targets indoor scenes, 
-              narrow object classes, and limited spatial ranges, and lacks training paradigms engineered for end to end, cross scale reasoning. <span style="color: rgb(0,0,250);">SpaceVista addresses this gap by presenting 
-              the first systematic optimization across both data and model dimensions to enable robust, full scene spatial reasoning</span>.
+              narrow object classes, and limited spatial ranges, and lacks training paradigms engineered for end to end, cross scale reasoning. <strong><span style="color: rgb(0,0,250);">SpaceVista addresses this gap by presenting 
+              the first systematic optimization across both data and model dimensions to enable robust, full scene spatial reasoning</span></strong>.
             </p>
           </div>
         </div>
@@ -333,16 +333,91 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="avqa-title">From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
+        <figure class="image">
+          <img src="./static/images/data_construction_v2.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
+        </figure>
         <div class="content has-text-justified">
-          We introduce <strong>SpaceVista-Benchmark</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
-          which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
-          we construct <strong>SpaceVista-1M</strong>, comprising approximately <strong>1M spatial QA pairs</strong> spanning <strong>19 task types</strong>. </p>
-          To further enrich spatial diversity, SpaceVista encompasses <strong>15 tasks</strong> across <strong>5 scene categories</strong> and more than <strong>25 
-          subscene types</strong>, supported by expert-driven automated annotation to ensure balanced coverage across scales and contexts.
+        In constructing SpaceVista-1M dataset, we first preprocess videos and their associated information, then apply coordinate transformations and task-specific workflows for spatial reasoning. 
+        For chain-of-thought annotations, fixed questions (e.g., counting, object size) are generated via over 3,000 curated templates, while flexible questions (e.g., planning) are generated using GPT-based method, 
+        with randomized options provided for RL.
         </div>
         <figure class="image">
-          <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:550px; height:550px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
+          <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
         </figure>
+        <style>
+          .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 40px 0;
+          }
+          .column {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+          }
+          .column h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+          }
+          .middle-column ul {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: item;
+          }
+          .middle-column li {
+            counter-increment: item;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+          }
+          .middle-column li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+          }
+        </style>
+        
+        <div class="container">
+          <div class="column">
+            <h3>Basic informations</h3>
+            <p>We choose to manually collect amounts of musical performance videos from YouTube. Specifically, 22 kinds of instruments, such as guitar, cello, and xylophone, are selected and 9 audio-visual question types are accordingly designed, which cover three different scenarios, i.e., audio, visual and audio-visual. Annotations are collected using a novel by our GSAI-Labeled system.</p>
+          </div>
+        
+          <div class="column middle-column">
+            <h3>Characteristics</h3>
+            <ul>
+              <li>3 typical multimodal scene</li>
+              <li>22 kinds of instruments</li>
+              <li>4 categories: String, Wind, Percussion and Keyboard</li>
+              <li>9,290 videos for over 150 hours</li>
+              <li>7,423 real videos</li>
+              <li>1,867 synthetic videos</li>
+              <li>9 audio-visual question types</li>
+              <li>45,867 question-answer pairs</li>
+              <li>Diversity, complexity and dynamic</li>
+            </ul>
+          </div>
+        
+          <div class="column">
+            <h3>Personal data/Human subjects</h3>
+            <p>Videos in MUSIC-AVQA are public on YouTube, and annotated via crowdsourcing. We have explained how the data would be used to crowdworkers. Our dataset does not contain personally identifiable information or offensive content.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
