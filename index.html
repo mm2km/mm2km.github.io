@@ -21,6 +21,16 @@
 
   <!-- Additional CSS for custom styling -->
   <style>
+    .avqa-title {
+      font-family: 'Montserrat', 'Poppins', 'Arial', sans-serif; /* 推荐现代粗体无衬线 */
+      font-weight: 800;        /* 加粗效果 */
+      font-size: 2rem;         /* 根据需求调整大小 */
+      text-transform: uppercase; /* 全部大写 */
+      letter-spacing: -0.5px;  /* 稍微紧凑的字间距 */
+      color: #222222;          /* 深灰色 */
+      margin-bottom: 18px;     /* 与下方元素间距 */
+    }
+    
     .publication-title {
       display: flex;           /* 使用 flex 布局 */
       align-items: center;     /* 垂直居中 logo 与文字 */
@@ -196,7 +206,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="avqa-title">Abstract</h2>
         <img src="./static/images/teaser.jpg" alt="" style="display:block;width:100%;height:auto;margin-bottom:24px;" loading="eager" fetchpriority="high" decoding="async" />
         <div class="content has-text-justified">
         With the current surge in spatial reasoning explorations, researchers have 
@@ -225,7 +235,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">What is SpaceVista?</h2>
+        <h2 class="title avqa-title has-text-centered">What is SpaceVista?</h2>
 
         <!-- 卡片容器：圆角矩形 -->
         <div class="spacevista-card">
@@ -321,7 +331,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
+        <h2 class="avqa-title">From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
         <div class="content has-text-justified">
           We introduce <strong>SpaceVista-Benchmark</strong>, a large-scale multi-scope spatial reasoning benchmark that extends beyond the limitations of existing datasets, 
           which are typically constrained by high annotation and scanning costs. Building on over <strong>40K curated scenes</strong> across five spatial scales, 
@@ -342,7 +352,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Model: SpaceVista-7B</h2>
+        <h2 class="avqa-title">Model: SpaceVista-7B</h2>
         <div class="content has-text-justified">
           <figure class="image" style="margin-bottom:8px; max-width:700px;">
             <img src="./static/images/pipeline_v4.jpg" alt="pipeline"
@@ -365,7 +375,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Experiment</h2>
+        <h2 class="avqa-title">Experiment</h2>
         <style>
           .img-pair {
             display: flex;
@@ -686,7 +696,7 @@
 
       <!-- ===== 组件实例 A ===== -->
       <div class="scene-container scene-gallery">
-        <div class="title is-3">Scenes Data Preview</div>
+        <div class="avqa-title">Scenes Data Preview</div>
 
         <div class="scene-switcher">
           <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
@@ -705,7 +715,7 @@
 
       <!-- ===== 组件实例 B ===== -->
       <div class="scene-container scene-gallery">
-        <div class="title is-3">Word Cloud</div>
+        <div class="avqa-title">Word Cloud</div>
 
         <div class="scene-switcher">
           <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
