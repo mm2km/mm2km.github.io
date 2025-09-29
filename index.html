@@ -267,9 +267,10 @@
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
 
   /* 自定义高宽 */
-  width: 100%;
+  width: 130%;
   max-width: 1800px;
-  height: 480px;                /* 可根据需要调整 */
+  height: 480px;                
+  transform: translateX(-15%);
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -286,13 +287,14 @@
 
 /* 右侧文字 */
 .spacevista-card__content {
-  flex: 1 1 50%;
+  flex: 1;                      /* 占满剩余空间 */
+  display: flex;
+  align-items: center;           /* 垂直居中 */
+  justify-content: flex-start;   /* 左对齐 */
+  text-align: justify;
   color: #222;
   line-height: 1.65;
   font-size: 1rem;
-  display: flex;                 
-  align-items: center;           /* 垂直居中段落 */
-  text-align: justify;
 }
 .spacevista-card__content p {
   margin: 0;
