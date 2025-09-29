@@ -206,33 +206,125 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">What is SpaceVista?</h2>
-        <div class="content has-text-justified">
-          <figure class="image">
-          <img src="./static/images/intro_teaser_v3.jpg" alt="data_graph" style="width:700px; height:700px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
-          </figure>
-          Spatial reasoning, the ability to sense, interpret, and interact with environments across scales from tiny objects understanding to remote drone sensing, 
-          is crucial for next-generation intelligent systems. <strong>All-scale reasoning</strong> capability supports diverse applications: $mm$ for advanced manufacturing~\citep{robospatial}, $cm$ and $m$ for embodied 
-          intelligence~\citep{pan2025omnimanip}, $10m$ for autonomous driving~\citep{autodrive}, and $100m$ for drone-based sensing~\citep{uavsurvey}.
-          
-          From the data perspective, pioneer works SpaceR,Spar-7M,InternSpatial
-          utilize more scanning-based data, or image-based data employing fully automated pipelines to acquire additional information for SFT and RL. 
-          Concurrently, a series of outstanding works SpaceR,Spar-7M have improved the performance of existing models by refining the training and thinking approaches. 
-          
-          Despite prior works' advancements, their spatial perception capabilities are primarily limited to indoor settings, specific objects, and constrained scales. 
-          Moreover, current methodologies lack dedicated training frameworks for holistic all-scale scene understanding. To bridge this gap, we introduce the 
-          <strong>first comprehensive solution</strong> to address data, model, and evaluation dimensions for all-scale scenarios. 
+        <h2 class="title is-3 has-text-centered">What is SpaceVista?</h2>
 
-          Previous datasets \citep{yang2025thinking,mmsibench,spacer,spar12m} for spatial reasoning have primarily been constructed based on indoor scanning video data.
+        <!-- 卡片容器：圆角矩形 -->
+        <div class="spacevista-card">
+          <!-- 左侧：图片 -->
+          <div class="spacevista-card__media">
+            <img src="./static/images/intro_teaser_v3.jpg"
+                 alt="data_graph"
+                 class="spacevista-image"
+                 loading="lazy" decoding="async">
+          </div>
+
+          <!-- 右侧：文字 -->
+          <div class="spacevista-card__content content">
+            <p>
+              Spatial reasoning, the ability to sense, interpret, and interact with environments across scales from tiny objects understanding to remote drone sensing,
+              is crucial for next-generation intelligent systems. <strong>All-scale reasoning</strong> capability supports diverse applications:
+              <span class="math">$mm$</span> for advanced manufacturing~\citep{robospatial}, <span class="math">$cm$</span> and <span class="math">$m$</span> for embodied
+              intelligence~\citep{pan2025omnimanip}, <span class="math">$10m$</span> for autonomous driving~\citep{autodrive}, and <span class="math">$100m$</span> for drone-based sensing~\citep{uavsurvey}.
+            </p>
+
+            <p>
+              From the data perspective, pioneer works SpaceR, Spar-7M, InternSpatial utilize more scanning-based data, or image-based data employing fully automated pipelines to acquire additional information for SFT and RL.
+              Concurrently, a series of outstanding works (e.g., SpaceR, Spar-7M) have improved the performance of existing models by refining training and thinking approaches.
+            </p>
+
+            <p>
+              Despite prior works' advancements, their spatial perception capabilities are primarily limited to indoor settings, specific objects, and constrained scales.
+              Moreover, current methodologies lack dedicated training frameworks for holistic all-scale scene understanding. To bridge this gap, we introduce the
+              <strong>first comprehensive solution</strong> to address data, model, and evaluation dimensions for all-scale scenarios.
+            </p>
+
+            <p>
+              Previous datasets <span class="cite">~\citep{yang2025thinking,mmsibench,spacer,spar12m}</span> for spatial reasoning have primarily been constructed based on indoor scanning video data.
+            </p>
+          </div>
         </div>
+        <!-- /卡片容器 -->
+
       </div>
     </div>
   </div>
 </section>
   
+<style>
+/* 卡片整体 */
+.spacevista-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  /* 控制最大宽度以适配 container */
+  width: 100%;
+  box-sizing: border-box;
+}
 
+/* 左侧图片区域：固定比例或最大宽度 */
+.spacevista-card__media {
+  flex: 0 0 40%; /* 桌面：40% 宽度 */
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spacevista-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* 保持方形展示，如果需要更改可去掉 */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+}
+
+/* 右侧文字 */
+.spacevista-card__content {
+  flex: 1 1 60%;
+  color: #222;
+  line-height: 1.65;
+  font-size: 1rem;
+}
+.spacevista-card__content p { margin-bottom: 0.9rem; }
+
+/* 小屏幕响应式：图片在上，文字在下 */
+@media (max-width: 880px) {
+  .spacevista-card {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .spacevista-card__media {
+    flex: 0 0 auto;
+    max-width: none;
+    width: 60%;
+    margin: 0 auto 12px auto;
+  }
+  .spacevista-image {
+    aspect-ratio: auto;
+    width: 100%;
+    max-height: 360px;
+  }
+}
+
+/* 让标题居中并与卡片间保持间距 */
+.title.is-3.has-text-centered {
+  margin-bottom: 18px;
+}
+
+/* 可选：让公式符号显示风格更好 */
+.spacevista-card .math { font-style: normal; font-weight: 600; }
+
+/* 可选：引用样式微调 */
+.spacevista-card .cite { color: #555; font-style: normal; }
+</style>
   
 <section class="section">
   <div class="container is-max-desktop">
