@@ -229,13 +229,10 @@
 
         <!-- 卡片容器：圆角矩形 -->
         <div class="spacevista-card">
-          <!-- 左侧：图片 -->
-          <div class="spacevista-card__media">
-            <img src="./static/images/intro_teaser_v3.jpg"
-                 alt="data_graph"
-                 class="spacevista-image"
-                 loading="lazy" decoding="async">
-          </div>
+          <img src="./static/images/intro_teaser_v3.jpg"
+           alt="data_graph"
+           class="spacevista-image"
+           loading="lazy" decoding="async">
 
           <!-- 右侧：文字 -->
           <div class="spacevista-card__content content">
@@ -258,7 +255,7 @@
 </section>
   
 <style>
-/* 卡片整体 */
+/* 卡片整体，可自定义高宽 */
 .spacevista-card {
   display: flex;
   gap: 28px;
@@ -268,25 +265,24 @@
   padding: 28px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-  width: 140%;
-  transform: translateX(-20%);
+
+  /* 自定义高宽 */
+  width: 100%;
   max-width: 1800px;
+  height: 480px;                /* 可根据需要调整 */
   margin: 0 auto;
   box-sizing: border-box;
 }
-  
+
 /* 左侧图片 */
 .spacevista-image {
-  flex: 0 0 auto;        /* 宽度自适应内容 */
-  max-width: 50%;        /* 最大占左半边 */
-  height: auto;          /* 保持比例 */
-  max-height: 100%;      /* 不超过父容器高度 */
-  object-fit: contain;   /* 完整显示，不裁切 */
+  flex: 0 0 auto;
+  width: auto;
+  height: 100%;                 /* 与右侧文本等高 */
+  object-fit: contain;           /* 完整显示，不裁切 */
   border-radius: 14px;
-  display: block;
   box-shadow: 0 6px 20px rgba(15,23,42,0.08);
 }
-
 
 /* 右侧文字 */
 .spacevista-card__content {
@@ -294,45 +290,27 @@
   color: #222;
   line-height: 1.65;
   font-size: 1rem;
-  text-align: justify;
-  display: flex;                 /* 保持与图片等高 */
+  display: flex;                 
   align-items: center;           /* 垂直居中段落 */
+  text-align: justify;
 }
 .spacevista-card__content p {
   margin: 0;
-}
-
-
-/* 段落间距 */
-.spacevista-card__content p {
-  margin-bottom: 0.6rem;
-  text-align: justify;           /* 段落两端对齐 */
 }
 
 /* 小屏幕响应式 */
 @media (max-width: 880px) {
   .spacevista-card {
     flex-direction: column;
+    height: auto;
     padding: 16px;
-  }
-  .spacevista-card__media {
-    flex: 0 0 auto;
-    max-width: none;
-    width: 80%;
-    margin: 0 auto 12px auto;
-    align-items: center;
   }
   .spacevista-image {
     width: 100%;
     height: auto;
     max-height: 360px;
-    object-fit: contain;
+    margin-bottom: 12px;
   }
-}
-
-/* 标题和卡片间距 */
-.title.is-3.has-text-centered {
-  margin-bottom: 18px;
 }
 
 </style>
