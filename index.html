@@ -24,19 +24,20 @@
     .publication-title {
       display: flex;           /* 使用 flex 布局 */
       align-items: center;     /* 垂直居中 logo 与文字 */
-      justify-content: center; /* 整体水平居中 */
+      /* justify-content: center; /* 整体水平居中 */ */
       flex-wrap: wrap;         /* 如果太长自动换行 */
       text-align: center;      /* 换行文字居中 */
     }
     
     .publication-title .logo-svg {
       margin-right: 4pt;       /* logo 与文字间距 */
-      height: 2em;             /* 根据标题大小调整 logo 高度 */
+      height: 1.5em;             /* 根据标题大小调整 logo 高度 */
     }
    .spacevista-title {
       font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
       font-weight: 600;
       font-size: 1.2em;
+      justify-content: center;
       display: inline-flex;
       align-items: center;
       margin-left: 1px;
@@ -57,7 +58,7 @@
     
     .unit-mmkm {
       font-weight: bold;
-      font-family: 'Helvetica Neue', 'Roboto', Arial, sans-serif;
+      font-family: 'Roboto', 'Helvetica Neue',  Arial, sans-serif;
       font-size: 1.1em;
     }
     
@@ -263,7 +264,7 @@
   padding: 28px;          /* 内边距增大 */
   background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-  width: 150%;
+  width: 100%;
   max-width: 1100px;      /* 整体卡片最大宽度加大 */
   margin: 0 auto;         /* 居中 */
   box-sizing: border-box;
@@ -271,7 +272,7 @@
 
 /* 左侧图片区域：更宽一些 */
 .spacevista-card__media {
-  flex: 0 0 50%;          /* 图片占 48% */
+  flex: 0 0 48%;          /* 图片占 48% */
   max-width: 420px;       /* 最大宽度调大 */
   display: flex;
   align-items: center;
@@ -294,8 +295,13 @@
   color: #222;
   line-height: 1.65;
   font-size: 1rem;
+  text-align: justify;  /* 两端对齐 */
 }
-.spacevista-card__content p { margin-bottom: 0.9rem; }
+
+.spacevista-card__content p {
+  margin-bottom: 0.9rem;
+  text-align: justify;  /* 保证段落也两端对齐 */
+}
 
 /* 小屏幕响应式：图片在上，文字在下 */
 @media (max-width: 880px) {
