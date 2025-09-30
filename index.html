@@ -490,12 +490,13 @@
 <style>
 /* 自定义图像风格 */
 .custom-image {
-  width: 1200px;            /* 容器宽度，可改大或小 */
+  width: 900px;            /* 容器宽度，可改大或小 */
   max-width: 95vw;           /* 避免超出屏幕 */
   margin: 0 auto 20px auto;  /* 居中 + 下间距 */
   overflow: hidden;          /* 防止图像溢出容器 */
   border-radius: 16px;       /* 圆角可选 */
   box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* 阴影效果可选 */
+  transform: translateX(-20%); 
 }
 
 .custom-image img {
@@ -503,11 +504,6 @@
   height: auto;              /* 保持纵横比 */
   display: block;
   transition: transform 0.3s ease; /* 可加缩放动画 */
-}
-
-/* 鼠标悬停时轻微放大效果 */
-.custom-image img:hover {
-  transform: scale(1.05);
 }
   
 </style>
