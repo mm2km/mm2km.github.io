@@ -100,12 +100,12 @@
     }
           
     .normal-title {
+      display: inline-block;      /* 转为可控宽度的行内块 */
+      text-align: center;         /* 内部文字居中 */
+      white-space: nowrap;        /* 不换行 */
       font-size: 0.7em !important;
-      white-space: nowrap;
-      text-align: center;   /* 内容文字居中 */
-      left: -200px;
+      margin: 0 auto;             /* 整体水平居中 */
     }
-        
     .unit-mmkm {
       font-weight: bold;
       font-family: 'IBM Plex Mono', 'Courier New', monospace;
