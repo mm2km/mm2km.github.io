@@ -491,9 +491,10 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #2d3748; /* 深灰色 */
+            color: #2d3748;       /* 深灰色 */
             font-size: 1.1em;
             line-height: 1.2;
+            font-weight: bold;    /* 粗一点 */
           }
 
         </style>
@@ -599,7 +600,7 @@
             align-items: flex-start;   /* 左图顶部与右文本顶部对齐 */
             gap: 40px;                 /* 左右间距 */
             margin: 40px auto;
-            width: 150%;               /* 超出父容器宽度 */
+            width: 160%;               /* 超出父容器宽度 */
             max-width: none;           /* 取消最大宽度限制 */
             transform: translateX(-20%); /* 向左偏移，使视觉居中 */
             box-sizing: border-box;
@@ -607,7 +608,7 @@
         
           .img-text-row .image-container img {
             display: block;
-            width: 1800px;              /* 图片放大 */
+            width: 2000px;              /* 图片放大 */
             height: auto;              /* 等比例缩放 */
             object-fit: contain;
           }
