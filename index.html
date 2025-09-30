@@ -70,7 +70,11 @@
       flex-wrap: wrap;         /* 如果太长自动换行 */
       text-align: center;      /* 换行文字居中 */
     }
-    
+    .content.has-text-justified {
+      max-width: 900px;   /* 最大宽度，可调大一些 */
+      width: 100%;          /* 占父容器宽度的比例 */
+      margin: 0 auto;      /* 居中 */
+    }
     .publication-title .logo-svg {
       margin-right: 4pt;       /* logo 与文字间距 */
       height: 1.5em;             /* 根据标题大小调整 logo 高度 */
