@@ -64,11 +64,11 @@
       height: 50px;
     }
     .publication-title {
-      display: flex;           /* 使用 flex 布局 */
-      align-items: center;     /* 垂直居中 logo 与文字 */
-      justify-content: center; /* 整体水平居中 */
-      flex-wrap: wrap;         /* 如果太长自动换行 */
-      text-align: center;      /* 换行文字居中 */
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;        /* 保持居中基础 */
+      margin-left: 200px;     /* 向左偏移 20px */
+      text-align: justify;
     }
     .content.has-text-justified {
       max-width: 1000px;   /* 最大宽度，可调大一些 */
