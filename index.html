@@ -336,7 +336,7 @@
         <figure class="image">
           <img src="./static/images/data_construction_v2.jpg" 
                alt="data_graph" 
-               style="width:100%; height:auto; max-width:900px; object-fit:contain; display:block; margin:0 auto;" 
+               style="width:100%; height:auto; max-width:900px; object-fit:contain; display:block; margin:0 auto 30px auto;" 
                loading="lazy" decoding="async">
         </figure>
         <div class="content has-text-justified">
@@ -350,17 +350,21 @@
         <style>
           .three-columns {
             display: flex;
-            justify-content: flex-start; /* 靠左对齐 */
-            gap: 40px;
+            justify-content: flex-start; /* 靠左 */
+            align-items: flex-start;     /* 顶部对齐 */
+            gap: 40px;                   /* 列间距 */
             margin-top: 40px;
+            padding: 20px;               /* 内边距 */
+            background-color: #f7f7f7;   /* 浅灰色背景 */
+            border-radius: 8px;          /* 可选：圆角 */
             font-family: Arial, sans-serif;
             color: #4a5568; /* 灰色文字 */
           }
           .three-columns .column {
-            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 15px;
+            max-width: 320px; /* 可选：限制列宽 */
           }
           .three-columns h3 {
             font-size: 1.2em;
@@ -382,13 +386,13 @@
             margin-bottom: 10px;
           }
           .middle-column li::before {
-            content: "•"; /* 改为圆点 */
+            content: "•"; /* 圆点 */
             position: absolute;
             left: 0;
             top: 0;
             color: #2d3748; /* 深灰色 */
-            font-size: 1.2em;
-            line-height: 1;
+            font-size: 1.1em;
+            line-height: 1.2;
           }
         </style>
         
@@ -419,7 +423,7 @@
           </div>
         </div>
 
-
+        </div>
         </div>
       </div>
     </div>
