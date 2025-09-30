@@ -484,23 +484,55 @@
             gap: 0;
           }
           .img-pair img { display: block;}
+          .img-text-row {
+            display: flex;
+            align-items: flex-start;  /* 左图顶部与右文本顶部对齐 */
+            gap: 40px;                /* 左右间距 */
+            margin-top: 20px;
+          }
+        
+          .img-text-row .image-container img {
+            display: block;
+            width: 600px;
+            height: 600px;
+            object-fit: contain;
+          }
+        
+          .img-text-row .text-container {
+            display: flex;
+            flex-direction: column;   /* 上下排列文本 */
+            justify-content: flex-start; /* 顶部对齐 */
+            gap: 20px;                /* 两段文本间距 */
+            max-width: 600px;         /* 可根据需要限制文本宽度 */
+          }
+        
+          .img-text-row .text-container p {
+            text-align: justify;      /* 文本两端对齐 */
+            line-height: 1.6;
+            color: #4a5568;
+          }
+        
+          .img-text-row .text-container strong {
+            color: #1a202c;           /* 标题加深色 */
+          }
         </style>
 
-        <div class="img-pair">
-          <img src="./static/images/radar.png" alt="experiment-2"
-               style="width:600px; height:600px; object-fit:contain;margin-bottom:4px;" loading="lazy" decoding="async">
+       <div class="img-text-row">
+        <div class="image-container">
+          <img src="./static/images/radar.png" alt="experiment-2" loading="lazy" decoding="async">
         </div>
       
-        <div class="content has-text-justified">
+        <div class="text-container">
           <p>
             <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
             We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
           </p>
           <p>
-            <strong>Evaluation suite.</strong> The right figure presents evaluation results of Qwen2.5-VL-7B, SpatialR, SpatialMLLM, VILASR, and our SpaceVista 
-            on VSI Bench, STI Bench, SIRIBench, MMSI Bench, SPAR Bench, and four internal evaluation sets, highlighting the robustness and competitiveness of our model.
+            <strong>Evaluation suite.</strong> The right figure presents evaluation results of LLAVA-Onevision-7B, LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, 
+            and our SpaceVista-7B on VSI Bench, STI Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, highlighting the robustness and competitiveness of our model.
           </p>
         </div>
+      </div>
       </div>
     </div>
   </div>
