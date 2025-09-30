@@ -477,13 +477,6 @@
       <div class="column is-four-fifths">
         <h2 class="avqa-title">Experiment</h2>
         <style>
-          .img-pair {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 0;
-          }
-          .img-pair img { display: block;}
           .img-text-row {
             display: flex;
             align-items: flex-start;  /* 左图顶部与右文本顶部对齐 */
@@ -493,8 +486,8 @@
         
           .img-text-row .image-container img {
             display: block;
-            width: 600px;
-            height: 600px;
+            width: 900px;             /* 放大图片宽度 */
+            height: auto;             /* 等比例缩放 */
             object-fit: contain;
           }
         
@@ -503,7 +496,7 @@
             flex-direction: column;   /* 上下排列文本 */
             justify-content: flex-start; /* 顶部对齐 */
             gap: 20px;                /* 两段文本间距 */
-            max-width: 600px;         /* 可根据需要限制文本宽度 */
+            max-width: 600px;         /* 控制文本宽度 */
           }
         
           .img-text-row .text-container p {
@@ -516,22 +509,24 @@
             color: #1a202c;           /* 标题加深色 */
           }
         </style>
+        
+        <div class="img-text-row">
+          <div class="image-container">
+            <img src="./static/images/radar.png" alt="experiment-2" loading="lazy" decoding="async">
+          </div>
+        
+          <div class="text-container">
+            <p>
+              <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
+              We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
+            </p>
+            <p>
+              <strong>Evaluation suite.</strong> The right figure presents evaluation results of LLAVA-Onevision-7B, LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, 
+              and our SpaceVista-7B on VSI Bench, STI Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, highlighting the robustness and competitiveness of our model.
+            </p>
+          </div>
+        </div>
 
-       <div class="img-text-row">
-        <div class="image-container">
-          <img src="./static/images/radar.png" alt="experiment-2" loading="lazy" decoding="async">
-        </div>
-      
-        <div class="text-container">
-          <p>
-            <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
-            We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
-          </p>
-          <p>
-            <strong>Evaluation suite.</strong> The right figure presents evaluation results of LLAVA-Onevision-7B, LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, 
-            and our SpaceVista-7B on VSI Bench, STI Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, highlighting the robustness and competitiveness of our model.
-          </p>
-        </div>
       </div>
       </div>
     </div>
@@ -559,9 +554,9 @@
         </tr>
       </thead>
       <tbody>
-       <tr> <td class="center">3</td> <td><a class="mv-top">GPT-5 🥉</a></td> <td><a href="https://openai.com/gpt-5/">Link</a></td> <td>2025-08</td> <td class="num col-all">33.7</td><td class="num">32.2</td><td class="num">20.3</td><td class="num">39.0</td><td class="num">43.0</td></tr> 
+       <tr> <td class="center">3</td> <td><a class="mv-top"><strong>GPT-5</strong> 🥉</a></td> <td><a href="https://openai.com/gpt-5/">Link</a></td> <td>2025-08</td> <td class="num col-all">33.7</td><td class="num">32.2</td><td class="num">20.3</td><td class="num">39.0</td><td class="num">43.0</td></tr> 
        <tr> <td class="center">8</td> <td>GPT-4o </a></td> <td><a href="https://gpt4o.ai/">Link</a></td> <td>2024-05</td> <td class="num col-all">26.9</td><td class="num">21.7</td><td class="num">13.3</td><td class="num">34.3</td><td class="num">38.3</td></tr> 
-        <tr> <td class="center">2</td> <td><a class="mv-top">Gemini-2.5-Pro 🥈</a></td> <td><a href="https://deepmind.google/technologies/gemini/pro/">Link</a></td> <td>2025-06</td> <td class="num col-all">33.8</td><td class="num">33.0</td><td class="num">38.7</td><td class="num">34.5</td><td class="num">29.0</td></tr> 
+        <tr> <td class="center">2</td> <td><a class="mv-top"><strong>Gemini-2.5-Pro</strong> 🥈</a></td> <td><a href="https://deepmind.google/technologies/gemini/pro/">Link</a></td> <td>2025-06</td> <td class="num col-all">33.8</td><td class="num">33.0</td><td class="num">38.7</td><td class="num">34.5</td><td class="num">29.0</td></tr> 
         <tr> <td class="center">11</td> <td>Gemini-2.5-Flash</td> <td><a href="https://deepmind.google/models/gemini/flash/">Link</a></td> <td>2025-06</td> <td class="num col-all">24.4</td><td class="num">20.7</td><td class="num">30.0</td><td class="num">19.9</td><td class="num">26.9</td></tr> 
         <tr> <td class="center">6</td> <td>Claude-Sonnet-4</td> <td><a href="https://www.anthropic.com/claude/sonnet">Link</a></td> <td>2025-05</td> <td class="num col-all">29.7</td><td class="num">27.3</td><td class="num">19.3</td><td class="num">38.1</td><td class="num">34.1</td></tr> 
         <tr> <td class="center">10</td> <td>Claude-Opus-4.1</td> <td><a href="https://www.anthropic.com/news/claude-opus-4-1">Link</a></td> <td>2025-08</td> <td class="num col-all">26.4</td><td class="num">21.7</td><td class="num">29.5</td><td class="num">24.3</td><td class="num">30.0</td></tr> 
@@ -577,7 +572,7 @@
         <tr> <td class="center">17</td> <td>LLAVA-Onevision-7B</td> <td><a href="https://huggingface.co/lmms-lab/llava-onevision-qwen2-7b-ov">Link</a></td> <td>2024-08</td> <td class="num col-all">12.6</td><td class="num">17.5</td><td class="num">8.0</td><td class="num">13.3</td><td class="num">11.6</td></tr>
         <tr> <td class="center">15</td> <td>SpaceR</td> <td><a href="https://github.com/OuyangKun10/SpaceR">Link</a></td> <td>2025-04</td> <td class="num col-all">21.2</td><td class="num">12.9</td><td class="num">17.3</td><td class="num">34.9</td><td class="num">19.8</td></tr>
         <tr> <td class="center">12</td> <td>Spatial-MLLM</td> <td><a href="https://github.com/diankun-wu/Spatial-MLLM?tab=readme-ov-file">Link</a></td> <td>2025-05</td> <td class="num col-all">24.2</td><td class="num">17.3</td><td class="num">20.3</td><td class="num">36.1</td><td class="num">23.1</td></tr>
-        <tr> <td class="center">1</td> <td><a class="mv-top">SpaceVista-7B 🥇</td> <td><a href="">Link</a></td> <td>2025-09</td> <td class="num col-all">36.7</td><td class="num">33.4</td><td class="num">37.1</td><td class="num">42.2</td><td class="num">34.1</td></tr>
+        <tr> <td class="center">1</td> <td><a class="mv-top"><strong>SpaceVista-7B</strong> 🥇</td> <td><a href="">Link</a></td> <td>2025-09</td> <td class="num col-all">36.7</td><td class="num">33.4</td><td class="num">37.1</td><td class="num">42.2</td><td class="num">34.1</td></tr>
       </tbody>
     </table>
   </div>
