@@ -99,12 +99,16 @@
         vertical-align: middle; 
     }
           
+    .normal-title-wrapper {
+      display: inline-block;        /* 保持内联，但可以设置宽度 */
+      width: 600px;                 /* 父容器宽度，比文字本身大 */
+      position: relative;           /* 允许偏移 */
+      left: -50px;                  /* 向左移动 50px，根据需要调整 */
+      text-align: center;           /* 文字在容器内居中 */
+    }
     .normal-title {
-      display: inline-block;      /* 转为可控宽度的行内块 */
-      text-align: center;         /* 内部文字居中 */
-      white-space: nowrap;        /* 不换行 */
+      white-space: nowrap;          /* 防止文字换行 */
       font-size: 0.7em !important;
-      margin: 0 auto;             /* 整体水平居中 */
     }
     .unit-mmkm {
       font-weight: bold;
@@ -173,7 +177,13 @@
           <h1 class="title is-1 publication-title">
             <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
             <span class="spacevista-title">SpaceVista</span><br>
-            <span class="normal-title">All-Scale Visual Spatial Reasoning from <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span>
+            <span class="normal-title-wrapper">
+              <span class="normal-title">
+                All-Scale Visual Spatial Reasoning from 
+                <span class="unit-mmkm">mm</span> to 
+                <span class="unit-mmkm">km</span>
+              </span>
+            </span>
             </span>
           </h1>
           <div class="is-size-5 publication-authors">
