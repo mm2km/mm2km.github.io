@@ -479,34 +479,38 @@
         <style>
           .img-text-row {
             display: flex;
-            align-items: flex-start;  /* 左图顶部与右文本顶部对齐 */
-            gap: 40px;                /* 左右间距 */
-            margin-top: 20px;
+            align-items: flex-start;   /* 左图顶部与右文本顶部对齐 */
+            gap: 40px;                 /* 左右间距 */
+            margin: 40px auto;
+            width: 120%;               /* 超出父容器宽度 */
+            max-width: none;           /* 取消最大宽度限制 */
+            transform: translateX(-10%); /* 向左偏移，使视觉居中 */
+            box-sizing: border-box;
           }
         
           .img-text-row .image-container img {
             display: block;
-            width: 900px;             /* 放大图片宽度 */
-            height: auto;             /* 等比例缩放 */
+            width: 800px;              /* 图片放大 */
+            height: auto;              /* 等比例缩放 */
             object-fit: contain;
           }
         
           .img-text-row .text-container {
             display: flex;
-            flex-direction: column;   /* 上下排列文本 */
+            flex-direction: column;    /* 上下排列文本 */
             justify-content: flex-start; /* 顶部对齐 */
-            gap: 20px;                /* 两段文本间距 */
-            max-width: 600px;         /* 控制文本宽度 */
+            gap: 20px;                 /* 文本段落间距 */
+            max-width: 700px;          /* 文本最大宽度，可自行调整 */
           }
         
           .img-text-row .text-container p {
-            text-align: justify;      /* 文本两端对齐 */
+            text-align: justify;
             line-height: 1.6;
             color: #4a5568;
           }
         
           .img-text-row .text-container strong {
-            color: #1a202c;           /* 标题加深色 */
+            color: #1a202c;
           }
         </style>
         
@@ -526,7 +530,6 @@
             </p>
           </div>
         </div>
-
       </div>
       </div>
     </div>
