@@ -414,6 +414,28 @@
 
 
 <div class="fancy-line"></div>
+
+<style>
+/* 自定义图像风格 */
+.custom-image {
+  width: 1000px;            /* 容器宽度，可改大或小 */
+  max-width: 95vw;           /* 避免超出屏幕 */
+  margin: 0 auto 20px auto;  /* 居中 + 下间距 */
+  overflow: hidden;          /* 防止图像溢出容器 */
+  border-radius: 16px;       /* 圆角可选 */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* 阴影效果可选 */
+  transform: translateX(-12%); 
+}
+
+.custom-image img {
+  width: 100%;               /* 填充容器 */
+  height: auto;              /* 保持纵横比 */
+  display: block;
+  transition: transform 0.3s ease; /* 可加缩放动画 */
+}
+  
+</style>
+
   
 <section class="section">
   <div class="container is-max-desktop">
@@ -429,7 +451,7 @@
                style="width:100%; height:auto; max-width:1000px; object-fit:contain; display:block; margin:0 auto 15px auto;" 
                loading="lazy" decoding="async">
         </figure> -->
-         <figure class="custom-image">
+         <figure class="custom-image2">
             <img src="./static/images/data_construction_v2.jpg" alt="pipeline">
         </figure>
         <div class="content has-text-justified">
