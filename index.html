@@ -71,9 +71,12 @@
       text-align: justify;
     }
     .content.has-text-justified {
-      max-width: 1000px;   /* 最大宽度，可调大一些 */
-      width: 120%;          /* 占父容器宽度的比例 */
-      margin: 0 auto;      /* 居中 */
+      max-width: 1000px;
+      width: 90%;
+      margin: 0 auto;        /* 保持基础居中 */
+      position: relative;
+      left: -200px;            /* 向左移动 20px */
+      text-align: justify;
     }
     .publication-title .logo-svg {
       margin-right: 4pt;       /* logo 与文字间距 */
