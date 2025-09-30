@@ -350,22 +350,22 @@
         <style>
          .three-columns {
             display: flex;
-            justify-content: flex-start; /* 整体三列靠左 */
+            justify-content: flex-start;
             align-items: flex-start;
-            gap: 40px;                   /* 列间距 */
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #f7f7f7;   /* 浅灰背景 */
+            gap: 40px;
+            margin: 40px auto;        /* 上下间距，左右自动居中 */
+            padding: 20px 40px;       /* 左右内边距更大 */
+            background-color: #f7f7f7;
             border-radius: 8px;
+            width: 100%;              /* 撑满整行 */
+            box-sizing: border-box;   /* 包含内边距 */
           }
           
           .three-columns .column {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 320px;
-            text-align: left; /* 每列内部文字靠左 */
+            flex: 1;                  /* 每列自适应分配宽度 */
+            min-width: 250px;         /* 每列最小宽度，避免太挤 */
           }
+
           
           /* 标题样式 */
           .three-columns h3 {
