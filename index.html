@@ -39,8 +39,16 @@
       letter-spacing: -0.5px;
       color: #222222;
       margin-bottom: 18px;
+      display: inline-flex;       /* 图片和文字在同一行 */
+      align-items: center;        /* 垂直居中 */
+      justify-content: center;    /* 保持整体居中 */
+      gap: 10px;                  /* 图片和文字之间的间距 */
     }
-    
+
+    .title-logo {
+      width: 32px;   /* 调整大小 */
+      height: 32px;
+    }
     .publication-title {
       display: flex;           /* 使用 flex 布局 */
       align-items: center;     /* 垂直居中 logo 与文字 */
@@ -248,7 +256,10 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title avqa-title has-text-centered">What is SpaceVista?</h2>
+        <h2 class="title avqa-title has-text-centered">
+          <img src="./static/images/question-logo.png" alt="logo" class="title-logo">
+          What is SpaceVista?
+        </h2>
 
         <!-- 卡片容器：圆角矩形 -->
         <div class="spacevista-card">
@@ -347,7 +358,10 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="avqa-title">From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
+        <h2 class="avqa-title">
+          <img src="./static/images/data-logo.png" alt="logo" class="title-logo">
+          From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M
+        </h2>
         <!-- <figure class="image">
           <img src="./static/images/data_construction_v2.jpg" 
                alt="data_graph" 
@@ -475,7 +489,10 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="avqa-title">Model: SpaceVista-7B</h2>
+        <h2 class="avqa-title">
+          <img src="./static/images/model-logo.png" alt="logo" class="title-logo">
+          Model: SpaceVista-7B
+        </h2>
         <div class="content has-text-justified">
           <figure class="custom-image">
             <img src="./static/images/pipeline_v4.jpg" alt="pipeline">
@@ -518,7 +535,10 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="avqa-title">Experiment</h2>
+        <h2 class="avqa-title">
+          <img src="./static/images/expriment-logo.png" alt="logo" class="title-logo">
+          Experiment
+        </h2>
         <style>
           .img-text-row {
             display: flex;
@@ -592,7 +612,10 @@
   
 <div id="mv-lb">
   <div class="mv-head">
-    <h2>Leaderboard on SpaceVista-Bench</h2>
+    <h2>
+      <img src="./static/images/leaderboard-logo.png" alt="logo" class="title-logo">
+      Leaderboard on SpaceVista-Bench
+    </h2>
   </div>
    <div class="table-note">
     Click the table header to sort in ascending or descending order.<br>
