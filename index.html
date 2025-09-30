@@ -102,6 +102,46 @@
 <body>
 
 
+<!-- 悬浮按钮 -->
+<button id="backToTop" class="back-to-top">↑</button>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    top: 50%;                 /* 垂直居中 */
+    right: 20px;              /* 靠右边 */
+    transform: translateY(-50%); /* 精准垂直居中 */
+    
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;       /* 圆形按钮 */
+    cursor: pointer;
+    z-index: 999;             /* 确保在最上层 */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+  .back-to-top:hover {
+    background: #0056b3;
+  }
+</style>
+
+<script>
+  document.getElementById("backToTop").addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"   // 平滑滚动到顶部
+    });
+  });
+</script>
+  
+
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
