@@ -336,7 +336,7 @@
         <figure class="image">
           <img src="./static/images/data_construction_v2.jpg" 
                alt="data_graph" 
-               style="width:100%; height:auto; max-width:900px; object-fit:contain; display:block; margin:0 auto 30px auto;" 
+               style="width:100%; height:auto; max-width:1000px; object-fit:contain; display:block; margin:0 auto 15px auto;" 
                loading="lazy" decoding="async">
         </figure>
         <div class="content has-text-justified">
@@ -345,7 +345,7 @@
         with randomized options provided for RL.
         </div>
         <figure class="image">
-          <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
+          <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:15px auto 20px auto;" loading="lazy" decoding="async">
         </figure>
         <style>
           .three-columns {
@@ -365,12 +365,13 @@
             flex-direction: column;
             gap: 15px;
             max-width: 320px; /* 可选：限制列宽 */
+            text-align: left; /* 所有文字左对齐 */
           }
-          .three-columns h3 {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #1a202c; /* 标题深色 */
-            margin-bottom: 10px;
+          
+          .three-columns h3,
+          .three-columns p,
+          .three-columns li {
+            text-align: left; /* 确保标题、段落、列表文字左对齐 */
           }
           .three-columns p {
             line-height: 1.5;
