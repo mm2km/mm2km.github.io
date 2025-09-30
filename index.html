@@ -265,8 +265,8 @@
               <span class="unit-mmkm">cm</span> and <span class="unit-mmkm">m</span> perception for embodied agents, <span class="unit-mmkm">10m</span> operation for autonomous driving, 
               and <span class="unit-mmkm">100m</span> for drone based sensing.<br>
               Despite progress, existing work shows clear limitations in both model design and dataset coverage. Current scene perception research mostly targets indoor scenes, 
-              narrow object classes, and limited spatial ranges, and lacks training paradigms engineered for end to end, cross scale reasoning. <strong><span style="color: rgb(0,0,250);">SpaceVista addresses this gap by presenting 
-              the first systematic optimization across both data and model dimensions to enable robust, full scene spatial reasoning</span></strong>.
+              narrow object classes, and limited spatial ranges, and lacks training paradigms engineered for end to end, cross scale reasoning. <strong><span style="color: rgb(0,0,250);">SpaceVista addresses 
+              this gap by presenting the first systematic optimization across both data and model dimensions to enable robust, full scene spatial reasoning</span></strong>.
             </p>
           </div>
         </div>
@@ -430,8 +430,8 @@
         <div class="three-columns">
           <div class="column">
             <h3>Basic informations</h3>
-            <p>We collected a large number of spatial reasoning videos from both open-source datasets and our own ollected data. Specifically, we selected scenes including tabletop, indoor, 
-              outdoor, and drone-view scenes, and designed 19 types of spatial reasoning tasks covering all-scale from millimeters to kilometers. The dataset contains diverse spatial 
+            <p>We collect a large number of spatial reasoning videos from both open-source datasets and our own ollected data. Specifically, we select scenes including tabletop, indoor, 
+              outdoor, and drone-view scenes, and design 19 types of spatial reasoning tasks covering all-scale from millimeters to kilometers. The dataset contains diverse spatial 
               reasoning question–answer pairs, enriched with semantic, 2D, and 3D annotations.</p>
           </div>
         
@@ -451,8 +451,8 @@
         
           <div class="column">
             <h3>Our own collected data</h3>
-            <p>Although we performed limited manual filtering on open-source data, its suitability for accurately evaluating real-world perception remains uncertain. 
-              To address this, we collected higher-fidelity data comprising two types: (1) measured, recorded, and manually annotated data for tiny and tabletop objects, 
+            <p>Although we perform limited manual filtering on open-source data, its suitability for accurately evaluating real-world perception remains uncertain. 
+              To address this, we collect higher-fidelity data comprising two types: (1) measured, recorded, and manually annotated data for tiny and tabletop objects, 
               and (2) existing videos enhanced through retrieval and verification of public information for indoor and outdoor scenes.</p>
           </div>
         </div>
@@ -565,12 +565,14 @@
         
           <div class="text-container">
             <p>
-              <strong>Results overview.</strong> The left figure, together with the overall results, summarizes performance across four scenarios: Tiny Tabletop, Tabletop, Indoor, and Outdoor. 
-              We further evaluate closed-source, open-source, and customized spatial reasoning models, showing consistent improvements across different scales and environments.
+              <strong>Results overview.</strong> SpaceVista-7B achieve significant improvements across all benchmarks, highlighting its advantages in spatial reasoning tasks. 
+              Although models including LLAVA-Onevision-7B also demonstrate competitive performance, SpaceVista-7B consistently shows greater robustness and adaptability across various tasks, 
+              thereby solidifying its position as a leading model in the field of spatial reasoning.
             </p>
             <p>
-              <strong>Evaluation suite.</strong> The right figure presents evaluation results of LLAVA-Onevision-7B, LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, 
-              and our SpaceVista-7B on VSI Bench, STI Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, highlighting the robustness and competitiveness of our model.
+              <strong>Evaluation suite.</strong> The comparison across models is conducted on multiple spatial reasoning benchmarks. We conduct a comprehensive evaluation of LLAVA-Onevision-7B, 
+              LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, and our SpaceVista-7B on VSI-Bench, STI-Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, 
+              highlighting the robustness and competitiveness of our model.
             </p>
           </div>
         </div>
