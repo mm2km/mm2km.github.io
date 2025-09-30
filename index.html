@@ -348,11 +348,14 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="avqa-title">From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M</h2>
-        <figure class="image">
+        <!-- <figure class="image">
           <img src="./static/images/data_construction_v2.jpg" 
                alt="data_graph" 
                style="width:100%; height:auto; max-width:1000px; object-fit:contain; display:block; margin:0 auto 15px auto;" 
                loading="lazy" decoding="async">
+        </figure> -->
+         <figure class="custom-image">
+            <img src="./static/images/data_construction_v2.jpg" alt="pipeline">
         </figure>
         <div class="content has-text-justified">
         In constructing SpaceVista-1M dataset, we first preprocess videos and their associated information, then apply coordinate transformations and task-specific workflows for spatial reasoning. 
@@ -496,7 +499,7 @@
   overflow: hidden;          /* 防止图像溢出容器 */
   border-radius: 16px;       /* 圆角可选 */
   box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* 阴影效果可选 */
-  transform: translateX(-10%); 
+  transform: translateX(-15%); 
 }
 
 .custom-image img {
