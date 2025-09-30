@@ -33,12 +33,12 @@
       border-radius: 1px;    /* 圆角，使过渡柔和 */
     }
     .avqa-title {
-      font-family: 'Poppins', 'Arial', sans-serif; /* 推荐现代粗体无衬线 */
-      font-weight: 800;        /* 加粗效果 */
-      font-size: 2rem;         /* 根据需求调整大小 */
-      letter-spacing: -0.5px;  /* 稍微紧凑的字间距 */
-      color: #222222;          /* 深灰色 */
-      margin-bottom: 18px;     /* 与下方元素间距 */
+      font-family: 'Montserrat', 'Arial', sans-serif;
+      font-weight: 900;       /* 大标题可用更粗 */
+      font-size: 2.5rem;
+      letter-spacing: -0.5px;
+      color: #222222;
+      margin-bottom: 18px;
     }
     
     .publication-title {
@@ -430,7 +430,7 @@
         <div class="three-columns">
           <div class="column">
             <h3>Basic informations</h3>
-            <p>We collected a large number of spatial reasoning videos from both open-source datasets and our self-collected data. Specifically, we selected scenes including tabletop, indoor, 
+            <p>We collected a large number of spatial reasoning videos from both open-source datasets and our own ollected data. Specifically, we selected scenes including tabletop, indoor, 
               outdoor, and drone-view scenes, and designed 19 types of spatial reasoning tasks covering all-scale from millimeters to kilometers. The dataset contains diverse spatial 
               reasoning question–answer pairs, enriched with semantic, 2D, and 3D annotations.</p>
           </div>
@@ -478,10 +478,10 @@
             <img src="./static/images/pipeline_v4.jpg" 
                  alt="pipeline"
                  width="2000" height="1400"
-                 style="width:160%; height:auto; display:block; margin:0 auto; transform: translateX(-0%);">
+                 style="width:200%; height:auto; display:block; margin:0 auto; transform: translateX(-0%);">
           </figure>
           SpaceVista-7B ingests a question with images and videos and 3D geometry, encodes them, projects features to a shared space, and fuses them in an 
-          LLM through learnable interaction. A LoRA style scale expert with a scale aware router adapts the model to different spatial scales. 
+          LLM through learnable interaction. A LoRA-like scale expert with a scale aware router adapts the model to different spatial scales. 
           Training uses reinforcement learning with stepwise rewards, including scale estimation, semantic recognition, result correctness, and format correctness, 
           to align reasoning and final answers.
         </div>
