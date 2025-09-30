@@ -430,27 +430,30 @@
         <div class="three-columns">
           <div class="column">
             <h3>Basic informations</h3>
-            <p>We choose to manually collect amounts of musical performance videos from YouTube. Specifically, 22 kinds of instruments, such as guitar, cello, and xylophone, are selected and 9 audio-visual question types are accordingly designed, which cover three different scenarios, i.e., audio, visual and audio-visual. Annotations are collected using a novel by our GSAI-Labeled system.</p>
+            <p>We collected a large number of spatial reasoning videos from both open-source datasets and our self-collected data. Specifically, we selected scenes including tabletop, indoor, 
+              outdoor, and drone-view scenes, and designed 19 types of spatial reasoning tasks covering all-scale from millimeters to kilometers. The dataset contains diverse spatial 
+              reasoning question–answer pairs, enriched with semantic, 2D, and 3D annotations.</p>
           </div>
         
           <div class="column middle-column">
             <h3>Characteristics</h3>
             <ul>
-              <li>3 typical multimodal scene</li>
-              <li>22 kinds of instruments</li>
-              <li>4 categories: String, Wind, Percussion and Keyboard</li>
-              <li>9,290 videos for over 150 hours</li>
-              <li>7,423 real videos</li>
-              <li>1,867 synthetic videos</li>
-              <li>9 audio-visual question types</li>
-              <li>45,867 question-answer pairs</li>
-              <li>Diversity, complexity and dynamic</li>
+              <li>5 spatial scales scenes</li>
+              <li>19 spatial reasoning task type</li>
+              <li>All-scale: from mm to km</li>
+              <li>3,8000 videos across diverse scenes</li>
+              <li>Over 50 subscene categories</li>
+              <li>1 million QA pairs</li>
+              <li>Video Data with 3D Modeling</li>
+              <li>Comprehensive Annotations & Metadata</li>
             </ul>
           </div>
         
           <div class="column">
-            <h3>Personal data/Human subjects</h3>
-            <p>Videos in MUSIC-AVQA are public on YouTube, and annotated via crowdsourcing. We have explained how the data would be used to crowdworkers. Our dataset does not contain personally identifiable information or offensive content.</p>
+            <h3>Our own collected data</h3>
+            <p>Although we performed limited manual filtering on open-source data, its suitability for accurately evaluating real-world perception remains uncertain. 
+              To address this, we collected higher-fidelity data comprising two types: (1) measured, recorded, and manually annotated data for tiny and tabletop objects, 
+              and (2) existing videos enhanced through retrieval and verification of public information for indoor and outdoor scenes.</p>
           </div>
         </div>
 
@@ -809,7 +812,7 @@
     transform: translateX(-50%) translateY(4px);
     background: #363636;
     color: #fff;
-    font-size: 10px;
+    font-size: 8px;
     line-height: 1;
     padding: 6px 8px;
     border-radius: 6px;
