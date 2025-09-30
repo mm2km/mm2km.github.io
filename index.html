@@ -474,11 +474,8 @@
       <div class="column is-four-fifths">
         <h2 class="avqa-title">Model: SpaceVista-7B</h2>
         <div class="content has-text-justified">
-          <figure class="image" style="margin-bottom:20px; max-width:none;">
-            <img src="./static/images/pipeline_v4.jpg" 
-                 alt="pipeline"
-                 width="2000" height="1400"
-                 style="width:200%; height:auto; display:block; margin:0 auto; transform: translateX(-0%);">
+          <figure class="custom-image">
+            <img src="./static/images/pipeline_v4.jpg" alt="pipeline">
           </figure>
           SpaceVista-7B ingests a question with images and videos and 3D geometry, encodes them, projects features to a shared space, and fuses them in an 
           LLM through learnable interaction. A LoRA-like scale expert with a scale aware router adapts the model to different spatial scales. 
@@ -490,6 +487,32 @@
   </div>
 </section> 
 
+<style>
+/* 自定义图像风格 */
+.custom-image {
+  width: 1200px;            /* 容器宽度，可改大或小 */
+  max-width: 95vw;           /* 避免超出屏幕 */
+  margin: 0 auto 20px auto;  /* 居中 + 下间距 */
+  overflow: hidden;          /* 防止图像溢出容器 */
+  border-radius: 16px;       /* 圆角可选 */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* 阴影效果可选 */
+}
+
+.custom-image img {
+  width: 100%;               /* 填充容器 */
+  height: auto;              /* 保持纵横比 */
+  display: block;
+  transition: transform 0.3s ease; /* 可加缩放动画 */
+}
+
+/* 鼠标悬停时轻微放大效果 */
+.custom-image img:hover {
+  transform: scale(1.05);
+}
+  
+</style>
+
+  
 <div class="fancy-line"></div>
 
 <section class="section">
