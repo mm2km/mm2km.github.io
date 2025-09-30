@@ -353,17 +353,19 @@
             justify-content: flex-start;
             align-items: flex-start;
             gap: 40px;
-            margin: 40px auto;        /* 上下间距，左右自动居中 */
-            padding: 20px 40px;       /* 左右内边距更大 */
+            margin: 40px auto;
+            padding: 20px 40px;
             background-color: #f7f7f7;
             border-radius: 8px;
-            width: 100%;              /* 撑满整行 */
-            box-sizing: border-box;   /* 包含内边距 */
+          
+            width: 120%;              /* 比页面宽 120% */
+            margin-left: -10%;        /* 向左移动，保证左右对称 */
+            box-sizing: border-box;
           }
           
           .three-columns .column {
-            flex: 1;                  /* 每列自适应分配宽度 */
-            min-width: 250px;         /* 每列最小宽度，避免太挤 */
+            flex: 1;
+            min-width: 250px;
           }
 
           
