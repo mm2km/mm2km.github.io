@@ -22,6 +22,16 @@
   
   <!-- Additional CSS for custom styling -->
   <style>
+    .fancy-line {
+      width: 100%;          /* 横线宽度，可根据需要调整 */
+      height: 4px;          /* 横线高度（中间最粗） */
+      background: linear-gradient(to right, 
+                                  transparent,      /* 左端透明 */
+                                  #1a202c 50%,      /* 中间颜色 */
+                                  transparent);     /* 右端透明 */
+      margin: 20px 0;       /* 上下间距 */
+      border-radius: 2px;   /* 圆角，使过渡柔和 */
+    }
     .avqa-title {
       font-family: 'Poppins', 'Arial', sans-serif; /* 推荐现代粗体无衬线 */
       font-weight: 800;        /* 加粗效果 */
@@ -199,7 +209,7 @@
   </div>
 </section>
 
-
+<div class="fancy-line"></div>
 
   
 <section class="section">
