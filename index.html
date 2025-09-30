@@ -701,147 +701,297 @@
 })();
 </script>
 
-
-
-  
+<div class="fancy-line"></div>
   
 <style>
-/* 左右箭头按钮 */
-.scene-frame {
-  position: relative; /* 让箭头定位相对 */
-}
+    /* Self-Collected 按钮 tooltip 样式 */
+  .scene-switcher .button.self-collected {
+    position: relative;
+  }
+  
+  /* Tooltip 样式 */
+  .scene-switcher .button.self-collected::after {
+    content: "We use standard ISO 7046 to denote the models of the screw, which looks like “m4*10”";
+    position: absolute;
+    bottom: calc(100% + 8px);  /* tooltip 在按钮上方 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #363636;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 10;
+  }
+  
+  /* 小箭头 */
+  .scene-switcher .button.self-collected::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #363636;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+  
+  /* 悬停显示 tooltip */
+  .scene-switcher .button.self-collected:hover::after,
+  .scene-switcher .button.self-collected:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  /* 统一宽度容器 */
+  .scene-container {
+    width: 960px;
+    margin: 0 auto;
+  }
 
-.scene-frame .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 32px;
-  text-align: center;
-  z-index: 2;
-  transition: background 0.2s;
-}
+  /* 按钮区 */
+  .scene-switcher {
+    display: flex;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    overflow: visible;
+    background: #f0f0f0;
+  }
 
-.scene-frame .arrow:hover { background: rgba(0,0,0,0.8); }
+  .scene-switcher .button {
+    position: relative;
+    flex: 1;
+    font-weight: 600;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 12px 0;
+    font-size: 15px;
+    color: #555;
+    background: #f0f0f0;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
 
-.scene-frame .arrow-left { left: 8px; }
-.scene-frame .arrow-right { right: 8px; }
+  .scene-switcher .button:hover { background: #e0e0e0; color: #000; }
+  .scene-switcher .button.is-active { background: #363636; color: #fff; font-weight: 700; }
+
+  /* 展示区 */
+  .scene-frame {
+    width: 960px;
+    height: 680px;
+    border: 1.5px solid #bbb;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .scene-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .scene-switcher .button:not(.is-active)::after {
+    content: "Click to switch scenes";
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 10px);
+    transform: translateX(-50%) translateY(4px);
+    background: #363636;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .18s ease, transform .18s ease;
+    z-index: 2;
+  }
+  .scene-switcher .button:not(.is-active)::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #363636;
+    opacity: 0;
+    transition: opacity .18s ease;
+    z-index: 2;
+  }
+  .scene-switcher .button:not(.is-active):hover::after,
+  .scene-switcher .button:not(.is-active):hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .scene-row .scene-gallery .scene-switcher .button {
+    font-size: 13px;   /* 改成你需要的值，如 12/14/16px */
+    line-height: 1.2;  /* 可选：让文字更紧凑 */
+    /* 可选：调节内边距，避免按钮变得过高或过矮 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  /* === 新增：左右并排布局（不改变其它样式的行为） === */
+  .scene-row {
+    width: 1200px;              /* 如需全宽可改为 100% */
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;                  /* 两个容器之间的间距 */
+    align-items: flex-start;
+    justify-content: center;
+  }
+  /* 仅当作为 .scene-row 子元素时覆盖固定宽度与外边距 */
+  .scene-row .scene-container {
+    margin: 0;                  /* 覆盖原本的居中外边距 */
+    flex: 1 1 0;                /* 等分宽度 */
+    width: auto;                /* 覆盖原来的 width:960px */
+  }
+  .scene-row .scene-switcher { width: 100%; }
+  .scene-row .scene-frame {
+    width: 100%;                /* 覆盖原来的 width:960px */
+    height: 420px;              /* 调整为更适合并排显示的高度 */
+  }
+  
+  @media (max-width: 1100px) {
+    .scene-row { flex-direction: column; }
+    .scene-row .scene-frame { height: 480px; }
+  }
+  .scene-row .scene-gallery .title.is-3{
+      font-size: 24px;  
+      line-height: 1.25;
+  }
+  
 </style>
 
-<div class="scene-row">
+  
+<section class="section">
+  <div class="is-centered has-text-centered">
 
-  <!-- ===== 组件实例 A ===== -->
-  <div class="scene-container scene-gallery">
-    <div class="avqa-title">Scenes Data Preview</div>
+    <!-- 一行容器，左右并排放置两个组件 -->
+    <div class="scene-row">
 
-    <div class="scene-switcher">
-      <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-      <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-      <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-      <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-      <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-      <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-      <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
-    </div>
+      <!-- ===== 组件实例 A ===== -->
+      <div class="scene-container scene-gallery">
+        <div class="avqa-title">Scenes Data Preview</div>
 
-    <div class="scene-frame">
-      <button class="arrow arrow-left">&#8592;</button>
-      <img data-role="scene" src="" alt="Scene A" loading="eager" decoding="async">
-      <button class="arrow arrow-right">&#8594;</button>
-    </div>
+        <div class="scene-switcher">
+          <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
+          <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
+          <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
+          <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
+          <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+        </div>
+
+        <div class="scene-frame">
+          <img data-role="scene" src="" alt="Scene A" loading="eager" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+
+      <!-- ===== 组件实例 B ===== -->
+      <div class="scene-container scene-gallery">
+        <div class="avqa-title">Word Cloud</div>
+
+        <div class="scene-switcher">
+          <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
+          <button type="button" class="button" data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
+          <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
+          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
+          <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
+        </div>
+
+        <div class="scene-frame">
+          <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
+        </div>
+      </div>
+
+    </div><!-- /scene-row -->
+
   </div>
-
-  <!-- ===== 组件实例 B ===== -->
-  <div class="scene-container scene-gallery">
-    <div class="avqa-title">Word Cloud</div>
-
-    <div class="scene-switcher">
-      <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
-      <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
-      <button type="button" class="button" data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
-      <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
-      <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
-      <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
-    </div>
-
-    <div class="scene-frame">
-      <button class="arrow arrow-left">&#8592;</button>
-      <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
-      <button class="arrow arrow-right">&#8594;</button>
-    </div>
-  </div>
-
-</div>
+</section>
 
 <script>
 (function(){
   function setupGallery(root){
     const img = root.querySelector('img[data-role="scene"]');
     const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
-    const leftArrow = root.querySelector('.arrow-left');
-    const rightArrow = root.querySelector('.arrow-right');
     if (!img || btns.length === 0) return;
 
-    let currentIdx = btns.findIndex(b=>b.classList.contains('is-active'));
-    if(currentIdx === -1) currentIdx = 0;
-
-    function show(idx){
-      const btn = btns[idx];
-      if (!btn) return;
-
-      // 更新按钮激活态
-      btns.forEach(b => b.classList.toggle('is-active', b === btn));
-
+    function setActive(btn, opts={}) {
       const src = btn.dataset.src;
       if (!src) return;
 
-      img.style.opacity = 0;
-      const pre = new Image();
-      pre.onload = () => {
-        img.src = src;
+      // 按钮态
+      btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+      // 预载并切换（带淡入）
+      if (img.getAttribute('src') !== src) {
+        img.style.opacity = 0;
+        const pre = new Image();
+        pre.onload = () => {
+          img.src = src;
+          img.alt = btn.textContent.trim() || img.alt;
+          (img.decode ? img.decode() : Promise.resolve()).catch(()=>{}).finally(()=>{
+            img.style.transition = 'opacity .2s ease';
+            img.style.opacity = 1;
+          });
+        };
+        pre.src = src;
+      } else {
+        // 初始时只同步 alt
         img.alt = btn.textContent.trim() || img.alt;
-        (img.decode ? img.decode() : Promise.resolve()).catch(()=>{}).finally(()=>{
-          img.style.transition = 'opacity .2s ease';
-          img.style.opacity = 1;
-        });
-      };
-      pre.src = src;
+      }
 
-      currentIdx = idx;
+      // 首次可提高优先级，其余为 auto
+      img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
     }
 
-    // 初始化
-    show(currentIdx);
-
-    // 按钮点击切换
-    btns.forEach((b, idx) => b.addEventListener('click', ()=>show(idx)));
-
-    // 箭头左右切换
-    if(leftArrow){
-      leftArrow.addEventListener('click', ()=>{
-        const idx = (currentIdx - 1 + btns.length) % btns.length;
-        show(idx);
+    // 事件绑定
+    btns.forEach((b, idx) => {
+      b.addEventListener('click', () => setActive(b));
+      b.addEventListener('mouseenter', () => { // 悬停预加载
+        const s = b.dataset.src; if (s) { const i = new Image(); i.src = s; }
       });
-    }
-    if(rightArrow){
-      rightArrow.addEventListener('click', ()=>{
-        const idx = (currentIdx + 1) % btns.length;
-        show(idx);
+      b.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(b); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = e.key === 'ArrowLeft' ? (idx - 1 + btns.length) % btns.length
+                                             : (idx + 1) % btns.length;
+          btns[next].focus();
+        }
       });
-    }
+    });
+
+    // 初始化：优先使用已有 .is-active，其次第一项
+    const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
+    if (initBtn) setActive(initBtn, { initial: true });
   }
 
   document.querySelectorAll('.scene-gallery').forEach(setupGallery);
 })();
+  // 给 Self-Collected 按钮加 class
+  document.querySelectorAll('.scene-switcher .button').forEach(btn => {
+    if(btn.textContent.trim() === "Self-Collected"){
+      btn.classList.add('self-collected');
+    }
+  });
 </script>
-
 
 
   
