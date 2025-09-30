@@ -98,56 +98,56 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a>Peiwen Sun</a>
-              <sup style="color:#6fbf73;"><strong>1</strong></sup>,
+              <sup style="color:#6fbf73;">1</sup>,
             </span>
             <span class="author-block">
               <a>Shiqiang Lang</a>
-              <sup style="color:#ffac33"><strong>3</strong></sup>,
+              <sup style="color:#ffac33">3</sup>,
             </span>
             <span class="author-block">
               <a>Dongming Wu</a>
-              <sup style="color:#6fbf73;"><strong>1</strong></sup>,
+              <sup style="color:#6fbf73;">1</sup>,
             </span>
             <span class="author-block">
               <a>Yi Ding</a>
-              <sup style="color:#ed4b82"><strong>2</strong></sup>,
+              <sup style="color:#ed4b82">2</sup>,
             </span>
             <span class="author-block">
               <a>Kaituo Feng</a>
-              <sup style="color:#6fbf73;"><strong>1</strong></sup>,
+              <sup style="color:#6fbf73;">1</sup>,
             </span>
             <span class="author-block">
               <a>Huadai Liu</a>
-              <sup style="color:#9b59b6;"><strong>4</strong></sup>,
+              <sup style="color:#9b59b6;">4</sup>,
             </span>
             <span class="author-block">
               <a>Zhen Ye</a>
-              <sup style="color:#9b59b6;"><strong>4</strong></sup>,
+              <sup style="color:#9b59b6;">4</sup>,
             </span>
             <span class="author-block">
               <a>Rui Liu</a>
-              <sup style="color:#6fbf73;"><strong>1</strong></sup>,
+              <sup style="color:#6fbf73;">1</sup>,
             </span><br>
             <span class="author-block">
               <a>Yun-Hui Liu</a>
-              <sup style="color:#6fbf73;"><strong>1</strong></sup>,
+              <sup style="color:#6fbf73;">1</sup>,
             </span>
             <span class="author-block">
               <a>Jianan Wang</a>
-              <sup style="color:#ed4b82"><strong>2</strong></sup>,
+              <sup style="color:#ed4b82">2</sup>,
             </span>
             <span class="author-block">
               <a>Xiangyu Yue</a>
-              <sup style="color:#6fbf73;"><strong>1,</strong></sup>
+              <sup style="color:#6fbf73;">1,</sup>
               <i class="fas fa-envelope email-symbol" style="position: relative; top: -8px; left: 1px;"></i>
             </span>
           </div>
           
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup style="color:#6fbf73;"><strong>1</strong></sup>Multimedia Lab, Chinese University of Hong Kong,</span>
-            <span class="author-block"><sup style="color:#ed4b82"><strong>2</strong></sup>Astribot,</span><br>
-            <span class="author-block"><sup style="color:#ffac33"><strong>3</strong></sup>Beijing University of Posts and Telecommunications,</span><br>
-            <span class="author-block"><sup style="color:#9b59b6;"><strong>4</strong></sup>Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup style="color:#6fbf73;">1</sup>Multimedia Lab, Chinese University of Hong Kong,</span>
+            <span class="author-block"><sup style="color:#ed4b82">2</sup>Astribot,</span><br>
+            <span class="author-block"><sup style="color:#ffac33">3</sup>Beijing University of Posts and Telecommunications,</span><br>
+            <span class="author-block"><sup style="color:#9b59b6;">4</sup>Hong Kong University of Science and Technology</span>
           </div>
 
           <div class="column has-text-centered">
@@ -348,32 +348,46 @@
           <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:15px auto 20px auto;" loading="lazy" decoding="async">
         </figure>
         <style>
+         .three-columns {
+            display: flex;
+            justify-content: flex-start; /* 整体三列靠左 */
+            align-items: flex-start;
+            gap: 40px;                   /* 列间距 */
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f7f7f7;   /* 浅灰背景 */
+            border-radius: 8px;
+          }
+          
           .three-columns .column {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            max-width: 320px; 
-            text-align: left; /* 全部文字左对齐 */
+            max-width: 320px;
+            text-align: left; /* 每列内部文字靠左 */
           }
           
+          /* 标题样式 */
           .three-columns h3 {
-            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; /* 好看的现代字体 */
-            font-size: 1.4em;   /* 放大 */
+            font-family: "Georgia", "Times New Roman", serif; /* 标题用衬线字体，和正文区分 */
+            font-size: 1.5em;   /* 放大字号 */
             font-weight: 700;   /* 加粗 */
-            color: #1a202c;     /* 深色，突出标题 */
+            color: #1a202c;     /* 深色 */
             margin-bottom: 10px;
-            text-align: left;   /* 确保靠左 */
+            text-align: left;
           }
           
+          /* 正文样式 */
           .three-columns p,
           .three-columns li {
+            font-family: "Arial", "Helvetica Neue", sans-serif; /* 正文用无衬线字体 */
             font-size: 1em;
             line-height: 1.6;
             text-align: left;
+            color: #4a5568;
           }
-          .three-columns p {
-            line-height: 1.5;
-          }
+          
+          /* 列表小圆点 */
           .middle-column ul {
             list-style: none;
             padding-left: 0;
@@ -385,7 +399,7 @@
             margin-bottom: 10px;
           }
           .middle-column li::before {
-            content: "•"; /* 圆点 */
+            content: "•";
             position: absolute;
             left: 0;
             top: 0;
@@ -393,6 +407,7 @@
             font-size: 1.1em;
             line-height: 1.2;
           }
+
         </style>
         
         <div class="three-columns">
