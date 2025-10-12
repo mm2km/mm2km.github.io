@@ -20,44 +20,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
+  >
+
   <!-- Additional CSS for custom styling -->
   <style>
     .fancy-line {
-      width: 1000px;         
-      height: 1px;         
+      width: 1000px;        
+      height: 1px;        
       background: linear-gradient(to right, 
-                                  transparent, 
-                                  #1a202c 50%,  
-                                  transparent);  
-      margin: 20px auto;    
+                                  transparent,  
+                                  #1a202c 50%,   
+                                  transparent); 
+      margin: 20px auto; 
       border-radius: 1px;    
     }
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
-      font-weight: 900;     
+      font-weight: 900;      
       font-size: 2.0rem;
       letter-spacing: -0.5px;
       color: #222222;
       margin-bottom: 18px;
       display: inline-flex;      
-      align-items: center;        
-      justify-content: center;    
-      gap: 10px;                
-      text-align: center;         
+      align-items: center;   
+      justify-content: center;   
+      gap: 10px;                  
+      text-align: center;        
     }
     .avqa-title2 {
-           font-family: 'Montserrat', 'Arial', sans-serif;
-      font-weight: 900;    
-      font-size: 2.0rem;
-      letter-spacing: -0.5px;
-      color: #222222;
-      margin-bottom: 18px;
-      display: inline-flex;      
-      align-items: center;       
-      justify-content: center;   
-      gap: 10px;                
-      text-align: center;        
-      margin-left: 180px;
+               font-family: 'Montserrat', 'Arial', sans-serif;
+          font-weight: 900;     
+          font-size: 2.0rem;
+          letter-spacing: -0.5px;
+          color: #222222;
+          margin-bottom: 18px;
+          display: inline-flex;     
+          align-items: center;      
+          justify-content: center;    
+          gap: 10px;                 
+          text-align: center;         
+          margin-left: 150px;
     }
     .title-logo {
       width: 50px;  
@@ -66,20 +76,20 @@
     .publication-title {
       max-width: 1000px;
       width: 100%;
-      margin: 0 auto;   
-      margin-left: 200px;  
+      margin: 0 auto;       
+      margin-left: 200px;   
       text-align: justify;
     }
     .content.has-text-justified {
       max-width: 1200px;
       width: 120%;
-      margin: 0 auto;       
+      margin: 0 auto;      
       position: relative;
-      left: -75px;            
+      left: -75px;          
       text-align: justify;
     }
     .publication-title .logo-svg {
-      margin-right: 4pt;     
+      margin-right: 4pt;      
       height: 1.5em;           
     }
    .spacevista-title {
@@ -100,14 +110,14 @@
     }
           
     .normal-title-wrapper {
-      display: inline-block;        
-      width: 600px;                 
-      position: relative;         
-      left: -80px;              
-      text-align: center;      
+      display: inline-block;       
+      width: 600px;              
+      position: relative;       
+      left: -80px;           
+      text-align: center;         
     }
     .normal-title {
-      white-space: nowrap;         
+      white-space: nowrap;       
       font-size: 0.7em !important;
     }
     .unit-mmkm {
@@ -128,14 +138,13 @@
 </head>
 <body>
 
-
 <button id="backToTop" class="back-to-top">↑</button>
 
 <style>
   .back-to-top {
     position: fixed;
-    top: 50%;               
-    right: 20px;          
+    top: 50%;           
+    right: 20px;         
     transform: translateY(-50%); 
     
     width: 40px;
@@ -147,9 +156,9 @@
     background: #007bff;
     color: #fff;
     border: none;
-    border-radius: 50%;    
+    border-radius: 50%;     
     cursor: pointer;
-    z-index: 999;       
+    z-index: 999;        
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     transition: background 0.3s;
   }
@@ -185,53 +194,108 @@
             </span>
             </span>
           </h1>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link -->
-              <span class="link-block">
-                <a href="" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- arXiv Link -->
-              <span class="link-block">
-                <a href="" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Code Link -->
-              <span class="link-block">
-                <a href="" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <!-- Dataset Link -->
-              <span class="link-block">
-                <a href="" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-images"></i></span>
-                  <span>Data</span>
-                </a>
-              </span>
-            </div>
-
-            <div class="alert-text" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95rem;"></div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a>Peiwen Sun</a>
+              <sup style="color:#6fbf73;">
+                1<span style="color:black; vertical-align: middle;">*</span>
+              </sup>,
+            </span>
+            <span class="author-block">
+              <a>Shiqiang Lang</a>
+              <sup style="color:#ffac33">
+                3<span style="color:black; vertical-align: middle;">*</span>
+            </span>,
+            <span class="author-block">
+              <a>Dongming Wu</a>
+              <sup style="color:#6fbf73;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a>Yi Ding</a>
+              <sup style="color:#ed4b82">2</sup>,
+            </span>
+            <span class="author-block">
+              <a>Kaituo Feng</a>
+              <sup style="color:#6fbf73;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a>Huadai Liu</a>
+              <sup style="color:#9b59b6;">4</sup>,
+            </span>
+            <span class="author-block">
+              <a>Zhen Ye</a>
+              <sup style="color:#9b59b6;">4</sup>,
+            </span><br>
+            <span class="author-block">
+              <a>Rui Liu</a>
+              <sup style="color:#6fbf73;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a>Yun-Hui Liu</a>
+              <sup style="color:#6fbf73;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a>Jianan Wang</a>
+              <sup style="color:#ed4b82">
+                2
+                <span style="color:black; position: relative; top: -1px; margin-left: 1px;">&#8224;</span>
+              </sup>,
+            </span>
+            <span class="author-block">
+              <a>Xiangyu Yue</a>
+              <sup style="color:#6fbf73;">1</sup>
+              <i class="fas fa-envelope email-symbol" style="position: relative; top: -8px; left: 1px;"></i>
+            </span>
           </div>
           
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#6fbf73;">1</sup>Multimedia Lab, Chinese University of Hong Kong,</span>
+            <span class="author-block"><sup style="color:#ed4b82">2</sup>Astribot,</span><br>
+            <span class="author-block"><sup style="color:#ffac33">3</sup>Beijing University of Posts and Telecommunications,</span><br>
+            <span class="author-block"><sup style="color:#9b59b6;">4</sup>Hong Kong University of Science and Technology</span>
+          </div>
 
-          <script>
-            const buttons = document.querySelectorAll('.publication-links .link-block a');
-            const alertText = document.querySelector('.alert-text');
-            buttons.forEach(button => {
-              button.addEventListener('click', function(e) {
-                e.preventDefault();
-                alertText.textContent = "In accordance with the double‑blind review policy, this page is not accessible from submitted version.";
-              });
-            });
-          </script>
+          <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/PeiwenSun2000/SpaceVista"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/SpaceVista/Data-Preview"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                    </a>
+              </div>
 
           </div>
         </div>
@@ -241,6 +305,37 @@
 </section>
 
 
+
+
+<div style="width:100%; max-width:1200px; margin:0 auto; padding:0 20px; transform: translateX(205px);">
+  <section style="width:100%; margin:10px 0 20px 0; font-family:'Open Sans', sans-serif;">
+    <div style="display:flex; align-items:center; margin-bottom:15px;">
+      <img src="./static/images/blast.png" alt="Left Logo" style="width:30px; height:30px; margin-right:10px;">
+      <h2 style="margin:0; font-size:32px; font-family:'Montserrat', 'Arial', sans-serif; font-weight:600;">News</h2>
+      <img src="./static/images/blast.png" alt="Right Logo" style="width:30px; height:30px; margin-left:10px;">
+    </div>
+
+    <div>
+      <div style="margin-bottom:10px; line-height:1.6; font-size:18px;">
+        <span style="font-weight:bold;">[2025.10.10]</span>
+        <img src="./static/images/rocket.png" alt="Icon" style="width:20px; height:20px; margin:0 6px;">
+        Our preview SFT code base is released for preview at <a href='https://github.com/PeiwenSun2000/SpaceVista'><img src='https://img.shields.io/badge/Code-Github-blue'></a>.
+      </div>
+      <div style="margin-bottom:10px; line-height:1.6; font-size:18px;">
+        <span style="font-weight:bold;">[2025.10.10]</span>
+        <img src="./static/images/target.png" alt="Icon" style="width:20px; height:20px; margin:0 6px;">
+        Our preview 100K subset of SpaceVista-1M is now available at <a href='https://huggingface.co/datasets/SpaceVista/Data-Preview'><img src='https://img.shields.io/badge/Dataset-Huggingface-yellow'></a>.
+      </div>
+      <div style="margin-bottom:10px; line-height:1.6; font-size:18px;">
+        <span style="font-weight:bold;">[2025.10.10]</span>
+        <img src="./static/images/star.png" alt="Icon" style="width:20px; height:20px; margin:0 6px;">
+        Our initial paper is now accessible at <a href='https://arxiv.org/abs/2410.10676'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>.
+      </div>
+    </div>
+  </section>
+</div>
+
+  
 
   
 <section class="section">
@@ -281,16 +376,14 @@
       <div class="column is-four-fifths">
         <h2 class="avqa-title2">
           <img src="./static/images/question-logo.png" alt="logo" class="title-logo">
-          What is SpaceVista?
+          What is All-Scale Spatial Reasoning
         </h2>
-
 
         <div class="spacevista-card">
           <img src="./static/images/intro_teaser_v3.jpg"
            alt="data_graph"
            class="spacevista-image"
            loading="lazy" decoding="async">
-
 
           <div class="spacevista-card__content content">
             <p>
@@ -305,7 +398,6 @@
           </div>
         </div>
 
-
       </div>
     </div>
   </div>
@@ -315,13 +407,12 @@
 .spacevista-card {
   display: flex;
   gap: 28px;
-  align-items: stretch;       
+  align-items: stretch;     
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 16px;
   padding: 28px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
   box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-
 
   width: 120%;
   max-width: 1800px;
@@ -331,21 +422,20 @@
   box-sizing: border-box;
 }
 
-
 .spacevista-image {
   flex: 0 0 auto;
   width: auto;
   height: 100%;              
-  object-fit: contain;       
+  object-fit: contain;         
   border-radius: 14px;
   box-shadow: 0 6px 20px rgba(15,23,42,0.08);
 }
 
 .spacevista-card__content {
-  flex: 1;                
+  flex: 1;                  
   display: flex;
-  align-items: center;       
-  justify-content: flex-start;  
+  align-items: center;     
+  justify-content: flex-start;   
   text-align: justify;
   color: #222;
   line-height: 1.65;
@@ -354,6 +444,7 @@
 .spacevista-card__content p {
   margin: 0;
 }
+
 
 @media (max-width: 880px) {
   .spacevista-card {
@@ -376,20 +467,20 @@
 
 <style>
 .custom-image2 {
-  width: 1000px;            
-  max-width: 95vw;        
-  margin: 0 auto 20px auto; 
-  overflow: hidden;       
-  border-radius: 16px;  
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+  width: 1000px;           
+  max-width: 95vw;          
+  margin: 0 auto 20px auto;
+  overflow: hidden;         
+  border-radius: 16px;      
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   transform: translateX(-8%); 
 }
 
 .custom-image img {
-  width: 100%;            
+  width: 100%;              
   height: auto;           
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; 
 }
   
 </style>
@@ -402,15 +493,13 @@
       <div class="column is-four-fifths">
         <h2 class="avqa-title">
           <img src="./static/images/data-logo.png" alt="logo" class="title-logo">
-          From <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> Dataset: SpaceVista-1M
+          Dataset: SpaceVista-1M
         </h2>
         <div class="content has-text-justified">
           <figure class="custom-image2">
             <img src="./static/images/data_construction_v2.jpg" alt="pipeline">
           </figure>
-          In constructing SpaceVista-1M dataset, we first preprocess videos and their associated information, then apply coordinate transformations and task-specific workflows for spatial reasoning. 
-          For chain-of-thought annotations, fixed questions (e.g., counting, object size) are generated via over 3,000 curated templates, while flexible questions (e.g., planning) are generated using GPT-based method, 
-          with randomized options provided for RL.
+          The limited data and performance constraints in existing models necessitate the creation of a dataset with all-scale spatial context. We propose <strong>SpaceVista-1M</strong>strong>, a diverse, real-world, all-scale reasoning dataset, as the <strong>first</strong>strong> to the best of our knowledge. SpaceVista-1M primarily comprises diverse spatial reasoning question–answer pairs, with rich semantic (category, rationale), 2D (mask, box, point), and 3D (depth, camera parameters, point cloud) annotations, obtained either natively or through processing. The construction pipeline in the above figure follows the step-by-step procedure of preparing, transforming, and generating to obtain an all-scale dataset by integrating specialized models.
         </div>
         <figure class="image">
           <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:15px auto 20px auto;" loading="lazy" decoding="async">
@@ -426,8 +515,8 @@
             background-color: #f7f7f7;
             border-radius: 8px;
           
-            width: 150%;            
-            margin-left: -25%;       
+            width: 150%;             
+            margin-left: -25%;      
             box-sizing: border-box;
           }
           
@@ -440,13 +529,12 @@
           .three-columns h3 {
             font-family: "Georgia", "Times New Roman", serif; 
             font-size: 1.5em;   
-            font-weight: 700;   
-            color: #1a202c;   
+            font-weight: 700;  
+            color: #1a202c;    
             margin-bottom: 10px;
             text-align: left;
           }
           
-          /* 正文样式 */
           .three-columns p,
           .three-columns li {
             font-family: "Arial", "Helvetica Neue", sans-serif; 
@@ -456,7 +544,6 @@
             color: #4a5568;
           }
           
-
           .middle-column ul {
             list-style: none;
             padding-left: 0;
@@ -484,28 +571,28 @@
           <div class="column">
             <h3>Basic informations</h3>
             <p>We collect a large number of spatial reasoning videos from both open-source datasets and our own ollected data. Specifically, we select scenes including tabletop, indoor, 
-              outdoor, and drone-view scenes, and design 19 types of spatial reasoning tasks covering all-scale from millimeters to kilometers. The dataset contains diverse spatial 
+              outdoor, and drone-view scenes, and design <strong>19</strong> types of spatial reasoning tasks covering <strong>all-scale</strong> from millimeters to kilometers. The dataset contains diverse spatial 
               reasoning question–answer pairs, enriched with semantic, 2D, and 3D annotations.</p>
           </div>
         
           <div class="column middle-column">
             <h3>Characteristics</h3>
             <ul>
-              <li>5 spatial scales scenes</li>
-              <li>19 spatial reasoning task type</li>
-              <li>All-scale: from mm to km</li>
-              <li>3,8000 videos across diverse scenes</li>
-              <li>Over 50 subscene categories</li>
-              <li>1 million QA pairs</li>
+              <li><strong>5</strong> spatial scales scenes</li>
+              <li><strong>19</strong> spatial reasoning task type</li>
+              <li><strong>All-scale</strong>: from mm to km</li>
+              <li><strong>38,000</strong> videos across diverse scenes</li>
+              <li>Over <strong>50</strong> subscene categories</li>
+              <li><strong>1 million</strong> QA pairs</li>
               <li>Video Data with 3D Modeling</li>
               <li>Comprehensive Annotations & Metadata</li>
             </ul>
           </div>
         
           <div class="column">
-            <h3>Our own collected data</h3>
+            <h3>Evaluation</h3>
             <p>Although we perform limited manual filtering on open-source data, its suitability for accurately evaluating real-world perception remains uncertain. 
-              To address this, we collect higher-fidelity data comprising two types: <br>
+              To address this, we collect higher-fidelity data comprising <strong>two types</strong>: <br>
               <ul>
                 <li>1) measured, recorded, and manually annotated data for tiny and tabletop objects</li>
                 <li>2) existing videos enhanced through retrieval and verification of public information for indoor and outdoor scenes.</li>
@@ -523,6 +610,25 @@
 
 <div class="fancy-line"></div>  
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="avqa-title">
+          <img src="./static/images/model-logo.png" alt="logo" class="title-logo">
+          Why not simply train with all-scale data?
+        </h2>
+        <div class="content has-text-justified">
+          <figure class="custom-image">
+            <img src="./static/images/pipeline_v4.jpg" alt="pipeline">
+          </figure>
+          Mixing different types of knowledge without distinction <strong>hinders</strong>, rather than facilitates, the model’s reasoning in the Figure above, a problem known as <strong>knowledge conflict</strong>. In all-scale reasoning, this conflict appears when similar visual patterns are interpreted differently at different scales. 
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
   
 <section class="section">
   <div class="container is-max-desktop">
@@ -536,10 +642,9 @@
           <figure class="custom-image">
             <img src="./static/images/pipeline_v4.jpg" alt="pipeline">
           </figure>
-          SpaceVista-7B ingests a question with images and videos and 3D geometry, encodes them, projects features to a shared space, and fuses them in an 
-          LLM through learnable interaction. A LoRA-like scale expert with a scale aware router adapts the model to different spatial scales. 
-          Training uses reinforcement learning with stepwise rewards, including scale estimation, semantic recognition, result correctness, and format correctness, 
-          to align reasoning and final answers.
+          <strong>SpaceVista-7B</strong> ingests a question with videos and self-supervised dense features, encodes them, projects features to a shared space, and fuses them in an 
+          LLM through learnable interaction. A LoRA-like scale expert with a scale-aware router adapts the model to different spatial scales. 
+          Training uses reinforcement learning with stepwise rewards to align reasoning and final answers.
         </div>
       </div>
     </div>
@@ -548,20 +653,20 @@
 
 <style>
 .custom-image {
-  width: 1000px;          
-  max-width: 95vw;          
-  margin: 0 auto 20px auto;  
-  overflow: hidden;         
+  width: 1000px;           
+  max-width: 95vw;         
+  margin: 0 auto 20px auto;
+  overflow: hidden;          
   border-radius: 16px;   
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   transform: translateX(-8%); 
 }
 
 .custom-image img {
-  width: 100%;              
-  height: auto;            
+  width: 100%;               
+  height: auto;          
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; 
 }
   
 </style>
@@ -581,27 +686,27 @@
           .img-text-row {
             display: flex;
             align-items: flex-start;  
-            gap: 40px;            
+            gap: 40px;               
             margin: 40px auto;
-            width: 160%;             
-            max-width: none;       
-            transform: translateX(-20%); 
+            width: 160%;              
+            max-width: none;        
+            transform: translateX(-20%);
             box-sizing: border-box;
           }
         
           .img-text-row .image-container img {
             display: block;
-            width: 2000px;          
+            width: 2000px;            
             height: auto;            
             object-fit: contain;
           }
         
           .img-text-row .text-container {
             display: flex;
-            flex-direction: column; 
-            justify-content: flex-start;
-            gap: 20px;              
-            max-width: 700px;       
+            flex-direction: column;    
+            justify-content: flex-start; 
+            gap: 20px;            
+            max-width: 700px;          
           }
         
           .img-text-row .text-container p {
@@ -622,14 +727,14 @@
         
           <div class="text-container">
             <p>
-              <strong>Results overview.</strong> SpaceVista-7B achieve significant improvements across all benchmarks, highlighting its advantages in spatial reasoning tasks. 
+              <strong>Results overview.</strong> <strong>SpaceVista-7B</strong> achieves comparative improvements across all benchmarks, highlighting its advantages in spatial reasoning tasks. 
               Although models including LLAVA-Onevision-7B also demonstrate competitive performance, SpaceVista-7B consistently shows greater robustness and adaptability across various tasks, 
               thereby solidifying its position as a leading model in the field of spatial reasoning.
             </p>
             <p>
               <strong>Evaluation suite.</strong> The comparison across models is conducted on multiple spatial reasoning benchmarks. We conduct a comprehensive evaluation of LLAVA-Onevision-7B, 
-              LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, and our SpaceVista-7B on VSI-Bench, STI-Bench, MMSI-Bench, SPAR-Bench, and SpaceVista-Bench, 
-              highlighting the robustness and competitiveness of our model.
+              LLAVA-Next-Video-7B, InternVL3.5-8B, Qwen2.5-VL-7B, SpaceR-7B, SpatialMLLM-4-B, VILASR-7B, and our <strong>SpaceVista-7B</strong> on VSI-Bench, STI-Bench, MMSI-Bench, SPAR-Bench, 
+              and <strong>SpaceVista-Bench</strong>, highlighting the robustness and competitiveness of our model.
             </p>
           </div>
         </div>
@@ -643,8 +748,8 @@
 <style>
   .table-note {
     text-align: center; 
-    margin: 0 auto 25px;     
-    max-width: 800px;   
+    margin: 0 auto 25px;       
+    max-width: 800px;     
   }  
 </style>
   
@@ -656,6 +761,7 @@
     </h2>
   </div>
   <div class="table-note">
+    <img src="./static/images/click.png" alt="Logo" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; display: inline-block;">
     Click the table header to sort in ascending or descending order.<br>
     <span class="top-model"><a class="mv-top"><strong>Models highlighted in bold red</strong></a></span> indicate the top three overall performers on SpaceVista-Bench.
   </div>
@@ -704,10 +810,10 @@
     color: #B22222; /* DarkRed */
   }
   #mv-lb {
-    --mv-max: 1200px;     
+    --mv-max: 1200px;      
     max-width: var(--mv-max);
     width: 100%;
-    margin: 0 auto;       
+    margin: 0 auto;          
   }
   #mv-lb{--mv-text:#333;--mv-muted:#666;--mv-head-bg:#e9ecef;--mv-border:#d9d9d9;--mv-row-alt:#fafafa;--mv-accent:#c70000;}
   #mv-lb .mv-head{ text-align:center; margin:0 0 12px; }  
@@ -723,19 +829,16 @@
   #mv-lb .mv-table tbody td{ padding:10px 12px; border-bottom:1px solid var(--mv-border); color:var(--mv-text); }
   #mv-lb .mv-table tbody tr:nth-child(even){ background:var(--mv-row-alt); }
 
-
   #mv-lb .w-idx{ width:36px; }
   #mv-lb .w-model{ min-width:220px; }
-
 
   #mv-lb .mv-table th,
   #mv-lb .mv-table td{
     text-align:center;    
-    vertical-align:middle; 
+    vertical-align:middle;
   }
 
   #mv-lb .mv-table .num{ text-align:center; }
-
   #mv-lb .center{ text-align:center; }
 </style>
 
@@ -780,7 +883,7 @@
 
   function sortBy(col, th){
     const type = th.dataset.type || 'string';
-    const next = (th.dataset.direction==='desc') ? 'asc' : 'desc'; 
+    const next = (th.dataset.direction==='desc') ? 'asc' : 'desc'; // 先降序
     th.dataset.direction = next;
     th.setAttribute('aria-sort', next==='desc' ? 'descending' : 'ascending');
     resetIndicators(th);
@@ -807,7 +910,6 @@
     position: relative;
   }
   
-
   .scene-switcher .button.self-collected::after {
     content: "We use standard ISO 7046 to denote the models of the screw, which looks like “m4*10”";
     position: absolute;
@@ -826,7 +928,6 @@
     z-index: 10;
   }
   
-
   .scene-switcher .button.self-collected::before {
     content: "";
     position: absolute;
@@ -840,13 +941,11 @@
     z-index: 10;
   }
   
-
   .scene-switcher .button.self-collected:hover::after,
   .scene-switcher .button.self-collected:hover::before {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-
   .scene-container {
     width: 960px;
     margin: 0 auto;
@@ -933,32 +1032,31 @@
     transform: translateX(-50%) translateY(0);
   }
   .scene-row .scene-gallery .scene-switcher .button {
-    font-size: 13px;  
-    line-height: 1.2;
-
+    font-size: 13px;   
+    line-height: 1.2;  
     padding-top: 10px;
     padding-bottom: 10px;
   }
 
   .scene-row {
-    width: 1200px;             
+    width: 1200px;        
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    gap: 24px;             
+    gap: 24px;            
     align-items: flex-start;
     justify-content: center;
   }
 
   .scene-row .scene-container {
     margin: 0;           
-    flex: 1 1 0;               
-    width: auto;          
+    flex: 1 1 0;            
+    width: auto;         
   }
   .scene-row .scene-switcher { width: 100%; }
   .scene-row .scene-frame {
     width: 100%;             
-    height: 420px;         
+    height: 420px;      
   }
   
   @media (max-width: 1100px) {
@@ -973,16 +1071,20 @@
 </style>
 
   
-<section class="section">
+<section class="section" style="margin-bottom: -1rem;"> 
   <div class="is-centered has-text-centered">
-
-
     <div class="scene-row">
-
-
       <div class="scene-container scene-gallery">
         <div class="avqa-title">Scenes Data Preview</div>
-
+        <div class="table-note">
+          <img 
+            src="./static/images/click.png" 
+            alt="click logo" 
+            class="scene-logo" 
+            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
+          >
+          Click the <strong>scene name</strong> to switch the scene preview.<br>
+        </div>
         <div class="scene-switcher">
           <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
           <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
@@ -998,10 +1100,17 @@
         </div>
       </div>
 
-
       <div class="scene-container scene-gallery">
         <div class="avqa-title">Word Cloud</div>
-
+        <div class="table-note">
+          <img 
+            src="./static/images/click.png" 
+            alt="click logo" 
+            class="scene-logo" 
+            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
+          >
+          Click the <strong>scene name</strong> to switch the word cloud.<br>
+        </div>
         <div class="scene-switcher">
           <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
           <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
@@ -1012,11 +1121,11 @@
         </div>
 
         <div class="scene-frame">
-          <img data-role="scene" src="" alt="Scene B" loading="eager" decoding="async">
+          <img data-role="scene" src="" alt="Scene B" loading="eager" fetchpriority="high" decoding="async">
         </div>
       </div>
 
-    </div><!-- /scene-row -->
+    </div>
 
   </div>
 </section>
@@ -1031,7 +1140,6 @@
     function setActive(btn, opts={}) {
       const src = btn.dataset.src;
       if (!src) return;
-
 
       btns.forEach(b => b.classList.toggle('is-active', b === btn));
 
@@ -1051,13 +1159,12 @@
         img.alt = btn.textContent.trim() || img.alt;
       }
 
-
       img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
     }
 
     btns.forEach((b, idx) => {
       b.addEventListener('click', () => setActive(b));
-      b.addEventListener('mouseenter', () => { 
+      b.addEventListener('mouseenter', () => {
         const s = b.dataset.src; if (s) { const i = new Image(); i.src = s; }
       });
       b.addEventListener('keydown', (e) => {
@@ -1085,9 +1192,49 @@
 </script>
 
 
+<div style="max-width: 800px; margin: 0 auto; margin-bottom: 0.05rem;">
+  <h2 class="title" style="font-weight: bold; font-size: 1.8rem; margin-bottom: 8px;">Disclaimer</h2>
+  <p style="text-align: left; line-height: 1.6;">
+    A preview subset of our dataset, <a href="https://huggingface.co/datasets/SpaceVista/Data-Preview" target="_blank">SpaceVista-1M</a>, has been released; 
+    <a href="https://github.com/PeiwenSun2000/SpaceVista" target="_blank">GitHub homepage</a> has also been made available. We will continue to update and launch the full version in subsequent phases.
+  </p>
+</div>
+
+<section class="section" id="BibTeX" style="margin-top: -1rem; margin-top: 0.05rem;">
+  <div class="container is-max-desktop content" style="max-width: 800px;">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section>
+
+
   
-
-
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/PeiwenSun2000/SpaceVista" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="margin-left: 50px;">
+          <p>
+            This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
