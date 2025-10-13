@@ -56,18 +56,20 @@
       text-align: center;        
     }
     .avqa-title2 {
-               font-family: 'Montserrat', 'Arial', sans-serif;
-          font-weight: 900;     
-          font-size: 2.0rem;
-          letter-spacing: -0.5px;
-          color: #222222;
-          margin-bottom: 18px;
-          display: inline-flex;     
-          align-items: center;      
-          justify-content: center;    
-          gap: 10px;                 
-          text-align: center;         
-          margin-left: 150px;
+        font-family: 'Montserrat', 'Arial', sans-serif;
+        font-weight: 900;     
+        font-size: 2.0rem;
+        letter-spacing: -0.5px;
+        color: #222222;
+        margin-bottom: 18px;
+        display: inline-flex;     
+        align-items: center;      
+        justify-content: center;    
+        gap: 10px;                 
+        text-align: center;         
+        margin-left: 60px;
+        white-space: nowrap;
+        width: auto;
     }
     .title-logo {
       width: 50px;  
@@ -175,6 +177,7 @@
     });
   });
 </script>
+  
 
 <section class="hero">
   <div class="hero-body">
@@ -191,53 +194,59 @@
                 <span class="unit-mmkm">km</span>
               </span>
             </span>
+            </span>
           </h1>
-        </div>
-      </div>
+          
 
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <div class="publication-links">
-            <!-- PDF Link -->
-            <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
-                <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                <span>Paper</span>
-              </a>
-            </span>
-
-            <!-- arXiv Link -->
-            <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
-                <span class="icon"><i class="ai ai-arxiv"></i></span>
-                <span>arXiv</span>
-              </a>
-            </span>
-
-            <!-- Code Link -->
-            <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
-                <span class="icon"><i class="fab fa-github"></i></span>
-                <span>Code</span>
-              </a>
-            </span>
-
-            <!-- Dataset Link -->
-            <span class="link-block">
-              <a href="#" class="external-link button is-normal is-rounded is-dark">
-                <span class="icon"><i class="fas fa-images"></i></span>
-                <span>Data</span>
-              </a>
-            </span>
+          <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                    </a>
+              </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-
+  
 
   
 <section class="section">
@@ -278,7 +287,7 @@
       <div class="column is-four-fifths">
         <h2 class="avqa-title2">
           <img src="./static/images/question-logo.png" alt="logo" class="title-logo">
-          All-Scale Spatial Reasoning
+          What is All-Scale Spatial Reasoning?
         </h2>
 
         <div class="spacevista-card">
@@ -401,7 +410,7 @@
           <figure class="custom-image2">
             <img src="./static/images/data_construction_v2.jpg" alt="pipeline">
           </figure>
-          The limited data and performance constraints in existing models necessitate the creation of a dataset with all-scale spatial context. We propose <strong>SpaceVista-1M</strong>strong>, a diverse, real-world, all-scale reasoning dataset, as the <strong>first</strong>strong> to the best of our knowledge. SpaceVista-1M primarily comprises diverse spatial reasoning question–answer pairs, with rich semantic (category, rationale), 2D (mask, box, point), and 3D (depth, camera parameters, point cloud) annotations, obtained either natively or through processing. The construction pipeline in the above figure follows the step-by-step procedure of preparing, transforming, and generating to obtain an all-scale dataset by integrating specialized models.
+          The limited data and performance constraints in existing models necessitate the creation of a dataset with all-scale spatial context. We propose <strong>SpaceVista-1M</strong>, a diverse, real-world, all-scale reasoning dataset, as the <strong>first</strong> to the best of our knowledge. SpaceVista-1M primarily comprises diverse spatial reasoning question–answer pairs, with rich semantic (category, rationale), 2D (mask, box, point), and 3D (depth, camera parameters, point cloud) annotations, obtained either natively or through processing. The construction pipeline in the above figure follows the step-by-step procedure of preparing, transforming, and generating to obtain an all-scale dataset by integrating specialized models.
         </div>
         <figure class="image">
           <img src="./static/images/data_graph_v2.jpg" alt="data_graph" style="width:600px; height:600px; object-fit:contain; display:block; margin:15px auto 20px auto;" loading="lazy" decoding="async">
@@ -416,7 +425,6 @@
             padding: 20px 40px;
             background-color: #f7f7f7;
             border-radius: 8px;
-          
             width: 150%;             
             margin-left: -25%;      
             box-sizing: border-box;
@@ -426,7 +434,6 @@
             flex: 1;
             min-width: 250px;
           }
-
 
           .three-columns h3 {
             font-family: "Georgia", "Times New Roman", serif; 
@@ -509,7 +516,96 @@
   </div>
 </section>  
 
+  
+<div class="fancy-line"></div>  
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="avqa-title2">
+          <img src="./static/images/training.png" alt="logo" class="title-logo">
+          Why not simply train with all-scale data?
+        </h2>
+
+        <div class="spacevista-card2 vertical">
+          <img src="./static/images/pipeline-left.jpg"
+           alt="data_graph"
+           class="spacevista-image2"
+           loading="lazy" decoding="async">
+
+          <div class="spacevista-card__content2 content">
+            <p>
+              Mixing different types of knowledge without distinction <strong>hinders</strong>, rather than facilitates, the model's reasoning, 
+              as shown in the Figure above — a problem known as <strong>knowledge conflict</strong>. 
+              In all-scale reasoning, this conflict appears when similar visual patterns are interpreted differently at different scales.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.spacevista-card2.vertical {
+  width: 130%;
+  max-width: 1450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 22px;
+  padding: 56px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  gap: 36px;
+  position: relative;
+  left: -100px;
+}
+
+.spacevista-image2 {
+  width: 105%;
+  max-width: 1300px;
+  height: auto;
+  border-radius: 18px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+  position: relative;
+  left: -15px;
+}
+
+.spacevista-card__content2 {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .spacevista-card2.vertical {
+    width: 100%;
+    max-width: 100%;
+    padding: 28px;
+    left: 0; 
+  }
+  .spacevista-image2 {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+  }
+}
+</style>
+
+
+
+
+
+
+  
 <div class="fancy-line"></div>  
 
   
@@ -523,7 +619,7 @@
         </h2>
         <div class="content has-text-justified">
           <figure class="custom-image">
-            <img src="./static/images/pipeline_v4.jpg" alt="pipeline">
+            <img src="./static/images/pipeline-right.jpg" alt="pipeline">
           </figure>
           <strong>SpaceVista-7B</strong> ingests a question with videos and self-supervised dense features, encodes them, projects features to a shared space, and fuses them in an 
           LLM through learnable interaction. A LoRA-like scale expert with a scale-aware router adapts the model to different spatial scales. 
@@ -639,10 +735,12 @@
 <div id="mv-lb">
   <div class="mv-head">
     <h2 class="avqa-title">
+      <img src="./static/images/leaderboard-logo.png" alt="logo" class="title-logo">
       Leaderboard on SpaceVista-Bench
     </h2>
   </div>
   <div class="table-note">
+    <img src="./static/images/click.png" alt="Logo" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; display: inline-block;">
     Click the table header to sort in ascending or descending order.<br>
     <span class="top-model"><a class="mv-top"><strong>Models highlighted in bold red</strong></a></span> indicate the top three overall performers on SpaceVista-Bench.
   </div>
@@ -958,6 +1056,12 @@
       <div class="scene-container scene-gallery">
         <div class="avqa-title">Scenes Data Preview</div>
         <div class="table-note">
+          <img 
+            src="./static/images/click.png" 
+            alt="click logo" 
+            class="scene-logo" 
+            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
+          >
           Click the <strong>scene name</strong> to switch the scene preview.<br>
         </div>
         <div class="scene-switcher">
@@ -978,6 +1082,12 @@
       <div class="scene-container scene-gallery">
         <div class="avqa-title">Word Cloud</div>
         <div class="table-note">
+          <img 
+            src="./static/images/click.png" 
+            alt="click logo" 
+            class="scene-logo" 
+            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
+          >
           Click the <strong>scene name</strong> to switch the word cloud.<br>
         </div>
         <div class="scene-switcher">
@@ -1061,6 +1171,13 @@
 </script>
 
 
+<div style="max-width: 800px; margin: 0 auto; margin-bottom: 0.05rem;">
+  <h2 class="title" style="font-weight: bold; font-size: 1.8rem; margin-bottom: 8px;">Disclaimer</h2>
+  <p style="text-align: left; line-height: 1.6;">
+    A preview subset of our dataset, <a href="" target="_blank">SpaceVista-1M</a>, has been released; 
+    <a href="" target="_blank">GitHub homepage</a> has also been made available. We will continue to update and launch the full version in subsequent phases.
+  </p>
+</div>
 
 
 
