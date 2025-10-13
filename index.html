@@ -199,52 +199,119 @@
           
 
           <div class="column has-text-centered">
-              <div class="publication-links">
-                <!-- PDF Link. -->
-                <span class="link-block">
-                  <a href=""
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href=""
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a href=""
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                    </a>
-                </span>
-                <!-- Dataset Link. -->
-                <span class="link-block">
-                  <a href=""
-                     class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                        <i class="fas fa-images"></i>
-                    </span>
-                    <span>Data</span>
-                    </a>
-              </div>
+            <div class="publication-links">
+              <!-- PDF Link -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark tooltip-trigger">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              
+              <!-- arXiv Link -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark tooltip-trigger">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              
+              <!-- Code Link -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark tooltip-trigger">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              
+              <!-- Dataset Link -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark tooltip-trigger">
+                  <span class="icon">
+                    <i class="fas fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+            </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+<style>
+  .link-block {
+    position: relative;
+    margin: 0 5px;
+    display: inline-block;
+  }
+  
+  .tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    padding: 4px 8px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip.show {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.tooltip-trigger');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault(); 
+        const oldTooltip = document.querySelector('.tooltip');
+        if (oldTooltip) {
+          oldTooltip.remove();
+        }
+
+        const tooltip = document.createElement('div');
+        tooltip.className = 'tooltip';
+        tooltip.textContent = 'Owing to the double-blind mechanism, this section is temporarily not displayed.';
+
+        this.parentNode.appendChild(tooltip);
+
+        setTimeout(() => {
+          tooltip.classList.add('show');
+        }, 10);
+      });
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.link-block')) {
+        const tooltip = document.querySelector('.tooltip');
+        if (tooltip) {
+          tooltip.remove();
+        }
+      }
+    });
+  });
+</script>
 
   
 
