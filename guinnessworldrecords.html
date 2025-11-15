@@ -451,4 +451,152 @@
               class="button is-active"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
               data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
-              data-answer="One single object visually overwhelms the room and makes the furniture look u
+              data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
+            >
+              Indoor Giant
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
+              data-question="Imagine you are annotating this scene. In a short phrase, summarize why this outdoor structure is record-breaking."
+              data-answer="Its dimensions stretch far beyond typical constructions in the same setting."
+            >
+              Outdoor Record
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D4_DL3DV_drone_data.jpg"
+              data-question="From the aerial view, what does the relative scale between the object and its surroundings suggest?"
+              data-answer="The object dwarfs nearby elements, signalling an extreme deviation from normal scale."
+            >
+              Aerial View
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D1_vsi_data.jpg"
+              data-question="Compared with nearby structures, how would you briefly describe this object's scale?"
+              data-answer="It stands out as significantly taller and more massive than everything around it."
+            >
+              Tall Landmark
+            </button>
+          </div>
+
+          <div class="scene-content">
+            <div class="scene-frame">
+              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+
+            <div class="qa-card">
+              <div class="qa-question-block">
+                <div class="qa-label">Question</div>
+                <div class="qa-text" data-role="qa-question"></div>
+              </div>
+
+              <div class="qa-toggle-row">
+                <button type="button" class="qa-toggle-btn">Show answer</button>
+              </div>
+
+              <div class="qa-answer-block" data-role="qa-answer-block">
+                <div class="qa-label">Answer</div>
+                <div class="qa-text" data-role="qa-answer"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function setupGallery(root) {
+        const img = root.querySelector('img[data-role="scene"]');
+        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+        const qEl = root.querySelector('[data-role="qa-question"]');
+        const aEl = root.querySelector('[data-role="qa-answer"]');
+        const toggleBtn = root.querySelector('.qa-toggle-btn');
+        const answerBlock = root.querySelector('[data-role="qa-answer-block"]');
+
+        if (!img || !btns.length || !qEl || !aEl || !toggleBtn || !answerBlock) return;
+
+        function setActive(btn, opts = {}) {
+          const src = btn.dataset.src;
+          if (!src) return;
+
+          btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+          if (img.getAttribute('src') !== src) {
+            img.style.opacity = 0;
+            const pre = new Image();
+            pre.onload = () => {
+              img.src = src;
+              img.alt = btn.textContent.trim() || img.alt;
+              (img.decode ? img.decode() : Promise.resolve())
+                .catch(() => {})
+                .finally(() => {
+                  img.style.transition = 'opacity .2s ease';
+                  img.style.opacity = 1;
+                });
+            };
+            pre.src = src;
+          } else {
+            img.alt = btn.textContent.trim() || img.alt;
+          }
+
+          qEl.textContent = btn.dataset.question || '';
+          aEl.textContent = btn.dataset.answer || '';
+
+          answerBlock.style.display = 'none';
+          toggleBtn.textContent = 'Show answer';
+
+          img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
+        }
+
+        btns.forEach((b, idx) => {
+          b.addEventListener('click', () => setActive(b));
+          b.addEventListener('mouseenter', () => {
+            const s = b.dataset.src;
+            if (s) {
+              const i = new Image();
+              i.src = s;
+            }
+          });
+          b.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setActive(b);
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+              e.preventDefault();
+              const next = e.key === 'ArrowLeft'
+                ? (idx - 1 + btns.length) % btns.length
+                : (idx + 1) % btns.length;
+              btns[next].focus();
+            }
+          });
+        });
+
+        toggleBtn.addEventListener('click', () => {
+          const visible = answerBlock.style.display === 'block';
+          answerBlock.style.display = visible ? 'none' : 'block';
+          toggleBtn.textContent = visible ? 'Show answer' : 'Hide answer';
+        });
+
+        const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
+        if (initBtn) setActive(initBtn, { initial: true });
+      }
+
+      document.querySelectorAll('.scene-gallery').forEach(setupGallery);
+    })();
+  </script>
+</body>
+</html>
