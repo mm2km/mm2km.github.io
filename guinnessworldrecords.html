@@ -179,7 +179,31 @@
 </script>
   
 
-
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
+            <span class="spacevista-title">SpaceVista</span><br>
+            <span class="normal-title-wrapper">
+              <span class="normal-title">
+                All-Scale Visual Spatial Reasoning from 
+                <span class="unit-mmkm">mm</span> to 
+                <span class="unit-mmkm">km</span>
+              </span>
+            </span>
+            </span>
+          </h1>  
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <style>
@@ -248,8 +272,66 @@
 
   
 
-  
 
+<style>
+  .table-note {
+    text-align: center; 
+    margin: 0 auto 25px;       
+    max-width: 800px;     
+  }  
+</style>
+  
+<div id="mv-lb">
+  <div class="mv-head">
+    <h2 class="avqa-title">
+      <img src="./static/images/leaderboard-logo.png" alt="logo" class="title-logo">
+      Leaderboard on SpaceVista-Bench
+    </h2>
+  </div>
+  <div class="table-note">
+    <img src="./static/images/click.png" alt="Logo" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; display: inline-block;">
+    Click the table header to sort in ascending or descending order.<br>
+    <span class="top-model"><a class="mv-top"><strong>Models highlighted in bold red</strong></a></span> indicate the top three overall performers on SpaceVista-Bench.
+  </div>
+  <div class="mv-table-wrap">
+    <table id="mv-lb-table" class="mv-table" aria-label="Leaderboard on SpaceVista (test)">
+      <thead>
+        <tr>
+          <th class="center w-idx" data-type="number" aria-sort="none"># <span class="mv-ind"></span></th>
+          <th class="w-model" data-type="string" aria-sort="none">Model <span class="mv-ind"></span></th>
+          <th data-type="string" aria-sort="none">Source <span class="mv-ind"></span></th>
+          <th data-type="date" aria-sort="none">Date <span class="mv-ind"></span></th>
+          <th class="num col-all" data-type="number" aria-sort="none">Overall <span class="mv-ind"></span></th>
+          <th class="num" data-type="number" aria-sort="none">Tiny Tabletop <span class="mv-ind"></span></th>
+          <th class="num" data-type="number" aria-sort="none">Tabletop <span class="mv-ind"></span></th>
+          <th class="num" data-type="number" aria-sort="none">Indoor <span class="mv-ind"></span></th>
+          <th class="num" data-type="number" aria-sort="none">Outdoor <span class="mv-ind"></span></th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr> <td class="center">3</td> <td><a class="mv-top"><strong>GPT-5</strong> 🥉</a></td> <td><a href="https://openai.com/gpt-5/">Link</a></td> <td>2025-08</td> <td class="num col-all">33.7</td><td class="num">32.2</td><td class="num">20.3</td><td class="num">39.0</td><td class="num">43.0</td></tr> 
+       <tr> <td class="center">8</td> <td>GPT-4o </a></td> <td><a href="https://gpt4o.ai/">Link</a></td> <td>2024-05</td> <td class="num col-all">26.9</td><td class="num">21.7</td><td class="num">13.3</td><td class="num">34.3</td><td class="num">38.3</td></tr> 
+        <tr> <td class="center">2</td> <td><a class="mv-top"><strong>Gemini-2.5-Pro</strong> 🥈</a></td> <td><a href="https://deepmind.google/technologies/gemini/pro/">Link</a></td> <td>2025-06</td> <td class="num col-all">33.8</td><td class="num">33.0</td><td class="num">38.7</td><td class="num">34.5</td><td class="num">29.0</td></tr> 
+        <tr> <td class="center">11</td> <td>Gemini-2.5-Flash</td> <td><a href="https://deepmind.google/models/gemini/flash/">Link</a></td> <td>2025-06</td> <td class="num col-all">24.4</td><td class="num">20.7</td><td class="num">30.0</td><td class="num">19.9</td><td class="num">26.9</td></tr> 
+        <tr> <td class="center">6</td> <td>Claude-Sonnet-4</td> <td><a href="https://www.anthropic.com/claude/sonnet">Link</a></td> <td>2025-05</td> <td class="num col-all">29.7</td><td class="num">27.3</td><td class="num">19.3</td><td class="num">38.1</td><td class="num">34.1</td></tr> 
+        <tr> <td class="center">10</td> <td>Claude-Opus-4.1</td> <td><a href="https://www.anthropic.com/news/claude-opus-4-1">Link</a></td> <td>2025-08</td> <td class="num col-all">26.4</td><td class="num">21.7</td><td class="num">29.5</td><td class="num">24.3</td><td class="num">30.0</td></tr> 
+        <tr> <td class="center">5</td> <td>Internvl3.5-38B</td> <td><a href="https://huggingface.co/OpenGVLab/InternVL3_5-38B-Instruct">Link</a></td> <td>2025-08</td> <td class="num col-all">30.7</td><td class="num">29.3</td><td class="num">25.2</td><td class="num">41.2</td><td class="num">27.0</td></tr> 
+        <tr> <td class="center">10</td> <td>Internvl3.5-14B</td> <td><a href="https://huggingface.co/OpenGVLab/InternVL3_5-14B-Instruct">Link</a></td> <td>2025-08</td> <td class="num col-all">26.4</td><td class="num">27.7</td><td class="num">22.3</td><td class="num">31.3</td><td class="num">24.3</td></tr> 
+        <tr> <td class="center">4</td> <td>Internvl3-78B</td> <td><a href="https://huggingface.co/OpenGVLab/InternVL3-78B">Link</a></td> <td>2025-04</td> <td class="num col-all">33.5</td><td class="num">38.3</td><td class="num">23.3</td><td class="num">42.2</td><td class="num">30.3</td></tr> 
+        <tr> <td class="center">9</td> <td>Internvl3-38B</td> <td><a href="https://huggingface.co/OpenGVLab/InternVL3-38B">Link</a></td> <td>2025-04</td> <td class="num col-all">26.5</td><td class="num">18.7</td><td class="num">14.3</td><td class="num">34.8</td><td class="num">38.0</td></tr> 
+        <tr> <td class="center">13</td> <td>GLM-4.5V</td> <td><a href="https://www.glm45.com/glm45v">Link</a></td> <td>2025-08</td> <td class="num col-all">23.3</td><td class="num">23.0</td><td class="num">17.8</td><td class="num">27.3</td><td class="num">25.2</td></tr>
+        <tr> <td class="center">14</td> <td>GLM-4.1V-Thinking</td> <td><a href="https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking">Link</a></td> <td>2025-07</td> <td class="num col-all">23.1</td><td class="num">30.7</td><td class="num">19.3</td><td class="num">29.0</td><td class="num">13.3</td></tr>
+        <tr> <td class="center">10</td> <td>Qwen2.5VL-72B</td> <td><a href="https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct">Link</a></td> <td>2025-01</td> <td class="num col-all">26.4</td><td class="num">27.7</td><td class="num">20.3</td><td class="num">29.6</td><td class="num">28.0</td></tr>
+        <tr> <td class="center">7</td> <td>Qwen2.5VL-32B</td> <td><a href="https://huggingface.co/Qwen/Qwen2.5-VL-32B-Instruct">Link</a></td> <td>2025-01</td> <td class="num col-all">28.4</td><td class="num">25.3</td><td class="num">19.3</td><td class="num">38.1</td><td class="num">30.7</td></tr>
+        <tr> <td class="center">16</td> <td>LLAVA-Onevision-72B</td> <td><a href="https://huggingface.co/llava-hf/llava-onevision-qwen2-72b-ov-hf">Link</a></td> <td>2024-08</td> <td class="num col-all">16.0</td><td class="num">25.0</td><td class="num">12.0</td><td class="num">15.3</td><td class="num">11.7</td></tr>
+        <tr> <td class="center">17</td> <td>LLAVA-Onevision-7B</td> <td><a href="https://huggingface.co/lmms-lab/llava-onevision-qwen2-7b-ov">Link</a></td> <td>2024-08</td> <td class="num col-all">12.6</td><td class="num">17.5</td><td class="num">8.0</td><td class="num">13.3</td><td class="num">11.6</td></tr>
+        <tr> <td class="center">15</td> <td>SpaceR</td> <td><a href="https://github.com/OuyangKun10/SpaceR">Link</a></td> <td>2025-04</td> <td class="num col-all">21.2</td><td class="num">12.9</td><td class="num">17.3</td><td class="num">34.9</td><td class="num">19.8</td></tr>
+        <tr> <td class="center">12</td> <td>Spatial-MLLM</td> <td><a href="https://github.com/diankun-wu/Spatial-MLLM?tab=readme-ov-file">Link</a></td> <td>2025-05</td> <td class="num col-all">24.2</td><td class="num">17.3</td><td class="num">20.3</td><td class="num">36.1</td><td class="num">23.1</td></tr>
+        <tr> <td class="center">1</td> <td><a class="mv-top"><strong>SpaceVista-7B</strong> 🥇</td> <td><a href="">Link</a></td> <td>2025-09</td> <td class="num col-all">36.7</td><td class="num">33.4</td><td class="num">37.1</td><td class="num">42.2</td><td class="num">34.1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <style>
   .mv-top {
