@@ -2,39 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Scenes Data Preview">
+  <meta name="description" content="SpaceVista: All-Scale Visual Spatial Reasoning from mm to km.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scenes Data Preview</title>
+  <title>SpaceVista – Scenes Data Preview</title>
 
   <!-- Bulma for basic layout & button styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <!-- Font for the section title -->
+  <!-- Font for titles -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
-
-
-  <section class="hero"> 
-    <div class="hero-body"> 
-      <div class="container is-max-desktop"> 
-        <div class="columns is-centered"> 
-          <div class="column has-text-centered"> 
-            <h1 class="title is-1 publication-title"> 
-              <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg"> 
-              <span class="spacevista-title">SpaceVista</span><br> 
-              <span class="normal-title-wrapper"> <span class="normal-title"> All-Scale Visual Spatial Reasoning from 
-              <span class="unit-mmkm">mm</span> to <span class="unit-mmkm">km</span> </span> </span> </span> </h1> 
-          </div> 
-        </div> 
-      </div> 
-    </div> 
-  </div> 
-  </div> 
-  </div>
-  </section>
-
-  
   <style>
-    /* Section title */
+    /* 顶部主标题相关样式 */
+    .publication-title {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .spacevista-title {
+      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      font-size: 1.2em;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 1px;
+      font-optical-sizing: auto;
+    }
+
+    .logo-svg {
+      height: 72px;
+      width: auto;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    .normal-title-wrapper {
+      display: inline-block;
+      width: 600px;
+      position: relative;
+      text-align: center;
+    }
+
+    .normal-title {
+      white-space: nowrap;
+      font-size: 0.7em !important;
+    }
+
+    .unit-mmkm {
+      font-weight: bold;
+      font-family: 'STIX Two Text', 'Latin Modern Roman', 'Cambria Math', 'Libertinus Serif', serif;
+      font-size: 1.0em;
+    }
+
+    /* 中间那条渐变横线 */
+    .fancy-line {
+      width: 1000px;
+      max-width: 90%;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        #1a202c 50%,
+        transparent
+      );
+      margin: 20px auto;
+      border-radius: 1px;
+    }
+
+    /* Scenes Data Preview 标题 */
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
       font-weight: 900;
@@ -49,14 +85,14 @@
       text-align: center;
     }
 
-    /* Small note text under the title */
+    /* 小说明文字 */
     .table-note {
       text-align: center;
       margin: 0 auto 25px;
       max-width: 800px;
     }
 
-    /* Tooltip style for Self-Collected button */
+    /* Self-Collected 按钮的说明气泡 */
     .scene-switcher .button.self-collected {
       position: relative;
     }
@@ -98,7 +134,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Layout for the scene preview block */
+    /* 场景预览整体布局 */
     .scene-container {
       width: 960px;
       margin: 0 auto;
@@ -158,7 +194,7 @@
       object-fit: contain;
     }
 
-    /* Helper tooltip on inactive buttons: "Click to switch scenes" */
+    /* 非激活按钮的小提示 “Click to switch scenes” */
     .scene-switcher .button:not(.is-active)::after {
       content: "Click to switch scenes";
       position: absolute;
@@ -197,7 +233,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Center the block horizontally on the page */
+    /* 整块居中 */
     .scene-row {
       width: 1200px;
       max-width: 100%;
@@ -235,6 +271,34 @@
 </head>
 
 <body>
+
+  <!-- 顶部标题区域 -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
+              <span class="spacevista-title">SpaceVista</span><br>
+              <span class="normal-title-wrapper">
+                <span class="normal-title">
+                  All-Scale Visual Spatial Reasoning from
+                  <span class="unit-mmkm">mm</span> to
+                  <span class="unit-mmkm">km</span>
+                </span>
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 中间的渐变横线 -->
+  <div class="fancy-line"></div>
+
+  <!-- Scenes Data Preview 部分 -->
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
       <div class="scene-row">
@@ -279,10 +343,10 @@
           const src = btn.dataset.src;
           if (!src) return;
 
-          // button active state
+          // 激活按钮状态
           btns.forEach(b => b.classList.toggle('is-active', b === btn));
 
-          // image switching with simple fade
+          // 切换图片并加一点淡入效果
           if (img.getAttribute('src') !== src) {
             img.style.opacity = 0;
             const pre = new Image();
@@ -335,7 +399,7 @@
       document.querySelectorAll('.scene-gallery').forEach(setupGallery);
     })();
 
-    // Add the tooltip class to the "Self-Collected" button
+    // 给 Self-Collected 按钮加上说明 tooltip
     document.querySelectorAll('.scene-switcher .button').forEach(btn => {
       if (btn.textContent.trim() === "Self-Collected") {
         btn.classList.add('self-collected');
