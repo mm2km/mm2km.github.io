@@ -2,670 +2,323 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="All-Scale Visual Spatial Reasoning from mm to km.">
-  <meta name="keywords" content="SpaceVista">
+  <meta name="description" content="Scenes Data Preview">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SpaceVista: All-Scale Visual Spatial Reasoning from mm to km</title>
+  <title>Scenes Data Preview</title>
 
-  <!-- Fonts (with swap to avoid FOIT) -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
-  
-  <!-- Core CSS (keep minimal, remove duplicates) -->
+  <!-- Bulma for basic layout & button styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="icon" href="./static/images/logo_v2.svg">
-  <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <!-- Font for the section title -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Source+Code+Pro:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer" 
-  >
 
-  <!-- Additional CSS for custom styling -->
   <style>
-    .fancy-line {
-      width: 1000px;        
-      height: 1px;        
-      background: linear-gradient(to right, 
-                                  transparent,  
-                                  #1a202c 50%,   
-                                  transparent); 
-      margin: 20px auto; 
-      border-radius: 1px;    
-    }
+    /* Section title */
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
-      font-weight: 900;      
+      font-weight: 900;
       font-size: 2.0rem;
       letter-spacing: -0.5px;
       color: #222222;
       margin-bottom: 18px;
-      display: inline-flex;      
-      align-items: center;   
-      justify-content: center;   
-      gap: 10px;                  
-      text-align: center;        
-    }
-    .avqa-title2 {
-        font-family: 'Montserrat', 'Arial', sans-serif;
-        font-weight: 900;     
-        font-size: 2.0rem;
-        letter-spacing: -0.5px;
-        color: #222222;
-        margin-bottom: 18px;
-        display: inline-flex;     
-        align-items: center;      
-        justify-content: center;    
-        gap: 10px;                 
-        text-align: center;         
-        margin-left: 60px;
-        white-space: nowrap;
-        width: auto;
-    }
-    .title-logo {
-      width: 50px;  
-      height: 50px;
-    }
-    .publication-title {
-      max-width: 1000px;
-      width: 100%;
-      margin: 0 auto;       
-      margin-left: 200px;   
-      text-align: justify;
-    }
-    .content.has-text-justified {
-      max-width: 1200px;
-      width: 120%;
-      margin: 0 auto;      
-      position: relative;
-      left: -75px;          
-      text-align: justify;
-    }
-    .publication-title .logo-svg {
-      margin-right: 4pt;      
-      height: 1.5em;           
-    }
-   .spacevista-title {
-      font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
-      font-weight: 600;
-      font-size: 1.2em;
       display: inline-flex;
       align-items: center;
-      margin-left: 1px;
-      font-optical-sizing: auto; 
-    }
-      
-    .logo-svg {
-        height: 72px;  
-        width: auto;  
-        margin-right: 5px;  
-        vertical-align: middle; 
-    }
-          
-    .normal-title-wrapper {
-      display: inline-block;       
-      width: 600px;              
-      position: relative;       
-      left: -80px;           
-      text-align: center;         
-    }
-    .normal-title {
-      white-space: nowrap;       
-      font-size: 0.7em !important;
-    }
-    .unit-mmkm {
-      font-weight: bold;
-      font-family: 'STIX Two Text', 'Latin Modern Roman', 'Cambria Math', 'Libertinus Serif', serif;
-      font-size: 1.0em;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
     }
 
-    
-    .email-symbol {
+    /* Small note text under the title */
+    .table-note {
+      text-align: center;
+      margin: 0 auto 25px;
+      max-width: 800px;
+    }
+
+    /* Tooltip style for Self-Collected button */
+    .scene-switcher .button.self-collected {
+      position: relative;
+    }
+
+    .scene-switcher .button.self-collected::after {
+      content: "We use standard ISO 7046 to denote the models of the screw, which looks like “m4*10”";
       position: absolute;
-      top: -5px;
-      right: -30px;
-      font-size: 14px;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #363636;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 10;
     }
 
+    .scene-switcher .button.self-collected::before {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #363636;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 10;
+    }
+
+    .scene-switcher .button.self-collected:hover::after,
+    .scene-switcher .button.self-collected:hover::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Layout for the scene preview block */
+    .scene-container {
+      width: 960px;
+      margin: 0 auto;
+    }
+
+    .scene-switcher {
+      display: flex;
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      overflow: visible;
+      background: #f0f0f0;
+    }
+
+    .scene-switcher .button {
+      position: relative;
+      flex: 1;
+      font-weight: 600;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 12px 0;
+      font-size: 15px;
+      color: #555;
+      background: #f0f0f0;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .scene-switcher .button:hover {
+      background: #e0e0e0;
+      color: #000;
+    }
+
+    .scene-switcher .button.is-active {
+      background: #363636;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .scene-frame {
+      width: 960px;
+      height: 680px;
+      border: 1.5px solid #bbb;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      background: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .scene-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Helper tooltip on inactive buttons: "Click to switch scenes" */
+    .scene-switcher .button:not(.is-active)::after {
+      content: "Click to switch scenes";
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 10px);
+      transform: translateX(-50%) translateY(4px);
+      background: #363636;
+      color: #fff;
+      font-size: 8px;
+      line-height: 1;
+      padding: 6px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 2;
+    }
+
+    .scene-switcher .button:not(.is-active)::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #363636;
+      opacity: 0;
+      transition: opacity .18s ease;
+      z-index: 2;
+    }
+
+    .scene-switcher .button:not(.is-active):hover::after,
+    .scene-switcher .button:not(.is-active):hover::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Center the block horizontally on the page */
+    .scene-row {
+      width: 1200px;
+      max-width: 100%;
+      margin: 0 auto;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .scene-row .scene-container {
+      margin: 0;
+      flex: 1 1 0;
+      width: auto;
+    }
+
+    .scene-row .scene-switcher {
+      width: 100%;
+    }
+
+    .scene-row .scene-frame {
+      width: 100%;
+      height: 420px;
+    }
+
+    @media (max-width: 1100px) {
+      .scene-row {
+        flex-direction: column;
+      }
+      .scene-row .scene-frame {
+        height: 480px;
+      }
+    }
   </style>
 </head>
+
 <body>
-
-<button id="backToTop" class="back-to-top">↑</button>
-
-<style>
-  .back-to-top {
-    position: fixed;
-    top: 50%;           
-    right: 20px;         
-    transform: translateY(-50%); 
-    
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-    line-height: 40px;
-    text-align: center;
-    
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 50%;     
-    cursor: pointer;
-    z-index: 999;        
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: background 0.3s;
-  }
-  .back-to-top:hover {
-    background: #0056b3;
-  }
-</style>
-
-<script>
-  document.getElementById("backToTop").addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth" 
-    });
-  });
-</script>
-  
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">
-            <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
-            <span class="spacevista-title">SpaceVista</span><br>
-            <span class="normal-title-wrapper">
-              <span class="normal-title">
-                All-Scale Visual Spatial Reasoning from 
-                <span class="unit-mmkm">mm</span> to 
-                <span class="unit-mmkm">km</span>
-              </span>
-            </span>
-            </span>
-          </h1>  
-            </div>
+  <section class="section" style="margin-bottom: -1rem;">
+    <div class="is-centered has-text-centered">
+      <div class="scene-row">
+        <div class="scene-container scene-gallery">
+          <div class="avqa-title">Scenes Data Preview</div>
+          <div class="table-note">
+            <img
+              src="./static/images/click.png"
+              alt="click logo"
+              class="scene-logo"
+              style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
+            >
+            Click the <strong>scene name</strong> to switch the scene preview.<br>
           </div>
+
+          <div class="scene-switcher">
+            <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
+            <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
+            <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
+            <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
+            <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
+            <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
+            <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+          </div>
+
+          <div class="scene-frame">
+            <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <script>
+    (function () {
+      function setupGallery(root) {
+        const img = root.querySelector('img[data-role="scene"]');
+        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+        if (!img || btns.length === 0) return;
 
-<style>
-  .link-block {
-    position: relative;
-    margin: 0 5px;
-    display: inline-block;
-  }
-  
-  .tooltip {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 5px;
-    padding: 4px 8px;
-    background-color: #333;
-    color: white;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 100;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip.show {
-    opacity: 1;
-  }
-</style>
+        function setActive(btn, opts = {}) {
+          const src = btn.dataset.src;
+          if (!src) return;
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const buttons = document.querySelectorAll('.tooltip-trigger');
-    
-    buttons.forEach(button => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault(); 
-        const oldTooltip = document.querySelector('.tooltip');
-        if (oldTooltip) {
-          oldTooltip.remove();
+          // button active state
+          btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+          // image switching with simple fade
+          if (img.getAttribute('src') !== src) {
+            img.style.opacity = 0;
+            const pre = new Image();
+            pre.onload = () => {
+              img.src = src;
+              img.alt = btn.textContent.trim() || img.alt;
+              (img.decode ? img.decode() : Promise.resolve())
+                .catch(() => { })
+                .finally(() => {
+                  img.style.transition = 'opacity .2s ease';
+                  img.style.opacity = 1;
+                });
+            };
+            pre.src = src;
+          } else {
+            img.alt = btn.textContent.trim() || img.alt;
+          }
+
+          img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
         }
 
-        const tooltip = document.createElement('div');
-        tooltip.className = 'tooltip';
-        tooltip.textContent = 'Owing to the double-blind mechanism, this section is temporarily not displayed.';
-
-        this.parentNode.appendChild(tooltip);
-
-        setTimeout(() => {
-          tooltip.classList.add('show');
-        }, 10);
-      });
-    });
-    
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.link-block')) {
-        const tooltip = document.querySelector('.tooltip');
-        if (tooltip) {
-          tooltip.remove();
-        }
-      }
-    });
-  });
-</script>
-
-
-<style>
-  .table-note {
-    text-align: center; 
-    margin: 0 auto 25px;       
-    max-width: 800px;     
-  }  
-</style>
-
-<style>
-  .mv-top {
-    color: #B22222; /* DarkRed */
-  }
-  #mv-lb {
-    --mv-max: 1200px;      
-    max-width: var(--mv-max);
-    width: 100%;
-    margin: 0 auto;          
-  }
-  #mv-lb{--mv-text:#333;--mv-muted:#666;--mv-head-bg:#e9ecef;--mv-border:#d9d9d9;--mv-row-alt:#fafafa;--mv-accent:#c70000;}
-  #mv-lb .mv-head{ text-align:center; margin:0 0 12px; }  
-  #mv-lb .mv-head h2{ margin:10px 0 6px; font-size:32px; color:var(--mv-text); font-weight:700; }
-  #mv-lb .mv-head p{ margin:0; color:var(--mv-muted); font-size:14px; }
-
-  #mv-lb .mv-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  #mv-lb .mv-table{ width:100%; border-collapse:separate; border-spacing:0; border:1px solid var(--mv-border); }
-  #mv-lb .mv-table thead th{
-    background:var(--mv-head-bg); color:#222; padding:10px 12px;
-    border-bottom:1px solid var(--mv-border); font-weight:700; white-space:nowrap; user-select:none; cursor:pointer;
-  }
-  #mv-lb .mv-table tbody td{ padding:10px 12px; border-bottom:1px solid var(--mv-border); color:var(--mv-text); }
-  #mv-lb .mv-table tbody tr:nth-child(even){ background:var(--mv-row-alt); }
-
-  #mv-lb .w-idx{ width:36px; }
-  #mv-lb .w-model{ min-width:220px; }
-
-  #mv-lb .mv-table th,
-  #mv-lb .mv-table td{
-    text-align:center;    
-    vertical-align:middle;
-  }
-
-  #mv-lb .mv-table .num{ text-align:center; }
-  #mv-lb .center{ text-align:center; }
-</style>
-
-<script>
-(function(){
-  const table = document.getElementById('mv-lb-table');
-  if(!table) return;
-  const tbody = table.tBodies[0];
-  const headers = table.tHead.rows[0].cells;
-
-  [...headers].forEach((th, idx) => {
-    th.tabIndex = 0;
-    const handler = (e) => {
-      if (e.type==='click' || e.key==='Enter' || e.key===' ') { e.preventDefault?.(); sortBy(idx, th); }
-    };
-    th.addEventListener('click', handler);
-    th.addEventListener('keydown', handler);
-  });
-
-  function parseCell(td, type){
-    const t = td.textContent.trim();
-    if (type==='number'){
-      const n = parseFloat(t.replace(/[^\d.+-]/g,''));
-      return Number.isNaN(n) ? -Infinity : n;
-    }
-    if (type==='date'){
-      const d = Date.parse(t);
-      return Number.isNaN(d) ? -Infinity : d;
-    }
-    return t.toLowerCase();
-  }
-
-  function resetIndicators(except){
-    [...headers].forEach(h=>{
-      if(h!==except){
-        h.dataset.direction = '';
-        h.setAttribute('aria-sort','none');
-        const i = h.querySelector('.mv-ind'); if(i) i.textContent = '';
-      }
-    });
-  }
-
-  function sortBy(col, th){
-    const type = th.dataset.type || 'string';
-    const next = (th.dataset.direction==='desc') ? 'asc' : 'desc'; // 先降序
-    th.dataset.direction = next;
-    th.setAttribute('aria-sort', next==='desc' ? 'descending' : 'ascending');
-    resetIndicators(th);
-    const ind = th.querySelector('.mv-ind'); if(ind) ind.textContent = next==='desc' ? '▼' : '▲';
-
-    const rows = Array.from(tbody.rows).map((row, i)=>({ row, key: parseCell(row.cells[col], type), idx:i }));
-    const mul = next==='desc' ? -1 : 1;
-    rows.sort((a,b)=>{
-      if (a.key < b.key) return -1*mul;
-      if (a.key > b.key) return  1*mul;
-      return a.idx - b.idx;
-    });
-    const frag = document.createDocumentFragment();
-    rows.forEach(r=>frag.appendChild(r.row));
-    tbody.appendChild(frag);
-  }
-})();
-</script>
-
-<div class="fancy-line"></div>
-  
-<style>
-  .scene-switcher .button.self-collected {
-    position: relative;
-  }
-  
-  .scene-switcher .button.self-collected::after {
-    content: "We use standard ISO 7046 to denote the models of the screw, which looks like “m4*10”";
-    position: absolute;
-    bottom: calc(100% + 8px); 
-    left: 50%;
-    transform: translateX(-50%);
-    background: #363636;
-    color: #fff;
-    font-size: 12px;
-    padding: 6px 8px;
-    border-radius: 6px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s, transform 0.2s;
-    z-index: 10;
-  }
-  
-  .scene-switcher .button.self-collected::before {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #363636;
-    opacity: 0;
-    transition: opacity 0.2s;
-    z-index: 10;
-  }
-  
-  .scene-switcher .button.self-collected:hover::after,
-  .scene-switcher .button.self-collected:hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  .scene-container {
-    width: 960px;
-    margin: 0 auto;
-  }
-
-  .scene-switcher {
-    display: flex;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    overflow: visible;
-    background: #f0f0f0;
-  }
-
-  .scene-switcher .button {
-    position: relative;
-    flex: 1;
-    font-weight: 600;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    margin: 0;
-    padding: 12px 0;
-    font-size: 15px;
-    color: #555;
-    background: #f0f0f0;
-    transition: all 0.25s ease;
-    cursor: pointer;
-  }
-
-  .scene-switcher .button:hover { background: #e0e0e0; color: #000; }
-  .scene-switcher .button.is-active { background: #363636; color: #fff; font-weight: 700; }
-
-  .scene-frame {
-    width: 960px;
-    height: 680px;
-    border: 1.5px solid #bbb;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    background: #fafafa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .scene-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .scene-switcher .button:not(.is-active)::after {
-    content: "Click to switch scenes";
-    position: absolute;
-    left: 50%;
-    top: calc(100% + 10px);
-    transform: translateX(-50%) translateY(4px);
-    background: #363636;
-    color: #fff;
-    font-size: 8px;
-    line-height: 1;
-    padding: 6px 8px;
-    border-radius: 6px;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity .18s ease, transform .18s ease;
-    z-index: 2;
-  }
-  .scene-switcher .button:not(.is-active)::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #363636;
-    opacity: 0;
-    transition: opacity .18s ease;
-    z-index: 2;
-  }
-  .scene-switcher .button:not(.is-active):hover::after,
-  .scene-switcher .button:not(.is-active):hover::before {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  .scene-row .scene-gallery .scene-switcher .button {
-    font-size: 13px;   
-    line-height: 1.2;  
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .scene-row {
-    width: 1200px;        
-    max-width: 100%;
-    margin: 0 auto;
-    display: flex;
-    gap: 24px;            
-    align-items: flex-start;
-    justify-content: center;
-  }
-
-  .scene-row .scene-container {
-    margin: 0;           
-    flex: 1 1 0;            
-    width: auto;         
-  }
-  .scene-row .scene-switcher { width: 100%; }
-  .scene-row .scene-frame {
-    width: 100%;             
-    height: 420px;      
-  }
-  
-  @media (max-width: 1100px) {
-    .scene-row { flex-direction: column; }
-    .scene-row .scene-frame { height: 480px; }
-  }
-  .scene-row .scene-gallery .title.is-3{
-      font-size: 24px;  
-      line-height: 1.25;
-  }
-  
-</style>
-
-  
-<section class="section" style="margin-bottom: -1rem;"> 
-  <div class="is-centered has-text-centered">
-    <div class="scene-row">
-      <div class="scene-container scene-gallery">
-        <div class="avqa-title">Scenes Data Preview</div>
-        <div class="table-note">
-          <img 
-            src="./static/images/click.png" 
-            alt="click logo" 
-            class="scene-logo" 
-            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
-          >
-          Click the <strong>scene name</strong> to switch the scene preview.<br>
-        </div>
-        <div class="scene-switcher">
-          <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-          <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-          <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-          <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-          <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-          <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-          <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
-        </div>
-
-        <div class="scene-frame">
-          <img data-role="scene" src="" alt="Scene A" loading="eager" fetchpriority="high" decoding="async">
-        </div>
-      </div>
-
-      <div class="scene-container scene-gallery">
-        <div class="avqa-title">Word Cloud</div>
-        <div class="table-note">
-          <img 
-            src="./static/images/click.png" 
-            alt="click logo" 
-            class="scene-logo" 
-            style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
-          >
-          Click the <strong>scene name</strong> to switch the word cloud.<br>
-        </div>
-        <div class="scene-switcher">
-          <button type="button" class="button is-active" data-src="./static/images/tinytabletop_data.jpg">Tiny Tabletop</button>
-          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Tabletop</button>
-          <button type="button" class="button" data-src="./static/images/ourcollected_data.jpg">Self-Collected</button>
-          <button type="button" class="button" data-src="./static/images/previous_indoor_data.jpg">Previous Indoor</button>
-          <button type="button" class="button" data-src="./static/images/indoor_data.jpg">Indoor</button>
-          <button type="button" class="button" data-src="./static/images/outdoor_data.jpg">Outdoor</button>
-        </div>
-
-        <div class="scene-frame">
-          <img data-role="scene" src="" alt="Scene B" loading="eager" fetchpriority="high" decoding="async">
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<script>
-(function(){
-  function setupGallery(root){
-    const img = root.querySelector('img[data-role="scene"]');
-    const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
-    if (!img || btns.length === 0) return;
-
-    function setActive(btn, opts={}) {
-      const src = btn.dataset.src;
-      if (!src) return;
-
-      btns.forEach(b => b.classList.toggle('is-active', b === btn));
-
-      if (img.getAttribute('src') !== src) {
-        img.style.opacity = 0;
-        const pre = new Image();
-        pre.onload = () => {
-          img.src = src;
-          img.alt = btn.textContent.trim() || img.alt;
-          (img.decode ? img.decode() : Promise.resolve()).catch(()=>{}).finally(()=>{
-            img.style.transition = 'opacity .2s ease';
-            img.style.opacity = 1;
+        btns.forEach((b, idx) => {
+          b.addEventListener('click', () => setActive(b));
+          b.addEventListener('mouseenter', () => {
+            const s = b.dataset.src;
+            if (s) {
+              const i = new Image();
+              i.src = s;
+            }
           });
-        };
-        pre.src = src;
-      } else {
-        img.alt = btn.textContent.trim() || img.alt;
+          b.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setActive(b);
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+              e.preventDefault();
+              const next = e.key === 'ArrowLeft'
+                ? (idx - 1 + btns.length) % btns.length
+                : (idx + 1) % btns.length;
+              btns[next].focus();
+            }
+          });
+        });
+
+        const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
+        if (initBtn) setActive(initBtn, { initial: true });
       }
 
-      img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
-    }
+      document.querySelectorAll('.scene-gallery').forEach(setupGallery);
+    })();
 
-    btns.forEach((b, idx) => {
-      b.addEventListener('click', () => setActive(b));
-      b.addEventListener('mouseenter', () => {
-        const s = b.dataset.src; if (s) { const i = new Image(); i.src = s; }
-      });
-      b.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(b); }
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-          e.preventDefault();
-          const next = e.key === 'ArrowLeft' ? (idx - 1 + btns.length) % btns.length
-                                             : (idx + 1) % btns.length;
-          btns[next].focus();
-        }
-      });
+    // Add the tooltip class to the "Self-Collected" button
+    document.querySelectorAll('.scene-switcher .button').forEach(btn => {
+      if (btn.textContent.trim() === "Self-Collected") {
+        btn.classList.add('self-collected');
+      }
     });
-
-    const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
-    if (initBtn) setActive(initBtn, { initial: true });
-  }
-
-  document.querySelectorAll('.scene-gallery').forEach(setupGallery);
-})();
-  document.querySelectorAll('.scene-switcher .button').forEach(btn => {
-    if(btn.textContent.trim() === "Self-Collected"){
-      btn.classList.add('self-collected');
-    }
-  });
-</script>
-
-
-
+  </script>
 </body>
 </html>
