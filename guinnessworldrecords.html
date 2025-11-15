@@ -286,6 +286,35 @@
       box-sizing: border-box;
     }
 
+    .qa-toggle-row {
+      text-align: center;
+      margin-top: 14px;
+    }
+
+    .qa-toggle-btn {
+      background: #007bff;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .qa-toggle-btn:hover {
+      background: #0056b3;
+    }
+
+    .qa-answer-row {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .qa-answer-row.is-visible {
+      display: block;
+    }
+
     .chat {
       display: flex;
       flex-direction: column;
@@ -381,8 +410,6 @@
               data-src="./static/images/D6_uco_3d_data.jpg"
               data-question="Look at the image. In one sentence, describe why this object feels unusually small."
               data-answer="It compresses a familiar object into a miniature scale that fits in a single hand."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Tiny Object
             </button>
@@ -393,8 +420,6 @@
               data-src="./static/images/D5_wildrgbd_data.jpg"
               data-question="If this table appeared in your living room, what would feel most unrealistic about its size?"
               data-answer="Its surface area is so large that it would visually fill most of the room."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Giant Table
             </button>
@@ -405,8 +430,6 @@
               data-src="./static/images/D7_our_collected.jpg"
               data-question="Compared with the everyday version of this object, what is the key difference in scale?"
               data-answer="It is several times larger than the ordinary version we are used to seeing."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Oversized Item
             </button>
@@ -417,8 +440,6 @@
               data-src="./static/images/D1_vsi_data.jpg"
               data-question="Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?"
               data-answer="No, its height is far beyond what we encounter in daily life for the same object category."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Extreme Height
             </button>
@@ -429,8 +450,6 @@
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
               data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
               data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Indoor Giant
             </button>
@@ -441,8 +460,6 @@
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
               data-question="Imagine you are annotating this scene. In a short phrase, summarize why this outdoor structure is record-breaking."
               data-answer="Its dimensions stretch far beyond typical constructions in the same setting."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Outdoor Record
             </button>
@@ -453,8 +470,6 @@
               data-src="./static/images/D4_DL3DV_drone_data.jpg"
               data-question="From the aerial view, what does the relative scale between the object and its surroundings suggest?"
               data-answer="The object dwarfs nearby elements, signalling an extreme deviation from normal scale."
-              data-q-label="Question"
-              data-a-label="Answer"
             >
               Aerial View
             </button>
@@ -469,19 +484,32 @@
               <div class="chat">
                 <div class="chat-row chat-q">
                   <div class="chat-bubble chat-bubble-q">
-                    <div class="chat-label" data-role="qa-q-label">Question</div>
+                    <div class="chat-label">Question</div>
                     <div class="chat-text" data-role="qa-question">
-                      Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?
+                      Look at the image. In one sentence, describe why this object feels unusually small.
                     </div>
                   </div>
                 </div>
                 <div class="chat-row chat-a">
                   <div class="chat-bubble chat-bubble-a">
-                    <div class="chat-label" data-role="qa-a-label">Answer</div>
+                    <div class="chat-label">Answer</div>
                     <div class="chat-text" data-role="qa-answer">
-                      No, its height is far beyond what we encounter in daily life for the same object category.
+                      It compresses a familiar object into a miniature scale that fits in a single hand.
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa-toggle-row">
+              <button type="button" class="qa-toggle-btn">Show answer</button>
+            </div>
+
+            <div class="qa-answer-row">
+              <div class="chat-bubble chat-bubble-a">
+                <div class="chat-label">Answer</div>
+                <div class="chat-text">
+                  It compresses a familiar object into a miniature scale that fits in a single hand.
                 </div>
               </div>
             </div>
@@ -494,77 +522,13 @@
 
   <script>
     (function () {
-      function setupGallery(root) {
-        const img = root.querySelector('img[data-role="scene"]');
-        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
-        const qEl = root.querySelector('[data-role="qa-question"]');
-        const aEl = root.querySelector('[data-role="qa-answer"]');
-        const qLabelEl = root.querySelector('[data-role="qa-q-label"]');
-        const aLabelEl = root.querySelector('[data-role="qa-a-label"]');
+      const toggleBtn = document.querySelector('.qa-toggle-btn');
+      const answerRow = document.querySelector('.qa-answer-row');
 
-        if (!img || btns.length === 0) return;
-
-        function setActive(btn, opts = {}) {
-          const src = btn.dataset.src;
-          if (!src) return;
-
-          btns.forEach(b => b.classList.toggle('is-active', b === btn));
-
-          if (img.getAttribute('src') !== src) {
-            img.style.opacity = 0;
-            const pre = new Image();
-            pre.onload = () => {
-              img.src = src;
-              img.alt = btn.textContent.trim() || img.alt;
-              (img.decode ? img.decode() : Promise.resolve())
-                .catch(() => {})
-                .finally(() => {
-                  img.style.transition = 'opacity .2s ease';
-                  img.style.opacity = 1;
-                });
-            };
-            pre.src = src;
-          } else {
-            img.alt = btn.textContent.trim() || img.alt;
-          }
-
-          if (qEl) qEl.textContent = btn.dataset.question || '';
-          if (aEl) aEl.textContent = btn.dataset.answer || '';
-          if (qLabelEl) qLabelEl.textContent = btn.dataset.qLabel || 'Question';
-          if (aLabelEl) aLabelEl.textContent = btn.dataset.aLabel || 'Answer';
-
-          img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
-        }
-
-        btns.forEach((b, idx) => {
-          b.addEventListener('click', () => setActive(b));
-          b.addEventListener('mouseenter', () => {
-            const s = b.dataset.src;
-            if (s) {
-              const i = new Image();
-              i.src = s;
-            }
-          });
-          b.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setActive(b);
-            }
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-              e.preventDefault();
-              const next = e.key === 'ArrowLeft'
-                ? (idx - 1 + btns.length) % btns.length
-                : (idx + 1) % btns.length;
-              btns[next].focus();
-            }
-          });
-        });
-
-        const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
-        if (initBtn) setActive(initBtn, { initial: true });
-      }
-
-      document.querySelectorAll('.scene-gallery').forEach(setupGallery);
+      toggleBtn.addEventListener('click', () => {
+        const hidden = answerRow.classList.toggle('is-visible');
+        toggleBtn.textContent = hidden ? 'Hide answer' : 'Show answer';
+      });
     })();
   </script>
 </body>
