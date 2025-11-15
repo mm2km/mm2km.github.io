@@ -57,12 +57,7 @@
       width: 900px;
       max-width: 92%;
       height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        #1a202c 50%,
-        transparent
-      );
+      background: linear-gradient(to right, transparent, #1a202c 50%, transparent);
       margin: 16px auto 18px;
       border-radius: 1px;
     }
@@ -284,11 +279,29 @@
       flex-direction: column;
       justify-content: flex-start;
       box-sizing: border-box;
+      text-align: left;
+    }
+
+    .qa-question-block {
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f0f0f0;
+    }
+
+    .qa-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 3px;
+      text-transform: capitalize;
+    }
+
+    .qa-text {
+      color: #222;
     }
 
     .qa-toggle-row {
-      margin-top: 14px;
-      text-align: left;
+      margin-top: 12px;
     }
 
     .qa-toggle-btn {
@@ -306,56 +319,16 @@
       background: #0056b3;
     }
 
-    .qa-answer {
+    .qa-answer-block {
       margin-top: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #e4ebff;
       display: none;
     }
 
-    .qa-answer.is-visible {
-      display: flex;
-    }
-
-    .chat-row {
-      display: flex;
-      width: 100%;
-    }
-
-    .chat-q {
-      justify-content: flex-start;
-    }
-
-    .chat-a {
-      justify-content: flex-end;
-    }
-
-    .chat-bubble {
-      max-width: 100%;
-      padding: 8px 12px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-    }
-
-    .chat-bubble-q {
-      background: #f0f0f0;
-      align-self: flex-start;
-    }
-
-    .chat-bubble-a {
-      background: #e4ebff;
-      align-self: flex-end;
-    }
-
-    .chat-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 3px;
-      text-transform: capitalize;
-    }
-
-    .chat-text {
-      color: #222;
-      text-align: left;
+    .qa-answer-block.is-visible {
+      display: block;
     }
   </style>
 </head>
@@ -388,7 +361,6 @@
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
 
-      <!-- 示例展示区 1 -->
       <div class="scene-row">
         <div class="scene-container scene-gallery">
           <div class="avqa-title">Examples of abnormal object sizes (1)</div>
@@ -446,22 +418,18 @@
             </div>
 
             <div class="qa-card">
-              <div class="chat-row chat-q">
-                <div class="chat-bubble chat-bubble-q">
-                  <div class="chat-label">Question</div>
-                  <div class="chat-text" data-role="qa-question"></div>
-                </div>
+              <div class="qa-question-block">
+                <div class="qa-label">Question</div>
+                <div class="qa-text" data-role="qa-question"></div>
               </div>
 
               <div class="qa-toggle-row">
                 <button type="button" class="qa-toggle-btn">Show answer</button>
               </div>
 
-              <div class="chat-row chat-a qa-answer">
-                <div class="chat-bubble chat-bubble-a">
-                  <div class="chat-label">Answer</div>
-                  <div class="chat-text" data-role="qa-answer"></div>
-                </div>
+              <div class="qa-answer-block" data-role="qa-answer-wrapper">
+                <div class="qa-label">Answer</div>
+                <div class="qa-text" data-role="qa-answer"></div>
               </div>
             </div>
 
@@ -470,7 +438,6 @@
         </div>
       </div>
 
-      <!-- 示例展示区 2 -->
       <div class="scene-row">
         <div class="scene-container scene-gallery">
           <div class="avqa-title">Examples of abnormal object sizes (2)</div>
@@ -524,119 +491,4 @@
 
           <div class="scene-content">
             <div class="scene-frame">
-              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
-            </div>
-
-            <div class="qa-card">
-              <div class="chat-row chat-q">
-                <div class="chat-bubble chat-bubble-q">
-                  <div class="chat-label">Question</div>
-                  <div class="chat-text" data-role="qa-question"></div>
-                </div>
-              </div>
-
-              <div class="qa-toggle-row">
-                <button type="button" class="qa-toggle-btn">Show answer</button>
-              </div>
-
-              <div class="chat-row chat-a qa-answer">
-                <div class="chat-bubble chat-bubble-a">
-                  <div class="chat-label">Answer</div>
-                  <div class="chat-text" data-role="qa-answer"></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <script>
-    (function () {
-      function setupGallery(root) {
-        const img = root.querySelector('img[data-role="scene"]');
-        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
-        const qEl = root.querySelector('[data-role="qa-question"]');
-        const aEl = root.querySelector('[data-role="qa-answer"]');
-        const toggleBtn = root.querySelector('.qa-toggle-btn');
-        const answerRow = root.querySelector('.qa-answer');
-
-        if (!img || btns.length === 0 || !qEl || !aEl || !toggleBtn || !answerRow) return;
-
-        answerRow.classList.remove('is-visible');
-
-        function setActive(btn, opts = {}) {
-          const src = btn.dataset.src;
-          if (!src) return;
-
-          btns.forEach(b => b.classList.toggle('is-active', b === btn));
-
-          if (img.getAttribute('src') !== src) {
-            img.style.opacity = 0;
-            const pre = new Image();
-            pre.onload = () => {
-              img.src = src;
-              img.alt = btn.textContent.trim() || img.alt;
-              (img.decode ? img.decode() : Promise.resolve())
-                .catch(() => {})
-                .finally(() => {
-                  img.style.transition = 'opacity .2s ease';
-                  img.style.opacity = 1;
-                });
-            };
-            pre.src = src;
-          } else {
-            img.alt = btn.textContent.trim() || img.alt;
-          }
-
-          qEl.textContent = btn.dataset.question || '';
-          aEl.textContent = btn.dataset.answer || '';
-
-          answerRow.classList.remove('is-visible');
-          toggleBtn.textContent = 'Show answer';
-
-          img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
-        }
-
-        btns.forEach((b, idx) => {
-          b.addEventListener('click', () => setActive(b));
-          b.addEventListener('mouseenter', () => {
-            const s = b.dataset.src;
-            if (s) {
-              const i = new Image();
-              i.src = s;
-            }
-          });
-          b.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setActive(b);
-            }
-            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-              e.preventDefault();
-              const next = e.key === 'ArrowLeft'
-                ? (idx - 1 + btns.length) % btns.length
-                : (idx + 1) % btns.length;
-              btns[next].focus();
-            }
-          });
-        });
-
-        toggleBtn.addEventListener('click', () => {
-          const visible = answerRow.classList.toggle('is-visible');
-          toggleBtn.textContent = visible ? 'Hide answer' : 'Show answer';
-        });
-
-        const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
-        if (initBtn) setActive(initBtn, { initial: true });
-      }
-
-      document.querySelectorAll('.scene-gallery').forEach(setupGallery);
-    })();
-  </script>
-</body>
-</html>
+              <img data-role="scene" src="" alt="Scene Preview"
