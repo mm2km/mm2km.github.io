@@ -6,19 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpaceVista – Scenes Data Preview</title>
 
-  <!-- Bulma for basic layout & button styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <!-- Font for titles -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* 顶部主标题相关样式 */
     .publication-title {
       max-width: 1000px;
       width: 100%;
       margin: 0 auto;
       text-align: center;
-      transform: translateX(-60px);  /* 标题整体向左移动一点 */
+      transform: translateX(-60px);
     }
 
     .spacevista-title {
@@ -56,7 +53,6 @@
       font-size: 1.0em;
     }
 
-    /* 中间那条渐变横线 */
     .fancy-line {
       width: 1000px;
       max-width: 90%;
@@ -71,7 +67,6 @@
       border-radius: 1px;
     }
 
-    /* 场景标题 */
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
       font-weight: 900;
@@ -86,7 +81,6 @@
       text-align: center;
     }
 
-    /* 小说明文字 */
     .table-note {
       text-align: center;
       margin: 0 auto 25px;
@@ -95,7 +89,6 @@
       color: #555;
     }
 
-    /* Self-Collected 按钮的说明气泡（简单保留） */
     .scene-switcher .button.self-collected {
       position: relative;
     }
@@ -137,7 +130,6 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* 场景预览整体布局 */
     .scene-container {
       width: 960px;
       max-width: 100%;
@@ -198,9 +190,8 @@
       object-fit: contain;
     }
 
-    /* 非激活按钮的小提示 “Click to switch scenes” */
     .scene-switcher .button:not(.is-active)::after {
-      content: "Click to switch scenes";
+      content: "Click to switch examples";
       position: absolute;
       left: 50%;
       top: calc(100% + 10px);
@@ -237,7 +228,6 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* 整块居中 */
     .scene-row {
       width: 1200px;
       max-width: 100%;
@@ -260,13 +250,11 @@
       }
     }
 
-    /* 简洁的 Q&A 卡片 */
     .qa-card {
       margin-top: 18px;
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 16px 20px;
-      text-align: left;
       background-color: #fafafa;
       max-width: 960px;
       margin-left: auto;
@@ -277,19 +265,40 @@
 
     .qa-item {
       margin-bottom: 6px;
+      display: flex;
+      gap: 6px;
     }
 
     .qa-label {
       font-weight: 600;
-      margin-right: 4px;
       color: #222;
+      white-space: nowrap;
+    }
+
+    .qa-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .qa-meta {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 4px;
+      text-align: left;
+    }
+
+    .qa-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      font-size: 0.78rem;
+      margin-right: 6px;
     }
   </style>
 </head>
 
 <body>
-
-  <!-- 顶部标题区域 -->
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -312,10 +321,8 @@
     </div>
   </section>
 
-  <!-- 中间的渐变横线 -->
   <div class="fancy-line"></div>
 
-  <!-- Examples 部分 -->
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
       <div class="scene-row">
@@ -323,18 +330,20 @@
           <div class="avqa-title">Examples of abnormal object sizes</div>
           <div class="table-note">
             We obtained some images of objects with abnormal size from the Guinness World Records official website.<br>
-            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;" >
+            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;">
             Click the <strong>object name</strong> to switch the example.
           </div>
 
-          <!-- 切换按钮 -->
           <div class="scene-switcher">
             <button
               type="button"
               class="button"
               data-src="./static/images/D6_uco_3d_data.jpg"
-              data-question="Why is this object considered unusually small?"
-              data-answer="Its size is much smaller than the typical version of this object."
+              data-question="Look at the image. In one sentence, describe why this object feels unusually small."
+              data-answer="It compresses a familiar object into a miniature scale that fits in a single hand."
+              data-q-label="Prompt"
+              data-a-label="Sample answer"
+              data-type="scale description"
             >
               Tiny Object
             </button>
@@ -343,8 +352,11 @@
               type="button"
               class="button"
               data-src="./static/images/D5_wildrgbd_data.jpg"
-              data-question="What makes this table size unusual?"
-              data-answer="The tabletop is significantly larger than a standard household table."
+              data-question="If this table were placed in your home, what would feel most unrealistic about its size?"
+              data-answer="Its surface area is so large that it would dominate an entire room."
+              data-q-label="Quick check"
+              data-a-label="One possible answer"
+              data-type="imagination"
             >
               Giant Table
             </button>
@@ -353,8 +365,11 @@
               type="button"
               class="button self-collected"
               data-src="./static/images/D7_our_collected.jpg"
-              data-question="How does this object compare to its everyday counterpart?"
-              data-answer="It is several times larger than the version we normally see in daily life."
+              data-question="Compare this object with its everyday version. What is the key difference in scale?"
+              data-answer="It is several times larger than the ordinary version we are used to seeing."
+              data-q-label="Compare"
+              data-a-label="Short explanation"
+              data-type="comparison"
             >
               Oversized Item
             </button>
@@ -363,8 +378,11 @@
               type="button"
               class="button is-active"
               data-src="./static/images/D1_vsi_data.jpg"
-              data-question="What is abnormal about the height of this object?"
-              data-answer="The height far exceeds that of typical objects in the same category."
+              data-question="Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?"
+              data-answer="No, its height is far beyond what we encounter in daily life for the same object category."
+              data-q-label="Sanity check"
+              data-a-label="Reference reasoning"
+              data-type="reasoning"
             >
               Extreme Height
             </button>
@@ -373,8 +391,11 @@
               type="button"
               class="button"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
-              data-question="Why does this indoor object stand out in scale?"
-              data-answer="Its dimensions dominate the indoor scene, unlike normal furniture or decor."
+              data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
+              data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
+              data-q-label="Observation"
+              data-a-label="Example answer"
+              data-type="scene reading"
             >
               Indoor Giant
             </button>
@@ -383,8 +404,11 @@
               type="button"
               class="button"
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
-              data-question="What is unusual about this outdoor structure?"
-              data-answer="It is either much taller or wider than regular outdoor structures of the same type."
+              data-question="Imagine you are annotating this scene. In a short phrase, summarize why this outdoor structure is record-breaking."
+              data-answer="Its dimensions stretch far beyond typical constructions in the same setting."
+              data-q-label="Annotation task"
+              data-a-label="Reference phrase"
+              data-type="summary"
             >
               Outdoor Record
             </button>
@@ -393,27 +417,31 @@
               type="button"
               class="button"
               data-src="./static/images/D4_DL3DV_drone_data.jpg"
-              data-question="How does this scene show an abnormal scale?"
-              data-answer="From the aerial view, the object clearly dwarfs its surroundings."
+              data-question="From the aerial view, what does the relative scale between the object and its surroundings suggest?"
+              data-answer="The object dwarfs nearby elements, signalling an extreme deviation from normal scale."
+              data-q-label="Think aloud"
+              data-a-label="Sample reasoning"
+              data-type="context"
             >
               Aerial View
             </button>
           </div>
 
-          <!-- 图片展示区域 -->
           <div class="scene-frame">
             <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
           </div>
 
-          <!-- Q&A 展示区域 -->
           <div class="qa-card">
-            <div class="qa-item">
-              <span class="qa-label">Question:</span>
-              <span data-role="qa-question">What is abnormal about the height of this object?</span>
+            <div class="qa-meta">
+              <span class="qa-tag" data-role="qa-type">reasoning</span>
             </div>
             <div class="qa-item">
-              <span class="qa-label">Answer:</span>
-              <span data-role="qa-answer">The height far exceeds that of typical objects in the same category.</span>
+              <span class="qa-label" data-role="qa-q-label">Sanity check</span>
+              <span class="qa-text" data-role="qa-question">Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?</span>
+            </div>
+            <div class="qa-item">
+              <span class="qa-label" data-role="qa-a-label">Reference reasoning</span>
+              <span class="qa-text" data-role="qa-answer">No, its height is far beyond what we encounter in daily life for the same object category.</span>
             </div>
           </div>
 
@@ -429,6 +457,9 @@
         const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
         const qEl = root.querySelector('[data-role="qa-question"]');
         const aEl = root.querySelector('[data-role="qa-answer"]');
+        const qLabelEl = root.querySelector('[data-role="qa-q-label"]');
+        const aLabelEl = root.querySelector('[data-role="qa-a-label"]');
+        const typeEl = root.querySelector('[data-role="qa-type"]');
 
         if (!img || btns.length === 0) return;
 
@@ -436,10 +467,8 @@
           const src = btn.dataset.src;
           if (!src) return;
 
-          // 激活按钮状态
           btns.forEach(b => b.classList.toggle('is-active', b === btn));
 
-          // 切换图片并加一点淡入效果
           if (img.getAttribute('src') !== src) {
             img.style.opacity = 0;
             const pre = new Image();
@@ -447,7 +476,7 @@
               img.src = src;
               img.alt = btn.textContent.trim() || img.alt;
               (img.decode ? img.decode() : Promise.resolve())
-                .catch(() => { })
+                .catch(() => {})
                 .finally(() => {
                   img.style.transition = 'opacity .2s ease';
                   img.style.opacity = 1;
@@ -458,9 +487,11 @@
             img.alt = btn.textContent.trim() || img.alt;
           }
 
-          // 更新 Question & Answer
           if (qEl) qEl.textContent = btn.dataset.question || '';
           if (aEl) aEl.textContent = btn.dataset.answer || '';
+          if (qLabelEl) qLabelEl.textContent = btn.dataset.qLabel || 'Question';
+          if (aLabelEl) aLabelEl.textContent = btn.dataset.aLabel || 'Answer';
+          if (typeEl) typeEl.textContent = btn.dataset.type || '';
 
           img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
         }
