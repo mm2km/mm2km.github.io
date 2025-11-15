@@ -324,11 +324,7 @@
       padding: 8px 10px;
       border-radius: 10px;
       background: #e4ebff;
-      display: none;
-    }
-
-    .qa-answer-block.is-visible {
-      display: block;
+      display: none;     /* 默认完全隐藏 */
     }
   </style>
 </head>
@@ -361,6 +357,7 @@
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
 
+      <!-- 示例展示区 1 -->
       <div class="scene-row">
         <div class="scene-container scene-gallery">
           <div class="avqa-title">Examples of abnormal object sizes (1)</div>
@@ -427,7 +424,7 @@
                 <button type="button" class="qa-toggle-btn">Show answer</button>
               </div>
 
-              <div class="qa-answer-block" data-role="qa-answer-wrapper">
+              <div class="qa-answer-block" data-role="qa-answer-block">
                 <div class="qa-label">Answer</div>
                 <div class="qa-text" data-role="qa-answer"></div>
               </div>
@@ -438,6 +435,7 @@
         </div>
       </div>
 
+      <!-- 示例展示区 2 -->
       <div class="scene-row">
         <div class="scene-container scene-gallery">
           <div class="avqa-title">Examples of abnormal object sizes (2)</div>
@@ -453,42 +451,4 @@
               class="button is-active"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
               data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
-              data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
-            >
-              Indoor Giant
-            </button>
-
-            <button
-              type="button"
-              class="button"
-              data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
-              data-question="Imagine you are annotating this scene. In a short phrase, summarize why this outdoor structure is record-breaking."
-              data-answer="Its dimensions stretch far beyond typical constructions in the same setting."
-            >
-              Outdoor Record
-            </button>
-
-            <button
-              type="button"
-              class="button"
-              data-src="./static/images/D4_DL3DV_drone_data.jpg"
-              data-question="From the aerial view, what does the relative scale between the object and its surroundings suggest?"
-              data-answer="The object dwarfs nearby elements, signalling an extreme deviation from normal scale."
-            >
-              Aerial View
-            </button>
-
-            <button
-              type="button"
-              class="button"
-              data-src="./static/images/D1_vsi_data.jpg"
-              data-question="Compared with nearby structures, how would you briefly describe this object's scale?"
-              data-answer="It stands out as significantly taller and more massive than everything around it."
-            >
-              Tall Landmark
-            </button>
-          </div>
-
-          <div class="scene-content">
-            <div class="scene-frame">
-              <img data-role="scene" src="" alt="Scene Preview"
+              data-answer="One single object visually overwhelms the room and makes the furniture look u
