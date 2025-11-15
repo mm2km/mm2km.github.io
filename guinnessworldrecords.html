@@ -173,10 +173,9 @@
 
     .scene-frame {
       width: 100%;
-      height: 420px;
+      height: 360px;
       border: 1.5px solid #bbb;
-      border-top: none;
-      border-radius: 0 0 10px 10px;
+      border-radius: 10px;
       background: #fafafa;
       display: flex;
       align-items: center;
@@ -244,46 +243,49 @@
       width: auto;
     }
 
+    .scene-content {
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+
+    .scene-content .scene-frame {
+      flex: 3;
+    }
+
+    .scene-content .qa-card {
+      flex: 2;
+    }
+
     @media (max-width: 1100px) {
       .scene-row {
         flex-direction: column;
       }
+      .scene-content {
+        flex-direction: column;
+      }
+      .scene-content .scene-frame {
+        height: 320px;
+      }
     }
 
     .qa-card {
-      margin-top: 18px;
       border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px 20px;
+      border-radius: 10px;
+      padding: 16px 18px;
       background-color: #fafafa;
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
       font-size: 0.95rem;
       color: #333;
-    }
-
-    .qa-item {
-      margin-bottom: 6px;
       display: flex;
-      gap: 6px;
-    }
-
-    .qa-label {
-      font-weight: 600;
-      color: #222;
-      white-space: nowrap;
-    }
-
-    .qa-text {
-      flex: 1;
-      text-align: left;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .qa-meta {
       font-size: 0.85rem;
       color: #777;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       text-align: left;
     }
 
@@ -294,6 +296,56 @@
       border: 1px solid #ccc;
       font-size: 0.78rem;
       margin-right: 6px;
+    }
+
+    .chat {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .chat-row {
+      display: flex;
+      width: 100%;
+    }
+
+    .chat-q {
+      justify-content: flex-start;
+    }
+
+    .chat-a {
+      justify-content: flex-end;
+    }
+
+    .chat-bubble {
+      max-width: 100%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.95rem;
+    }
+
+    .chat-bubble-q {
+      background: #f0f0f0;
+      align-self: flex-start;
+    }
+
+    .chat-bubble-a {
+      background: #e4ebff;
+      align-self: flex-end;
+    }
+
+    .chat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 4px;
+      text-transform: capitalize;
+    }
+
+    .chat-text {
+      color: #222;
+      text-align: left;
     }
   </style>
 </head>
@@ -352,8 +404,8 @@
               type="button"
               class="button"
               data-src="./static/images/D5_wildrgbd_data.jpg"
-              data-question="If this table were placed in your home, what would feel most unrealistic about its size?"
-              data-answer="Its surface area is so large that it would dominate an entire room."
+              data-question="If this table appeared in your living room, what would feel most unrealistic about its size?"
+              data-answer="Its surface area is so large that it would visually fill most of the room."
               data-q-label="Quick check"
               data-a-label="One possible answer"
               data-type="imagination"
@@ -365,7 +417,7 @@
               type="button"
               class="button self-collected"
               data-src="./static/images/D7_our_collected.jpg"
-              data-question="Compare this object with its everyday version. What is the key difference in scale?"
+              data-question="Compared with the everyday version of this object, what is the key difference in scale?"
               data-answer="It is several times larger than the ordinary version we are used to seeing."
               data-q-label="Compare"
               data-a-label="Short explanation"
@@ -427,21 +479,33 @@
             </button>
           </div>
 
-          <div class="scene-frame">
-            <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
-          </div>
+          <div class="scene-content">
+            <div class="scene-frame">
+              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
+            </div>
 
-          <div class="qa-card">
-            <div class="qa-meta">
-              <span class="qa-tag" data-role="qa-type">reasoning</span>
-            </div>
-            <div class="qa-item">
-              <span class="qa-label" data-role="qa-q-label">Sanity check</span>
-              <span class="qa-text" data-role="qa-question">Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?</span>
-            </div>
-            <div class="qa-item">
-              <span class="qa-label" data-role="qa-a-label">Reference reasoning</span>
-              <span class="qa-text" data-role="qa-answer">No, its height is far beyond what we encounter in daily life for the same object category.</span>
+            <div class="qa-card">
+              <div class="qa-meta">
+                <span class="qa-tag" data-role="qa-type">reasoning</span>
+              </div>
+              <div class="chat">
+                <div class="chat-row chat-q">
+                  <div class="chat-bubble chat-bubble-q">
+                    <div class="chat-label" data-role="qa-q-label">Sanity check</div>
+                    <div class="chat-text" data-role="qa-question">
+                      Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-row chat-a">
+                  <div class="chat-bubble chat-bubble-a">
+                    <div class="chat-label" data-role="qa-a-label">Reference reasoning</div>
+                    <div class="chat-text" data-role="qa-answer">
+                      No, its height is far beyond what we encounter in daily life for the same object category.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
