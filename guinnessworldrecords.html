@@ -232,7 +232,7 @@
     .scene-row {
       width: 1000px;
       max-width: 100%;
-      margin: 0 auto;
+      margin: 0 auto 32px;
       display: flex;
       gap: 20px;
       align-items: flex-start;
@@ -282,20 +282,20 @@
       color: #333;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       box-sizing: border-box;
     }
 
     .qa-toggle-row {
-      text-align: center;
       margin-top: 14px;
+      text-align: left;
     }
 
     .qa-toggle-btn {
       background: #007bff;
       color: #fff;
-      padding: 8px 16px;
-      font-size: 1rem;
+      padding: 6px 14px;
+      font-size: 0.9rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -306,20 +306,13 @@
       background: #0056b3;
     }
 
-    .qa-answer-row {
+    .qa-answer {
+      margin-top: 12px;
       display: none;
-      margin-top: 16px;
     }
 
-    .qa-answer-row.is-visible {
-      display: block;
-    }
-
-    .chat {
+    .qa-answer.is-visible {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 2px;
     }
 
     .chat-row {
@@ -394,9 +387,11 @@
 
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
+
+      <!-- 上面的示例展示区 -->
       <div class="scene-row">
         <div class="scene-container scene-gallery">
-          <div class="avqa-title">Examples of abnormal object sizes</div>
+          <div class="avqa-title">Examples of abnormal object sizes (1)</div>
           <div class="table-note">
             We obtained some images of objects with abnormal size from the Guinness World Records official website.<br>
             <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 16px; height: 16px; vertical-align: middle; display: inline-block;">
@@ -406,7 +401,7 @@
           <div class="scene-switcher">
             <button
               type="button"
-              class="button"
+              class="button is-active"
               data-src="./static/images/D6_uco_3d_data.jpg"
               data-question="Look at the image. In one sentence, describe why this object feels unusually small."
               data-answer="It compresses a familiar object into a miniature scale that fits in a single hand."
@@ -436,17 +431,63 @@
 
             <button
               type="button"
-              class="button is-active"
+              class="button"
               data-src="./static/images/D1_vsi_data.jpg"
               data-question="Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?"
               data-answer="No, its height is far beyond what we encounter in daily life for the same object category."
             >
               Extreme Height
             </button>
+          </div>
 
+          <div class="scene-content">
+            <div class="scene-frame">
+              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+
+            <div class="qa-card">
+              <div class="chat-row chat-q">
+                <div class="chat-bubble chat-bubble-q">
+                  <div class="chat-label">Question</div>
+                  <div class="chat-text" data-role="qa-question">
+                    Look at the image. In one sentence, describe why this object feels unusually small.
+                  </div>
+                </div>
+              </div>
+
+              <div class="qa-toggle-row">
+                <button type="button" class="qa-toggle-btn">Show answer</button>
+              </div>
+
+              <div class="chat-row chat-a qa-answer">
+                <div class="chat-bubble chat-bubble-a">
+                  <div class="chat-label">Answer</div>
+                  <div class="chat-text" data-role="qa-answer">
+                    It compresses a familiar object into a miniature scale that fits in a single hand.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 下面的示例展示区（相同布局，另一组例子） -->
+      <div class="scene-row">
+        <div class="scene-container scene-gallery">
+          <div class="avqa-title">Examples of abnormal object sizes (2)</div>
+          <div class="table-note">
+            Another set of objects with unusual scales from the same source.<br>
+            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 16px; height: 16px; vertical-align: middle; display: inline-block;">
+            Click the <strong>object name</strong> to switch the example.
+          </div>
+
+          <div class="scene-switcher">
             <button
               type="button"
-              class="button"
+              class="button is-active"
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
               data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
               data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
@@ -473,6 +514,16 @@
             >
               Aerial View
             </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D1_vsi_data.jpg"
+              data-question="Compared with nearby structures, how would you briefly describe this object's scale?"
+              data-answer="It stands out as significantly taller and more massive than everything around it."
+            >
+              Tall Landmark
+            </button>
           </div>
 
           <div class="scene-content">
@@ -481,55 +532,64 @@
             </div>
 
             <div class="qa-card">
-              <div class="chat">
-                <div class="chat-row chat-q">
-                  <div class="chat-bubble chat-bubble-q">
-                    <div class="chat-label">Question</div>
-                    <div class="chat-text" data-role="qa-question">
-                      Look at the image. In one sentence, describe why this object feels unusually small.
-                    </div>
+              <div class="chat-row chat-q">
+                <div class="chat-bubble chat-bubble-q">
+                  <div class="chat-label">Question</div>
+                  <div class="chat-text" data-role="qa-question">
+                    You walk into this indoor scene. What is the first scale-related anomaly you would notice?
                   </div>
                 </div>
-                <div class="chat-row chat-a">
-                  <div class="chat-bubble chat-bubble-a">
-                    <div class="chat-label">Answer</div>
-                    <div class="chat-text" data-role="qa-answer">
-                      It compresses a familiar object into a miniature scale that fits in a single hand.
-                    </div>
+              </div>
+
+              <div class="qa-toggle-row">
+                <button type="button" class="qa-toggle-btn">Show answer</button>
+              </div>
+
+              <div class="chat-row chat-a qa-answer">
+                <div class="chat-bubble chat-bubble-a">
+                  <div class="chat-label">Answer</div>
+                  <div class="chat-text" data-role="qa-answer">
+                    One single object visually overwhelms the room and makes the furniture look unusually small.
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="qa-toggle-row">
-              <button type="button" class="qa-toggle-btn">Show answer</button>
-            </div>
-
-            <div class="qa-answer-row">
-              <div class="chat-bubble chat-bubble-a">
-                <div class="chat-label">Answer</div>
-                <div class="chat-text">
-                  It compresses a familiar object into a miniature scale that fits in a single hand.
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
       </div>
+
     </div>
   </section>
 
   <script>
     (function () {
-      const toggleBtn = document.querySelector('.qa-toggle-btn');
-      const answerRow = document.querySelector('.qa-answer-row');
+      function setupGallery(root) {
+        const img = root.querySelector('img[data-role="scene"]');
+        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+        const qEl = root.querySelector('[data-role="qa-question"]');
+        const aEl = root.querySelector('[data-role="qa-answer"]');
+        const toggleBtn = root.querySelector('.qa-toggle-btn');
+        const answerRow = root.querySelector('.qa-answer');
 
-      toggleBtn.addEventListener('click', () => {
-        const hidden = answerRow.classList.toggle('is-visible');
-        toggleBtn.textContent = hidden ? 'Hide answer' : 'Show answer';
-      });
-    })();
-  </script>
-</body>
-</html>
+        if (!img || btns.length === 0 || !qEl || !aEl || !toggleBtn || !answerRow) return;
+
+        answerRow.classList.remove('is-visible');
+
+        function setActive(btn, opts = {}) {
+          const src = btn.dataset.src;
+          if (!src) return;
+
+          btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+          if (img.getAttribute('src') !== src) {
+            img.style.opacity = 0;
+            const pre = new Image();
+            pre.onload = () => {
+              img.src = src;
+              img.alt = btn.textContent.trim() || img.alt;
+              (img.decode ? img.decode() : Promise.resolve())
+                .catch(() => {})
+                .finally(() => {
+                  img.style.transition = 'opacity .2s
