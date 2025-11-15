@@ -14,11 +14,11 @@
   <style>
     /* 顶部主标题相关样式 */
     .publication-title {
-      margin-left: -60px;
       max-width: 1000px;
       width: 100%;
       margin: 0 auto;
       text-align: center;
+      transform: translateX(-60px);  /* 标题整体向左移动一点 */
     }
 
     .spacevista-title {
@@ -71,7 +71,7 @@
       border-radius: 1px;
     }
 
-    /* Scenes Data Preview 标题 */
+    /* 场景标题 */
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
       font-weight: 900;
@@ -91,9 +91,11 @@
       text-align: center;
       margin: 0 auto 25px;
       max-width: 800px;
+      font-size: 0.95rem;
+      color: #555;
     }
 
-    /* Self-Collected 按钮的说明气泡 */
+    /* Self-Collected 按钮的说明气泡（简单保留） */
     .scene-switcher .button.self-collected {
       position: relative;
     }
@@ -138,6 +140,7 @@
     /* 场景预览整体布局 */
     .scene-container {
       width: 960px;
+      max-width: 100%;
       margin: 0 auto;
     }
 
@@ -177,8 +180,8 @@
     }
 
     .scene-frame {
-      width: 960px;
-      height: 680px;
+      width: 100%;
+      height: 420px;
       border: 1.5px solid #bbb;
       border-top: none;
       border-radius: 0 0 10px 10px;
@@ -251,22 +254,35 @@
       width: auto;
     }
 
-    .scene-row .scene-switcher {
-      width: 100%;
-    }
-
-    .scene-row .scene-frame {
-      width: 100%;
-      height: 420px;
-    }
-
     @media (max-width: 1100px) {
       .scene-row {
         flex-direction: column;
       }
-      .scene-row .scene-frame {
-        height: 480px;
-      }
+    }
+
+    /* 简洁的 Q&A 卡片 */
+    .qa-card {
+      margin-top: 18px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: left;
+      background-color: #fafafa;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .qa-item {
+      margin-bottom: 6px;
+    }
+
+    .qa-label {
+      font-weight: 600;
+      margin-right: 4px;
+      color: #222;
     }
   </style>
 </head>
@@ -299,36 +315,108 @@
   <!-- 中间的渐变横线 -->
   <div class="fancy-line"></div>
 
-  <!-- Scenes Data Preview 部分 -->
+  <!-- Examples 部分 -->
   <section class="section" style="margin-bottom: -1rem;">
     <div class="is-centered has-text-centered">
       <div class="scene-row">
         <div class="scene-container scene-gallery">
           <div class="avqa-title">Examples of abnormal object sizes</div>
           <div class="table-note">
-            <img
-              src="./static/images/click.png"
-              alt="click logo"
-              class="scene-logo"
-              style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;"
-            >
             We obtained some images of objects with abnormal size from the Guinness World Records official website.<br>
-            Click the <strong>object name</strong> to switch the example.<br>
+            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;" >
+            Click the <strong>object name</strong> to switch the example.
           </div>
 
+          <!-- 切换按钮 -->
           <div class="scene-switcher">
-            <button type="button" class="button" data-src="./static/images/D6_uco_3d_data.jpg">Tiny Tabletop</button>
-            <button type="button" class="button" data-src="./static/images/D5_wildrgbd_data.jpg">Tabletop</button>
-            <button type="button" class="button" data-src="./static/images/D7_our_collected.jpg">Self-Collected</button>
-            <button type="button" class="button is-active" data-src="./static/images/D1_vsi_data.jpg">Indoor</button>
-            <button type="button" class="button" data-src="./static/images/D2_DL3DV_indoor_data.jpg">Wild Indoor</button>
-            <button type="button" class="button" data-src="./static/images/D3_DL3DV_outdoor_data.jpg">Outdoor</button>
-            <button type="button" class="button" data-src="./static/images/D4_DL3DV_drone_data.jpg">Drone</button>
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D6_uco_3d_data.jpg"
+              data-question="Why is this object considered unusually small?"
+              data-answer="Its size is much smaller than the typical version of this object."
+            >
+              Tiny Object
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D5_wildrgbd_data.jpg"
+              data-question="What makes this table size unusual?"
+              data-answer="The tabletop is significantly larger than a standard household table."
+            >
+              Giant Table
+            </button>
+
+            <button
+              type="button"
+              class="button self-collected"
+              data-src="./static/images/D7_our_collected.jpg"
+              data-question="How does this object compare to its everyday counterpart?"
+              data-answer="It is several times larger than the version we normally see in daily life."
+            >
+              Oversized Item
+            </button>
+
+            <button
+              type="button"
+              class="button is-active"
+              data-src="./static/images/D1_vsi_data.jpg"
+              data-question="What is abnormal about the height of this object?"
+              data-answer="The height far exceeds that of typical objects in the same category."
+            >
+              Extreme Height
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D2_DL3DV_indoor_data.jpg"
+              data-question="Why does this indoor object stand out in scale?"
+              data-answer="Its dimensions dominate the indoor scene, unlike normal furniture or decor."
+            >
+              Indoor Giant
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
+              data-question="What is unusual about this outdoor structure?"
+              data-answer="It is either much taller or wider than regular outdoor structures of the same type."
+            >
+              Outdoor Record
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/images/D4_DL3DV_drone_data.jpg"
+              data-question="How does this scene show an abnormal scale?"
+              data-answer="From the aerial view, the object clearly dwarfs its surroundings."
+            >
+              Aerial View
+            </button>
           </div>
 
+          <!-- 图片展示区域 -->
           <div class="scene-frame">
             <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
           </div>
+
+          <!-- Q&A 展示区域 -->
+          <div class="qa-card">
+            <div class="qa-item">
+              <span class="qa-label">Question:</span>
+              <span data-role="qa-question">What is abnormal about the height of this object?</span>
+            </div>
+            <div class="qa-item">
+              <span class="qa-label">Answer:</span>
+              <span data-role="qa-answer">The height far exceeds that of typical objects in the same category.</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -339,6 +427,9 @@
       function setupGallery(root) {
         const img = root.querySelector('img[data-role="scene"]');
         const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+        const qEl = root.querySelector('[data-role="qa-question"]');
+        const aEl = root.querySelector('[data-role="qa-answer"]');
+
         if (!img || btns.length === 0) return;
 
         function setActive(btn, opts = {}) {
@@ -366,6 +457,10 @@
           } else {
             img.alt = btn.textContent.trim() || img.alt;
           }
+
+          // 更新 Question & Answer
+          if (qEl) qEl.textContent = btn.dataset.question || '';
+          if (aEl) aEl.textContent = btn.dataset.answer || '';
 
           img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
         }
@@ -400,13 +495,6 @@
 
       document.querySelectorAll('.scene-gallery').forEach(setupGallery);
     })();
-
-    // 给 Self-Collected 按钮加上说明 tooltip
-    document.querySelectorAll('.scene-switcher .button').forEach(btn => {
-      if (btn.textContent.trim() === "Self-Collected") {
-        btn.classList.add('self-collected');
-      }
-    });
   </script>
 </body>
 </html>
