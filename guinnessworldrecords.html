@@ -29,7 +29,7 @@
     }
 
     .logo-svg {
-      height: 72px;
+      height: 64px;
       width: auto;
       margin-right: 5px;
       vertical-align: middle;
@@ -37,7 +37,7 @@
 
     .normal-title-wrapper {
       display: inline-block;
-      width: 600px;
+      width: 560px;
       position: relative;
       text-align: center;
     }
@@ -54,8 +54,8 @@
     }
 
     .fancy-line {
-      width: 1000px;
-      max-width: 90%;
+      width: 900px;
+      max-width: 92%;
       height: 1px;
       background: linear-gradient(
         to right,
@@ -63,17 +63,17 @@
         #1a202c 50%,
         transparent
       );
-      margin: 20px auto;
+      margin: 16px auto 18px;
       border-radius: 1px;
     }
 
     .avqa-title {
       font-family: 'Montserrat', 'Arial', sans-serif;
       font-weight: 900;
-      font-size: 2.0rem;
+      font-size: 1.8rem;
       letter-spacing: -0.5px;
       color: #222222;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -83,9 +83,9 @@
 
     .table-note {
       text-align: center;
-      margin: 0 auto 25px;
-      max-width: 800px;
-      font-size: 0.95rem;
+      margin: 0 auto 20px;
+      max-width: 720px;
+      font-size: 0.9rem;
       color: #555;
     }
 
@@ -101,8 +101,8 @@
       transform: translateX(-50%);
       background: #363636;
       color: #fff;
-      font-size: 12px;
-      padding: 6px 8px;
+      font-size: 11px;
+      padding: 4px 8px;
       border-radius: 6px;
       white-space: nowrap;
       opacity: 0;
@@ -117,7 +117,7 @@
       bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border: 6px solid transparent;
+      border: 5px solid transparent;
       border-top-color: #363636;
       opacity: 0;
       transition: opacity 0.2s;
@@ -131,7 +131,7 @@
     }
 
     .scene-container {
-      width: 960px;
+      width: 880px;
       max-width: 100%;
       margin: 0 auto;
     }
@@ -139,7 +139,7 @@
     .scene-switcher {
       display: flex;
       width: 100%;
-      border-radius: 10px 10px 0 0;
+      border-radius: 8px 8px 0 0;
       overflow: visible;
       background: #f0f0f0;
     }
@@ -152,8 +152,8 @@
       border: none;
       box-shadow: none;
       margin: 0;
-      padding: 12px 0;
-      font-size: 15px;
+      padding: 10px 0;
+      font-size: 14px;
       color: #555;
       background: #f0f0f0;
       transition: all 0.25s ease;
@@ -173,13 +173,15 @@
 
     .scene-frame {
       width: 100%;
-      height: 360px;
+      height: 320px;
+      padding: 8px;
       border: 1.5px solid #bbb;
       border-radius: 10px;
       background: #fafafa;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
       overflow: hidden;
     }
 
@@ -193,13 +195,13 @@
       content: "Click to switch examples";
       position: absolute;
       left: 50%;
-      top: calc(100% + 10px);
+      top: calc(100% + 8px);
       transform: translateX(-50%) translateY(4px);
       background: #363636;
       color: #fff;
       font-size: 8px;
       line-height: 1;
-      padding: 6px 8px;
+      padding: 4px 6px;
       border-radius: 6px;
       white-space: nowrap;
       pointer-events: none;
@@ -214,7 +216,7 @@
       left: 50%;
       top: 100%;
       transform: translateX(-50%);
-      border: 6px solid transparent;
+      border: 5px solid transparent;
       border-top-color: #363636;
       opacity: 0;
       transition: opacity .18s ease;
@@ -228,11 +230,11 @@
     }
 
     .scene-row {
-      width: 1200px;
+      width: 1000px;
       max-width: 100%;
       margin: 0 auto;
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: flex-start;
       justify-content: center;
     }
@@ -245,17 +247,17 @@
 
     .scene-content {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: stretch;
-      margin-top: 18px;
+      margin-top: 14px;
     }
 
     .scene-content .scene-frame {
-      flex: 3;
+      flex: 1;
     }
 
     .scene-content .qa-card {
-      flex: 2;
+      flex: 1;
     }
 
     @media (max-width: 1100px) {
@@ -266,43 +268,29 @@
         flex-direction: column;
       }
       .scene-content .scene-frame {
-        height: 320px;
+        height: 280px;
       }
     }
 
     .qa-card {
+      height: 320px;
       border: 1px solid #ddd;
       border-radius: 10px;
-      padding: 16px 18px;
+      padding: 14px 16px;
       background-color: #fafafa;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #333;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .qa-meta {
-      font-size: 0.85rem;
-      color: #777;
-      margin-bottom: 8px;
-      text-align: left;
-    }
-
-    .qa-tag {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      font-size: 0.78rem;
-      margin-right: 6px;
+      justify-content: center;
+      box-sizing: border-box;
     }
 
     .chat {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 4px;
+      gap: 10px;
+      margin-top: 2px;
     }
 
     .chat-row {
@@ -320,9 +308,9 @@
 
     .chat-bubble {
       max-width: 100%;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
     }
 
     .chat-bubble-q {
@@ -339,7 +327,7 @@
       font-size: 0.78rem;
       font-weight: 600;
       color: #555;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       text-transform: capitalize;
     }
 
@@ -382,7 +370,7 @@
           <div class="avqa-title">Examples of abnormal object sizes</div>
           <div class="table-note">
             We obtained some images of objects with abnormal size from the Guinness World Records official website.<br>
-            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 18px; height: 18px; vertical-align: middle; display: inline-block;">
+            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 16px; height: 16px; vertical-align: middle; display: inline-block;">
             Click the <strong>object name</strong> to switch the example.
           </div>
 
@@ -393,9 +381,8 @@
               data-src="./static/images/D6_uco_3d_data.jpg"
               data-question="Look at the image. In one sentence, describe why this object feels unusually small."
               data-answer="It compresses a familiar object into a miniature scale that fits in a single hand."
-              data-q-label="Prompt"
-              data-a-label="Sample answer"
-              data-type="scale description"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Tiny Object
             </button>
@@ -406,9 +393,8 @@
               data-src="./static/images/D5_wildrgbd_data.jpg"
               data-question="If this table appeared in your living room, what would feel most unrealistic about its size?"
               data-answer="Its surface area is so large that it would visually fill most of the room."
-              data-q-label="Quick check"
-              data-a-label="One possible answer"
-              data-type="imagination"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Giant Table
             </button>
@@ -419,9 +405,8 @@
               data-src="./static/images/D7_our_collected.jpg"
               data-question="Compared with the everyday version of this object, what is the key difference in scale?"
               data-answer="It is several times larger than the ordinary version we are used to seeing."
-              data-q-label="Compare"
-              data-a-label="Short explanation"
-              data-type="comparison"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Oversized Item
             </button>
@@ -432,9 +417,8 @@
               data-src="./static/images/D1_vsi_data.jpg"
               data-question="Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?"
               data-answer="No, its height is far beyond what we encounter in daily life for the same object category."
-              data-q-label="Sanity check"
-              data-a-label="Reference reasoning"
-              data-type="reasoning"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Extreme Height
             </button>
@@ -445,9 +429,8 @@
               data-src="./static/images/D2_DL3DV_indoor_data.jpg"
               data-question="You walk into this indoor scene. What is the first scale-related anomaly you would notice?"
               data-answer="One single object visually overwhelms the room and makes the furniture look unusually small."
-              data-q-label="Observation"
-              data-a-label="Example answer"
-              data-type="scene reading"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Indoor Giant
             </button>
@@ -458,9 +441,8 @@
               data-src="./static/images/D3_DL3DV_outdoor_data.jpg"
               data-question="Imagine you are annotating this scene. In a short phrase, summarize why this outdoor structure is record-breaking."
               data-answer="Its dimensions stretch far beyond typical constructions in the same setting."
-              data-q-label="Annotation task"
-              data-a-label="Reference phrase"
-              data-type="summary"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Outdoor Record
             </button>
@@ -471,9 +453,8 @@
               data-src="./static/images/D4_DL3DV_drone_data.jpg"
               data-question="From the aerial view, what does the relative scale between the object and its surroundings suggest?"
               data-answer="The object dwarfs nearby elements, signalling an extreme deviation from normal scale."
-              data-q-label="Think aloud"
-              data-a-label="Sample reasoning"
-              data-type="context"
+              data-q-label="Question"
+              data-a-label="Answer"
             >
               Aerial View
             </button>
@@ -485,13 +466,10 @@
             </div>
 
             <div class="qa-card">
-              <div class="qa-meta">
-                <span class="qa-tag" data-role="qa-type">reasoning</span>
-              </div>
               <div class="chat">
                 <div class="chat-row chat-q">
                   <div class="chat-bubble chat-bubble-q">
-                    <div class="chat-label" data-role="qa-q-label">Sanity check</div>
+                    <div class="chat-label" data-role="qa-q-label">Question</div>
                     <div class="chat-text" data-role="qa-question">
                       Treat this as a quick sanity check: does the height of this object align with everyday expectations? Why or why not?
                     </div>
@@ -499,7 +477,7 @@
                 </div>
                 <div class="chat-row chat-a">
                   <div class="chat-bubble chat-bubble-a">
-                    <div class="chat-label" data-role="qa-a-label">Reference reasoning</div>
+                    <div class="chat-label" data-role="qa-a-label">Answer</div>
                     <div class="chat-text" data-role="qa-answer">
                       No, its height is far beyond what we encounter in daily life for the same object category.
                     </div>
@@ -523,7 +501,6 @@
         const aEl = root.querySelector('[data-role="qa-answer"]');
         const qLabelEl = root.querySelector('[data-role="qa-q-label"]');
         const aLabelEl = root.querySelector('[data-role="qa-a-label"]');
-        const typeEl = root.querySelector('[data-role="qa-type"]');
 
         if (!img || btns.length === 0) return;
 
@@ -555,7 +532,6 @@
           if (aEl) aEl.textContent = btn.dataset.answer || '';
           if (qLabelEl) qLabelEl.textContent = btn.dataset.qLabel || 'Question';
           if (aLabelEl) aLabelEl.textContent = btn.dataset.aLabel || 'Answer';
-          if (typeEl) typeEl.textContent = btn.dataset.type || '';
 
           img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
         }
