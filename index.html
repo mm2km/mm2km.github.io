@@ -1234,21 +1234,288 @@
 </script>
 
 
-<iframe
-  id="abnormalFrame"
-  src="/abnormal_size.html"
-  style="width:100%; border:0; overflow:hidden;"
-  scrolling="no"
-></iframe>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <img src="./static/images/logo_v2.png" alt="Logo" class="logo-svg">
+              <span class="spacevista-title">SpaceVista</span><br>
+              <span class="normal-title-wrapper">
+                <span class="normal-title">
+                  All-Scale Visual Spatial Reasoning from
+                  <span class="unit-mmkm">mm</span> to
+                  <span class="unit-mmkm">km</span>
+                </span>
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // 接收子页面发来的高度并设置 iframe 高度
-  window.addEventListener('message', (e) => {
-    if (!e.data || e.data.type !== 'setHeight') return;
-    const f = document.getElementById('abnormalFrame');
-    if (f) f.style.height = e.data.height + 'px';
-  });
-</script>
+  <div class="fancy-line"></div>
+
+  <section class="section" style="margin-bottom: -1rem;">
+    <div class="is-centered has-text-centered">
+
+      <div class="scene-row">
+        <div class="scene-container scene-gallery">
+          <div class="avqa-title">Examples of abnormal object size</div>
+          <div class="table-note">
+            We obtained some images of objects with abnormal size from the <a href='https://www.guinnessworldrecords.com/records/showcase'><strong>Guinness World Records official website</strong></a>.<br>
+            <img src="./static/images/click.png" alt="click logo" class="scene-logo" style="width: 16px; height: 16px; vertical-align: middle; display: inline-block;">
+            Click the <strong>object name</strong> to switch the example.
+          </div>
+
+          <div class="scene-switcher">
+            <button
+              type="button"
+              class="button is-active"
+              data-src="./static/abnormal_size/1.jpg"
+              data-question="About how long would you say this rifle is?"
+              data-answer="Ground Truth: 10.18m"
+            >
+              Refle
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/2.jpg"
+              data-question="What is the vertical height of this telephone?"
+              data-answer="Ground Truth: 2.47m"
+            >
+              Telephone
+            </button>
+
+            <button
+              type="button"
+              class="button self-collected"
+              data-src="./static/abnormal_size/4.jpg"
+              data-question="What is the length of this hiking boot?"
+              data-answer="Ground Truth: 7.14m"
+            >
+              Hiking Boot
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/11.jpg"
+              data-question="Please tell me the measured length of this bicycle."
+              data-answer="Ground Truth: 55.16m"
+            >
+              Bicycle
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/20.jpg"
+              data-question="How tall is the left saxophone?"
+              data-answer="Ground Truth: 2.74m"
+            >
+              Saxophone
+            </button>
+          </div>
+
+          <div class="scene-content">
+            <div class="scene-frame">
+              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+
+            <div class="qa-card">
+              <div class="qa-question-block">
+                <div class="qa-label">Question</div>
+                <div class="qa-text" data-role="qa-question"></div>
+              </div>
+
+              <div class="qa-toggle-row">
+                <button type="button" class="qa-toggle-btn">Show answer</button>
+              </div>
+
+              <div class="qa-answer-block" data-role="qa-answer-block">
+                <div class="qa-label">Answer</div>
+                <div class="qa-text" data-role="qa-answer"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="scene-row">
+        <div class="scene-container scene-gallery">
+          <div class="scene-switcher">
+            <button
+              type="button"
+              class="button is-active"
+              data-src="./static/abnormal_size/24.jpg"
+              data-question="From bottom to top, how big is this Ping Pong Racket?"
+              data-answer="Ground Truth: 3.53m"
+            >
+              Ping Pong Racket
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/27.jpg"
+              data-question="From end to end, how long is this gavel?"
+              data-answer="Ground Truth: 5.09m"
+            >
+              Gavel
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/28.jpg"
+              data-question="Roughly how tall does this Xbox console look?"
+              data-answer="Ground Truth: 2.08m"
+            >
+              Xbox Console
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/31.jpg"
+              data-question="From left to right, how wide is this belt buckle?"
+              data-answer="Ground Truth: 4.43m"
+            >
+              Belt Buckle
+            </button>
+
+            <button
+              type="button"
+              class="button"
+              data-src="./static/abnormal_size/33.jpg"
+              data-question="How long is the ukulele held by the man?"
+              data-answer="Ground Truth: 3.99m"
+            >
+              Ukulele
+            </button>
+          </div>
+
+          <div class="scene-content">
+            <div class="scene-frame">
+              <img data-role="scene" src="" alt="Scene Preview" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+
+            <div class="qa-card">
+              <div class="qa-question-block">
+                <div class="qa-label">Question</div>
+                <div class="qa-text" data-role="qa-question"></div>
+              </div>
+
+              <div class="qa-toggle-row">
+                <button type="button" class="qa-toggle-btn">Show answer</button>
+              </div>
+
+              <div class="qa-answer-block" data-role="qa-answer-block">
+                <div class="qa-label">Answer</div>
+                <div class="qa-text" data-role="qa-answer"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      function setupGallery(root) {
+        const img = root.querySelector('img[data-role="scene"]');
+        const btns = Array.from(root.querySelectorAll('.scene-switcher .button'));
+        const qEl = root.querySelector('[data-role="qa-question"]');
+        const aEl = root.querySelector('[data-role="qa-answer"]');
+        const toggleBtn = root.querySelector('.qa-toggle-btn');
+        const answerBlock = root.querySelector('[data-role="qa-answer-block"]');
+
+        if (!img || !btns.length || !qEl || !aEl || !toggleBtn || !answerBlock) return;
+
+        function setActive(btn, opts = {}) {
+          const src = btn.dataset.src;
+          if (!src) return;
+
+          btns.forEach(b => b.classList.toggle('is-active', b === btn));
+
+          if (img.getAttribute('src') !== src) {
+            img.style.opacity = 0;
+            const pre = new Image();
+            pre.onload = () => {
+              img.src = src;
+              img.alt = btn.textContent.trim() || img.alt;
+              (img.decode ? img.decode() : Promise.resolve())
+                .catch(() => {})
+                .finally(() => {
+                  img.style.transition = 'opacity .2s ease';
+                  img.style.opacity = 1;
+                });
+            };
+            pre.src = src;
+          } else {
+            img.alt = btn.textContent.trim() || img.alt;
+          }
+
+          qEl.textContent = btn.dataset.question || '';
+          aEl.textContent = btn.dataset.answer || '';
+
+          answerBlock.style.display = 'none';
+          toggleBtn.textContent = 'Show answer';
+
+          img.setAttribute('fetchpriority', opts.initial ? 'high' : 'auto');
+        }
+
+        btns.forEach((b, idx) => {
+          b.addEventListener('click', () => setActive(b));
+          b.addEventListener('mouseenter', () => {
+            const s = b.dataset.src;
+            if (s) {
+              const i = new Image();
+              i.src = s;
+            }
+          });
+          b.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setActive(b);
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+              e.preventDefault();
+              const next = e.key === 'ArrowLeft'
+                ? (idx - 1 + btns.length) % btns.length
+                : (idx + 1) % btns.length;
+              btns[next].focus();
+            }
+          });
+        });
+
+        toggleBtn.addEventListener('click', () => {
+          const visible = answerBlock.style.display === 'block';
+          answerBlock.style.display = visible ? 'none' : 'block';
+          toggleBtn.textContent = visible ? 'Show answer' : 'Hide answer';
+        });
+
+        const initBtn = root.querySelector('.scene-switcher .button.is-active') || btns[0];
+        if (initBtn) setActive(initBtn, { initial: true });
+      }
+
+      document.querySelectorAll('.scene-gallery').forEach(setupGallery);
+    })();
+  </script>
+</body>
 
   
 
