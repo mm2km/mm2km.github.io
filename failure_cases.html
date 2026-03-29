@@ -1000,7 +1000,204 @@
             output: `The image contains a <semantic>white bottle cap and a silver screw</semantic>. Taking the cap as a reference object with a typical diameter of 2.5–3 cm, the visible gap between the two objects is roughly around one cap width in the clearest frames. This suggests a distance of about 2.5–4 cm in <scale>1cm level</scale>, with an estimated value of <answer>3</answer> cm.`
           }
         ]
-      }
+      },
+      {
+        id: 6,
+        roundLabel: "VIDEO • ROUND 6",
+        title: "Question 6",
+        video: "./static/videos/6.mp4",
+        question: "How many metal pieces are in this video?",
+        gt: "7",
+        aliases: ["7"],
+        scale: "Tiny",
+        inputForm: "Video",
+        questionForm: "Regression",
+        difficulty: "Due to obstruction, only partial content can be seen at different times, and complete information is not available.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "6",
+            output: `The video shows a white plastic bottle cap surrounded by several ring-shaped objects. The cap is plastic, while the dark grey/silver rings have a metallic sheen, indicating they are metal washers. Using the clearest frame around 00:01, I can count 6 distinct metal pieces arranged around the cap. Therefore, the video contains 6 metal pieces.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "6",
+            output: `The visible metal pieces are dark ring-shaped <semantic>washers</semantic> placed around a white cylindrical object. In the clearer frames, there are three washers on the left side and three on the right side, giving a consistent total. Although one frame partially obscures part of the cluster, the later views confirm the full count. Therefore, the number of metal pieces is 6 visible pieces in <scale>1 cm</scale>, and the final count is <answer>6</answer>.`
+          }
+        ]
+      },
+      {
+        id: 7,
+        roundLabel: "VIDEO • ROUND 7",
+        title: "Question 7",
+        video: "./static/videos/7.mp4",
+        question: "If we want to move the red dot referred object to the symmetrical opposite side of the object, what should we do after holding that object based on the view of the first frame?",
+        gt: "B",
+        aliases: ["B", "b"],
+        scale: "Tabletop",
+        inputForm: "Video",
+        questionForm: "Multiple Choice",
+        options: [
+          {
+            key: "A",
+            text: "Move back by 1cm; Move left by 4cm; Move front by 2cm"
+          },
+          {
+            key: "B",
+            text: "Move back by 1cm; Move left by 6cm; Move front by 5cm"
+          },
+          {
+            key: "C",
+            text: "Move up by 1cm; Move left by 5cm; Move down by 1cm"
+          },
+          {
+            key: "D",
+            text: "Move up by 3cm; Move front by 5cm; Move down by 3cm"
+          }
+        ],
+        difficulty: "It requires rigorous simulation and chain-of-thought reasoning based on the assumptions to develop rigorous thinking.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "C",
+            output: `The earbud is initially located at the bottom-right of the Donald Duck head. Since the options do not support point symmetry, the required “symmetrical opposite side” should be interpreted as a horizontal reflection across the head’s vertical center line. Therefore, the earbud should move only to the left, with no net forward or backward displacement. Among the options, only Option C produces a pure 5 cm leftward shift, as the 1 cm upward and 1 cm downward movements cancel out. Hence, the correct answer is C.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "B",
+            output: `The central object is a Donald Duck keychain, and the smaller object to its right is a <semantic>white wireless earbud</semantic>. Interpreting the task as moving the earbud to the symmetrical opposite side of the keychain, the target position should be on the left side while keeping a similar forward offset. Among the options, the movement needs a strong left shift and some forward adjustment to mirror the original front-right placement. Option D lacks any left movement, and Option C only shifts left without preserving the front offset. Option A moves left, but not as completely as Option B. The best match is <answer>B</answer>, corresponding to an approximate displacement of 5 cm left and 4 cm forward net at <scale>1cm level</scale>.`
+          }
+        ]
+      },
+      {
+        id: 8,
+        roundLabel: "VIDEO • ROUND 8",
+        title: "Question 8",
+        video: "./static/videos/8.mp4",
+        question: "Assume a man is standing facing the pumpkins. If he wants to move to the coffin-shaped welcome sign, what should he do?",
+        gt: "D",
+        aliases: ["D", "d"],
+        scale: "Indoor",
+        inputForm: "Video",
+        questionForm: "Multiple Choice",
+        options: [
+          {
+            key: "A",
+            text: "Turn left; Move front by 2m; Turn right"
+          },
+          {
+            key: "B",
+            text: "Turn left; Move front by 2m; Turn right"
+          },
+          {
+            key: "C",
+            text: "Turn right; Move front by 8m; Turn left"
+          },
+          {
+            key: "D",
+            text: "Turn right; Move front by 4m; Turn left"
+          }
+        ],
+        difficulty: "It requires rigorous simulation and chain-of-thought reasoning based on the assumptions to develop rigorous thinking.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "C",
+            output: `The pumpkins are on the right-side shelving, while the black coffin-shaped “WELCOME” sign is farther down on the left. Since the man starts facing the pumpkins, he must first turn right to face down the aisle. The sign appears about five to six shelf bays away, so 8 meters forward is more reasonable than 4 meters. After reaching the destination area, he must turn left to face the sign. Therefore, the correct answer is Option C.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "D",
+            output: `First, locate the <semantic>pumpkins</semantic>: they are on the shelf near the middle of the video, and the person is assumed to start facing them. The coffin-shaped black “WELCOME” sign is farther down the aisle, to the right relative to this starting view. So the person should first turn right to face down the aisle. Estimating in <scale>1m level</scale>, the sign appears about 3–4 shelf bays away, making 4 meters more reasonable than 8 meters. After walking forward, the shelf will be on the left, so the person must turn left to face the sign. Thus, the answer is <answer>D</answer>.`
+          }
+        ]
+      },
+      {
+        id: 9,
+        roundLabel: "VIDEO • ROUND 9",
+        title: "Question 9",
+        video: "./static/videos/9.mp4",
+        question: "Which object is closest to the mannequin wearing high heels?",
+        gt: "B",
+        aliases: ["B", "b"],
+        scale: "Indoor",
+        inputForm: "Video",
+        questionForm: "Multiple Choice",
+        options: [
+          {
+            key: "A",
+            text: "Hanging clothes"
+          },
+          {
+            key: "B",
+            text: "Table"
+          },
+          {
+            key: "C",
+            text: "Black wallet"
+          },
+          {
+            key: "D",
+            text: "Mannequin"
+          }
+        ],
+        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "A",
+            output: `The main subject is the mannequin in the black blazer, black pants, and platform heels. Nearby objects include a wooden table on the right, a second mannequin and a black wallet on top of that table, and a clothing rack on the left. Since the second mannequin and wallet are positioned on the table, they are farther than the table edge itself. However, the hanging clothes on the left drape outward and extend even closer to the mannequin than the rigid table structure. Therefore, the closest object is A.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "C",
+            output: `The video shows a clothing store display with two <semantic>mannequins</semantic>. In the later frames, the camera focuses on the mannequin standing on a small wooden table. Right next to its feet on the table surface is a small black rectangular object, likely a black wallet or clutch. At <scale>1 cm level</scale>, this wallet appears closer than the other options, such as the hanging clothes or the other mannequin. Therefore, the final answer is <answer>C</answer>.`
+          }
+        ]
+      },
+      {
+        id: 10,
+        roundLabel: "VIDEO • ROUND 10",
+        title: "Question 10",
+        video: "./static/videos/10.mp4",
+        question: "Estimate the angle the camera has moved based on the main context.",
+        gt: "B",
+        aliases: ["B", "b"],
+        scale: "Outdoor",
+        inputForm: "Video",
+        questionForm: "Multiple Choice",
+        options: [
+          {
+            key: "A",
+            text: "30 degrees"
+          },
+          {
+            key: "B",
+            text: "60 degrees"
+          },
+          {
+            key: "C",
+            text: "90 degrees"
+          },
+          {
+            key: "D",
+            text: "120 degrees"
+          }
+        ],
+        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "C",
+            output: `The video opens with an aerial view focused on the front-right corner of a large, rectangular building topped with a geodesic dome. From this initial vantage point, both the front and right-side facades are clearly visible. As the footage progresses, the camera executes a smooth orbital motion from right to left, keeping the central dome anchored in the frame. By the final frame at \`00:06\`, the perspective has shifted entirely. The right-side facade vanishes, and the camera now looks directly at the front-left corner, revealing the previously hidden left side of the structure. To transition from viewing the right corner to the left corner of a rectangular building, the camera must travel across the entire front facade. This movement represents exactly a quarter of a full circular orbit. Mathematically, this is calculated as:360∘/4=90∘360∘/4=90∘. The answer is C`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "C",
+            output: `The video shows an aerial view of a building complex with a geodesic dome on the roof at <scale>10m level<scale>. Initially, the orange-striped facade is on the left of the dome, the grey facade is on the right, and the river is clearly visible to the right of the building. By the final frame, the grey facade appears on the left and the orange-striped facade on the right, while the river is mostly out of view. This swap of facade positions, together with the reduced visibility of the river, indicates that the camera has rotated around the building by about 90 degrees counterclockwise. Therefore, the final answer is <answer>C</answer>.`
+          }
+        ]
+      },
     ];
 
     let currentIndex = 0;
