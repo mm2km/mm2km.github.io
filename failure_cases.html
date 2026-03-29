@@ -500,13 +500,6 @@
       gap: 16px;
     }
 
-    .model-card {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      background: #fff;
-    }
-
     .model-header {
       display: flex;
       justify-content: space-between;
@@ -582,13 +575,15 @@
       white-space: normal;
     }
 
+    .model-card {
+      border-radius: 20px;
+      padding: 18px;
+      overflow: hidden;
+    }
+    
     .hallucination-box {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: var(--orange-bg);
-      border: 1px solid var(--orange-border);
-      color: var(--orange-text);
+      margin-top: 10px;
+      border-radius: 12px;
     }
 
     .hallucination-label {
@@ -786,7 +781,7 @@
     const questions = [
       {
         id: 1,
-        roundLabel: "VIDEO QA • ROUND 1",
+        roundLabel: "VIDEO • ROUND 1",
         title: "Question 1",
         video: "./static/videos/1.mp4",
         question: "How long is this skeleton from head to tail?",
