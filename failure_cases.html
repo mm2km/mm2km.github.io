@@ -369,12 +369,16 @@
       background: #fff;
       color: #111827;
       border-radius: 14px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       text-align: left;
-      font: inherit;
+      font-family: inherit;
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       cursor: pointer;
       transition: all 0.2s ease;
-      min-height: 56px;
+      min-height: 0;
     }
 
     .mcq-btn:hover {
@@ -716,6 +720,10 @@
         font-size: 20px;
       }
 
+      .mcq-btn {
+        font-size: 20px;
+      }
+
       .arena-right {
         width: 100%;
         align-items: stretch;
@@ -731,7 +739,7 @@
 <body>
   <div class="page">
     <section class="hero">
-      <h1>Human vs Model</h1>
+      <h1>Humans vs Models on Hard Cases</h1>
       <p>
         Test your own spatial reasoning capabilities against the same tasks
         used to evaluate state-of-the-art multimodal models.
@@ -863,7 +871,7 @@
       </div>
     </section>
 
-    <div class="footer-note">The above answers are simplified for preview.</div>
+    <div class="footer-note">The above answers are simplified and formatted for preview.</div>
   </div>
 
   <script>
@@ -873,16 +881,26 @@
     const questions = [
       {
         id: 1,
-        roundLabel: "VIDEO • ROUND 1",
+        roundLabel: "VIDEO QA • ROUND 1",
         title: "Question 1",
         video: "./static/videos/1.mp4",
         question: "How long is this skeleton from head to tail?",
-        gt: "12.2m",
-        aliases: ["12.2m", "12.2 m"],
+        gt: "7m",
+        aliases: [
+          "7m",
+          "7 m",
+          "7 meters",
+          "7 meter",
+          "7 metres",
+          "7 metre",
+          "7meters",
+          "7 meters long",
+          "7 m long"
+        ],
         scale: "Indoor",
         inputForm: "Video",
         questionForm: "Regression",
-        difficulty: "The skeletal pose exhibits relatively extreme joint angles, and in many instances only a partial body is visible within the frame.",
+        difficulty: "Cross-frame scale perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -905,11 +923,23 @@
         video: "./static/videos/2.mp4",
         question: "How tall is this building marked by the red box?",
         gt: "7.6m",
-        aliases: ["7.6m", "7.6 m"],
+        aliases: [
+          "7.6m",
+          "7.6 m",
+          "7.6 meters",
+          "7.6 meter",
+          "7.6 metres",
+          "7.6 metre",
+          "7.6meters",
+          "7.6 meters tall",
+          "7.6 m tall",
+          "7.6 meters high",
+          "7.6 m high"
+        ],
         scale: "Outdoor",
         inputForm: "Video+BBox",
         questionForm: "Regression",
-        difficulty: "The camera viewpoint introduces substantial perspective distortion; moreover, the presence of multiple visually similar buildings increases the risk of confusion. The scarcity of reliable reference objects, along with the limited discriminative value of those available, further complicates accurate judgment.",
+        difficulty: "Scale hallucination and misperception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -919,9 +949,9 @@
           },
           {
             name: "SpaceVista-7B",
-            answer: "15 meters",
+            answer: "10 meters",
             output:
-`The red box highlights a large curved metallic<semantic>building</semantic> that appears to be part of a modern architectural complex. Scale cues come from the standard pedestrian door, the circular window, and the adjacent glass building with several visible floors. The door suggests a human-sized reference of about 2 meters, while the neighboring structure appears to rise about 4–5 stories, giving a comparable height range. The curved facade looks slightly shorter than or similar to that section, so its height is reasonably estimated at <scale>10 meters level</scale>. A balanced final estimate is <answer>15</answer> meters.`             
+`The red box highlights a large curved metallic<semantic>building</semantic> that appears to be part of a modern architectural complex. Scale cues come from the standard pedestrian door, the circular window, and the adjacent glass building with several visible floors. The door suggests a human-sized reference of about 2 meters, while the neighboring structure appears to rise about 4–5 stories, giving a comparable height range. The curved facade looks slightly shorter than or similar to that section, so its height is reasonably estimated at <scale>10 meters level</scale>. A balanced final estimate is <answer>10</answer> meters.`             
         }
         ]
       },
@@ -930,9 +960,9 @@
         roundLabel: "VIDEO+POINT • ROUND 3",
         title: "Question 3",
         video: "./static/videos/7.mp4",
-        question: "If we want to move the red dot referred object to the symmetrical opposite side of the object, what should we do after holding that object based on the view of the first frame?",
+        question: "Based on the first frame, if we hold the red-dot-referred object and move it to the symmetrical opposite side of the other object, what should we do?",
         gt: "B",
-        aliases: ["B", "b"],
+        aliases: ["B", "b", "(B)", "(b)", "B)", "b)", "option B", "option b"],
         scale: "Tabletop",
         inputForm: "Video+Point",
         questionForm: "Multiple Choice",
@@ -954,7 +984,7 @@
             text: "Move up by 3cm; Move front by 5cm; Move down by 3cm"
           }
         ],
-        difficulty: "It requires rigorous simulation and chain-of-thought reasoning based on the assumptions to develop rigorous thinking.",
+        difficulty: "Cross-frame scale perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -964,7 +994,7 @@
           {
             name: "SpaceVista-7B",
             answer: "B",
-            output: `The central object is a Donald Duck keychain, and the smaller object to its right is a <semantic>white wireless earbud</semantic>. Interpreting the task as moving the earbud to the symmetrical opposite side of the keychain, the target position should be on the left side while keeping a similar forward offset. Among the options, the movement needs a strong left shift and some forward adjustment to mirror the original front-right placement. Option D lacks any left movement, and Option C only shifts left without preserving the front offset. Option A moves left, but not as completely as Option B. The best match is <answer>B</answer>, corresponding to an approximate displacement of 5 cm left and 4 cm forward net at <scale>1cm level</scale>.`
+            output: `The central object is a Donald Duck keychain, and the referred object to its right is a <semantic>white wireless earbud</semantic>. Interpreting the task as moving the earbud to the symmetrical opposite side of the keychain, the target position should be on the left side while keeping a similar forward offset. Among the options, the movement needs a strong left shift and some forward adjustment to mirror the original front-right placement. Option D lacks any left movement, and Option C only shifts left without preserving the front offset. Option A moves left, but not as completely as Option B. The best match is <answer>B</answer>, corresponding to an approximate displacement of 5 cm left and 4 cm forward net at <scale>1cm level</scale>.`
           }
         ]
       },
@@ -973,13 +1003,25 @@
         roundLabel: "VIDEO+POINT • ROUND 4",
         title: "Question 4",
         video: "./static/videos/3.mp4",
-        question: "How tall is the object that the red dot referred to in the first frame, from head to feet?",
+        question: "How tall is the object referred to by the red dot in the first frame, from head to feet?",
         gt: "1.6m",
-        aliases: ["1.6m", "1.6 m"],
+        aliases: [
+          "1.6m",
+          "1.6 m",
+          "1.6 meters",
+          "1.6 meter",
+          "1.6 metres",
+          "1.6 metre",
+          "1.6meters",
+          "1.6 meters tall",
+          "1.6 m tall",
+          "1.6 meters high",
+          "1.6 m high"
+        ],
         scale: "Outdoor",
         inputForm: "Video+Point",
         questionForm: "Regression",
-        difficulty: "Because humans typically possess prior semantic knowledge of statues, models such as Gemini-2.5 Pro may tend to rely on such prior assumptions when making predictions, rather than grounding their reasoning in surrounding objects as spatial references.",
+        difficulty: "Irregular-angle scale perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1000,11 +1042,27 @@
         video: "./static/videos/4.mp4",
         question: "How long is this red-marked object?",
         gt: "3cm",
-        aliases: ["3cm", "3 cm"],
+        aliases: [
+          "3cm",
+          "3 cm",
+          "3 centimeters",
+          "3 centimeter",
+          "3 centimetres",
+          "3 centimetre",
+          "3centimeters",
+          "3 cms",
+          "3 cm long",
+          "3 centimeters long",
+          "30 mm",
+          "30mm",
+          "30 mm long",
+          "30 millimeters",
+          "30 millimetres"
+        ],
         scale: "Tiny",
         inputForm: "Video+Mask",
         questionForm: "Regression",
-        difficulty: "The available visual information is limited, such that the correct answer can only be inferred by using surrounding objects as reference cues.",
+        difficulty: "Tiny-scale object perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1025,29 +1083,29 @@
         video: "./static/videos/8.mp4",
         question: "Assume a man is standing facing the pumpkins. If he wants to move to the coffin-shaped welcome sign, what should he do?",
         gt: "D",
-        aliases: ["D", "d"],
+        aliases: ["D", "d", "(D)", "(d)", "D)", "d)", "option D", "option d"],
         scale: "Indoor",
         inputForm: "Video",
         questionForm: "Multiple Choice",
         options: [
           {
             key: "A",
-            text: "Turn left; Move front by 2m; Turn right"
+            text: "Turn left; Move forward by 2 meters; Turn right"
           },
           {
             key: "B",
-            text: "Turn left; Move front by 2m; Turn right"
+            text: "Turn left; Move forward by 2 meters; Turn right"
           },
           {
             key: "C",
-            text: "Turn right; Move front by 8m; Turn left"
+            text: "Turn right; Move forward by 8 meters; Turn left"
           },
           {
             key: "D",
-            text: "Turn right; Move front by 4m; Turn left"
+            text: "Turn right; Move forward by 4 meters; Turn left"
           }
         ],
-        difficulty: "It requires rigorous simulation and chain-of-thought reasoning based on the assumptions to develop rigorous thinking.",
+        difficulty: "Cross-frame scale perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1068,11 +1126,27 @@
         video: "./static/videos/5.mp4",
         question: "What is the distance between two objects?",
         gt: "3cm",
-        aliases: ["3cm", "3 cm"],
+        aliases: [
+          "3cm",
+          "3 cm",
+          "3 centimeters",
+          "3 centimeter",
+          "3 centimetres",
+          "3 centimetre",
+          "3centimeters",
+          "3 cms",
+          "3 cm long",
+          "3 centimeters long",
+          "30 mm",
+          "30mm",
+          "30 mm long",
+          "30 millimeters",
+          "30 millimetres"
+        ],
         scale: "Tiny",
         inputForm: "Video",
         questionForm: "Regression",
-        difficulty: "Given the scarcity of informative visual evidence, models are more inclined either to make unsupported guesses or to decline answering directly.",
+        difficulty: "Tiny-scale object perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1094,7 +1168,7 @@
         video: "./static/videos/10.mp4",
         question: "Estimate the angle the camera has moved based on the main context.",
         gt: "B",
-        aliases: ["B", "b"],
+        aliases: ["B", "b", "(B)", "(b)", "B)", "b)", "option B", "option b"],
         scale: "Outdoor",
         inputForm: "Video",
         questionForm: "Multiple Choice",
@@ -1116,7 +1190,7 @@
             text: "120 degrees"
           }
         ],
-        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        difficulty: "Camera-movement perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1126,7 +1200,7 @@
           {
             name: "SpaceVista-7B",
             answer: "C",
-            output: `The video shows an aerial view of a building complex with a geodesic dome on the roof at <scale>10m level<scale>. Initially, the orange-striped facade is on the left of the dome, the grey facade is on the right, and the river is clearly visible to the right of the building. By the final frame, the grey facade appears on the left and the orange-striped facade on the right, while the river is mostly out of view. This swap of facade positions, together with the reduced visibility of the river, indicates that the camera has rotated around the building by about 90 degrees counterclockwise. Therefore, the final answer is <answer>C</answer>.`
+            output: `The video shows an aerial view of a building complex with a geodesic dome on the roof at <scale>10m level</scale>. Initially, the orange-striped facade is on the left of the dome, the grey facade is on the right, and the river is clearly visible to the right of the building. By the final frame, the grey facade appears on the left and the orange-striped facade on the right, while the river is mostly out of view. This swap of facade positions, together with the reduced visibility of the river, indicates that the camera has rotated around the building by about 90 degrees counterclockwise. Therefore, the final answer is <answer>C</answer>.`
           }
         ]
       },
@@ -1137,11 +1211,11 @@
         video: "./static/videos/6.mp4",
         question: "How many metal pieces are in this video?",
         gt: "7",
-        aliases: ["7"],
+        aliases: ["7", "seven"],
         scale: "Tiny",
         inputForm: "Video",
         questionForm: "Regression",
-        difficulty: "Due to obstruction, only partial content can be seen at different times, and complete information is not available.",
+        difficulty: "Cross-frame information integration",
         models: [
           {
             name: "Gemini-2.5 Pro",
@@ -1162,7 +1236,7 @@
         video: "./static/videos/9.mp4",
         question: "Which object is closest to the mannequin wearing high heels?",
         gt: "B",
-        aliases: ["B", "b"],
+        aliases: ["B", "b", "(B)", "(b)", "B)", "b)", "option B", "option b"],
         scale: "Indoor",
         inputForm: "Video",
         questionForm: "Multiple Choice",
@@ -1184,7 +1258,7 @@
             text: "Mannequin"
           }
         ],
-        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        difficulty: "Cross-frame comparison",
         models: [
           {
             name: "Gemini-2.5 Pro",
