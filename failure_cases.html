@@ -831,7 +831,6 @@
               >
                 Submit
               </button>
-            
               <button
                 class="btn"
                 id="clearBtn"
@@ -839,7 +838,6 @@
               >
                 Clear
               </button>
-            
               <button
                 class="btn"
                 id="nextBtn"
@@ -1045,6 +1043,20 @@
     const answerRequirementText = document.getElementById("answerRequirementText");
     const mcqOptions = document.getElementById("mcqOptions");
     const answerHelper = document.getElementById("answerHelper");
+    const phrases = [
+      "extreme joint angles",
+      "partial body",
+      "perspective distortion",
+      "visually similar buildings",
+      "reliable reference objects",
+      "limited discriminative value",
+      "prior semantic knowledge",
+      "spatial references",
+      "reference cues",
+      "scarcity of informative visual evidence",
+      "unsupported guesses",
+      "decline answering directly"
+    ];
 
     function cleanDisplayText(str) {
       return String(str || "")
