@@ -1453,6 +1453,45 @@
       };
     }
 
+    function getModelAnswerBadgeStyle(modelAnswer, item) {
+      const greenStyle = "background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;";
+      const yellowStyle = "background:#fef3c7;border:1px solid #fcd34d;color:#92400e;";
+      const redStyle = "background:#fef2f2;border:1px solid #fecaca;color:#991b1b;";
+
+      if (item.questionForm === "Multiple Choice") {
+        const normModelAnswer = normalizeAnswer(modelAnswer);
+        const accepted = [item.gt, ...(item.aliases || [])].map(normalizeAnswer);
+        return accepted.includes(normModelAnswer) ? greenStyle : redStyle;
+      }
+
+      const gtParsed = parseMeasurement(item.gt);
+      const modelParsed = parseMeasurement(modelAnswer, gtParsed.ok ? gtParsed.unit : "");
+
+      if (!gtParsed.ok || !modelParsed.ok) {
+        return redStyle;
+      }
+
+      const predMeters = convertLengthToMeters(modelParsed.value, modelParsed.unit);
+      const gtMeters = convertLengthToMeters(gtParsed.value, gtParsed.unit);
+
+      if (!Number.isFinite(predMeters) || !Number.isFinite(gtMeters)) {
+        return redStyle;
+      }
+
+      const mraScore = computeMRAScore(predMeters, gtMeters);
+      const exactMatch = Math.abs(predMeters - gtMeters) < 1e-12;
+
+      if (exactMatch || mraScore >= 0.95) {
+        return greenStyle;
+      }
+
+      if (mraScore >= 0.5) {
+        return yellowStyle;
+      }
+
+      return redStyle;
+    }
+
     function updateScoreboard() {
       scoreValue.textContent = formatScoreValue(score);
       streakValue.textContent = streak;
@@ -1495,6 +1534,7 @@
         const safeAnswer = escapeHTML(cleanDisplayText(model.answer || "-"));
         const safeOutput = escapeHTML(cleanDisplayText(model.output || ""));
         const safeHallucination = escapeHTML(cleanDisplayText(model.hallucination || ""));
+        const modelAnswerStyle = getModelAnswerBadgeStyle(model.answer || "", item);
     
         const hallucinationHTML = model.hallucination
           ? `
@@ -1508,7 +1548,7 @@
         card.innerHTML = `
           <div class="model-header">
             <div class="model-name">${safeName}</div>
-            <div class="model-answer">Answer: ${safeAnswer}</div>
+            <div class="model-answer" style="${modelAnswerStyle}">Answer: ${safeAnswer}</div>
           </div>
     
           <div class="model-content-grid">
@@ -1564,9 +1604,9 @@
         mcqOptions.innerHTML = "";
 
         answerRequirementText.innerHTML = `
-          Enter a regression-style answer using a number or a number with unit.<br>
-          <strong>Required format:</strong> numeric value or numeric value + unit.<br>
-          <strong>Examples:</strong> 12.2m / 12.2 m / 12.2 meters / 3 cm
+          Enter your answer as a number.<br>
+          You may also include a unit when needed.<br>
+          <strong>Examples:</strong> 5 / 8.4 / 8.4 m / 8.4 meters / 9 cm
         `;
       }
     }
