@@ -628,9 +628,8 @@
       font-size: 14px;
       line-height: 1.75;
       white-space: pre-wrap;
-      text-indent: 0;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .difficulty-box {
@@ -768,7 +767,6 @@
               <div class="score-value" id="streakValue">0</div>
             </div>
           </div>
-          <button class="btn top-next-btn" id="topNextBtn" type="button">Next Question</button>
         </div>
       </div>
 
@@ -1054,21 +1052,6 @@
 
     function renderDifficulty(item) {
       const rawText = cleanDisplayText(item.difficulty || "No difficulty analysis provided.");
-      const phrases = [
-        "extreme joint angles",
-        "partial body is visible within the frame",
-        "substantial perspective distortion",
-        "multiple visually similar buildings",
-        "scarcity of reliable reference objects",
-        "limited discriminative value",
-        "prior semantic knowledge of statues",
-        "grounding their reasoning in surrounding objects as spatial references",
-        "available visual information is limited",
-        "surrounding objects as reference cues",
-        "scarcity of informative visual evidence",
-        "unsupported guesses",
-        "decline answering directly"
-      ];
 
       let html = escapeHTML(rawText);
       phrases
@@ -1394,7 +1377,6 @@
           <strong>Required format:</strong> numeric value or numeric value + unit.<br>
           <strong>Examples:</strong> 12.2m / 12.2 m / 12.2 meters / 3 cm
         `;
-        answerHelper.textContent = "Regression answers are parsed robustly and scored by MRA@0.50:0.95:0.05.";
       }
     }
 
