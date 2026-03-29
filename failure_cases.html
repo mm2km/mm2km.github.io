@@ -17,7 +17,6 @@
       --text: #111827;
       --muted: #6b7280;
       --muted-2: #9ca3af;
-      --primary: #111827;
       --success-bg: #ecfdf5;
       --success-text: #065f46;
       --success-border: #a7f3d0;
@@ -25,9 +24,6 @@
       --error-text: #991b1b;
       --error-border: #fecaca;
       --shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
     }
 
     * {
@@ -42,9 +38,9 @@
     }
 
     .page {
-      max-width: 1320px;
+      max-width: 1380px;
       margin: 0 auto;
-      padding: 36px 28px 18px;
+      padding: 36px 28px 24px;
     }
 
     .hero {
@@ -69,7 +65,7 @@
     }
 
     .arena {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255, 255, 255, 0.55);
       border: 1px solid var(--border);
       border-radius: 34px;
       padding: 28px;
@@ -138,8 +134,9 @@
 
     .content {
       display: grid;
-      grid-template-columns: 1.35fr 0.95fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 28px;
+      align-items: start;
     }
 
     .video-panel {
@@ -147,10 +144,9 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 20px;
-      min-height: 700px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      gap: 18px;
     }
 
     .video-box {
@@ -201,6 +197,54 @@
       line-height: 1.6;
       font-weight: 600;
       color: #1f2937;
+      margin-bottom: 14px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .meta-item {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .meta-title {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+      margin-bottom: 8px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid #dbe1e8;
+      background: #ffffff;
+      color: #111827;
+    }
+
+    .tag.active {
+      background: #111827;
+      color: #ffffff;
+      border-color: #111827;
     }
 
     .answer-input {
@@ -223,10 +267,53 @@
       box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.06);
     }
 
+    .mcq-options {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .mcq-options.show {
+      display: grid;
+    }
+
+    .mcq-btn {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #111827;
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 56px;
+    }
+
+    .mcq-btn:hover {
+      background: #f9fafb;
+      border-color: #d1d5db;
+    }
+
+    .mcq-btn.selected {
+      background: #111827;
+      color: #fff;
+      border-color: #111827;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
     .btn-row {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 14px;
     }
 
     .btn {
@@ -313,8 +400,79 @@
 
     .gt-text {
       color: #111827;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .model-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .model-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .model-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .model-answer {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .model-body {
+      color: #374151;
+      font-size: 15px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    .hallucination-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+    }
+
+    .hallucination-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .hallucination-text {
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 600;
     }
 
     .nav-card {
@@ -361,24 +519,23 @@
       opacity: 0.78;
     }
 
-    .helper {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 8px;
-      line-height: 1.6;
-    }
-
     @media (max-width: 1100px) {
       .content {
         grid-template-columns: 1fr;
       }
 
-      .video-panel {
-        min-height: auto;
-      }
-
       .hero h1 {
         font-size: 42px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mcq-options {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -403,6 +560,11 @@
 
       .question-text {
         font-size: 18px;
+      }
+
+      .model-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -446,27 +608,57 @@
               Your browser does not support the video tag.
             </video>
           </div>
+
+          <div class="card">
+            <div class="card-label">Model Outputs</div>
+            <div class="model-grid" id="modelGrid"></div>
+          </div>
         </div>
 
         <div class="side-panel">
           <div class="card">
             <div class="card-label">Question</div>
             <div class="question-text" id="questionText"></div>
+
+            <div class="meta-grid">
+              <div class="meta-item">
+                <div class="meta-title">Scale</div>
+                <div class="tag-row" id="scaleTags"></div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-title">Input Form</div>
+                <div class="tag-row" id="inputFormTags"></div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-title">Question Form</div>
+                <div class="tag-row" id="questionFormTags"></div>
+              </div>
+
+              <div class="meta-item">
+                <div class="meta-title">Ground Truth Type</div>
+                <div class="tag-row" id="gtTypeTags"></div>
+              </div>
+            </div>
           </div>
 
           <div class="card">
             <div class="card-label">Your Answer</div>
+
             <textarea
               id="userAnswer"
               class="answer-input"
-              placeholder="Type your answer here... For example: B / left / directly behind / 3"
+              placeholder="Type your answer here..."
             ></textarea>
 
-            <div class="helper">
-              支持自由输入。当前默认按“忽略大小写 + 去除首尾空格”比较，你也可以在 JS 里改成更严格或更宽松的判定逻辑。
+            <div class="mcq-options" id="mcqOptions"></div>
+
+            <div class="helper" id="answerHelper">
+              Answers are matched case-insensitively after trimming whitespace.
             </div>
 
-            <div class="btn-row" style="margin-top: 14px;">
+            <div class="btn-row">
               <button class="btn btn-primary" id="submitBtn">Submit</button>
               <button class="btn btn-secondary" id="clearBtn">Clear</button>
               <button class="btn btn-secondary" id="nextBtn">Next Question</button>
@@ -493,65 +685,86 @@
   </div>
 
   <script>
-    // =========================
-    // 你只需要改这里的数据
-    // =========================
+    const SCALE_OPTIONS = ["Tiny", "Tabletop", "Indoor", "Outdoor"];
+    const INPUT_FORM_OPTIONS = ["Video", "Video+Point", "Video+Mask", "Video+BBox"];
+    const QUESTION_FORM_OPTIONS = ["Multiple Choice", "Regression"];
+    const GT_TYPE_OPTIONS = ["Categorical", "Numeric"];
+
     const questions = [
       {
         id: 1,
         roundLabel: "VIDEO QA • ROUND 1",
         title: "Question 1",
-        subtitle: "Spatial relation",
+        subtitle: "Length estimation",
         video: "./static/videos/1.mp4",
-        question: "From the perspective of standing at the kitchen island facing the large range hood, where is the dining table located?",
-        gt: "directly behind",
-        aliases: ["d", "directly behind", "behind"]
+
+        question: "How long is this skeleton from head to tail?",
+        gt: "12.2m",
+        aliases: ["12.2m", "12.2 m"],
+
+        scale: "Indoor",
+        inputForm: "Video",
+        questionForm: "Regression",
+        gtType: "Numeric",
+
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "30 meters",
+            output:
+`I will analyze the video frames to find information about the skeleton's length. The video starts with a blank white screen. A black skeleton of a fish-like creature is drawn from head to tail. After the skeleton is fully drawn, a red horizontal line appears, starting at the tip of the skeleton's snout. The red line extends across the entire body of the skeleton, ending at the tip of its tail fin. Text appears below this red line, which reads "30 m". This visual cue directly indicates that the length of the skeleton, from head to tail, is 30 meters. Therefore, the answer is 30 meters, as explicitly shown in the video. Based on the video, the skeleton is **30 meters** long from head to tail.`,
+            hallucination: `No Red Line, No "30 m"`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "8.5 meters",
+            output:
+`The scene shows a large dinosaur skeleton in a museum hall, likely an <semantic>Allosaurus skeleton</semantic>. The surrounding glass case and barriers appear about waist-to-chest height compared with an adult, while the skeleton’s body rises much higher, indicating a very large specimen. Using the room scale, ceiling height, pendant lights, and comparison with people and the larger sauropod in the background, the exhibit matches the size of a typical adult Allosaurus. Adult individuals are usually around <scale>10 meters level</scale> long, and this specimen appears consistent with that range. Therefore, the estimated length is about <answer>8.5</answer> meters.`
+          }
+        ]
       },
       {
         id: 2,
-        roundLabel: "VIDEO QA • ROUND 2",
+        roundLabel: "VIDEO+POINT • ROUND 2",
         title: "Question 2",
-        subtitle: "Object counting",
+        subtitle: "Relative location",
         video: "./static/videos/2.mp4",
-        question: "How many barstools are placed at the kitchen island?",
-        gt: "3",
-        aliases: ["3", "three", "B", "b"]
-      },
-      {
-        id: 3,
-        roundLabel: "VIDEO QA • ROUND 3",
-        title: "Question 3",
-        subtitle: "Relative orientation",
-        video: "./static/videos/3.mp4",
-        question: "After entering the room, is the sofa on the left or right side of the TV?",
-        gt: "left",
-        aliases: ["left", "on the left", "a", "A"]
-      },
-      {
-        id: 4,
-        roundLabel: "VIDEO QA • ROUND 4",
-        title: "Question 4",
-        subtitle: "Relative orientation",
-        video: "./static/videos/4.mp4",
-        question: "After entering the room, is the sofa on the left or right side of the TV?",
-        gt: "left",
-        aliases: ["left", "on the left", "a", "A"]
-      },
-      {
-        id: 5,
-        roundLabel: "VIDEO QA • ROUND 5",
-        title: "Question 5",
-        subtitle: "Relative orientation",
-        video: "./static/videos/5.mp4",
-        question: "After entering the room, is the sofa on the left or right side of the TV?",
-        gt: "left",
-        aliases: ["left", "on the left", "a", "A"]
+
+        question: "Which object is closest to the marked point?",
+        gt: "B",
+        aliases: ["B", "b"],
+
+        scale: "Indoor",
+        inputForm: "Video+Point",
+        questionForm: "Multiple Choice",
+        gtType: "Categorical",
+
+        options: [
+          { key: "A", text: "Chair" },
+          { key: "B", text: "Lamp" },
+          { key: "C", text: "Table" },
+          { key: "D", text: "Cabinet" }
+        ],
+
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "C",
+            output: `The marked point appears closest to the table based on the final frames.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "B",
+            output: `The marked point is closest to the lamp.`
+          }
+        ]
       }
     ];
 
     let currentIndex = 0;
     let score = 0;
     let streak = 0;
+    let selectedMCQ = "";
     const answeredMap = new Map();
 
     const arenaMeta = document.getElementById("arenaMeta");
@@ -569,6 +782,13 @@
     const scoreValue = document.getElementById("scoreValue");
     const streakValue = document.getElementById("streakValue");
     const questionList = document.getElementById("questionList");
+    const modelGrid = document.getElementById("modelGrid");
+    const scaleTags = document.getElementById("scaleTags");
+    const inputFormTags = document.getElementById("inputFormTags");
+    const questionFormTags = document.getElementById("questionFormTags");
+    const gtTypeTags = document.getElementById("gtTypeTags");
+    const mcqOptions = document.getElementById("mcqOptions");
+    const answerHelper = document.getElementById("answerHelper");
 
     function normalizeAnswer(text) {
       return String(text || "")
@@ -599,11 +819,11 @@
         const isAnswered = answeredMap.has(item.id);
         const statusText = isAnswered
           ? (answeredMap.get(item.id).correct ? "Answered · Correct" : "Answered · Wrong")
-          : item.subtitle;
+          : `${item.scale} · ${item.inputForm} · ${item.questionForm}`;
 
         btn.innerHTML = `
           <div class="question-item-title">${item.title}</div>
-          <div class="question-item-sub">${statusText}</div>
+          <div class="question-item-sub">${escapeHTML(statusText)}</div>
         `;
 
         btn.addEventListener("click", () => {
@@ -613,6 +833,80 @@
 
         questionList.appendChild(btn);
       });
+    }
+
+    function renderTagGroup(container, options, activeValue) {
+      container.innerHTML = "";
+      options.forEach((value) => {
+        const span = document.createElement("span");
+        span.className = "tag" + (value === activeValue ? " active" : "");
+        span.textContent = value;
+        container.appendChild(span);
+      });
+    }
+
+    function renderModels(item) {
+      modelGrid.innerHTML = "";
+
+      (item.models || []).forEach((model) => {
+        const card = document.createElement("div");
+        card.className = "model-card";
+
+        const hallucinationHTML = model.hallucination
+          ? `
+            <div class="hallucination-box">
+              <div class="hallucination-label">Hallucination</div>
+              <div class="hallucination-text">${escapeHTML(model.hallucination)}</div>
+            </div>
+          `
+          : "";
+
+        card.innerHTML = `
+          <div class="model-header">
+            <div class="model-name">${escapeHTML(model.name)}</div>
+            <div class="model-answer">Answer: ${escapeHTML(model.answer || "-")}</div>
+          </div>
+          <div class="model-body">${escapeHTML(model.output || "")}</div>
+          ${hallucinationHTML}
+        `;
+
+        modelGrid.appendChild(card);
+      });
+    }
+
+    function renderAnswerMode(item) {
+      selectedMCQ = "";
+      userAnswer.value = "";
+
+      if (item.questionForm === "Multiple Choice") {
+        userAnswer.style.display = "none";
+        mcqOptions.classList.add("show");
+        mcqOptions.innerHTML = "";
+
+        (item.options || []).forEach((opt) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "mcq-btn";
+          btn.innerHTML = `<strong>${escapeHTML(opt.key)}.</strong> ${escapeHTML(opt.text)}`;
+
+          btn.addEventListener("click", () => {
+            selectedMCQ = opt.key;
+            Array.from(mcqOptions.querySelectorAll(".mcq-btn")).forEach((el) => {
+              el.classList.remove("selected");
+            });
+            btn.classList.add("selected");
+          });
+
+          mcqOptions.appendChild(btn);
+        });
+
+        answerHelper.textContent = "Select one option. The selected option key will be used as your answer.";
+      } else {
+        userAnswer.style.display = "block";
+        mcqOptions.classList.remove("show");
+        mcqOptions.innerHTML = "";
+        answerHelper.textContent = "Answers are matched case-insensitively after trimming whitespace.";
+      }
     }
 
     function resetFeedback() {
@@ -629,8 +923,15 @@
       questionText.textContent = item.question;
       questionVideo.src = item.video;
       questionVideo.load();
-      userAnswer.value = "";
+
+      renderTagGroup(scaleTags, SCALE_OPTIONS, item.scale);
+      renderTagGroup(inputFormTags, INPUT_FORM_OPTIONS, item.inputForm);
+      renderTagGroup(questionFormTags, QUESTION_FORM_OPTIONS, item.questionForm);
+      renderTagGroup(gtTypeTags, GT_TYPE_OPTIONS, item.gtType);
+
+      renderAnswerMode(item);
       resetFeedback();
+      renderModels(item);
       renderQuestionList();
     }
 
@@ -646,9 +947,16 @@
       gtText.textContent = item.gt;
     }
 
+    function getCurrentUserAnswer(item) {
+      if (item.questionForm === "Multiple Choice") {
+        return selectedMCQ || "";
+      }
+      return userAnswer.value;
+    }
+
     function submitAnswer() {
       const item = questions[currentIndex];
-      const input = userAnswer.value;
+      const input = getCurrentUserAnswer(item);
 
       const correct = isAnswerCorrect(input, item);
       showResult(correct, input, item);
@@ -678,13 +986,31 @@
       loadQuestion(currentIndex);
     }
 
+    function clearAnswer() {
+      const item = questions[currentIndex];
+
+      if (item.questionForm === "Multiple Choice") {
+        selectedMCQ = "";
+        Array.from(mcqOptions.querySelectorAll(".mcq-btn")).forEach((el) => {
+          el.classList.remove("selected");
+        });
+      } else {
+        userAnswer.value = "";
+        userAnswer.focus();
+      }
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
     submitBtn.addEventListener("click", submitAnswer);
-
-    clearBtn.addEventListener("click", () => {
-      userAnswer.value = "";
-      userAnswer.focus();
-    });
-
+    clearBtn.addEventListener("click", clearAnswer);
     nextBtn.addEventListener("click", goNext);
 
     userAnswer.addEventListener("keydown", (e) => {
