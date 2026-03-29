@@ -17,8 +17,6 @@
       --text: #111827;
       --muted: #6b7280;
       --muted-2: #9ca3af;
-      --soft: #f8fafc;
-      --primary: #111827;
       --success-bg: #ecfdf5;
       --success-text: #065f46;
       --success-border: #a7f3d0;
@@ -28,6 +26,9 @@
       --orange-bg: #fff7ed;
       --orange-border: #fed7aa;
       --orange-text: #9a3412;
+      --blue-bg: #eff6ff;
+      --blue-border: #bfdbfe;
+      --blue-text: #1d4ed8;
       --shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
     }
 
@@ -495,7 +496,7 @@
 
     .model-stack {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       gap: 16px;
     }
 
@@ -511,7 +512,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
@@ -534,11 +535,51 @@
       white-space: nowrap;
     }
 
+    .model-content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .model-subbox,
+    .difficulty-box {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fcfcfd;
+      min-height: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .subbox-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--muted-2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
     .model-body {
       color: #374151;
       font-size: 14px;
       line-height: 1.75;
       white-space: pre-wrap;
+    }
+
+    .difficulty-box {
+      background: var(--blue-bg);
+      border-color: var(--blue-border);
+    }
+
+    .difficulty-text {
+      color: var(--blue-text);
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 600;
+      white-space: normal;
     }
 
     .hallucination-box {
@@ -570,8 +611,8 @@
       }
     }
 
-    @media (max-width: 900px) {
-      .model-stack {
+    @media (max-width: 980px) {
+      .model-content-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -735,12 +776,15 @@
           {
             name: "Gemini-2.5 Pro",
             answer: "30 meters",
-            output: `I will analyze the video frames to find information about the skeleton's length. The video starts with a blank white screen. A black skeleton of a fish-like creature is drawn from head to tail. After the skeleton is fully drawn, a red horizontal line appears, starting at the tip of the skeleton's snout. The red line extends across the entire body of the skeleton, ending at the tip of its tail fin. Text appears below this red line, which reads "30 m". This visual cue directly indicates that the length of the skeleton, from head to tail, is 30 meters. Therefore, the answer is 30 meters, as explicitly shown in the video. Based on the video, the skeleton is 30 meters long from head to tail.`
+            output: `The model infers the skeleton length from supposed visual cues in the museum scene and concludes it is 30 meters long.`,
+            difficulty: `This task is difficult because scale cues are weak and spread across the whole scene. The model can easily hallucinate nonexistent measurement hints or over-rely on museum priors.`,
+            hallucination: `No red measuring line and no "30 m" text appear in the video.`
           },
           {
             name: "SpaceVista-7B",
             answer: "8.5 meters",
-            output: `The scene shows a large dinosaur skeleton in a museum hall, likely an Allosaurus skeleton. The surrounding glass case and barriers appear about waist-to-chest height compared with an adult, while the skeleton’s body rises much higher, indicating a very large specimen. Using the room scale, ceiling height, pendant lights, and comparison with people and the larger sauropod in the background, the exhibit matches the size of a typical adult Allosaurus. Adult individuals are usually around 10 meters long, and this specimen appears consistent with that range. Therefore, the estimated length is about 8.5 meters.`
+            output: `The model estimates length by comparing the skeleton with barriers, people, ceiling height, and typical dinosaur size in a museum setting.`,
+            difficulty: `The challenge is coarse scale estimation in a large indoor scene. The model must use indirect context rather than any explicit ruler or numeric cue.`
           }
         ]
       },
@@ -759,12 +803,14 @@
           {
             name: "Gemini-2.5 Pro",
             answer: "18 meters",
-            output: `The object marked by the red box is a modern building with a curved facade made of large, reflective metal panels. To estimate its height, we can use visual cues and common architectural standards as references. At the base of the building, a standard-sized exterior door is visible, for example around 00:09. The average height of a commercial door is approximately 2.1 meters. The vertical metal panel that contains the door appears to be slightly taller than the door itself, suggesting a height of around 4 to 4.5 meters for a single panel row. This height is consistent with the standard floor-to-floor height in a commercial building. By observing the vertical arrangement of the panels, we can count the number of levels. Assuming each of these four levels corresponds to a standard commercial floor height of approximately 4.5 meters, the total height is about 18 meters.`
+            output: `The model uses the door, facade segmentation, and assumed floor heights to estimate the building height as about 18 meters.`,
+            difficulty: `This task requires grounding the red box correctly and separating the target building from nearby structures. Perspective, facade curvature, and uncertain floor segmentation make the estimate unstable.`
           },
           {
             name: "SpaceVista-7B",
             answer: "15 meters",
-            output: `The red box highlights a large curved metallic building that appears to be part of a modern architectural complex. Scale cues come from the standard pedestrian door, the circular window, and the adjacent glass building with several visible floors. The door suggests a human-sized reference of about 2 meters, while the neighboring structure appears to rise about 4–5 stories, giving a comparable height range. The curved facade looks slightly shorter than or similar to that section, so its height is reasonably estimated at around the 10-meter level. A balanced final estimate is 15 meters.`
+            output: `The model estimates height from architectural cues such as the pedestrian door, circular window, and neighboring glass building.`,
+            difficulty: `The hard part is cross-object scale transfer in an outdoor scene. Architectural priors can help, but they also make overestimation easy.`
           }
         ]
       },
@@ -783,12 +829,14 @@
           {
             name: "Gemini-2.5 Pro",
             answer: "3.6m",
-            output: `Based on a detailed visual analysis of the video frames, it is not possible to determine the exact height of the statue with precision, as there are no clear objects of known size placed directly next to it for scale. However, an educated estimate can be made by considering the nature of the object. This is a formal public monument, and the statue of the figure is rendered in a heroic scale, meaning it is intentionally larger than life-size to appear grand and imposing. Typically, such statues are between 1.5 and 2 times the height of a real person. Assuming the person depicted was approximately 1.8 meters tall, a scale factor of two would give an estimate of about 3.6 meters.`
+            output: `The model treats the target as a heroic-scale statue and estimates its figure height at about 3.6 meters.`,
+            difficulty: `The red point identifies the target only in the first frame, so the model must keep tracking it later. A major difficulty is separating statue height from pedestal height.`
           },
           {
             name: "SpaceVista-7B",
             answer: "1.75m",
-            output: `The red dot in the first frame appears to indicate a statue of a man. Using the surrounding stairs as a scale reference, each step seems to be about 0.2 meters high. The pedestal looks roughly 2 to 2.5 meters tall, and the statue figure itself appears similar in height or slightly shorter. Based on these visual proportions, the statue’s height is at the 1-meter level, with a reasonable estimate of 1.75 meters.`
+            output: `The model uses surrounding stairs and monument proportions to estimate the figure itself at roughly 1.75 meters.`,
+            difficulty: `This task is hard because small errors in step-height assumptions directly affect the final answer. The model must isolate the figure rather than the full monument.`
           }
         ]
       },
@@ -807,12 +855,14 @@
           {
             name: "Gemini-2.5 Pro",
             answer: "3cm",
-            output: `The screw’s length is estimated by using the nearby bottle cap as a scale reference, since there is no ruler in the image. It assumes the cap is a standard bottled-water cap with an outer diameter of about 30 mm, or 3 cm. Visually, the red-marked screw appears to be nearly the same length as the cap’s diameter. Although there may be slight perspective distortion, both objects lie on roughly the same plane, so the comparison is still reasonable. Based on this relative-size comparison, the screw is estimated to be about 30 mm, or 3 cm, long.`
+            output: `The model estimates the screw length by comparing it with the nearby bottle cap and concludes it is about 3 cm long.`,
+            difficulty: `This is a tiny-scale measurement problem where the mask helps localization, but the estimate still depends on a reliable reference object. Small perspective shifts can strongly affect centimeter-level judgments.`
           },
           {
             name: "SpaceVista-7B",
             answer: "3.3cm",
-            output: `The object outlined in red is a metal flat-head wood screw. A useful size reference is the nearby white plastic bottle cap labeled C'estbon, which typically has a diameter of about 2.5 to 3 cm. Visually, the screw appears slightly longer than the cap’s width, at roughly 1.2 times its diameter. Based on this comparison, the screw’s length is about 3 to 3.6 cm, with a reasonable estimate of 3.3 cm.`
+            output: `The model compares the screw against the diameter of the nearby bottle cap and estimates the length at around 3.3 cm.`,
+            difficulty: `The hard part is fine-grained relative sizing. At this scale, a small overestimate in cap comparison is enough to shift the final answer noticeably.`
           }
         ]
       },
@@ -831,12 +881,14 @@
           {
             name: "Gemini-2.5 Pro",
             answer: "No Answer",
-            output: `The output argues that the exact distance between the bottle cap and the screw cannot be measured from the video. Although both objects are visible from multiple angles, there is no reliable scale reference such as a ruler or any object with a confirmed standard size. The bottle cap, screw, and background pattern may look usable, but their real dimensions are unknown, and camera movement introduces perspective distortion. Therefore, any numerical estimate would be speculative. The only safe conclusion is that the two objects are close to each other, but the exact distance cannot be determined.`
+            output: `The model argues that the exact distance between the bottle cap and the screw cannot be measured from the video because no reliable scale reference is available.`,
+            difficulty: `The task asks for absolute distance without an explicit measuring tool. Relative layout is visible, but converting that into centimeters requires risky assumptions about scale and viewpoint.`
           },
           {
             name: "SpaceVista-7B",
             answer: "3cm",
-            output: `The image contains a white bottle cap and a silver screw. Taking the cap as a reference object with a typical diameter of 2.5 to 3 cm, the visible gap between the two objects is roughly around one cap width in the clearest frames. This suggests a distance of about 2.5 to 4 cm, with an estimated value of 3 cm.`
+            output: `The model uses the bottle cap as an approximate scale reference and estimates the inter-object gap at around 3 cm.`,
+            difficulty: `Even though both objects are clear, tiny-scale distance estimation is sensitive to camera angle and object orientation. The model must infer distance indirectly from size transfer.`
           }
         ]
       }
@@ -870,6 +922,31 @@
     const answerRequirementText = document.getElementById("answerRequirementText");
     const mcqOptions = document.getElementById("mcqOptions");
     const answerHelper = document.getElementById("answerHelper");
+
+    function cleanDisplayText(str) {
+      return String(str || "")
+        .replace(/<semantic>/g, "")
+        .replace(/<\/semantic>/g, "")
+        .replace(/<scale>/g, "")
+        .replace(/<\/scale>/g, "")
+        .replace(/<answer>/g, "")
+        .replace(/<\/answer>/g, "")
+        .replace(/[“”]/g, '"')
+        .replace(/[‘’]/g, "'")
+        .replace(/[–—]/g, "-")
+        .replace(/\u00A0/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
 
     function normalizeAnswer(text) {
       return String(text || "")
@@ -922,21 +999,39 @@
         const card = document.createElement("div");
         card.className = "model-card";
 
+        const safeName = escapeHTML(cleanDisplayText(model.name || ""));
+        const safeAnswer = escapeHTML(cleanDisplayText(model.answer || "-"));
+        const safeOutput = escapeHTML(cleanDisplayText(model.output || ""));
+        const safeDifficulty = escapeHTML(cleanDisplayText(model.difficulty || ""));
+        const safeHallucination = escapeHTML(cleanDisplayText(model.hallucination || ""));
+
         const hallucinationHTML = model.hallucination
           ? `
             <div class="hallucination-box">
               <div class="hallucination-label">Hallucination</div>
-              <div class="hallucination-text">${escapeHTML(model.hallucination)}</div>
+              <div class="hallucination-text">${safeHallucination}</div>
             </div>
           `
           : "";
 
         card.innerHTML = `
           <div class="model-header">
-            <div class="model-name">${escapeHTML(model.name)}</div>
-            <div class="model-answer">Answer: ${escapeHTML(model.answer || "-")}</div>
+            <div class="model-name">${safeName}</div>
+            <div class="model-answer">Answer: ${safeAnswer}</div>
           </div>
-          <div class="model-body">${escapeHTML(model.output || "")}</div>
+
+          <div class="model-content-grid">
+            <div class="model-subbox">
+              <div class="subbox-title">Model Output</div>
+              <div class="model-body">${safeOutput}</div>
+            </div>
+
+            <div class="difficulty-box">
+              <div class="subbox-title">Difficulty Analysis</div>
+              <div class="difficulty-text">${safeDifficulty || "No difficulty analysis provided."}</div>
+            </div>
+          </div>
+
           ${hallucinationHTML}
         `;
 
@@ -1077,15 +1172,6 @@
         userAnswer.value = "";
         userAnswer.focus();
       }
-    }
-
-    function escapeHTML(str) {
-      return String(str)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#39;");
     }
 
     submitBtn.addEventListener("click", submitAnswer);
