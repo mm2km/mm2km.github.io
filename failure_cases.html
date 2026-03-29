@@ -11,7 +11,7 @@
   <style>
     :root {
       --bg: #f4f5f7;
-      --panel: rgba(255, 255, 255, 0.76);
+      --panel: rgba(255, 255, 255, 0.78);
       --card: #ffffff;
       --border: #e5e7eb;
       --text: #111827;
@@ -29,10 +29,6 @@
       --orange-border: #fed7aa;
       --orange-text: #9a3412;
       --shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
-      --radius-xl: 30px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
     }
 
     * {
@@ -283,17 +279,17 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #111827;
+      margin-bottom: 14px;
     }
 
-    .answer-type-box {
-      margin-top: 14px;
+    .question-form-box {
       padding: 12px 14px;
       border-radius: 16px;
       border: 1px solid var(--border);
       background: #f8fafc;
     }
 
-    .answer-type-title {
+    .question-form-title {
       font-size: 12px;
       font-weight: 800;
       color: var(--muted-2);
@@ -302,9 +298,33 @@
       margin-bottom: 6px;
     }
 
-    .answer-type-text {
+    .question-form-value {
       font-size: 14px;
       line-height: 1.6;
+      color: #374151;
+      font-weight: 700;
+    }
+
+    .answer-input-box {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fbfcfd;
+      margin-bottom: 12px;
+    }
+
+    .answer-input-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--muted-2);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .answer-input-text {
+      font-size: 14px;
+      line-height: 1.7;
       color: #374151;
       font-weight: 600;
     }
@@ -633,11 +653,6 @@
               <div class="taxonomy-title">Input Form</div>
               <div class="taxonomy-row" id="inputFormRow"></div>
             </div>
-
-            <div class="taxonomy-block">
-              <div class="taxonomy-title">Question Form</div>
-              <div class="taxonomy-row" id="questionFormRow"></div>
-            </div>
           </div>
         </div>
 
@@ -645,7 +660,384 @@
           <div class="panel-card card">
             <div class="section-label">Question</div>
             <div class="question-text" id="questionText"></div>
+          </div>
 
-            <div class="answer-type-box">
-              <div class="answer-type-title">Answer Type</div>
-              <div class="answer-type-text" id="answerType
+          <div class="panel-card card">
+            <div class="section-label">Answer</div>
+
+            <div class="question-form-box">
+              <div class="question-form-title">Question Form</div>
+              <div class="question-form-value" id="questionFormValue"></div>
+            </div>
+
+            <div class="answer-input-box">
+              <div class="answer-input-title">Input Requirements</div>
+              <div class="answer-input-text" id="answerRequirementText"></div>
+            </div>
+
+            <textarea
+              id="userAnswer"
+              class="answer-input"
+              placeholder="Type your answer here..."
+            ></textarea>
+
+            <div class="mcq-options" id="mcqOptions"></div>
+
+            <div class="helper" id="answerHelper"></div>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" id="submitBtn">Submit</button>
+              <button class="btn btn-secondary" id="clearBtn">Clear</button>
+              <button class="btn btn-secondary" id="nextBtn">Next</button>
+            </div>
+          </div>
+
+          <div class="feedback-grid">
+            <div class="result-box" id="resultBox">
+              <div class="section-label">Result</div>
+              <div class="result-title" id="resultTitle"></div>
+              <div class="result-line" id="resultUserAnswer"></div>
+            </div>
+
+            <div class="gt-box" id="gtBox">
+              <div class="section-label">Ground Truth</div>
+              <div class="gt-text" id="gtText"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-card model-panel">
+        <div class="section-label">Model Outputs</div>
+        <div class="model-stack" id="modelGrid"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const SCALE_OPTIONS = ["Tiny", "Tabletop", "Indoor", "Outdoor"];
+    const INPUT_FORM_OPTIONS = ["Video", "Video+Point", "Video+Mask", "Video+BBox"];
+
+    const questions = [
+      {
+        id: 1,
+        roundLabel: "VIDEO QA • ROUND 1",
+        title: "Question 1",
+        video: "./static/videos/1.mp4",
+        question: "How long is this skeleton from head to tail?",
+        gt: "12.2m",
+        aliases: ["12.2m", "12.2 m"],
+        scale: "Indoor",
+        inputForm: "Video",
+        questionForm: "Regression",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "30 meters",
+            output:
+`I will analyze the video frames to find information about the skeleton's length. The video starts with a blank white screen. A black skeleton of a fish-like creature is drawn from head to tail. After the skeleton is fully drawn, a red horizontal line appears, starting at the tip of the skeleton's snout. The red line extends across the entire body of the skeleton, ending at the tip of its tail fin. Text appears below this red line, which reads "30 m". This visual cue directly indicates that the length of the skeleton, from head to tail, is 30 meters. Therefore, the answer is 30 meters, as explicitly shown in the video. Based on the video, the skeleton is **30 meters** long from head to tail.`,
+            hallucination: `No Red Line, No "30 m"`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "8.5 meters",
+            output:
+`The scene shows a large dinosaur skeleton in a museum hall, likely an <semantic>Allosaurus skeleton</semantic>. The surrounding glass case and barriers appear about waist-to-chest height compared with an adult, while the skeleton’s body rises much higher, indicating a very large specimen. Using the room scale, ceiling height, pendant lights, and comparison with people and the larger sauropod in the background, the exhibit matches the size of a typical adult Allosaurus. Adult individuals are usually around <scale>10 meters level</scale> long, and this specimen appears consistent with that range. Therefore, the estimated length is about <answer>8.5</answer> meters.`
+          }
+        ]
+      },
+      {
+        id: 2,
+        roundLabel: "VIDEO+POINT • ROUND 2",
+        title: "Question 2",
+        video: "./static/videos/2.mp4",
+        question: "Which object is closest to the marked point?",
+        gt: "B",
+        aliases: ["B", "b"],
+        scale: "Indoor",
+        inputForm: "Video+Point",
+        questionForm: "Multiple Choice",
+        options: [
+          { key: "A", text: "Chair" },
+          { key: "B", text: "Lamp" },
+          { key: "C", text: "Table" },
+          { key: "D", text: "Cabinet" }
+        ],
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "C",
+            output: `The marked point appears closest to the table based on the final frames.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "B",
+            output: `The marked point is closest to the lamp.`
+          }
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+    let score = 0;
+    let streak = 0;
+    let selectedMCQ = "";
+    const answeredMap = new Map();
+
+    const arenaMeta = document.getElementById("arenaMeta");
+    const questionVideo = document.getElementById("questionVideo");
+    const questionText = document.getElementById("questionText");
+    const userAnswer = document.getElementById("userAnswer");
+    const submitBtn = document.getElementById("submitBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const resultBox = document.getElementById("resultBox");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultUserAnswer = document.getElementById("resultUserAnswer");
+    const gtBox = document.getElementById("gtBox");
+    const gtText = document.getElementById("gtText");
+    const scoreValue = document.getElementById("scoreValue");
+    const streakValue = document.getElementById("streakValue");
+    const questionNav = document.getElementById("questionNav");
+    const modelGrid = document.getElementById("modelGrid");
+    const scaleRow = document.getElementById("scaleRow");
+    const inputFormRow = document.getElementById("inputFormRow");
+    const questionFormValue = document.getElementById("questionFormValue");
+    const answerRequirementText = document.getElementById("answerRequirementText");
+    const mcqOptions = document.getElementById("mcqOptions");
+    const answerHelper = document.getElementById("answerHelper");
+
+    function normalizeAnswer(text) {
+      return String(text || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, " ");
+    }
+
+    function isAnswerCorrect(input, item) {
+      const normInput = normalizeAnswer(input);
+      const accepted = [item.gt, ...(item.aliases || [])].map(normalizeAnswer);
+      return accepted.includes(normInput);
+    }
+
+    function updateScoreboard() {
+      scoreValue.textContent = score;
+      streakValue.textContent = streak;
+    }
+
+    function renderQuestionNav() {
+      questionNav.innerHTML = "";
+
+      questions.forEach((item, index) => {
+        const btn = document.createElement("button");
+        btn.className = "nav-pill" + (index === currentIndex ? " active" : "");
+        btn.type = "button";
+        btn.textContent = item.title;
+        btn.addEventListener("click", () => {
+          currentIndex = index;
+          loadQuestion(currentIndex);
+        });
+        questionNav.appendChild(btn);
+      });
+    }
+
+    function renderTaxonomy(container, options, activeValue) {
+      container.innerHTML = "";
+      options.forEach((value) => {
+        const tag = document.createElement("span");
+        tag.className = "taxonomy-tag" + (value === activeValue ? " active" : "");
+        tag.textContent = value;
+        container.appendChild(tag);
+      });
+    }
+
+    function renderModels(item) {
+      modelGrid.innerHTML = "";
+
+      (item.models || []).forEach((model) => {
+        const card = document.createElement("div");
+        card.className = "model-card";
+
+        const hallucinationHTML = model.hallucination
+          ? `
+            <div class="hallucination-box">
+              <div class="hallucination-label">Hallucination</div>
+              <div class="hallucination-text">${escapeHTML(model.hallucination)}</div>
+            </div>
+          `
+          : "";
+
+        card.innerHTML = `
+          <div class="model-header">
+            <div class="model-name">${escapeHTML(model.name)}</div>
+            <div class="model-answer">Answer: ${escapeHTML(model.answer || "-")}</div>
+          </div>
+          <div class="model-body">${escapeHTML(model.output || "")}</div>
+          ${hallucinationHTML}
+        `;
+
+        modelGrid.appendChild(card);
+      });
+    }
+
+    function renderAnswerMode(item) {
+      selectedMCQ = "";
+      userAnswer.value = "";
+
+      questionFormValue.textContent = item.questionForm;
+
+      if (item.questionForm === "Multiple Choice") {
+        userAnswer.style.display = "none";
+        mcqOptions.classList.add("show");
+        mcqOptions.innerHTML = "";
+
+        (item.options || []).forEach((opt) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "mcq-btn";
+          btn.innerHTML = `<strong>${escapeHTML(opt.key)}.</strong> ${escapeHTML(opt.text)}`;
+
+          btn.addEventListener("click", () => {
+            selectedMCQ = opt.key;
+            Array.from(mcqOptions.querySelectorAll(".mcq-btn")).forEach((el) => {
+              el.classList.remove("selected");
+            });
+            btn.classList.add("selected");
+          });
+
+          mcqOptions.appendChild(btn);
+        });
+
+        answerRequirementText.innerHTML = `
+          Enter a single option label.<br>
+          <strong>Required format:</strong> A, B, C, or D.<br>
+          <strong>Examples:</strong> A / B / C / D
+        `;
+        answerHelper.textContent = "Choose exactly one option. The selected option label will be submitted.";
+      } else {
+        userAnswer.style.display = "block";
+        mcqOptions.classList.remove("show");
+        mcqOptions.innerHTML = "";
+
+        answerRequirementText.innerHTML = `
+          Enter a regression-style answer using a number or a number with unit.<br>
+          <strong>Required format:</strong> numeric value or numeric value + unit.<br>
+          <strong>Examples:</strong> 12.2m / 12.2 m / 3.5 / 2 meters
+        `;
+        answerHelper.textContent = "Input is matched case-insensitively after trimming whitespace.";
+      }
+    }
+
+    function resetFeedback() {
+      resultBox.className = "result-box";
+      resultTitle.textContent = "";
+      resultUserAnswer.textContent = "";
+      gtBox.classList.remove("show");
+      gtText.textContent = "";
+    }
+
+    function loadQuestion(index) {
+      const item = questions[index];
+      arenaMeta.textContent = item.roundLabel;
+      questionText.textContent = item.question;
+      questionVideo.src = item.video;
+      questionVideo.load();
+
+      renderTaxonomy(scaleRow, SCALE_OPTIONS, item.scale);
+      renderTaxonomy(inputFormRow, INPUT_FORM_OPTIONS, item.inputForm);
+
+      renderAnswerMode(item);
+      resetFeedback();
+      renderModels(item);
+      renderQuestionNav();
+    }
+
+    function showResult(correct, userText, item) {
+      resultBox.classList.add("show");
+      resultBox.classList.remove("correct", "wrong");
+      resultBox.classList.add(correct ? "correct" : "wrong");
+
+      resultTitle.textContent = correct ? "Correct" : "Incorrect";
+      resultUserAnswer.textContent = "Your answer: " + (userText.trim() || "(empty)");
+
+      gtBox.classList.add("show");
+      gtText.textContent = item.gt;
+    }
+
+    function getCurrentUserAnswer(item) {
+      if (item.questionForm === "Multiple Choice") {
+        return selectedMCQ || "";
+      }
+      return userAnswer.value;
+    }
+
+    function submitAnswer() {
+      const item = questions[currentIndex];
+      const input = getCurrentUserAnswer(item);
+      const correct = isAnswerCorrect(input, item);
+
+      showResult(correct, input, item);
+
+      const alreadyAnswered = answeredMap.has(item.id);
+
+      if (!alreadyAnswered) {
+        if (correct) {
+          score += 1;
+          streak += 1;
+        } else {
+          streak = 0;
+        }
+
+        answeredMap.set(item.id, {
+          correct,
+          userAnswer: input
+        });
+
+        updateScoreboard();
+      }
+    }
+
+    function goNext() {
+      currentIndex = (currentIndex + 1) % questions.length;
+      loadQuestion(currentIndex);
+    }
+
+    function clearAnswer() {
+      const item = questions[currentIndex];
+
+      if (item.questionForm === "Multiple Choice") {
+        selectedMCQ = "";
+        Array.from(mcqOptions.querySelectorAll(".mcq-btn")).forEach((el) => {
+          el.classList.remove("selected");
+        });
+      } else {
+        userAnswer.value = "";
+        userAnswer.focus();
+      }
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    submitBtn.addEventListener("click", submitAnswer);
+    clearBtn.addEventListener("click", clearAnswer);
+    nextBtn.addEventListener("click", goNext);
+
+    userAnswer.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        submitAnswer();
+      }
+    });
+
+    updateScoreboard();
+    renderQuestionNav();
+    loadQuestion(currentIndex);
+  </script>
+</body>
+</html>
