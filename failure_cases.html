@@ -669,17 +669,6 @@
       word-break: break-word;
     }
 
-    .difficulty-highlight {
-      display: inline;
-      padding: 0.1em 0.42em;
-      border-radius: 8px;
-      background: rgba(29, 78, 216, 0.12);
-      color: #1e40af;
-      font-weight: 800;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-    }
-
     .footer-note {
       margin-top: 18px;
       text-align: center;
@@ -1043,7 +1032,7 @@
     const answerRequirementText = document.getElementById("answerRequirementText");
     const mcqOptions = document.getElementById("mcqOptions");
     const answerHelper = document.getElementById("answerHelper");
-    
+
     function cleanDisplayText(str) {
       return String(str || "")
         .replace(/<semantic>/g, "")
@@ -1063,22 +1052,10 @@
         .trim();
     }
 
-    function escapeRegExp(str) {
-      return String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    }
-
     function renderDifficulty(item) {
-      const rawText = cleanDisplayText(item.difficulty || "No difficulty analysis provided.");
-
-      let html = escapeHTML(rawText);
-      phrases
-        .sort((a, b) => b.length - a.length)
-        .forEach((phrase) => {
-          const re = new RegExp(escapeRegExp(phrase), "gi");
-          html = html.replace(re, (match) => `<span class="difficulty-highlight">${match}</span>`);
-        });
-
-      globalDifficultyText.innerHTML = html;
+      globalDifficultyText.textContent = cleanDisplayText(
+        item.difficulty || "No difficulty analysis provided."
+      );
     }
 
     function escapeHTML(str) {
