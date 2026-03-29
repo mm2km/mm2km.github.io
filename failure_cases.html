@@ -605,6 +605,24 @@
       font-weight: 700;
     }
 
+    .global-difficulty-box {
+      border: 1px solid var(--blue-border);
+      background: var(--blue-bg);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 4px;
+    }
+    
+    .global-difficulty-text {
+      color: var(--blue-text);
+      font-size: 14px;
+      line-height: 1.75;
+      font-weight: 600;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
     @media (max-width: 1180px) {
       .main-grid {
         grid-template-columns: 1fr;
@@ -750,7 +768,12 @@
       </div>
 
       <div class="panel-card model-panel">
-        <div class="section-label">Model Outputs</div>
+        <div class="section-label">Difficulty Analysis</div>
+        <div class="global-difficulty-box">
+          <div class="global-difficulty-text" id="globalDifficultyText"></div>
+        </div>
+      
+        <div class="section-label" style="margin-top: 18px;">Model Outputs</div>
         <div class="model-stack" id="modelGrid"></div>
       </div>
     </section>
@@ -940,6 +963,7 @@ The curved facade looks slightly shorter than or similar to that section, so its
     const streakValue = document.getElementById("streakValue");
     const questionNav = document.getElementById("questionNav");
     const modelGrid = document.getElementById("modelGrid");
+    const globalDifficultyText = document.getElementById("globalDifficultyText");
     const scaleRow = document.getElementById("scaleRow");
     const inputFormRow = document.getElementById("inputFormRow");
     const questionFormValue = document.getElementById("questionFormValue");
@@ -961,6 +985,12 @@ The curved facade looks slightly shorter than or similar to that section, so its
         .replace(/\u00A0/g, " ")
         .replace(/\n{3,}/g, "\n\n")
         .trim();
+    }
+
+    function renderDifficulty(item) {
+      globalDifficultyText.textContent = cleanDisplayText(
+        item.difficulty || "No difficulty analysis provided."
+      );
     }
 
     function escapeHTML(str) {
@@ -1007,28 +1037,27 @@ The curved facade looks slightly shorter than or similar to that section, so its
     }
 
     function renderTaxonomy(container, options, activeValue) {
-      container.innerHTML = "";
-      options.forEach((value) => {
-        const tag = document.createElement("span");
-        tag.className = "taxonomy-tag" + (value === activeValue ? " active" : "");
-        tag.textContent = value;
-        container.appendChild(tag);
-      });
-    }
-
-    function renderModels(item) {
+          container.innerHTML = "";
+          options.forEach((value) => {
+            const tag = document.createElement("span");
+            tag.className = "taxonomy-tag" + (value === activeValue ? " active" : "");
+            tag.textContent = value;
+            container.appendChild(tag);
+          });
+        }
+    
+        function renderModels(item) {
       modelGrid.innerHTML = "";
-
+    
       (item.models || []).forEach((model) => {
         const card = document.createElement("div");
         card.className = "model-card";
-
+    
         const safeName = escapeHTML(cleanDisplayText(model.name || ""));
         const safeAnswer = escapeHTML(cleanDisplayText(model.answer || "-"));
         const safeOutput = escapeHTML(cleanDisplayText(model.output || ""));
-        const safeDifficulty = escapeHTML(cleanDisplayText(model.difficulty || ""));
         const safeHallucination = escapeHTML(cleanDisplayText(model.hallucination || ""));
-
+    
         const hallucinationHTML = model.hallucination
           ? `
             <div class="hallucination-box">
@@ -1037,28 +1066,21 @@ The curved facade looks slightly shorter than or similar to that section, so its
             </div>
           `
           : "";
-
+    
         card.innerHTML = `
           <div class="model-header">
             <div class="model-name">${safeName}</div>
             <div class="model-answer">Answer: ${safeAnswer}</div>
           </div>
-
-          <div class="model-content-grid">
-            <div class="model-subbox">
-              <div class="subbox-title">Model Output</div>
-              <div class="model-body">${safeOutput}</div>
-            </div>
-
-            <div class="difficulty-box">
-              <div class="subbox-title">Difficulty Analysis</div>
-              <div class="difficulty-text">${safeDifficulty || "No difficulty analysis provided."}</div>
-            </div>
+    
+          <div class="model-subbox">
+            <div class="subbox-title">Model Output</div>
+            <div class="model-body">${safeOutput}</div>
           </div>
-
+    
           ${hallucinationHTML}
         `;
-
+    
         modelGrid.appendChild(card);
       });
     }
@@ -1124,12 +1146,13 @@ The curved facade looks slightly shorter than or similar to that section, so its
       questionText.textContent = item.question;
       questionVideo.src = item.video;
       questionVideo.load();
-
+    
       renderTaxonomy(scaleRow, SCALE_OPTIONS, item.scale);
       renderTaxonomy(inputFormRow, INPUT_FORM_OPTIONS, item.inputForm);
-
+    
       renderAnswerMode(item);
       resetFeedback();
+      renderDifficulty(item);
       renderModels(item);
       renderQuestionNav();
     }
