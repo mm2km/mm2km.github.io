@@ -929,113 +929,12 @@
         id: 3,
         roundLabel: "VIDEO+POINT • ROUND 3",
         title: "Question 3",
-        video: "./static/videos/3.mp4",
-        question: "How tall is the object that the red dot referred to in the first frame, from head to feet?",
-        gt: "1.6m",
-        aliases: ["1.6m", "1.6 m"],
-        scale: "Outdoor",
-        inputForm: "Video+Point",
-        questionForm: "Regression",
-        difficulty: "Because humans typically possess prior semantic knowledge of statues, models such as Gemini-2.5 Pro may tend to rely on such prior assumptions when making predictions, rather than grounding their reasoning in surrounding objects as spatial references.",
-        models: [
-          {
-            name: "Gemini-2.5 Pro",
-            answer: "3.6m",
-            output: `Based on a detailed visual analysis of the video frames, it is not possible to determine the exact height of the statue with precision, as there are no clear objects of known size placed directly next to it for scale. However, an educated estimate can be made by considering the nature of the object. This is a formal public monument, and the statue of the figure is rendered in a "heroic scale," meaning it is intentionally larger than life-size to appear grand and imposing. Typically, such statues are between 1.5 and 2 times the height of a real person. Assuming the person depicted was of average to tall height (approximately 1.8 meters or just under 6 feet), a scale factor of two would be appropriate for a monument of this stature. 1.8 meters (assumed life-size)×2(scale factor)=3.6 meters Therefore, a reasonable estimation for the height of the statue itself, from head to feet, is approximately 3.6 meters.`
-          },
-          {
-            name: "SpaceVista-7B",
-            answer: "1.75m",
-            output: `The red dot is visible in the first frame, which appears to be a <semantic>statue of a man</semantic>. Using the surrounding stairs as a scale reference, each step seems to be about 0.2 meters high. The pedestal looks roughly 2 to 2.5 meters tall, and the statue figure itself appears similar in height or slightly shorter. Based on these visual proportions, the statue’s height is clearly at <scale>1 meter level</scale>, with a reasonable estimate of <answer>1.75</answer> meters.`
-          }
-        ]
-      },
-      {
-        id: 4,
-        roundLabel: "VIDEO+Mask • ROUND 4",
-        title: "Question 4",
-        video: "./static/videos/4.mp4",
-        question: "How long is this red-marked object?",
-        gt: "3cm",
-        aliases: ["3cm", "3 cm"],
-        scale: "Tiny",
-        inputForm: "Video+Mask",
-        questionForm: "Regression",
-        difficulty: "The available visual information is limited, such that the correct answer can only be inferred by using surrounding objects as reference cues.",
-        models: [
-          {
-            name: "Gemini-2.5 Pro",
-            answer: "3cm",
-            output: `The output estimates the screw’s length by using the nearby bottle cap as a scale reference, since there is no ruler in the image. It assumes the cap is a standard bottled-water cap with an outer diameter of about 30 mm (3 cm). Visually, the red-marked screw appears to be nearly the same length as the cap’s diameter. Although there may be slight perspective distortion, both objects lie on roughly the same plane, so the comparison is still reasonable. Based on this relative-size comparison, the screw is estimated to be about 30 mm (3 cm) long.`
-          },
-          {
-            name: "SpaceVista-7B",
-            answer: "3.3cm",
-            output: `The object outlined in red is a <semantic>metal flat-head wood screw</semantic>. A useful size reference is the nearby white plastic bottle cap labeled “C’estbon,” which typically has a diameter of about 2.5–3 cm. Visually, the screw appears slightly longer than the cap’s width, at roughly 1.2 times its diameter. Based on this comparison, the screw’s length is about 3–3.6 cm at <scale>1 cm level</scale>, with a reasonable estimate of <answer>3.3</answer> cm.`
-          }
-        ]
-      },
-      {
-        id: 5,
-        roundLabel: "VIDEO • ROUND 5",
-        title: "Question 5",
-        video: "./static/videos/5.mp4",
-        question: "What is the distance between two objects?",
-        gt: "3cm",
-        aliases: ["3cm", "3 cm"],
-        scale: "Tiny",
-        inputForm: "Video",
-        questionForm: "Regression",
-        difficulty: "Given the scarcity of informative visual evidence, models are more inclined either to make unsupported guesses or to decline answering directly.",
-        models: [
-          {
-            name: "Gemini-2.5 Pro",
-            answer: "No Answer",
-            output: `The output argues that the exact distance between the bottle cap and the screw cannot be measured from the video. Although both objects are visible from multiple angles, there is no reliable scale reference such as a ruler or any object with a confirmed standard size. The bottle cap, screw, and background pattern may look usable, but their real dimensions are unknown, and camera movement introduces perspective distortion. 
-            Therefore, any numerical estimate would be speculative. The only safe conclusion is that the two objects are close to each other, but the exact distance cannot be determined.`
-          },
-          {
-            name: "SpaceVista-7B",
-            answer: "3cm",
-            output: `The image contains a <semantic>white bottle cap and a silver screw</semantic>. Taking the cap as a reference object with a typical diameter of 2.5–3 cm, the visible gap between the two objects is roughly around one cap width in the clearest frames. This suggests a distance of about 2.5–4 cm in <scale>1cm level</scale>, with an estimated value of <answer>3</answer> cm.`
-          }
-        ]
-      },
-      {
-        id: 6,
-        roundLabel: "VIDEO • ROUND 6",
-        title: "Question 6",
-        video: "./static/videos/6.mp4",
-        question: "How many metal pieces are in this video?",
-        gt: "7",
-        aliases: ["7"],
-        scale: "Tiny",
-        inputForm: "Video",
-        questionForm: "Regression",
-        difficulty: "Due to obstruction, only partial content can be seen at different times, and complete information is not available.",
-        models: [
-          {
-            name: "Gemini-2.5 Pro",
-            answer: "6",
-            output: `The video shows a white plastic bottle cap surrounded by several ring-shaped objects. The cap is plastic, while the dark grey/silver rings have a metallic sheen, indicating they are metal washers. Using the clearest frame around 00:01, I can count 6 distinct metal pieces arranged around the cap. Therefore, the video contains 6 metal pieces.`
-          },
-          {
-            name: "SpaceVista-7B",
-            answer: "6",
-            output: `The visible metal pieces are dark ring-shaped <semantic>washers</semantic> placed around a white cylindrical object. In the clearer frames, there are three washers on the left side and three on the right side, giving a consistent total. Although one frame partially obscures part of the cluster, the later views confirm the full count. Therefore, the number of metal pieces is 6 visible pieces in <scale>1 cm</scale>, and the final count is <answer>6</answer>.`
-          }
-        ]
-      },
-      {
-        id: 7,
-        roundLabel: "VIDEO • ROUND 7",
-        title: "Question 7",
         video: "./static/videos/7.mp4",
         question: "If we want to move the red dot referred object to the symmetrical opposite side of the object, what should we do after holding that object based on the view of the first frame?",
         gt: "B",
         aliases: ["B", "b"],
         scale: "Tabletop",
-        inputForm: "Video",
+        inputForm: "Video+Point",
         questionForm: "Multiple Choice",
         options: [
           {
@@ -1070,9 +969,59 @@
         ]
       },
       {
-        id: 8,
-        roundLabel: "VIDEO • ROUND 8",
-        title: "Question 8",
+        id: 4,
+        roundLabel: "VIDEO+POINT • ROUND 4",
+        title: "Question 4",
+        video: "./static/videos/3.mp4",
+        question: "How tall is the object that the red dot referred to in the first frame, from head to feet?",
+        gt: "1.6m",
+        aliases: ["1.6m", "1.6 m"],
+        scale: "Outdoor",
+        inputForm: "Video+Point",
+        questionForm: "Regression",
+        difficulty: "Because humans typically possess prior semantic knowledge of statues, models such as Gemini-2.5 Pro may tend to rely on such prior assumptions when making predictions, rather than grounding their reasoning in surrounding objects as spatial references.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "3.6m",
+            output: `Based on a detailed visual analysis of the video frames, it is not possible to determine the exact height of the statue with precision, as there are no clear objects of known size placed directly next to it for scale. However, an educated estimate can be made by considering the nature of the object. This is a formal public monument, and the statue of the figure is rendered in a "heroic scale," meaning it is intentionally larger than life-size to appear grand and imposing. Typically, such statues are between 1.5 and 2 times the height of a real person. Assuming the person depicted was of average to tall height (approximately 1.8 meters or just under 6 feet), a scale factor of two would be appropriate for a monument of this stature. 1.8 meters (assumed life-size)×2(scale factor)=3.6 meters Therefore, a reasonable estimation for the height of the statue itself, from head to feet, is approximately 3.6 meters.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "1.75m",
+            output: `The red dot is visible in the first frame, which appears to be a <semantic>statue of a man</semantic>. Using the surrounding stairs as a scale reference, each step seems to be about 0.2 meters high. The pedestal looks roughly 2 to 2.5 meters tall, and the statue figure itself appears similar in height or slightly shorter. Based on these visual proportions, the statue’s height is clearly at <scale>1 meter level</scale>, with a reasonable estimate of <answer>1.75</answer> meters.`
+          }
+        ]
+      },
+      {
+        id: 5,
+        roundLabel: "VIDEO+Mask • ROUND 5",
+        title: "Question 5",
+        video: "./static/videos/4.mp4",
+        question: "How long is this red-marked object?",
+        gt: "3cm",
+        aliases: ["3cm", "3 cm"],
+        scale: "Tiny",
+        inputForm: "Video+Mask",
+        questionForm: "Regression",
+        difficulty: "The available visual information is limited, such that the correct answer can only be inferred by using surrounding objects as reference cues.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "3cm",
+            output: `The output estimates the screw’s length by using the nearby bottle cap as a scale reference, since there is no ruler in the image. It assumes the cap is a standard bottled-water cap with an outer diameter of about 30 mm (3 cm). Visually, the red-marked screw appears to be nearly the same length as the cap’s diameter. Although there may be slight perspective distortion, both objects lie on roughly the same plane, so the comparison is still reasonable. Based on this relative-size comparison, the screw is estimated to be about 30 mm (3 cm) long.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "3.3cm",
+            output: `The object outlined in red is a <semantic>metal flat-head wood screw</semantic>. A useful size reference is the nearby white plastic bottle cap labeled “C’estbon,” which typically has a diameter of about 2.5–3 cm. Visually, the screw appears slightly longer than the cap’s width, at roughly 1.2 times its diameter. Based on this comparison, the screw’s length is about 3–3.6 cm at <scale>1 cm level</scale>, with a reasonable estimate of <answer>3.3</answer> cm.`
+          }
+        ]
+      },
+      {
+        id: 6,
+        roundLabel: "VIDEO • ROUND 6",
+        title: "Question 6",
         video: "./static/videos/8.mp4",
         question: "Assume a man is standing facing the pumpkins. If he wants to move to the coffin-shaped welcome sign, what should he do?",
         gt: "D",
@@ -1113,52 +1062,35 @@
         ]
       },
       {
-        id: 9,
-        roundLabel: "VIDEO • ROUND 9",
-        title: "Question 9",
-        video: "./static/videos/9.mp4",
-        question: "Which object is closest to the mannequin wearing high heels?",
-        gt: "B",
-        aliases: ["B", "b"],
-        scale: "Indoor",
+        id: 7,
+        roundLabel: "VIDEO • ROUND 7",
+        title: "Question 7",
+        video: "./static/videos/5.mp4",
+        question: "What is the distance between two objects?",
+        gt: "3cm",
+        aliases: ["3cm", "3 cm"],
+        scale: "Tiny",
         inputForm: "Video",
-        questionForm: "Multiple Choice",
-        options: [
-          {
-            key: "A",
-            text: "Hanging clothes"
-          },
-          {
-            key: "B",
-            text: "Table"
-          },
-          {
-            key: "C",
-            text: "Black wallet"
-          },
-          {
-            key: "D",
-            text: "Mannequin"
-          }
-        ],
-        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        questionForm: "Regression",
+        difficulty: "Given the scarcity of informative visual evidence, models are more inclined either to make unsupported guesses or to decline answering directly.",
         models: [
           {
             name: "Gemini-2.5 Pro",
-            answer: "A",
-            output: `The main subject is the mannequin in the black blazer, black pants, and platform heels. Nearby objects include a wooden table on the right, a second mannequin and a black wallet on top of that table, and a clothing rack on the left. Since the second mannequin and wallet are positioned on the table, they are farther than the table edge itself. However, the hanging clothes on the left drape outward and extend even closer to the mannequin than the rigid table structure. Therefore, the closest object is A.`
+            answer: "No Answer",
+            output: `The output argues that the exact distance between the bottle cap and the screw cannot be measured from the video. Although both objects are visible from multiple angles, there is no reliable scale reference such as a ruler or any object with a confirmed standard size. The bottle cap, screw, and background pattern may look usable, but their real dimensions are unknown, and camera movement introduces perspective distortion. 
+            Therefore, any numerical estimate would be speculative. The only safe conclusion is that the two objects are close to each other, but the exact distance cannot be determined.`
           },
           {
             name: "SpaceVista-7B",
-            answer: "C",
-            output: `The video shows a clothing store display with two <semantic>mannequins</semantic>. In the later frames, the camera focuses on the mannequin standing on a small wooden table. Right next to its feet on the table surface is a small black rectangular object, likely a black wallet or clutch. At <scale>1 cm level</scale>, this wallet appears closer than the other options, such as the hanging clothes or the other mannequin. Therefore, the final answer is <answer>C</answer>.`
+            answer: "3cm",
+            output: `The image contains a <semantic>white bottle cap and a silver screw</semantic>. Taking the cap as a reference object with a typical diameter of 2.5–3 cm, the visible gap between the two objects is roughly around one cap width in the clearest frames. This suggests a distance of about 2.5–4 cm in <scale>1cm level</scale>, with an estimated value of <answer>3</answer> cm.`
           }
         ]
       },
       {
-        id: 10,
-        roundLabel: "VIDEO • ROUND 10",
-        title: "Question 10",
+        id: 8,
+        roundLabel: "VIDEO • ROUND 8",
+        title: "Question 8",
         video: "./static/videos/10.mp4",
         question: "Estimate the angle the camera has moved based on the main context.",
         gt: "B",
@@ -1198,6 +1130,74 @@
           }
         ]
       },
+      {
+        id: 9,
+        roundLabel: "VIDEO • ROUND 9",
+        title: "Question 9",
+        video: "./static/videos/6.mp4",
+        question: "How many metal pieces are in this video?",
+        gt: "7",
+        aliases: ["7"],
+        scale: "Tiny",
+        inputForm: "Video",
+        questionForm: "Regression",
+        difficulty: "Due to obstruction, only partial content can be seen at different times, and complete information is not available.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "6",
+            output: `The video shows a white plastic bottle cap surrounded by several ring-shaped objects. The cap is plastic, while the dark grey/silver rings have a metallic sheen, indicating they are metal washers. Using the clearest frame around 00:01, I can count 6 distinct metal pieces arranged around the cap. Therefore, the video contains 6 metal pieces.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "6",
+            output: `The visible metal pieces are dark ring-shaped <semantic>washers</semantic> placed around a white cylindrical object. In the clearer frames, there are three washers on the left side and three on the right side, giving a consistent total. Although one frame partially obscures part of the cluster, the later views confirm the full count. Therefore, the number of metal pieces is 6 visible pieces in <scale>1 cm</scale>, and the final count is <answer>6</answer>.`
+          }
+        ]
+      },
+      {
+        id: 10,
+        roundLabel: "VIDEO • ROUND 10",
+        title: "Question 10",
+        video: "./static/videos/9.mp4",
+        question: "Which object is closest to the mannequin wearing high heels?",
+        gt: "B",
+        aliases: ["B", "b"],
+        scale: "Indoor",
+        inputForm: "Video",
+        questionForm: "Multiple Choice",
+        options: [
+          {
+            key: "A",
+            text: "Hanging clothes"
+          },
+          {
+            key: "B",
+            text: "Table"
+          },
+          {
+            key: "C",
+            text: "Black wallet"
+          },
+          {
+            key: "D",
+            text: "Mannequin"
+          }
+        ],
+        difficulty: "It is necessary to integrate information from multiple frames and select key information from several frames for comparison.",
+        models: [
+          {
+            name: "Gemini-2.5 Pro",
+            answer: "A",
+            output: `The main subject is the mannequin in the black blazer, black pants, and platform heels. Nearby objects include a wooden table on the right, a second mannequin and a black wallet on top of that table, and a clothing rack on the left. Since the second mannequin and wallet are positioned on the table, they are farther than the table edge itself. However, the hanging clothes on the left drape outward and extend even closer to the mannequin than the rigid table structure. Therefore, the closest object is A.`
+          },
+          {
+            name: "SpaceVista-7B",
+            answer: "C",
+            output: `The video shows a clothing store display with two <semantic>mannequins</semantic>. In the later frames, the camera focuses on the mannequin standing on a small wooden table. Right next to its feet on the table surface is a small black rectangular object, likely a black wallet or clutch. At <scale>1 cm level</scale>, this wallet appears closer than the other options, such as the hanging clothes or the other mannequin. Therefore, the final answer is <answer>C</answer>.`
+          }
+        ]
+      }
     ];
 
     let currentIndex = 0;
