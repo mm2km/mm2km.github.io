@@ -369,16 +369,12 @@
       background: #fff;
       color: #111827;
       border-radius: 14px;
-      padding: 10px 14px;
+      padding: 12px 14px;
       text-align: left;
-      font-family: inherit;
-      font-size: 24px;
-      line-height: 1.45;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+      font: inherit;
       cursor: pointer;
       transition: all 0.2s ease;
-      min-height: 0;
+      min-height: 56px;
     }
 
     .mcq-btn:hover {
@@ -720,10 +716,6 @@
         font-size: 20px;
       }
 
-      .mcq-btn {
-        font-size: 20px;
-      }
-
       .arena-right {
         width: 100%;
         align-items: stretch;
@@ -739,7 +731,7 @@
 <body>
   <div class="page">
     <section class="hero">
-      <h1>Humans vs Models on Hard Cases</h1>
+      <h1>Human vs Model</h1>
       <p>
         Test your own spatial reasoning capabilities against the same tasks
         used to evaluate state-of-the-art multimodal models.
@@ -830,6 +822,13 @@
               </button>
               <button
                 class="btn"
+                id="showGtBtn"
+                style="background:#e0f2fe;color:#0f172a;border:1px solid #bae6fd;"
+              >
+                Show GT
+              </button>
+              <button
+                class="btn"
                 id="clearBtn"
                 style="background:#f3f4f6;color:#111827;border:1px solid #d1d5db;"
               >
@@ -867,11 +866,16 @@
         </div>
       
         <div class="section-label" style="margin-top: 18px;">Model Outputs</div>
+        <div style="margin:-2px 0 12px;font-size:14px;line-height:1.7;color:#6b7280;">
+          <span style="color:#065f46;font-weight:800;">Green</span> = Correct,
+          <span style="color:#92400e;font-weight:800;">Yellow</span> = Close,
+          <span style="color:#991b1b;font-weight:800;">Red</span> = Fail
+        </div>
         <div class="model-stack" id="modelGrid"></div>
       </div>
     </section>
 
-    <div class="footer-note">The above answers are simplified and formatted for preview.</div>
+    <div class="footer-note">The above answers are simplified for preview.</div>
   </div>
 
   <script>
@@ -918,41 +922,43 @@
       },
       {
         id: 2,
-        roundLabel: "VIDEO+BBox • ROUND 2",
+        roundLabel: "VIDEO+Mask • ROUND 2",
         title: "Question 2",
-        video: "./static/videos/2.mp4",
-        question: "How tall is this building marked by the red box?",
-        gt: "7.6m",
+        video: "./static/videos/4.mp4",
+        question: "How long is this red-marked object?",
+        gt: "3cm",
         aliases: [
-          "7.6m",
-          "7.6 m",
-          "7.6 meters",
-          "7.6 meter",
-          "7.6 metres",
-          "7.6 metre",
-          "7.6meters",
-          "7.6 meters tall",
-          "7.6 m tall",
-          "7.6 meters high",
-          "7.6 m high"
+          "3cm",
+          "3 cm",
+          "3 centimeters",
+          "3 centimeter",
+          "3 centimetres",
+          "3 centimetre",
+          "3centimeters",
+          "3 cms",
+          "3 cm long",
+          "3 centimeters long",
+          "30 mm",
+          "30mm",
+          "30 mm long",
+          "30 millimeters",
+          "30 millimetres"
         ],
-        scale: "Outdoor",
-        inputForm: "Video+BBox",
+        scale: "Tiny",
+        inputForm: "Video+Mask",
         questionForm: "Regression",
-        difficulty: "Scale hallucination and misperception",
+        difficulty: "Tiny-scale object perception",
         models: [
           {
             name: "Gemini-2.5 Pro",
-            answer: "18 meters",
-            output:
-`The object marked by the red box is a modern building with a curved facade made of large, reflective metal panels. To estimate its height, we can use visual cues and common architectural standards as references. At the base of the building, a standard-sized exterior door is visible (e.g., at \`00:09\`). The average height of a commercial door is approximately 2.1 meters. The vertical metal panel that contains the door appears to be slightly taller than the door itself, suggesting a height of around 4 to 4.5 meters for a single panel row. This height is consistent with the standard floor-to-floor height in a commercial building. By observing the vertical arrangement of the panels, we can count the number of "stories" or levels.Assuming each of these four levels corresponds to a standard commercial floor height of approximately 4.5 meters, we can calculate the total height of the building.Height=Number of Levels×Height per LevelHeight=4×4.5 metersHeight=18 meters`
+            answer: "3cm",
+            output: `The output estimates the screw’s length by using the nearby bottle cap as a scale reference, since there is no ruler in the image. It assumes the cap is a standard bottled-water cap with an outer diameter of about 30 mm (3 cm). Visually, the red-marked screw appears to be nearly the same length as the cap’s diameter. Although there may be slight perspective distortion, both objects lie on roughly the same plane, so the comparison is still reasonable. Based on this relative-size comparison, the screw is estimated to be about 30 mm (3 cm) long.`
           },
           {
             name: "SpaceVista-7B",
-            answer: "10 meters",
-            output:
-`The red box highlights a large curved metallic<semantic>building</semantic> that appears to be part of a modern architectural complex. Scale cues come from the standard pedestrian door, the circular window, and the adjacent glass building with several visible floors. The door suggests a human-sized reference of about 2 meters, while the neighboring structure appears to rise about 4–5 stories, giving a comparable height range. The curved facade looks slightly shorter than or similar to that section, so its height is reasonably estimated at <scale>10 meters level</scale>. A balanced final estimate is <answer>10</answer> meters.`             
-        }
+            answer: "3.3cm",
+            output: `The object outlined in red is a <semantic>metal flat-head wood screw</semantic>. A useful size reference is the nearby white plastic bottle cap labeled “C’estbon,” which typically has a diameter of about 2.5–3 cm. Visually, the screw appears slightly longer than the cap’s width, at roughly 1.2 times its diameter. Based on this comparison, the screw’s length is about 3–3.6 cm at <scale>1 cm level</scale>, with a reasonable estimate of <answer>3.3</answer> cm.`
+          }
         ]
       },
       {
@@ -1037,43 +1043,41 @@
       },
       {
         id: 5,
-        roundLabel: "VIDEO+Mask • ROUND 5",
+        roundLabel: "VIDEO+BBox • ROUND 5",
         title: "Question 5",
-        video: "./static/videos/4.mp4",
-        question: "How long is this red-marked object?",
-        gt: "3cm",
+        video: "./static/videos/2.mp4",
+        question: "How tall is this building marked by the red box?",
+        gt: "7.6m",
         aliases: [
-          "3cm",
-          "3 cm",
-          "3 centimeters",
-          "3 centimeter",
-          "3 centimetres",
-          "3 centimetre",
-          "3centimeters",
-          "3 cms",
-          "3 cm long",
-          "3 centimeters long",
-          "30 mm",
-          "30mm",
-          "30 mm long",
-          "30 millimeters",
-          "30 millimetres"
+          "7.6m",
+          "7.6 m",
+          "7.6 meters",
+          "7.6 meter",
+          "7.6 metres",
+          "7.6 metre",
+          "7.6meters",
+          "7.6 meters tall",
+          "7.6 m tall",
+          "7.6 meters high",
+          "7.6 m high"
         ],
-        scale: "Tiny",
-        inputForm: "Video+Mask",
+        scale: "Outdoor",
+        inputForm: "Video+BBox",
         questionForm: "Regression",
-        difficulty: "Tiny-scale object perception",
+        difficulty: "Scale hallucination and misperception",
         models: [
           {
             name: "Gemini-2.5 Pro",
-            answer: "3cm",
-            output: `The output estimates the screw’s length by using the nearby bottle cap as a scale reference, since there is no ruler in the image. It assumes the cap is a standard bottled-water cap with an outer diameter of about 30 mm (3 cm). Visually, the red-marked screw appears to be nearly the same length as the cap’s diameter. Although there may be slight perspective distortion, both objects lie on roughly the same plane, so the comparison is still reasonable. Based on this relative-size comparison, the screw is estimated to be about 30 mm (3 cm) long.`
+            answer: "18 meters",
+            output:
+`The object marked by the red box is a modern building with a curved facade made of large, reflective metal panels. To estimate its height, we can use visual cues and common architectural standards as references. At the base of the building, a standard-sized exterior door is visible (e.g., at \`00:09\`). The average height of a commercial door is approximately 2.1 meters. The vertical metal panel that contains the door appears to be slightly taller than the door itself, suggesting a height of around 4 to 4.5 meters for a single panel row. This height is consistent with the standard floor-to-floor height in a commercial building. By observing the vertical arrangement of the panels, we can count the number of "stories" or levels.Assuming each of these four levels corresponds to a standard commercial floor height of approximately 4.5 meters, we can calculate the total height of the building.Height=Number of Levels×Height per LevelHeight=4×4.5 metersHeight=18 meters`
           },
           {
             name: "SpaceVista-7B",
-            answer: "3.3cm",
-            output: `The object outlined in red is a <semantic>metal flat-head wood screw</semantic>. A useful size reference is the nearby white plastic bottle cap labeled “C’estbon,” which typically has a diameter of about 2.5–3 cm. Visually, the screw appears slightly longer than the cap’s width, at roughly 1.2 times its diameter. Based on this comparison, the screw’s length is about 3–3.6 cm at <scale>1 cm level</scale>, with a reasonable estimate of <answer>3.3</answer> cm.`
-          }
+            answer: "10 meters",
+            output:
+`The red box highlights a large curved metallic<semantic>building</semantic> that appears to be part of a modern architectural complex. Scale cues come from the standard pedestrian door, the circular window, and the adjacent glass building with several visible floors. The door suggests a human-sized reference of about 2 meters, while the neighboring structure appears to rise about 4–5 stories, giving a comparable height range. The curved facade looks slightly shorter than or similar to that section, so its height is reasonably estimated at <scale>10 meters level</scale>. A balanced final estimate is <answer>10</answer> meters.`             
+        }
         ]
       },
       {
@@ -1285,6 +1289,7 @@
     const questionText = document.getElementById("questionText");
     const userAnswer = document.getElementById("userAnswer");
     const submitBtn = document.getElementById("submitBtn");
+    const showGtBtn = document.getElementById("showGtBtn");
     const clearBtn = document.getElementById("clearBtn");
     const nextBtn = document.getElementById("nextBtn");
     const resultBox = document.getElementById("resultBox");
@@ -1667,18 +1672,20 @@
         });
 
         answerRequirementText.innerHTML = `
-          Choose the most appropriate option below.<br>
-          <strong>Options:</strong> A, B, C, or D.
+          Enter a single option label.<br>
+          <strong>Required format:</strong> A, B, C, or D.<br>
+          <strong>Examples:</strong> A / B / C / D
         `;
+        answerHelper.textContent = "Choose exactly one option. The selected option label will be submitted.";
       } else {
         userAnswer.style.display = "block";
         mcqOptions.classList.remove("show");
         mcqOptions.innerHTML = "";
 
         answerRequirementText.innerHTML = `
-          Enter your answer as a number.<br>
-          You may also include a unit when needed.<br>
-          <strong>Examples:</strong> 5 / 8.4 / 8.4 m / 8.4 meters / 9 cm
+          Enter a regression-style answer using a number or a number with unit.<br>
+          <strong>Required format:</strong> numeric value or numeric value + unit.<br>
+          <strong>Examples:</strong> 12.2m / 12.2 m / 12.2 meters / 3 cm
         `;
       }
     }
@@ -1728,6 +1735,12 @@
         }
       }
 
+      gtBox.classList.add("show");
+      gtText.textContent = item.gt;
+    }
+
+    function showGroundTruth() {
+      const item = questions[currentIndex];
       gtBox.classList.add("show");
       gtText.textContent = item.gt;
     }
@@ -1791,6 +1804,7 @@
     }
 
     submitBtn.addEventListener("click", submitAnswer);
+    showGtBtn.addEventListener("click", showGroundTruth);
     clearBtn.addEventListener("click", clearAnswer);
     nextBtn.addEventListener("click", goNext);
 
