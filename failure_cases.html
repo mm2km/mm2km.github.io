@@ -82,10 +82,9 @@
     .arena-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-top: 18px;
-      margin-bottom: 6px;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
     }
 
@@ -106,9 +105,8 @@
 
     .scoreboard {
       display: flex;
-      gap: 8px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin: 0;
     }
 
     .score-item {
@@ -492,41 +490,8 @@
       color: #111827;
     }
 
-    .arena-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      flex-wrap: nowrap;
-      padding-top: 0;
-    }
-
-    .top-next-btn {
-      background: #111827;
-      color: #fff;
-      border: 1px solid #111827;
-      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
-      min-width: 160px;
-    }
-
-    .top-next-btn:hover {
-      opacity: 0.94;
-    }
-
-    .panel-card,
-    .model-panel,
-    .model-stack,
-    .model-card,
-    .model-content-grid,
-    .model-subbox,
-    .difficulty-box {
-      max-width: 100%;
-      min-width: 0;
-    }
-
     .model-panel {
       padding: 20px;
-      overflow: hidden;
     }
     
     .model-card {
@@ -544,9 +509,6 @@
       border-radius: 14px;
       padding: 14px;
       background: #fbfcfe;
-      overflow: hidden;
-      overflow-wrap: anywhere;
-      word-break: break-word;
     }
     
     .hallucination-box {
@@ -559,18 +521,16 @@
     
     .global-difficulty-box {
       border: 1px solid var(--blue-border);
-      background: linear-gradient(180deg, #f3f8ff 0%, #eef5ff 100%);
-      border-radius: 18px;
+      background: var(--blue-bg);
+      border-radius: 16px;
       padding: 16px;
       margin-bottom: 10px;
-      overflow: hidden;
     }
     
     .model-stack {
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
-      overflow: hidden;
     }
 
     .model-header {
@@ -586,9 +546,6 @@
       font-size: 17px;
       font-weight: 800;
       letter-spacing: -0.01em;
-      min-width: 0;
-      overflow-wrap: anywhere;
-      word-break: break-word;
     }
 
     .model-answer {
@@ -601,18 +558,16 @@
       font-size: 12px;
       font-weight: 800;
       color: #111827;
-      white-space: normal;
-      max-width: 100%;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+      white-space: nowrap;
     }
 
     .model-content-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.8fr);
       gap: 14px;
       align-items: start;
     }
+
 
     .subbox-title {
       font-size: 12px;
@@ -628,8 +583,6 @@
       font-size: 14px;
       line-height: 1.75;
       white-space: pre-wrap;
-      text-align: justify;
-      text-justify: inter-word;
     }
 
     .difficulty-box {
@@ -644,6 +597,8 @@
       font-weight: 600;
       white-space: normal;
     }
+
+    
 
     .hallucination-label {
       font-size: 12px;
@@ -662,21 +617,12 @@
     .global-difficulty-text {
       color: var(--blue-text);
       font-size: 14px;
-      line-height: 1.9;
+      line-height: 1.75;
       font-weight: 600;
       white-space: normal;
       overflow-wrap: anywhere;
       word-break: break-word;
     }
-
-    .footer-note {
-      margin-top: 18px;
-      text-align: center;
-      color: #9ca3af;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
 
     @media (max-width: 1180px) {
       .main-grid {
@@ -715,16 +661,6 @@
       .question-text {
         font-size: 20px;
       }
-
-      .arena-right {
-        width: 100%;
-        align-items: stretch;
-      }
-
-      .top-next-btn {
-        width: 100%;
-        justify-content: center;
-      }
     }
   </style>
 </head>
@@ -745,16 +681,14 @@
           <div class="arena-meta" id="arenaMeta">VIDEO QA • ROUND 1</div>
         </div>
 
-        <div class="arena-right">
-          <div class="scoreboard">
-            <div class="score-item">
-              <div class="score-label">Score</div>
-              <div class="score-value" id="scoreValue">0</div>
-            </div>
-            <div class="score-item">
-              <div class="score-label">Streak</div>
-              <div class="score-value" id="streakValue">0</div>
-            </div>
+        <div class="scoreboard">
+          <div class="score-item">
+            <div class="score-label">Score</div>
+            <div class="score-value" id="scoreValue">0</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Streak</div>
+            <div class="score-value" id="streakValue">0</div>
           </div>
         </div>
       </div>
@@ -813,34 +747,9 @@
             <div class="helper" id="answerHelper"></div>
 
             <div class="btn-row">
-              <button
-                class="btn"
-                id="submitBtn"
-                style="background:#111827;color:#fff;border:none;"
-              >
-                Submit
-              </button>
-              <button
-                class="btn"
-                id="showGtBtn"
-                style="background:#e0f2fe;color:#0f172a;border:1px solid #bae6fd;"
-              >
-                Show GT
-              </button>
-              <button
-                class="btn"
-                id="clearBtn"
-                style="background:#f3f4f6;color:#111827;border:1px solid #d1d5db;"
-              >
-                Clear
-              </button>
-              <button
-                class="btn"
-                id="nextBtn"
-                style="background:#60a5fa;color:#fff;border:none;"
-              >
-                Next Question
-              </button>
+              <button class="btn btn-primary" id="submitBtn">Submit</button>
+              <button class="btn btn-secondary" id="clearBtn">Clear</button>
+              <button class="btn btn-secondary" id="nextBtn">Next</button>
             </div>
           </div>
 
@@ -866,16 +775,14 @@
         </div>
       
         <div class="section-label" style="margin-top: 18px;">Model Outputs</div>
-        <div style="margin:-2px 0 12px;font-size:14px;line-height:1.7;color:#6b7280;">
-          <span style="color:#065f46;font-weight:800;">Green</span> = Correct,
-          <span style="color:#92400e;font-weight:800;">Yellow</span> = Close,
-          <span style="color:#991b1b;font-weight:800;">Red</span> = Fail
+        <div class="model-legend">
+          <span class="model-legend-green">Green = Correct</span>
+          <span class="model-legend-yellow">Yellow = Close</span>
+          <span class="model-legend-red">Red = Fail</span>
         </div>
         <div class="model-stack" id="modelGrid"></div>
       </div>
     </section>
-
-    <div class="footer-note">The above answers are simplified for preview.</div>
   </div>
 
   <script>
@@ -1289,9 +1196,9 @@
     const questionText = document.getElementById("questionText");
     const userAnswer = document.getElementById("userAnswer");
     const submitBtn = document.getElementById("submitBtn");
-    const showGtBtn = document.getElementById("showGtBtn");
     const clearBtn = document.getElementById("clearBtn");
     const nextBtn = document.getElementById("nextBtn");
+    const showGtBtn = document.getElementById("showGtBtn");
     const resultBox = document.getElementById("resultBox");
     const resultTitle = document.getElementById("resultTitle");
     const resultUserAnswer = document.getElementById("resultUserAnswer");
@@ -1320,10 +1227,7 @@
         .replace(/[“”]/g, '"')
         .replace(/[‘’]/g, "'")
         .replace(/[–—]/g, "-")
-        .replace(/ /g, " ")
-        .split("\n")
-        .map((line) => line.trim())
-        .join("\n")
+        .replace(/\u00A0/g, " ")
         .replace(/\n{3,}/g, "\n\n")
         .trim();
     }
@@ -1347,189 +1251,13 @@
       return String(text || "")
         .trim()
         .toLowerCase()
-        .replace(/ /g, " ")
         .replace(/\s+/g, " ");
     }
 
-    function normalizeUnit(unitRaw) {
-      const unit = String(unitRaw || "")
-        .trim()
-        .toLowerCase()
-        .replace(/[.]/g, "")
-        .replace(/\s+/g, " ");
-
-      const unitMap = {
-        "m": "m",
-        "meter": "m",
-        "meters": "m",
-        "metre": "m",
-        "metres": "m",
-        "cm": "cm",
-        "centimeter": "cm",
-        "centimeters": "cm",
-        "centimetre": "cm",
-        "centimetres": "cm",
-        "mm": "mm",
-        "millimeter": "mm",
-        "millimeters": "mm",
-        "millimetre": "mm",
-        "millimetres": "mm",
-        "km": "km",
-        "kilometer": "km",
-        "kilometers": "km",
-        "kilometre": "km",
-        "kilometres": "km",
-        "ft": "ft",
-        "foot": "ft",
-        "feet": "ft",
-        "in": "in",
-        "inch": "in",
-        "inches": "in"
-      };
-
-      return unitMap[unit] || "";
-    }
-
-    function parseMeasurement(text, fallbackUnit = "") {
-      const raw = cleanDisplayText(text);
-      const cleaned = raw
-        .toLowerCase()
-        .replace(/,/g, "")
-        .replace(/[，]/g, " ")
-        .trim();
-
-      if (!cleaned) {
-        return { ok: false, message: "Incorrect Format for Parsing" };
-      }
-
-      const match = cleaned.match(/^([-+]?\d*\.?\d+(?:e[-+]?\d+)?)\s*([a-zA-Z]+(?:\s+[a-zA-Z]+)*)?\s*$/);
-      if (!match) {
-        return { ok: false, message: "Incorrect Format for Parsing" };
-      }
-
-      const value = Number(match[1]);
-      if (!Number.isFinite(value)) {
-        return { ok: false, message: "Incorrect Format for Parsing" };
-      }
-
-      const inferredUnit = normalizeUnit(match[2] || fallbackUnit || "");
-      const hasProvidedUnit = Boolean(String(match[2] || "").trim());
-
-      if (hasProvidedUnit && !inferredUnit) {
-        return { ok: false, message: "Incorrect Format for Parsing" };
-      }
-
-      return {
-        ok: true,
-        raw,
-        value,
-        unit: inferredUnit,
-        providedUnit: hasProvidedUnit
-      };
-    }
-
-    function convertLengthToMeters(value, unit) {
-      const factor = {
-        "": 1,
-        "mm": 0.001,
-        "cm": 0.01,
-        "m": 1,
-        "km": 1000,
-        "ft": 0.3048,
-        "in": 0.0254
-      }[unit];
-
-      if (factor == null) {
-        return NaN;
-      }
-
-      return value * factor;
-    }
-
-    function computeMRAScore(pred, gt) {
-      if (!(pred > 0) || !(gt > 0)) {
-        return pred === gt ? 1 : 0;
-      }
-
-      const ratio = Math.min(pred, gt) / Math.max(pred, gt);
-      let passCount = 0;
-      let total = 0;
-
-      for (let threshold = 0.5; threshold <= 0.9500001; threshold += 0.05) {
-        total += 1;
-        if (ratio + 1e-12 >= threshold) {
-          passCount += 1;
-        }
-      }
-
-      return passCount / total;
-    }
-
-    function formatDisplayNumber(num) {
-      if (!Number.isFinite(num)) return "-";
-      const rounded = Math.round(num * 1000) / 1000;
-      return Number.isInteger(rounded) ? String(rounded) : String(rounded);
-    }
-
-    function formatScoreValue(num) {
-      return Number(num).toFixed(2).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1");
-    }
-
-    function evaluateAnswer(input, item) {
-      const rawInput = String(input || "");
-
-      if (item.questionForm === "Multiple Choice") {
-        const normInput = normalizeAnswer(rawInput);
-        const accepted = [item.gt, ...(item.aliases || [])].map(normalizeAnswer);
-        const correct = accepted.includes(normInput);
-
-        return {
-          status: correct ? "correct" : "incorrect",
-          score: correct ? 1 : 0,
-          correct,
-          rawInput,
-          detail: correct ? "Exact option match." : "Selected option does not match the ground truth."
-        };
-      }
-
-      const gtParsed = parseMeasurement(item.gt);
-      const inputParsed = parseMeasurement(rawInput, gtParsed.ok ? gtParsed.unit : "");
-
-      if (!inputParsed.ok || !gtParsed.ok) {
-        return {
-          status: "format_error",
-          score: 0,
-          correct: false,
-          rawInput,
-          detail: "Incorrect Format for Parsing"
-        };
-      }
-
-      const predMeters = convertLengthToMeters(inputParsed.value, inputParsed.unit);
-      const gtMeters = convertLengthToMeters(gtParsed.value, gtParsed.unit);
-
-      if (!Number.isFinite(predMeters) || !Number.isFinite(gtMeters)) {
-        return {
-          status: "format_error",
-          score: 0,
-          correct: false,
-          rawInput,
-          detail: "Incorrect Format for Parsing"
-        };
-      }
-
-      const mraScore = computeMRAScore(predMeters, gtMeters);
-
-      return {
-        status: mraScore >= 0.5 ? "correct" : "incorrect",
-        score: mraScore,
-        correct: mraScore >= 0.5,
-        rawInput,
-        parsedValue: inputParsed.value,
-        parsedUnit: inputParsed.unit || gtParsed.unit || "",
-        detail: `Parsed answer: ${formatDisplayNumber(inputParsed.value)} ${inputParsed.unit || gtParsed.unit || ""}`.trim(),
-        metric: `MRA@0.50:0.95:0.05 = ${formatScoreValue(mraScore)}`
-      };
+    function isAnswerCorrect(input, item) {
+      const normInput = normalizeAnswer(input);
+      const accepted = [item.gt, ...(item.aliases || [])].map(normalizeAnswer);
+      return accepted.includes(normInput);
     }
 
     function getModelAnswerBadgeStyle(modelAnswer, item) {
@@ -1572,7 +1300,7 @@
     }
 
     function updateScoreboard() {
-      scoreValue.textContent = formatScoreValue(score);
+      scoreValue.textContent = score;
       streakValue.textContent = streak;
     }
 
@@ -1630,11 +1358,9 @@
             <div class="model-answer" style="${modelAnswerStyle}">Answer: ${safeAnswer}</div>
           </div>
     
-          <div class="model-content-grid">
-            <div class="model-subbox">
-              <div class="subbox-title">Model Output</div>
-              <div class="model-body">${safeOutput}</div>
-            </div>
+          <div class="model-subbox">
+            <div class="subbox-title">Model Output</div>
+            <div class="model-body">${safeOutput}</div>
           </div>
     
           ${hallucinationHTML}
@@ -1685,8 +1411,9 @@
         answerRequirementText.innerHTML = `
           Enter a regression-style answer using a number or a number with unit.<br>
           <strong>Required format:</strong> numeric value or numeric value + unit.<br>
-          <strong>Examples:</strong> 12.2m / 12.2 m / 12.2 meters / 3 cm
+          <strong>Examples:</strong> 12.2m / 12.2 m / 3.5 / 2 meters
         `;
+        answerHelper.textContent = "Input is matched case-insensitively after trimming whitespace.";
       }
     }
 
@@ -1715,31 +1442,19 @@
       renderQuestionNav();
     }
 
-    function showResult(evaluation, item) {
+    function showResult(correct, userText, item) {
       resultBox.classList.add("show");
       resultBox.classList.remove("correct", "wrong");
+      resultBox.classList.add(correct ? "correct" : "wrong");
 
-      if (evaluation.status === "format_error") {
-        resultBox.classList.add("wrong");
-        resultTitle.textContent = "Incorrect Format for Parsing";
-        resultUserAnswer.textContent = evaluation.detail;
-      } else {
-        resultBox.classList.add(evaluation.correct ? "correct" : "wrong");
-
-        if (item.questionForm === "Regression") {
-          resultTitle.textContent = evaluation.correct ? "Parsed Successfully" : "Needs Improvement";
-          resultUserAnswer.textContent = evaluation.detail;
-        } else {
-          resultTitle.textContent = evaluation.correct ? "Correct" : "Incorrect";
-          resultUserAnswer.textContent = "Your answer: " + (evaluation.rawInput.trim() || "(empty)");
-        }
-      }
+      resultTitle.textContent = correct ? "Correct" : "Incorrect";
+      resultUserAnswer.textContent = "Your answer: " + (userText.trim() || "(empty)");
 
       gtBox.classList.add("show");
       gtText.textContent = item.gt;
     }
 
-    function showGroundTruth() {
+    function showGroundTruthOnly() {
       const item = questions[currentIndex];
       gtBox.classList.add("show");
       gtText.textContent = item.gt;
@@ -1755,28 +1470,22 @@
     function submitAnswer() {
       const item = questions[currentIndex];
       const input = getCurrentUserAnswer(item);
-      const evaluation = evaluateAnswer(input, item);
+      const correct = isAnswerCorrect(input, item);
 
-      showResult(evaluation, item);
-
-      if (evaluation.status === "format_error") {
-        return;
-      }
+      showResult(correct, input, item);
 
       const alreadyAnswered = answeredMap.has(item.id);
 
       if (!alreadyAnswered) {
-        score += evaluation.score;
-
-        if (evaluation.correct) {
+        if (correct) {
+          score += 1;
           streak += 1;
         } else {
           streak = 0;
         }
 
         answeredMap.set(item.id, {
-          correct: evaluation.correct,
-          score: evaluation.score,
+          correct,
           userAnswer: input
         });
 
@@ -1804,8 +1513,8 @@
     }
 
     submitBtn.addEventListener("click", submitAnswer);
-    showGtBtn.addEventListener("click", showGroundTruth);
     clearBtn.addEventListener("click", clearAnswer);
+    showGtBtn.addEventListener("click", showGroundTruthOnly);
     nextBtn.addEventListener("click", goNext);
 
     userAnswer.addEventListener("keydown", (e) => {
@@ -1819,4 +1528,5 @@
     loadQuestion(currentIndex);
   </script>
 </body>
+</html>
 </html>
