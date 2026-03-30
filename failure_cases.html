@@ -840,7 +840,7 @@
                 id="showGtBtn"
                 style="background:#e5e7eb;color:#374151;border:1px solid #d1d5db;"
               >
-                Show GT
+                Show Answer
               </button>
               <button
                 class="btn"
@@ -875,7 +875,13 @@
       
         <div class="section-label" style="margin-top: 18px;">Model Outputs</div>
         <div style="margin-top: -2px; margin-bottom: 12px; color: #9ca3af; font-size: 13px; line-height: 1.6;">
-          Model answers are color-coded to indicate whether they are correct, close, or incorrect.Green = Correct, Yellow = Close, Red = Fail. 
+          Model answers are color-coded to indicate whether they are
+          <span style="display:inline-flex;align-items:center;border-radius:999px;background:#ecfdf5;border:1px solid #a7f3d0;padding:4px 10px;font-size:12px;font-weight:800;color:#065f46;vertical-align:middle;">Green</span>
+          for correct,
+          <span style="display:inline-flex;align-items:center;border-radius:999px;background:#fff7ed;border:1px solid #fed7aa;padding:4px 10px;font-size:12px;font-weight:800;color:#9a3412;vertical-align:middle;">Yellow</span>
+          for close, and
+          <span style="display:inline-flex;align-items:center;border-radius:999px;background:#fef2f2;border:1px solid #fecaca;padding:4px 10px;font-size:12px;font-weight:800;color:#991b1b;vertical-align:middle;">Red</span>
+          for incorrect.
         </div>
         <div class="model-stack" id="modelGrid"></div>
       </div>
